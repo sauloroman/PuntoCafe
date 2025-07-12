@@ -112,6 +112,7 @@ public class ProductController {
         view.btnNewProduct.addActionListener(e -> openCreateProductWindow());
         view.pageComboBox.addActionListener(e -> changePage(filterSelected));
         view.productCategoryCombo.addActionListener(e -> filterProductsByCategory());
+        view.productSupplierCombo.addActionListener(e -> filterProductBySupplierCompany());
         
         createProductWindow.btnCancelSaveProduct.addActionListener(e -> closeCreateProductWindow());
         createProductWindow.btnLoadImage.addActionListener(e -> uploadImage(false));
@@ -132,6 +133,22 @@ public class ProductController {
         productGrid.showAllProducts(1);
     }
     
+    private void filterProductBySupplierCompany() {
+        String supplierSelected = filter.getSupplierCompanyName();
+        
+        if ( supplierSelected == null ) {
+            pages.create();
+            safelyRebuildPagination(() -> pages.create());
+            filterSelected = SearchCriteriaEnum.NONE;
+            productGrid.showAllProducts(1);
+            return;
+        }
+        
+        safelyRebuildPagination(() -> pages.createBySuppliers(supplierSelected));
+        productGrid.showProductsBySupplier(supplierSelected, 1);
+        filterSelected = SearchCriteriaEnum.PRODUCT_SUPPLIER;
+    }
+    
     private void filterProductsByCategory() {
         int categorySelected = filter.getCategoryIDSelected();
         
@@ -143,8 +160,8 @@ public class ProductController {
             return;
         }
         
-        safelyRebuildPagination(() -> pages.createByFilter(SearchCriteriaEnum.PRODUCT_CATEGORY, categorySelected));
-        productGrid.showProductByCategory(categorySelected, 1);
+        safelyRebuildPagination(() -> pages.createByCategories(categorySelected));
+        productGrid.showProductsByCategory(categorySelected, 1);
         filterSelected = SearchCriteriaEnum.PRODUCT_CATEGORY;
     }
     
@@ -218,6 +235,7 @@ public class ProductController {
             
         if ( productSelected != null ) {
             ((EditProductHandler) editProductHandler).setProductOldName(productSelected.getProductName());
+            upload.image = productSelected.getProductImage(); 
             fillComboBoxes.categoriesCreateBox(categories.getProductCategories());
             fillComboBoxes.suppliersCreateBox(suppliers.getAll());
             resetElements.hideButtonUploadImage();
@@ -252,7 +270,8 @@ public class ProductController {
         
         switch ( criteria ) {
             case SearchCriteriaEnum.NONE -> productGrid.showAllProducts(selectedPage);
-            case SearchCriteriaEnum.PRODUCT_CATEGORY -> productGrid.showProductByCategory(filter.getCategoryIDSelected(), selectedPage);
+            case SearchCriteriaEnum.PRODUCT_CATEGORY -> productGrid.showProductsByCategory(filter.getCategoryIDSelected(), selectedPage);
+            case SearchCriteriaEnum.PRODUCT_SUPPLIER -> productGrid.showProductsBySupplier(filter.getSupplierCompanyName(), selectedPage);
         }
     }
     

@@ -23,4 +23,10 @@ public class FilterProducts {
         return categoryId;
     }
     
+    public String getSupplierCompanyName() {
+        String supplierSelected = view.productSupplierCombo.getSelectedItem().toString();
+        if ( supplierSelected.equals("Proveedores") ) return null;
+        return supplierSelected;
+    }
+    
 }

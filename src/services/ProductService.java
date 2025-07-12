@@ -23,12 +23,20 @@ public class ProductService {
         return products;
     }
     
+    public List<Product> getProductsBySupplierCompany(String supplierCompany, int page, int quantity ) {
+        return model.getProductsBySupplierCompany(supplierCompany, page, quantity);
+    }
+    
     public int getQuantityProducts() {
         return model.getTotalItems();
     }
     
     public int getQuantityProductsByCategory( int categoryId ) {
-        return model.getTotalItemsByFilter(SearchCriteriaEnum.PRODUCT_CATEGORY, categoryId );
+        return model.getTotalProductsByCategoryId(categoryId);
+    }
+    
+    public int getQuantityProductsBySupplierCompany(String supplierCompany) {
+        return model.getTotalProductsBySupplierCompany(supplierCompany);
     }
     
     public Product getProductByName(String productName) {

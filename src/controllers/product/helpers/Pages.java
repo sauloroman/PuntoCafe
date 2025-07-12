@@ -1,7 +1,6 @@
 package controllers.product.helpers;
 
 import services.ProductService;
-import utils.enums.SearchCriteriaEnum;
 import views.warehouse.WarehouseProducts;
 
 public class Pages {
@@ -16,25 +15,30 @@ public class Pages {
     
     public void create() {
         int quantityProducts = queryProducts.getQuantityProducts();
-        int pages = Math.max((int) Math.ceil((double) quantityProducts / 15), 1);
+        int pages = calculatePages(quantityProducts);
         fillPageComboBox(pages);
     }
     
-    public void createByFilter( SearchCriteriaEnum criteria, int categoryId ) {
-        int quantityProducts = 0;
-        
-        switch( criteria ) {
-            case SearchCriteriaEnum.PRODUCT_CATEGORY -> quantityProducts = queryProducts.getQuantityProductsByCategory(categoryId);
-        }
-        
-        int pages = Math.max((int) Math.ceil((double) quantityProducts / 15), 1);
+    public void createByCategories (int categoryId ) {
+        int quantityProducts = queryProducts.getQuantityProductsByCategory(categoryId);;
+        int pages = calculatePages(quantityProducts);
         fillPageComboBox(pages);
     }
     
+    public void createBySuppliers( String supplierCompany ) {
+        int quantityProducts = queryProducts.getQuantityProductsBySupplierCompany(supplierCompany);
+        int pages = calculatePages(quantityProducts);
+        fillPageComboBox(pages);
+    }
+
     public int getSelectedPage() {
         Object selectedItem = view.pageComboBox.getSelectedItem();
         if ( selectedItem == null ) return 1;
         return Integer.parseInt(selectedItem.toString());
+    }
+    
+    private int calculatePages( int quantityProducts ) {
+        return Math.max((int) Math.ceil((double) quantityProducts / 15), 1);
     }
     
     private void fillPageComboBox( int pages ) {

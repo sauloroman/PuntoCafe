@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import javax.swing.JScrollPane;
-import utils.enums.SearchCriteriaEnum;
 import views.components.Grid;
 import views.components.ProductCard;
 import views.warehouse.WarehouseProducts;
@@ -60,9 +59,17 @@ public class ProductGrid {
         }
     }
     
-    public void showProductByCategory( int categoryId, int page ) {
+    public void showProductsByCategory( int categoryId, int page ) {
         clearGrid();
         products = queryProducts.getProductsByCategory(categoryId, page, QUANTITY_PRODUCTS);
+        for (Product product : products) {
+            addProduct(product);
+        }
+    }
+    
+    public void showProductsBySupplier(String supplierCompany, int page) {
+        clearGrid();
+        products = queryProducts.getProductsBySupplierCompany(supplierCompany, page, QUANTITY_PRODUCTS);
         for (Product product : products) {
             addProduct(product);
         }

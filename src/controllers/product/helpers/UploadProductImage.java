@@ -81,7 +81,7 @@ public class UploadProductImage {
     }
     
     public boolean handleUploadForEdit() {
-        if ( !image.equals("no-image.jpg") ) {
+        if ( !image.equals("no-image.jpg")  && originRoot != null && destinyRoot != null ) {
             if ( !upload() ) {
                 modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error );
                 return false;

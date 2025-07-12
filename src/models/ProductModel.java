@@ -291,14 +291,12 @@ public class ProductModel implements CrudInterface<Product> {
         return totalItems;
     }  
     
-    public int getTotalItemsByFilter( SearchCriteriaEnum criteria, int id) {
+    public int getTotalProductsByCategoryId(int id) {
         int totalItems = 0;
         
         try {
             
-            if ( criteria.equals(SearchCriteriaEnum.PRODUCT_CATEGORY) ) {
-                statement = DATABASE.connect().prepareStatement("SELECT COUNT(*) FROM product WHERE category_id = ?");
-            }
+            statement = DATABASE.connect().prepareStatement("SELECT COUNT(*) FROM product WHERE category_id = ?");
             statement.setInt(1, id);
             
             result = statement.executeQuery();
@@ -312,6 +310,38 @@ public class ProductModel implements CrudInterface<Product> {
             
         } catch(SQLException e) {
             System.out.println("No se pudo obtener el total de productos");
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return totalItems;
+    }
+    
+    public int getTotalProductsBySupplierCompany(String supplierCompany) {
+        int totalItems = 0;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT COUNT(*) "
+                  + "FROM product "
+                  + "INNER JOIN supplier ON supplier.supplier_id = product.supplier_id "
+                  + "WHERE supplier.supplier_company = ?"
+            );
+            statement.setString(1, supplierCompany);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                totalItems = result.getInt("COUNT(*)");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el total de productos " + e.getMessage());
         } finally {
             statement = null;
             result = null;
@@ -334,6 +364,56 @@ public class ProductModel implements CrudInterface<Product> {
             
             statement = DATABASE.connect().prepareStatement("SELECT * FROM product WHERE category_id = ? ORDER BY product_createdAt DESC LIMIT ?, ?");
             statement.setInt(1, categoryId);
+            statement.setInt(2, (page - 1) * quantity);
+            statement.setInt(3, quantity);
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                products.add(
+                        new Product(
+                                result.getInt("product_id"),
+                                result.getString("product_name"),
+                                result.getString("product_description"),
+                                result.getString("product_image"),
+                                result.getDouble("product_selling_price"),
+                                result.getInt("product_stock"),
+                                result.getInt("product_stock_min"),
+                                result.getBoolean("product_is_active"),
+                                result.getDate("product_createdAt"),
+                                result.getDate("product_updatedAt"),
+                                result.getInt("category_id"),
+                                result.getInt("supplier_id")
+                        )
+                );
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("No se pudieron obtener los productos por categoria: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return products;
+    }
+    
+     public List<Product> getProductsBySupplierCompany( String supplierCompany, int page, int quantity ) {
+        
+        List<Product> products = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT P.product_id, P.product_name, P.product_description, P.product_image, P.product_selling_price, P.product_stock, P.product_stock_min, P.product_createdAt, P.product_updatedAt, P.product_is_active, P.category_id, P.supplier_id "
+                  + "FROM product AS P "
+                  + "INNER JOIN supplier ON supplier.supplier_id = P.supplier_id "
+                  + "WHERE supplier_company = ? "
+                  + "ORDER BY P.product_createdAt "
+                  + "LIMIT ?, ?"
+            );
+            
+            statement.setString(1, supplierCompany);
             statement.setInt(2, (page - 1) * quantity);
             statement.setInt(3, quantity);
             result = statement.executeQuery();
