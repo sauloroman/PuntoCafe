@@ -6,9 +6,11 @@ import services.SupplierService;
 import entities.Category;
 import entities.Product;
 import entities.Supplier;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import javax.swing.JScrollPane;
+import utils.enums.SearchCriteriaEnum;
 import views.components.Grid;
 import views.components.ProductCard;
 import views.warehouse.WarehouseProducts;
@@ -22,6 +24,7 @@ public class ProductGrid {
     private final SupplierService querySuppliers;
     private final JScrollPane scroll;
     private Consumer<Product> onProductClick;
+    private List<Product> products = new ArrayList<>();
     
     public ProductGrid(
             WarehouseProducts view, 
@@ -39,22 +42,31 @@ public class ProductGrid {
         view.add(scroll);
     }
     
+    private void clearGrid() {
+        view.productsGrid.removeAll();
+        view.productsGrid.revalidate();
+        view.productsGrid.repaint();
+    }
+    
     public void setOnProductClick(Consumer<Product> listener) {
         this.onProductClick = listener;
     }
     
-    public void create(int page) {
-        view.productsGrid.removeAll();
-        view.productsGrid.revalidate();
-        view.productsGrid.repaint();
-
-        List<Product> products = queryProducts.getProducts(QUANTITY_PRODUCTS, page);
-
+    public void showAllProducts(int page) {
+        clearGrid();
+        products = queryProducts.getProducts( page, QUANTITY_PRODUCTS);
         for (Product product : products) {
             addProduct(product);
         }
     }
-
+    
+    public void showProductByCategory( int categoryId, int page ) {
+        clearGrid();
+        products = queryProducts.getProductsByCategory(categoryId, page, QUANTITY_PRODUCTS);
+        for (Product product : products) {
+            addProduct(product);
+        }
+    }
     
     public void addProduct( Product product ) {
         ProductCard card = new ProductCard();

@@ -28,8 +28,8 @@ public class ProductModel implements CrudInterface<Product> {
         
         try {
             
-            statement = DATABASE.connect().prepareStatement("SELECT * FROM product WHERE product_name = ?");
-            statement.setString(1, name);
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM product WHERE product_name LIKE ?");
+            statement.setString(1, "%" + name + "%");
             result = statement.executeQuery();
             
             if ( result.next() ) {
@@ -68,17 +68,13 @@ public class ProductModel implements CrudInterface<Product> {
 
     @Override
     public List<Product> listItemsByPage(String filter, SearchCriteriaEnum criteria, int page, int itemsPerPage) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    public List<Product> getItemsByCriteria( SearchCriteriaEnum criteria, int quantity, int page ) {
         List<Product> products = new ArrayList<>();
         
         try {
             
             statement = DATABASE.connect().prepareStatement("SELECT * FROM product ORDER BY product_createdAt DESC LIMIT ?, ?");
-            statement.setInt(1, (page - 1) * quantity);
-            statement.setInt(2, quantity);
+            statement.setInt(1, (page - 1) * itemsPerPage);
+            statement.setInt(2, itemsPerPage);
             result = statement.executeQuery();
             
             while( result.next() ) {
@@ -232,12 +228,45 @@ public class ProductModel implements CrudInterface<Product> {
 
     @Override
     public boolean updateItem(Product obj, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        response = false;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "UPDATE product "
+                  + "SET product_name = ?, product_description = ?, product_image = ?, product_selling_price = ?, product_stock = ?, product_stock_min = ?, category_id = ?, supplier_id = ? "
+                  + "WHERE product_id = ?"
+            );
+            statement.setString(1, obj.getProductName());
+            statement.setString(2, obj.getProductDescription());
+            statement.setString(3, obj.getProductImage());
+            statement.setDouble(4, obj.getProductSellingPrice());
+            statement.setInt(5, obj.getProductStock());
+            statement.setInt(6, obj.getProductStockMin());
+            statement.setInt(7, obj.getCategoryId());
+            statement.setInt(8, obj.getSupplierId());
+            statement.setInt(9, id);
+            
+            if ( statement.executeUpdate() > 0 ) {
+                response = true;
+            }
+            
+            statement.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo actualizar el producto: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+        }
+        
+        return response;
     }
 
     @Override
     public int getTotalItems() {
-         int totalItems = 0;
+        int totalItems = 0;
         
         try {
             
@@ -261,10 +290,82 @@ public class ProductModel implements CrudInterface<Product> {
         
         return totalItems;
     }  
+    
+    public int getTotalItemsByFilter( SearchCriteriaEnum criteria, int id) {
+        int totalItems = 0;
+        
+        try {
+            
+            if ( criteria.equals(SearchCriteriaEnum.PRODUCT_CATEGORY) ) {
+                statement = DATABASE.connect().prepareStatement("SELECT COUNT(*) FROM product WHERE category_id = ?");
+            }
+            statement.setInt(1, id);
+            
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                totalItems = result.getInt("COUNT(*)");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el total de productos");
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return totalItems;
+    }
 
     @Override
     public Product getItemById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public List<Product> getProductsByCategoryId( int categoryId, int page, int quantity ) {
+        
+        List<Product> products = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM product WHERE category_id = ? ORDER BY product_createdAt DESC LIMIT ?, ?");
+            statement.setInt(1, categoryId);
+            statement.setInt(2, (page - 1) * quantity);
+            statement.setInt(3, quantity);
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                products.add(
+                        new Product(
+                                result.getInt("product_id"),
+                                result.getString("product_name"),
+                                result.getString("product_description"),
+                                result.getString("product_image"),
+                                result.getDouble("product_selling_price"),
+                                result.getInt("product_stock"),
+                                result.getInt("product_stock_min"),
+                                result.getBoolean("product_is_active"),
+                                result.getDate("product_createdAt"),
+                                result.getDate("product_updatedAt"),
+                                result.getInt("category_id"),
+                                result.getInt("supplier_id")
+                        )
+                );
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("No se pudieron obtener los productos por categoria: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return products;
     }
     
 }

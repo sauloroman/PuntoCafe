@@ -13,13 +13,22 @@ public class ProductService {
         this.model = model;
     }
     
-    public  List<Product> getProducts( int quantity, int page ) {
-        List<Product> products = model.getItemsByCriteria(SearchCriteriaEnum.NONE, quantity, page);
+    public  List<Product> getProducts(int page, int quantity) {
+        List<Product> products = model.listItemsByPage("", SearchCriteriaEnum.NONE, page, quantity);
+        return products;
+    }
+    
+    public List<Product> getProductsByCategory( int categoryId, int page, int quantity ) {
+        List<Product> products = model.getProductsByCategoryId(categoryId, page, quantity);
         return products;
     }
     
     public int getQuantityProducts() {
         return model.getTotalItems();
+    }
+    
+    public int getQuantityProductsByCategory( int categoryId ) {
+        return model.getTotalItemsByFilter(SearchCriteriaEnum.PRODUCT_CATEGORY, categoryId );
     }
     
     public Product getProductByName(String productName) {

@@ -26,8 +26,7 @@ public class UploadProductImage {
     
     private String originRoot;
     private String destinyRoot;
-    public String image = "";
-    public String oldImage = "";
+    public String image = "no-image.jpg";
     
     public UploadProductImage( WarehouseCreateProduct view, WarehouseEditProduct viewEdit, Modal modal ) {
         this.view = view;
@@ -36,6 +35,9 @@ public class UploadProductImage {
     }
     
     public boolean upload() {
+        if (originRoot == null || destinyRoot == null || image == null || image.isBlank()) {
+            return false;
+        }
         
         File origin = new File(originRoot);
         File destiny = new File(destinyRoot);
@@ -63,7 +65,32 @@ public class UploadProductImage {
         
     }
     
-    public void load() {
+    public boolean handleUploadForCreate() {
+        System.out.println(image);
+        
+        if ( !image.equals("no-image.jpg") ) {
+            if ( !upload() ) {
+                modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error );
+                return false;
+            }
+        } else {
+            image = "no-image.jpg";
+        }
+        
+        return true;
+    }
+    
+    public boolean handleUploadForEdit() {
+        if ( !image.equals("no-image.jpg") ) {
+            if ( !upload() ) {
+                modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error );
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public void load(boolean isEdit) {
         JFileChooser file = new JFileChooser();
         int status = file.showOpenDialog(null);
         
@@ -79,15 +106,20 @@ public class UploadProductImage {
                     Image.SCALE_DEFAULT)
             );
             
-            view.productImageLabel.setIcon(icon);
-            viewEdit.productEditImageLabel.setIcon(icon);
-            view.productImageLabel.repaint();
-            viewEdit.productEditImageLabel.repaint();
+            if ( isEdit ) {
+                viewEdit.productEditImageLabel.setIcon(icon);
+                viewEdit.productEditImageLabel.repaint();
+            } else {
+                view.productImageLabel.setIcon(icon);
+                view.productImageLabel.repaint();
+            }
         }
     }
     
     public void removeImage() {
-        image = "";
+        image = "no-image.jpg";
+        originRoot = null;
+        destinyRoot = null;
         imageGenerator.addImageProduct(view.productImageLabel, "no-image.jpg", 200, 200);
         imageGenerator.addImageProduct(viewEdit.productEditImageLabel, "no-image.jpg", 200, 200);
     }

@@ -10,17 +10,19 @@ import controllers.product.handlers.SaveProductHandler;
 import controllers.product.helpers.ResetElements;
 import controllers.product.helpers.ProductGrid;
 import controllers.product.helpers.FillComboBoxes;
+import controllers.product.helpers.FilterProducts;
 import controllers.product.helpers.LoadEditInformation;
 import controllers.product.helpers.LoadInformationProduct;
 import controllers.product.helpers.UploadProductImage;
 import controllers.product.helpers.Pages;
+import controllers.product.helpers.ProductValidator;
 import entities.Product;
 import java.awt.event.ActionListener;
 import services.SupplierService;
 import models.CategoryModel;
 import models.ProductModel;
 import models.SupplierModel;
-import utils.enums.ModalTypeEnum;
+import utils.enums.SearchCriteriaEnum;
 import utils.helpers.Modal;
 import views.warehouse.WarehouseCreateProduct;
 import views.warehouse.WarehouseEditProduct;
@@ -49,9 +51,12 @@ public class ProductController {
     private final LoadEditInformation loadEdit;
     private final ChangeStatusNoTableInterface activateProduct;
     private final ChangeStatusNoTableInterface deactivateProduct;
+    private final FilterProducts filter;
+    private final ProductValidator productValidator;
     private final HandlerController saveProductHandler;
     private final HandlerController editProductHandler;
     private Product productSelected;
+    private SearchCriteriaEnum filterSelected = SearchCriteriaEnum.NONE;
     
     public ProductController(
             WarehouseProducts view, 
@@ -73,14 +78,17 @@ public class ProductController {
         this.suppliers = new SupplierService(this.supplierModel);
         
         this.pages = new Pages( view, products );
+        
         this.upload = new UploadProductImage(createProductWindow, editProductWindow, modal);
         this.fillComboBoxes = new FillComboBoxes(createProductWindow, editProductWindow, view);
         this.productGrid = new ProductGrid(view, products, categories, suppliers);
         this.resetElements = new ResetElements(createProductWindow, editProductWindow);
         this.loadInfo = new LoadInformationProduct(infoProductWindow, categories, suppliers);
         this.loadEdit = new LoadEditInformation(editProductWindow, categories, suppliers);
+        this.productValidator = new ProductValidator(createProductWindow, editProductWindow, categories, suppliers, modal);
         this.activateProduct = new ChangeProductStatusHandler(infoProductWindow, products, modal, true);
         this.deactivateProduct = new ChangeProductStatusHandler(infoProductWindow, products, modal, false);
+        this.filter = new FilterProducts(view, categories);
         
         this.saveProductHandler = new SaveProductHandler(createProductWindow, categories, suppliers, products, modal );
         this.editProductHandler = new EditProductHandler(editProductWindow, categories, suppliers, products, modal);
@@ -102,10 +110,11 @@ public class ProductController {
 
     private void initListeners() {        
         view.btnNewProduct.addActionListener(e -> openCreateProductWindow());
-        view.pageComboBox.addActionListener(e -> changePage());
+        view.pageComboBox.addActionListener(e -> changePage(filterSelected));
+        view.productCategoryCombo.addActionListener(e -> filterProductsByCategory());
         
         createProductWindow.btnCancelSaveProduct.addActionListener(e -> closeCreateProductWindow());
-        createProductWindow.btnLoadImage.addActionListener(e -> uploadImage());
+        createProductWindow.btnLoadImage.addActionListener(e -> uploadImage(false));
         createProductWindow.btnRemoveImage.addActionListener(e -> removeImage());
         createProductWindow.btnSaveProduct.addActionListener(e -> createProduct());
         
@@ -114,35 +123,65 @@ public class ProductController {
         infoProductWindow.btnDeactivate.addActionListener(e -> deactivateProduct());
         
         editProductWindow.btnRemoveImage.addActionListener(e -> removeImage());
-        editProductWindow.btnLoadImage.addActionListener(e -> uploadImage());
+        editProductWindow.btnLoadImage.addActionListener(e -> uploadImage(true));
         editProductWindow.btnCancelEditProduct.addActionListener(e -> closeEditProductWindow());
         editProductWindow.btnUpdateProduct.addActionListener(e -> editProduct());
         
         productGrid.setOnProductClick(product -> openInfoProduct(product));
         
-        productGrid.create(1);
+        productGrid.showAllProducts(1);
     }
     
-   
-    private void editProduct() {
+    private void filterProductsByCategory() {
+        int categorySelected = filter.getCategoryIDSelected();
         
-        if ( !upload.image.equals("no-image.jpg") ){
-            boolean uploaded = upload.upload();
-            
-            if ( !uploaded ) {
-                ((EditProductHandler) editProductHandler).setProductImage("no-image.jpg");
-                modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error);
-                return;
-            }
-            
-            ((EditProductHandler) editProductHandler).setProductImage(upload.image);
+        if ( categorySelected == -1 ){
+            pages.create();
+            safelyRebuildPagination(() -> pages.create());
+            filterSelected = SearchCriteriaEnum.NONE;
+            productGrid.showAllProducts(1);
+            return;
         }
         
-        ((EditProductHandler) editProductHandler).setProductId(productSelected.getProductId());
-        editProductHandler.execute();
-        productGrid.create(1);
-        safelyRebuildPagination(pages);
+        safelyRebuildPagination(() -> pages.createByFilter(SearchCriteriaEnum.PRODUCT_CATEGORY, categorySelected));
+        productGrid.showProductByCategory(categorySelected, 1);
+        filterSelected = SearchCriteriaEnum.PRODUCT_CATEGORY;
+    }
+    
+    private void createProduct() {
+        if ( !productValidator.isValidCreation() ) return;
+        
+        if ( !upload.handleUploadForCreate() ) {
+            ((SaveProductHandler) saveProductHandler).setProductImage("no-image.jpg");
+            return;
+        }
+        
+        ((SaveProductHandler) saveProductHandler).setProductImage(upload.image);
+        saveProductHandler.execute();
+        productGrid.showAllProducts(1);
+        safelyRebuildPagination(() -> pages.create());
         resetElements.resetCreateForm();
+        createProductWindow.setVisible(false);
+        upload.removeImage();
+    }
+   
+    private void editProduct() {
+        if (!productValidator.isValidEdition()) return;
+        
+        if (!upload.handleUploadForEdit()) {
+            ((EditProductHandler) editProductHandler).setProductImage("no-image.jpg");
+            return;
+        }
+        
+        ((EditProductHandler) editProductHandler).setProductImage(upload.image);
+        ((EditProductHandler) editProductHandler).setProductId(productSelected.getProductId());
+        
+        editProductHandler.execute();
+        productGrid.showAllProducts(1);
+        safelyRebuildPagination(() -> pages.create());
+        resetElements.resetCreateForm();
+        infoProductWindow.setVisible(false);
+        upload.removeImage();
     }
     
     private void deactivateProduct() {
@@ -151,7 +190,7 @@ public class ProductController {
             
         int productId = productSelected.getProductId();
         deactivateProduct.change(productId);
-        productGrid.create(1);
+        productGrid.showAllProducts(1);
         infoProductWindow.setVisible(false);
     }
     
@@ -161,19 +200,24 @@ public class ProductController {
             
         int productId = productSelected.getProductId();
         activateProduct.change(productId);
-        productGrid.create(1);
+        productGrid.showAllProducts(1);
         infoProductWindow.setVisible(false);
     }
     
     private void closeEditProductWindow() {
-        resetElements.resetEditForm();
+        infoProductWindow.setVisible(false);
         editProductWindow.setVisible(false);
+        resetElements.resetEditForm();
+        ((EditProductHandler) editProductHandler).setProductOldName(null);
+        ((EditProductHandler) editProductHandler).setProductId(0);
+        ((EditProductHandler) editProductHandler).setProductImage(null);
     }
     
     private void openEditProductWindow() {
         editProductWindow.setVisible(true);
             
         if ( productSelected != null ) {
+            ((EditProductHandler) editProductHandler).setProductOldName(productSelected.getProductName());
             fillComboBoxes.categoriesCreateBox(categories.getProductCategories());
             fillComboBoxes.suppliersCreateBox(suppliers.getAll());
             resetElements.hideButtonUploadImage();
@@ -187,33 +231,13 @@ public class ProductController {
         loadInfo.load(product);
     }
     
-    private void createProduct() {
-        
-        if ( !upload.image.equals("no-image.jpg") ){
-            boolean uploaded = upload.upload();
-            
-            if ( !uploaded ) {
-                ((SaveProductHandler) saveProductHandler).setProductImage("no-image.jpg");
-                modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error);
-                return;
-            }
-            
-            ((SaveProductHandler) saveProductHandler).setProductImage(upload.image);
-        }
-            
-        saveProductHandler.execute();
-        productGrid.create(1);
-        safelyRebuildPagination(pages);
-        resetElements.resetCreateForm();
-    }
-    
     private void removeImage() {
         upload.removeImage();
         resetElements.showButtonUploadImage();
     }
     
-    private void uploadImage() {
-        upload.load();
+    private void uploadImage( boolean isEdit ) {
+        upload.load(isEdit);
         resetElements.hideButtonUploadImage();
     }
     
@@ -223,9 +247,13 @@ public class ProductController {
         upload.removeImage();
     }
     
-    private void changePage() {
+    private void changePage(SearchCriteriaEnum criteria) {
         int selectedPage = pages.getSelectedPage();
-        productGrid.create(selectedPage);
+        
+        switch ( criteria ) {
+            case SearchCriteriaEnum.NONE -> productGrid.showAllProducts(selectedPage);
+            case SearchCriteriaEnum.PRODUCT_CATEGORY -> productGrid.showProductByCategory(filter.getCategoryIDSelected(), selectedPage);
+        }
     }
     
     private void openCreateProductWindow() {
@@ -235,13 +263,13 @@ public class ProductController {
         createProductWindow.setVisible(true);
     }
     
-    private void safelyRebuildPagination(Pages pages) {
+    private void safelyRebuildPagination(Runnable rebuildLogic) {
         ActionListener[] listeners = view.pageComboBox.getActionListeners();
         for (ActionListener l : listeners) {
             view.pageComboBox.removeActionListener(l);
         }
 
-        pages.create();
+        rebuildLogic.run();
 
         for (ActionListener l : listeners) {
             view.pageComboBox.addActionListener(l);

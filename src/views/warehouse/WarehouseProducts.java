@@ -33,12 +33,15 @@ public class WarehouseProducts extends javax.swing.JPanel {
         btnNewProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         productStatusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado", "Activo", "Inactivo" }));
+        productStatusCombo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         productSupplierCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Proveedor", " " }));
+        productSupplierCombo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnSearch.setText("Buscar");
 
         productCategoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoría" }));
+        productCategoryCombo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnExportProducts.setText("Exportar");
         btnExportProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -76,9 +79,9 @@ public class WarehouseProducts extends javax.swing.JPanel {
                                 .addComponent(productSearchByNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(productCategoryCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
+                                .addGap(25, 25, 25)
                                 .addComponent(productSupplierCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
+                                .addGap(25, 25, 25)
                                 .addComponent(productStatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(141, 141, 141)

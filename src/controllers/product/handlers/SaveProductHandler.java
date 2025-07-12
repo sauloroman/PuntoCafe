@@ -10,7 +10,6 @@ import entities.Supplier;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Formatter;
 import utils.helpers.Modal;
-import utils.validators.ProductValidator;
 import views.warehouse.WarehouseCreateProduct;
 
 public class SaveProductHandler implements HandlerController {
@@ -21,7 +20,7 @@ public class SaveProductHandler implements HandlerController {
     private final SupplierService suppliersService;
     private final ProductService productsService;
     private String image = null;
-
+    
     public SaveProductHandler(
             WarehouseCreateProduct view, 
             CategoryService queryCategories,
@@ -54,17 +53,6 @@ public class SaveProductHandler implements HandlerController {
         Supplier supplier = suppliersService.getByName(supplierName);
         int supplierId = supplier.getSupplierId();
         
-        if ( !isFormValid(
-                productName, 
-                categoryId, 
-                supplierId, 
-                productPrice, 
-                stock, 
-                stockMin, 
-                image, 
-                productDescription
-        )) return;
-        
         if ( productsService.getProductByName(productName) != null ) {
             modal.show("El producto ya existe", ModalTypeEnum.error);
             return;
@@ -92,60 +80,6 @@ public class SaveProductHandler implements HandlerController {
     
     public void setProductImage(String productImage) {
         image = productImage;
-    }
-    
-    private boolean isFormValid(
-            String productName,
-            int categoryID,
-            int supplierID,
-            double productPrice,
-            int stock,
-            int stockMin,
-            String image,
-            String description
-    ) {
-        
-        if ( !ProductValidator.isValidImage(productName) ) {
-            modal.show("El nombre del producto es obligatorio y debe ser menor a 100 caracteres", ModalTypeEnum.error );
-            return false;
-        }
-        
-        if ( !ProductValidator.isValidCategoryId(categoryID) ) {
-            modal.show("La categoría es obligatoria", ModalTypeEnum.error );
-            return false;
-        }
-        
-        if ( !ProductValidator.isValidSupplierId(supplierID) ) {
-            modal.show("El proveedor es obligatorio", ModalTypeEnum.error );
-            return false;
-        }
-        
-        if ( !ProductValidator.isValidSellingPrice(productPrice) ) {
-            modal.show("El precio es obligatorio y debe ser positivo", ModalTypeEnum.error );
-            return false;
-        }
-        
-        if ( !ProductValidator.isValidStock(stock) ) {
-            modal.show("El stock es obligatorio y debe ser positivo", ModalTypeEnum.error );
-            return false;
-        }
-        
-        if ( !ProductValidator.isValidStockMinimum(stock, stockMin) ) {
-            modal.show("El stock mínimo es obligatorio. Debe ser positivo y mayor que el stock original", ModalTypeEnum.error );
-            return false;
-        }
-        
-        if (!ProductValidator.isValidImage(image)) {
-            modal.show("La imagen tiene un nombre muy largo. Cambielo o intente con otra imagen.", ModalTypeEnum.error );
-            return false;
-        }
-        
-        if (!ProductValidator.isValidDescription(description)) {
-            modal.show("La descripción debe ser menor a 220 caracteres", ModalTypeEnum.error );
-            return false;
-        }
-        
-        return true;
     }
     
 }
