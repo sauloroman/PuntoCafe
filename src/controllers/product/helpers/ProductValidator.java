@@ -1,11 +1,6 @@
 package controllers.product.helpers;
 
-import entities.Category;
-import entities.Supplier;
-import services.CategoryService;
-import services.SupplierService;
 import utils.enums.ModalTypeEnum;
-import utils.helpers.Formatter;
 import utils.helpers.Modal;
 import views.warehouse.WarehouseCreateProduct;
 import views.warehouse.WarehouseEditProduct;
@@ -14,51 +9,38 @@ public class ProductValidator {
     
     private final WarehouseCreateProduct view;
     private final WarehouseEditProduct editView;
-    private final CategoryService categoryService;
-    private final SupplierService supplierService;
     private final Modal modal;
     
     public ProductValidator(
             WarehouseCreateProduct view, 
             WarehouseEditProduct editView,
-            CategoryService categoryService,
-            SupplierService supplierService,
             Modal modal
     ) {
         this.view = view;
         this.editView = editView;
-        this.categoryService = categoryService;
-        this.supplierService = supplierService;
         this.modal = modal;
     }
     
     public boolean isValidCreation() {
         String productName = view.productNameTxt.getText().trim();
-        Double productPrice = Double.valueOf(view.productPriceTxt.getText());
-        int stock = Integer.parseInt(view.productStockTxt.getText());
-        int stockMin = Integer.parseInt(view.productStockMinTxt.getText());
+        String productPrice = view.productPriceTxt.getText();
+        String stock = view.productStockTxt.getText();
+        String stockMin = view.productStockMinTxt.getText();
         String productDescription = view.productDescriptionTxt.getText();
-        
-        String categorySelected = view.productCategoryCombo.getSelectedItem().toString();
-        Category category = categoryService.getByName(categorySelected);
-        int categoryId = category.getCategoryId();
-        
+        String categorySelected = view.productCategoryCombo.getSelectedItem().toString();        
         String supplierSelected = view.productSupplierCombo.getSelectedItem().toString();
-        String supplierName = Formatter.extractName(supplierSelected);
-        Supplier supplier = supplierService.getByName(supplierName);
-        int supplierId = supplier.getSupplierId();
         
         if ( !isValidName(productName) ) {
             modal.show("El nombre del producto es obligatorio y debe ser menor a 100 caracteres", ModalTypeEnum.error );
             return false;
         }
         
-        if ( !isValidCategoryId(categoryId) ) {
+        if ( !isValidCategory(categorySelected) ) {
             modal.show("La categoría es obligatoria", ModalTypeEnum.error );
             return false;
         }
         
-        if ( !isValidSupplierId(supplierId) ) {
+        if ( !isValidSupplier(supplierSelected) ) {
             modal.show("El proveedor es obligatorio", ModalTypeEnum.error );
             return false;
         }
@@ -89,31 +71,24 @@ public class ProductValidator {
     public boolean isValidEdition() {
         
         String productName = editView.productEditNameTxt.getText().trim();
-        Double productPrice = Double.valueOf(editView.productEditPriceTxt.getText());
-        int stock = Integer.parseInt(editView.productEditStockTxt.getText());
-        int stockMin = Integer.parseInt(editView.productEditStockMinTxt.getText());
+        String productPrice = editView.productEditPriceTxt.getText();
+        String stock = editView.productEditStockTxt.getText();
+        String stockMin = editView.productEditStockMinTxt.getText();
         String productDescription = editView.productEditDescriptionTxt.getText();
-        
         String categorySelected = editView.productEditCategoryCombo.getSelectedItem().toString();
-        Category category = categoryService.getByName(categorySelected);
-        int categoryId = category.getCategoryId();
-        
         String supplierSelected = editView.productEditSupplierCombo.getSelectedItem().toString();
-        String supplierName = Formatter.extractName(supplierSelected);
-        Supplier supplier = supplierService.getByName(supplierName);
-        int supplierId = supplier.getSupplierId();
         
         if ( !isValidName(productName) ) {
             modal.show("El nombre del producto es obligatorio y debe ser menor a 100 caracteres", ModalTypeEnum.error );
             return false;
         }
         
-        if ( !isValidCategoryId(categoryId) ) {
+        if ( !isValidCategory(categorySelected) ) {
             modal.show("La categoría es obligatoria", ModalTypeEnum.error );
             return false;
         }
         
-        if ( !isValidSupplierId(supplierId) ) {
+        if ( !isValidSupplier(supplierSelected) ) {
             modal.show("El proveedor es obligatorio", ModalTypeEnum.error );
             return false;
         }
@@ -153,24 +128,31 @@ public class ProductValidator {
         return description.length() <= 220;
     }
  
-    private boolean isValidSellingPrice( double price ) {
-        return price > 0 && price < 1e9;
+    private boolean isValidSellingPrice( String price ) {
+        if ( price.isEmpty() ) return false;
+        double priceParsed = Double.parseDouble(price);
+        return priceParsed > 0 && priceParsed < 1e9;
     }
     
-    private boolean isValidStock( int stock ) {
-        return stock > 0; 
+    private boolean isValidStock( String stock ) {
+        if ( stock.isEmpty() ) return false;
+        int stockParsed = Integer.parseInt(stock);
+        return stockParsed > 0; 
     }
     
-    private boolean isValidStockMinimum( int stock, int stockMin ) {
-        return stockMin > 0 && stock > stockMin; 
+    private boolean isValidStockMinimum( String stock, String stockMin ) {
+        if ( stock.isEmpty() || stockMin.isEmpty() ) return false;  
+        int stockParsed = Integer.parseInt(stock);
+        int stockMinParsed = Integer.parseInt(stockMin);
+        return stockMinParsed > 0 && stockParsed > stockMinParsed; 
     }
     
-    private boolean isValidCategoryId( int categoryId ) {
-        return categoryId > 0;
+    private boolean isValidCategory( String category ) {
+        return !category.equals("Categorías");
     }
     
-    private boolean isValidSupplierId( int supplierId ) {
-        return supplierId > 0;
+    private boolean isValidSupplier( String supplier ) {
+        return !supplier.equals("Proveedores");
     }
     
 }

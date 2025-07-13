@@ -85,7 +85,7 @@ public class ProductController {
         this.resetElements = new ResetElements(createProductWindow, editProductWindow);
         this.loadInfo = new LoadInformationProduct(infoProductWindow, categories, suppliers);
         this.loadEdit = new LoadEditInformation(editProductWindow, categories, suppliers);
-        this.productValidator = new ProductValidator(createProductWindow, editProductWindow, categories, suppliers, modal);
+        this.productValidator = new ProductValidator(createProductWindow, editProductWindow, modal);
         this.activateProduct = new ChangeProductStatusHandler(infoProductWindow, products, modal, true);
         this.deactivateProduct = new ChangeProductStatusHandler(infoProductWindow, products, modal, false);
         this.filter = new FilterProducts(view, categories);
@@ -222,12 +222,12 @@ public class ProductController {
         
         ((EditProductHandler) editProductHandler).setProductImage(upload.image);
         ((EditProductHandler) editProductHandler).setProductId(productSelected.getProductId());
-        
         editProductHandler.execute();
         productGrid.showAllProducts(1);
         safelyRebuildPagination(() -> pages.create());
-        resetElements.resetCreateForm();
+        resetElements.resetEditForm();
         infoProductWindow.setVisible(false);
+        editProductWindow.setVisible(false);
         upload.removeImage();
     }
     

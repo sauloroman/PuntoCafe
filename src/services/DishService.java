@@ -25,8 +25,12 @@ public class DishService {
         return model.getTotalItems();
     }
     
-    public boolean saveProduct(Dish dish) {
+    public boolean saveDish(Dish dish) {
         return model.saveItem(dish);
+    }
+    
+    public boolean editDish(Dish dish, int dishId ) {
+        return model.updateItem(dish, dishId);
     }
     
 }

@@ -107,8 +107,8 @@ public class UploadDishImage {
             );
             
             if ( isEdit ) {
-                //viewEdit.productEditImageLabel.setIcon(icon);
-                //viewEdit.productEditImageLabel.repaint();
+                editView.dishEditImageLabel.setIcon(icon);
+                editView.dishEditImageLabel.repaint();
             } else {
                 createView.dishImageLabel.setIcon(icon);
                 createView.dishImageLabel.repaint();

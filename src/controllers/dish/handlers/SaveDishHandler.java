@@ -46,7 +46,7 @@ public class SaveDishHandler implements HandlerController {
         
         Dish dish = new Dish( dishName, dishDescription, image, dishSellingPrice, categoryId );
         
-        if ( !dishService.saveProduct(dish) ) {
+        if ( !dishService.saveDish(dish) ) {
             modal.show("El platillo no pudo ser creado", ModalTypeEnum.error);
             return; 
         }

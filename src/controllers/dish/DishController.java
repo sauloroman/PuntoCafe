@@ -67,7 +67,7 @@ public class DishController {
         this.upload = new UploadDishImage(createDishWindow, editDishWindow, modal);
         this.fillComboBoxes = new FillComboBoxes(view, createDishWindow, editDishWindow);
         this.resetElements = new ResetElements(createDishWindow, editDishWindow);
-        this.dishValidator = new DishValidator(createDishWindow, categoryService, modal);
+        this.dishValidator = new DishValidator(createDishWindow, editDishWindow, modal);
         this.loadInfo = new LoadInformationDish(infoDishWindow, categoryService);
         this.loadEdit = new LoadEditInformation(editDishWindow, categoryService);
         
@@ -99,15 +99,30 @@ public class DishController {
         editDishWindow.btnCancelEditDish.addActionListener(e -> closeEditDishWindow());
         editDishWindow.btnLoadImage.addActionListener(e -> upload.load(true));
         editDishWindow.btnRemoveImage.addActionListener(e -> removeImage());
-        editDishWindow.btnUpdateDish.addActionListener(e -> editProduct());
+        editDishWindow.btnUpdateDish.addActionListener(e -> editDish());
         
         dishGrid.setOnDishClick( dish -> openInfoDish(dish) );
         
         dishGrid.showAllDishes(1);
     }
     
-    private void editProduct() {
+    private void editDish() {
+        if (!dishValidator.isValidEdition()) return;
         
+        if (!upload.handleUploadForEdit()) {
+            ((EditDishHandler) editDishHandler).setDishImage("no-image.jpg");
+            return;
+        }
+        
+        ((EditDishHandler) editDishHandler).setDishImage(upload.image);
+        ((EditDishHandler) editDishHandler).setDishId(dishSelected.getDishID());
+        editDishHandler.execute();
+        dishGrid.showAllDishes(1);
+        safelyRebuildPagination(() -> pages.create());
+        resetElements.resetEditForm();
+        infoDishWindow.setVisible(false);
+        editDishWindow.setVisible(false);
+        upload.removeImage();
     }
     
     private void removeImage() {

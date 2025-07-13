@@ -25,6 +25,7 @@ public final class FillComboBoxes {
     
     public void categoriesCreateBox( List<Category> categories ) {
         createProductView.productCategoryCombo.removeAllItems();
+        createProductView.productCategoryCombo.addItem("Categorías");
         for ( Category category : categories ) {
             createProductView.productCategoryCombo.addItem(category.getCategoryName());
         }
@@ -33,6 +34,7 @@ public final class FillComboBoxes {
     
     public void suppliersCreateBox( List<Supplier> suppliers ) {
         createProductView.productSupplierCombo.removeAllItems();
+        createProductView.productSupplierCombo.addItem("Proveedores");
         for ( Supplier supplier : suppliers ) {
             createProductView.productSupplierCombo.addItem(supplier.getSupplierName() + "-" + supplier.getSupplierCompany());
         }
@@ -41,6 +43,7 @@ public final class FillComboBoxes {
     
     public void categoriesEditBox(List<Category> categories) {
         editProductView.productEditCategoryCombo.removeAllItems();
+        editProductView.productEditCategoryCombo.addItem("Categorías");
         for ( Category category : categories ) {
             editProductView.productEditCategoryCombo.addItem(category.getCategoryName());
         }
@@ -49,6 +52,7 @@ public final class FillComboBoxes {
     
     public void suppliersEditBox( List<Supplier> suppliers ) {
         editProductView.productEditSupplierCombo.removeAllItems();
+        editProductView.productEditSupplierCombo.addItem("Proveedores");
         for ( Supplier supplier : suppliers ) {
             editProductView.productEditSupplierCombo.addItem(supplier.getSupplierName() + "-" + supplier.getSupplierCompany());
         }

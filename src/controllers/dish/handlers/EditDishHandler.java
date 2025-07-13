@@ -1,8 +1,11 @@
 package controllers.dish.handlers;
 
 import controllers.interfaces.HandlerController;
+import entities.Category;
+import entities.Dish;
 import services.CategoryService;
 import services.DishService;
+import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;
 import views.warehouse.WarehouseEditDish;
 
@@ -30,7 +33,35 @@ public class EditDishHandler implements HandlerController {
     
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String dishName = view.dishEditNameTxt.getText().trim();
+        Double dishPrice = Double.valueOf(view.dishEditPriceTxt.getText().toString());
+        String dishDescription = view.dishEditDescriptionTxt.getText();
+        
+        String categorySelected = view.dishEditCategoryCombo.getSelectedItem().toString();
+        Category category = categoryService.getByName(categorySelected);
+        int categoryId = category.getCategoryId();
+        
+        Dish existingDish = dishService.getDishByName(dishName);
+        
+        if ( !dishName.equals(dishOldName) && existingDish != null && existingDish.getDishID() != dishId ) {
+            modal.show("El platillo ya existe", ModalTypeEnum.error);
+            return;
+        }
+        
+        Dish dish = new Dish(
+                dishName,
+                dishDescription,
+                image,
+                dishPrice,
+                categoryId
+        );
+        
+        if (!dishService.editDish(dish, dishId)) {
+            modal.show("El platillo no pudo ser actualizado", ModalTypeEnum.error);
+            return;
+        }
+        
+        modal.show("El platillo ha sido actualizado exitosamente", ModalTypeEnum.success);           
     }
     
     public void setDishOldName(String name) {

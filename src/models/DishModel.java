@@ -191,7 +191,42 @@ public class DishModel implements CrudInterface<Dish> {
 
     @Override
     public boolean updateItem(Dish obj, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        response = false;
+        
+        try {
+            
+            String newDishName = obj.getDishName();
+            String newDishDescription = obj.getDishDescription();
+            Double newDishSellingPrice = obj.getDishSellingPrice();
+            String newDishImage = obj.getDishImage();
+            int newCategoryId = obj.getCategoryId();
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "UPDATE dish "
+                  + "SET dish_name = ?, dish_description = ?, dish_image = ?, dish_selling_price = ?, category_id = ? "
+                  + "WHERE dish_id = ? "  
+            );
+            statement.setString(1, newDishName);
+            statement.setString(2, newDishDescription);
+            statement.setString(3, newDishImage);
+            statement.setDouble(4, newDishSellingPrice);
+            statement.setInt(5, newCategoryId);
+            statement.setInt(6, id);
+            
+            if ( statement.executeUpdate() > 0 ) {
+                response = true;
+            }
+            
+            statement.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo actualizar el platillo: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+        }
+        
+        return response;
     }
 
     @Override

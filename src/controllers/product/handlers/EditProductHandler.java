@@ -79,7 +79,6 @@ public class EditProductHandler implements HandlerController {
         }
         
         modal.show("El producto ha sido actualizado exitosamente", ModalTypeEnum.success);        
-        view.setVisible(false);
     }
     
     public void setProductOldName( String oldName ) {
