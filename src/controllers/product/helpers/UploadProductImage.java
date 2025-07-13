@@ -65,9 +65,7 @@ public class UploadProductImage {
         
     }
     
-    public boolean handleUploadForCreate() {
-        System.out.println(image);
-        
+    public boolean handleUploadForCreate() {        
         if ( !image.equals("no-image.jpg") ) {
             if ( !upload() ) {
                 modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error );

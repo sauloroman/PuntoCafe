@@ -20,13 +20,25 @@ public class Pages {
     }
     
     public void createByCategories (int categoryId ) {
-        int quantityProducts = queryProducts.getQuantityProductsByCategory(categoryId);;
+        int quantityProducts = queryProducts.getQuantityProductsByCategory(categoryId);
         int pages = calculatePages(quantityProducts);
         fillPageComboBox(pages);
     }
     
     public void createBySuppliers( String supplierCompany ) {
         int quantityProducts = queryProducts.getQuantityProductsBySupplierCompany(supplierCompany);
+        int pages = calculatePages(quantityProducts);
+        fillPageComboBox(pages);
+    }
+    
+    public void createByStatus( String status ) {
+        int quantityProducts = queryProducts.getQuantityProductsByStatus(status);
+        int pages = calculatePages(quantityProducts);
+        fillPageComboBox(pages);
+    }
+    
+    public void createByName(String name) {
+        int quantityProducts = queryProducts.getQuantityProductsByName(name);
         int pages = calculatePages(quantityProducts);
         fillPageComboBox(pages);
     }

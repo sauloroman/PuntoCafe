@@ -74,8 +74,7 @@ public class SaveProductHandler implements HandlerController {
             return;
         }
         
-        modal.show("El producto ha sido creado exitosamente", ModalTypeEnum.success);        
-        view.setVisible(false);       
+        modal.show("El producto ha sido creado exitosamente", ModalTypeEnum.success);              
     }
     
     public void setProductImage(String productImage) {

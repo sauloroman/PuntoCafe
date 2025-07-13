@@ -35,7 +35,6 @@ public class ProductController {
     private final ProductModel model;
     private final CategoryModel categoryModel;
     private final SupplierModel supplierModel;
-    private final Modal modal = new Modal("Productos del sistema - PuntoCafé");
     private final WarehouseInfoProduct infoProductWindow;
     private final WarehouseEditProduct editProductWindow;
     private final WarehouseCreateProduct createProductWindow;
@@ -57,7 +56,8 @@ public class ProductController {
     private final HandlerController editProductHandler;
     private Product productSelected;
     private SearchCriteriaEnum filterSelected = SearchCriteriaEnum.NONE;
-    
+    private final Modal modal = new Modal("Productos del sistema - PuntoCafé");
+
     public ProductController(
             WarehouseProducts view, 
             ProductModel model,
@@ -81,7 +81,7 @@ public class ProductController {
         
         this.upload = new UploadProductImage(createProductWindow, editProductWindow, modal);
         this.fillComboBoxes = new FillComboBoxes(createProductWindow, editProductWindow, view);
-        this.productGrid = new ProductGrid(view, products, categories, suppliers);
+        this.productGrid = new ProductGrid(view, products, suppliers);
         this.resetElements = new ResetElements(createProductWindow, editProductWindow);
         this.loadInfo = new LoadInformationProduct(infoProductWindow, categories, suppliers);
         this.loadEdit = new LoadEditInformation(editProductWindow, categories, suppliers);
@@ -112,7 +112,9 @@ public class ProductController {
         view.btnNewProduct.addActionListener(e -> openCreateProductWindow());
         view.pageComboBox.addActionListener(e -> changePage(filterSelected));
         view.productCategoryCombo.addActionListener(e -> filterProductsByCategory());
-        view.productSupplierCombo.addActionListener(e -> filterProductBySupplierCompany());
+        view.productSupplierCombo.addActionListener(e -> filterProductsBySupplierCompany());
+        view.productStatusCombo.addActionListener(e -> filterProductsByStatus() );
+        view.btnSearch.addActionListener(e -> filterProductsByName());
         
         createProductWindow.btnCancelSaveProduct.addActionListener(e -> closeCreateProductWindow());
         createProductWindow.btnLoadImage.addActionListener(e -> uploadImage(false));
@@ -133,11 +135,40 @@ public class ProductController {
         productGrid.showAllProducts(1);
     }
     
-    private void filterProductBySupplierCompany() {
+    private void filterProductsByName() {
+        String productNameSearched = filter.getProductNameSearched();
+        
+        if (productNameSearched == null) {
+            safelyRebuildPagination(() -> pages.create());
+            filterSelected = SearchCriteriaEnum.NONE;
+            productGrid.showAllProducts(1);
+            return; 
+        } 
+        
+        safelyRebuildPagination(() -> pages.createByName(productNameSearched));
+        productGrid.showProductsByName(productNameSearched, 1);
+        filterSelected = SearchCriteriaEnum.NAME;
+    }
+    
+    private void filterProductsByStatus() {
+        String statusSelected = filter.getStatusSelected();
+        
+        if (statusSelected == null) {
+            safelyRebuildPagination(() -> pages.create());
+            filterSelected = SearchCriteriaEnum.NONE;
+            productGrid.showAllProducts(1);
+            return;
+        }
+        
+        safelyRebuildPagination(() -> pages.createByStatus(statusSelected));
+        productGrid.showProductsByStatus(statusSelected, 1);
+        filterSelected = SearchCriteriaEnum.STATUS;
+    }
+    
+    private void filterProductsBySupplierCompany() {
         String supplierSelected = filter.getSupplierCompanyName();
         
         if ( supplierSelected == null ) {
-            pages.create();
             safelyRebuildPagination(() -> pages.create());
             filterSelected = SearchCriteriaEnum.NONE;
             productGrid.showAllProducts(1);
@@ -153,7 +184,6 @@ public class ProductController {
         int categorySelected = filter.getCategoryIDSelected();
         
         if ( categorySelected == -1 ){
-            pages.create();
             safelyRebuildPagination(() -> pages.create());
             filterSelected = SearchCriteriaEnum.NONE;
             productGrid.showAllProducts(1);
@@ -236,8 +266,8 @@ public class ProductController {
         if ( productSelected != null ) {
             ((EditProductHandler) editProductHandler).setProductOldName(productSelected.getProductName());
             upload.image = productSelected.getProductImage(); 
-            fillComboBoxes.categoriesCreateBox(categories.getProductCategories());
-            fillComboBoxes.suppliersCreateBox(suppliers.getAll());
+            fillComboBoxes.categoriesEditBox(categories.getProductCategories());
+            fillComboBoxes.suppliersEditBox(suppliers.getAll());
             resetElements.hideButtonUploadImage();
             loadEdit.load(productSelected);
         }
@@ -270,8 +300,10 @@ public class ProductController {
         
         switch ( criteria ) {
             case SearchCriteriaEnum.NONE -> productGrid.showAllProducts(selectedPage);
+            case SearchCriteriaEnum.NAME -> productGrid.showProductsByName(filter.getProductNameSearched(), selectedPage);
             case SearchCriteriaEnum.PRODUCT_CATEGORY -> productGrid.showProductsByCategory(filter.getCategoryIDSelected(), selectedPage);
             case SearchCriteriaEnum.PRODUCT_SUPPLIER -> productGrid.showProductsBySupplier(filter.getSupplierCompanyName(), selectedPage);
+            case SearchCriteriaEnum.STATUS -> productGrid.showProductsByStatus(filter.getStatusSelected(), selectedPage);
         }
     }
     

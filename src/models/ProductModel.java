@@ -350,6 +350,68 @@ public class ProductModel implements CrudInterface<Product> {
         
         return totalItems;
     }
+    
+    public int getTotalProductsByStatus(String status) {
+        int totalItems = 0;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                  "SELECT COUNT(*) "
+                + "FROM product "
+                + "WHERE product_is_active = ? "
+            );
+            statement.setInt(1, status.equals("Activo") ? 1 : 0);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                totalItems = result.getInt("COUNT(*)");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el total de productos " + e.getMessage());
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return totalItems;
+    }
+    
+    public int getTotalProductsByName(String name) {
+        int totalItems = 0;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                  "SELECT COUNT(*) "
+                + "FROM product "
+                + "WHERE product_is_active LIKE ? "
+            );
+            statement.setString(1, "%" + name + "%");
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                totalItems = result.getInt("COUNT(*)");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el total de productos " + e.getMessage());
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return totalItems;
+    }
 
     @Override
     public Product getItemById(int id) {
@@ -386,6 +448,9 @@ public class ProductModel implements CrudInterface<Product> {
                         )
                 );
             }
+            
+            statement.close();
+            result.close();
             
         } catch (SQLException e) {
             System.out.println("No se pudieron obtener los productos por categoria: " + e.getMessage() );
@@ -437,6 +502,9 @@ public class ProductModel implements CrudInterface<Product> {
                 );
             }
             
+            statement.close();
+            result.close();
+            
         } catch (SQLException e) {
             System.out.println("No se pudieron obtener los productos por categoria: " + e.getMessage() );
         } finally {
@@ -447,5 +515,96 @@ public class ProductModel implements CrudInterface<Product> {
         
         return products;
     }
+     
+    public List<Product> getProductsByStatus( String status, int page, int quantity ) {
+        
+        List<Product> products = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM product WHERE product_is_active = ? ORDER BY product_createdAt DESC LIMIT ?, ?");
+            statement.setInt(1, status.equals("Activo") ? 1 : 0 );
+            statement.setInt(2, (page - 1) * quantity);
+            statement.setInt(3, quantity);
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                products.add(
+                        new Product(
+                                result.getInt("product_id"),
+                                result.getString("product_name"),
+                                result.getString("product_description"),
+                                result.getString("product_image"),
+                                result.getDouble("product_selling_price"),
+                                result.getInt("product_stock"),
+                                result.getInt("product_stock_min"),
+                                result.getBoolean("product_is_active"),
+                                result.getDate("product_createdAt"),
+                                result.getDate("product_updatedAt"),
+                                result.getInt("category_id"),
+                                result.getInt("supplier_id")
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch (SQLException e) {
+            System.out.println("No se pudieron obtener los productos por categoria: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return products;
+        
+    }
     
+    public List<Product> getProductsByName( String name, int page, int quantity ) {
+        
+        List<Product> products = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM product WHERE product_name LIKE ? ORDER BY product_createdAt DESC LIMIT ?, ?");
+            statement.setString(1, "%" + name + "%" );
+            statement.setInt(2, (page - 1) * quantity);
+            statement.setInt(3, quantity);
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                products.add(
+                        new Product(
+                                result.getInt("product_id"),
+                                result.getString("product_name"),
+                                result.getString("product_description"),
+                                result.getString("product_image"),
+                                result.getDouble("product_selling_price"),
+                                result.getInt("product_stock"),
+                                result.getInt("product_stock_min"),
+                                result.getBoolean("product_is_active"),
+                                result.getDate("product_createdAt"),
+                                result.getDate("product_updatedAt"),
+                                result.getInt("category_id"),
+                                result.getInt("supplier_id")
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch (SQLException e) {
+            System.out.println("No se pudieron obtener los productos por categoria: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return products;
+        
+    }
 }

@@ -27,6 +27,14 @@ public class ProductService {
         return model.getProductsBySupplierCompany(supplierCompany, page, quantity);
     }
     
+    public List<Product> getProductsByStatus(String status, int page, int quantity) {
+        return model.getProductsByStatus(status, page, quantity);
+    }
+    
+    public List<Product> getProductsByName(String name, int page, int quantity) {
+        return model.getProductsByName(name, page, quantity);
+    }
+    
     public int getQuantityProducts() {
         return model.getTotalItems();
     }
@@ -37,6 +45,14 @@ public class ProductService {
     
     public int getQuantityProductsBySupplierCompany(String supplierCompany) {
         return model.getTotalProductsBySupplierCompany(supplierCompany);
+    }
+    
+    public int getQuantityProductsByStatus(String status) {
+        return model.getTotalProductsByStatus(status);
+    }
+    
+    public int getQuantityProductsByName(String name) {
+        return model.getTotalProductsByName(name);
     }
     
     public Product getProductByName(String productName) {

@@ -39,6 +39,7 @@ public class WarehouseProducts extends javax.swing.JPanel {
         productSupplierCombo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnSearch.setText("Buscar");
+        btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         productCategoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoría" }));
         productCategoryCombo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

@@ -3,10 +3,12 @@ package puntocafe;
 import com.formdev.flatlaf.FlatLightLaf;
 import controllers.category.CategoryController;
 import controllers.NavegationController;
+import controllers.dish.DishController;
 import controllers.product.ProductController;
 import controllers.supplier.SupplierController;
 import javax.swing.UIManager;
 import models.CategoryModel;
+import models.DishModel;
 import models.ProductModel;
 import models.SupplierModel;
 import views.Access;
@@ -17,6 +19,7 @@ import views.Sales;
 import views.purchases.PurchasesSuppliers;
 import views.warehouse.Warehouse;
 import views.warehouse.WarehouseCategories;
+import views.warehouse.WarehouseDishes;
 import views.warehouse.WarehouseProducts;
 
 public class PuntoCafe {
@@ -28,7 +31,8 @@ public class PuntoCafe {
         
         WarehouseCategories warehouseCategories = new WarehouseCategories();
         WarehouseProducts warehouseProducts = new WarehouseProducts();
-        Warehouse warehouse = new Warehouse(warehouseCategories, warehouseProducts);
+        WarehouseDishes warehouseDishes = new WarehouseDishes();
+        Warehouse warehouse = new Warehouse(warehouseCategories, warehouseProducts, warehouseDishes);
         
         Access access = new Access();
         
@@ -46,6 +50,9 @@ public class PuntoCafe {
         
         ProductModel productModel = new ProductModel();
         new ProductController( warehouseProducts, productModel, categoryModel, supplierModel );
+        
+        DishModel dishModel = new DishModel();
+        new DishController(warehouseDishes, dishModel, categoryModel);
         
         new NavegationController( 
             mainView,

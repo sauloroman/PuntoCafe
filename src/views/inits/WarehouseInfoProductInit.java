@@ -29,9 +29,9 @@ public class WarehouseInfoProductInit {
         
         buttonGenerator.solidButton(view.btnEditProduct, "#000000", "#ffffff");
         buttonGenerator.addIcon(view.btnEditProduct, "icon-edit", 20);
-        buttonGenerator.solidButton(view.btnActivate, "#fff3bf", ViewConstants.textBtn);
+        buttonGenerator.outlineButton(view.btnActivate, "#DDDDDD", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnActivate, "icon-check", 20);
-        buttonGenerator.solidButton(view.btnDeactivate, "#ffe3e3", ViewConstants.textBtn);
+        buttonGenerator.outlineButton(view.btnDeactivate, "#DDDDDD", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnDeactivate, "icon-trash", 20);
     }
 }

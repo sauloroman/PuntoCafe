@@ -16,6 +16,12 @@ public class FilterProducts {
         this.categoryService = categoryService;
     }
     
+    public String getProductNameSearched() {
+        String productNameSearched = view.productSearchByNameTxt.getText().trim();
+        if ( productNameSearched.isEmpty() ) return null;
+        return productNameSearched;
+    }
+    
     public int getCategoryIDSelected() {
         String categorySelected = view.productCategoryCombo.getSelectedItem().toString();
         if ( categorySelected.equals("Categorías") ) return -1;
@@ -27,6 +33,12 @@ public class FilterProducts {
         String supplierSelected = view.productSupplierCombo.getSelectedItem().toString();
         if ( supplierSelected.equals("Proveedores") ) return null;
         return supplierSelected;
+    }
+    
+    public String getStatusSelected() {
+        String statusSelected = view.productStatusCombo.getSelectedItem().toString().trim();
+        if ( statusSelected.equals("Estado") ) return null; 
+        return statusSelected;
     }
     
 }

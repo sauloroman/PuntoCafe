@@ -33,20 +33,20 @@ public class LoadInformationProduct {
         String supplierName = supplier.getSupplierName() + " " + supplier.getSupplierLastname();
         String supplierCompany = supplier.getSupplierCompany();
         
+        view.productTitle.setText("Producto Seleccionado - " + product.getProductName());
         view.productId.setText("" + product.getProductId());
         view.productName.setText(product.getProductName());
         view.productDescription.setText(product.getProductDescription());
         view.productCategory.setText(categoryName);
-        view.productStock.setText("Productos en Stock: " + product.getProductStock());
-        view.productMinStock.setText("Productos Min: " + product.getProductStockMin());
+        view.productStock.setText("Stock: " + product.getProductStock());
+        view.productMinStock.setText("Stock Min: " + product.getProductStockMin());
         view.productPrice.setText("$" + product.getProductSellingPrice().toString() + "0");
         view.productCreatedAt.setText("Fecha de creación: " + product.getProductCreatedAt());
         view.productUpdatedAt.setText("Última actualización: " + product.getProductUpdatedAt());
-        view.productSupplierName.setText(supplierName);
-        view.productSupplierCompany.setText(supplierCompany);
+        view.productSupplierName.setText(supplierName + " - " + supplierCompany );
         view.productStatus.setText(product.getProductIsActive() ? "Producto Activo" : "Producto Inactivo");
         
-        image.addImageProduct(view.productImage,  "Producto sin imagen".equals(product.getProductImage()) ? "no-image.jpg" : product.getProductImage(), 300, 300);
+        image.addImageProduct(view.productImage,  "Producto sin imagen".equals(product.getProductImage()) ? "no-image.jpg" : product.getProductImage(), 320, 320);
         
     }
     

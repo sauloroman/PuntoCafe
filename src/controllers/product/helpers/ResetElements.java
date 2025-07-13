@@ -7,37 +7,37 @@ import views.warehouse.WarehouseEditProduct;
 public class ResetElements {
     
     private final ImageCustom imageGenerator = new ImageCustom();
-    private final WarehouseCreateProduct view;
+    private final WarehouseCreateProduct viewCreate;
     private final WarehouseEditProduct viewEdit;
 
-    public ResetElements(WarehouseCreateProduct view, WarehouseEditProduct viewEdit) {
-        this.view = view;
+    public ResetElements( WarehouseCreateProduct viewCreate, WarehouseEditProduct viewEdit) {
+        this.viewCreate = viewCreate;
         this.viewEdit = viewEdit;
     }
 
     public void hideButtonUploadImage() {
-        view.btnLoadImage.setVisible(false);
+        viewCreate.btnLoadImage.setVisible(false);
         viewEdit.btnLoadImage.setVisible(false);
-        view.btnRemoveImage.setVisible(true);
+        viewCreate.btnRemoveImage.setVisible(true);
         viewEdit.btnRemoveImage.setVisible(true);
     }
     
     public void showButtonUploadImage() {
-        view.btnLoadImage.setVisible(true);
+        viewCreate.btnLoadImage.setVisible(true);
         viewEdit.btnLoadImage.setVisible(true);
-        view.btnRemoveImage.setVisible(false);
+        viewCreate.btnRemoveImage.setVisible(false);
         viewEdit.btnRemoveImage.setVisible(false);
     }
     
     public void resetCreateForm() {
-        view.productNameTxt.setText("");
-        view.productDescriptionTxt.setText("");
-        view.productCategoryCombo.setSelectedIndex(0);
-        view.productSupplierCombo.setSelectedIndex(0);
-        view.productPriceTxt.setText("");
-        view.productStockTxt.setText("");
-        view.productStockMinTxt.setText("");
-        imageGenerator.addImageProduct(view.productImageLabel, "no-image.jpg", 200, 200);        
+        viewCreate.productNameTxt.setText("");
+        viewCreate.productDescriptionTxt.setText("");
+        viewCreate.productCategoryCombo.setSelectedIndex(0);
+        viewCreate.productSupplierCombo.setSelectedIndex(0);
+        viewCreate.productPriceTxt.setText("");
+        viewCreate.productStockTxt.setText("");
+        viewCreate.productStockMinTxt.setText("");
+        imageGenerator.addImageProduct(viewCreate.productImageLabel, "no-image.jpg", 200, 200);        
         hideButtonUploadImage();
     }
     
@@ -49,7 +49,7 @@ public class ResetElements {
         viewEdit.productEditPriceTxt.setText("");
         viewEdit.productEditStockTxt.setText("");
         viewEdit.productEditStockMinTxt.setText("");
-        imageGenerator.addImageFix(view.productImageLabel, "no-image.jpg", 200, 200);        
+        imageGenerator.addImageFix(viewCreate.productImageLabel, "no-image.jpg", 200, 200);        
         hideButtonUploadImage();
     }
     
