@@ -11,11 +11,13 @@ import models.CategoryModel;
 import models.DishModel;
 import models.ProductModel;
 import models.SupplierModel;
-import views.Access;
+import views.access.Access;
 import views.MainFrame;
 import views.purchases.Purchases;
 import views.Queries;
 import views.Sales;
+import views.access.AccessRoles;
+import views.access.AccessUsers;
 import views.purchases.PurchasesSuppliers;
 import views.warehouse.Warehouse;
 import views.warehouse.WarehouseCategories;
@@ -27,6 +29,7 @@ public class PuntoCafe {
     public static void main(String[] args) {
         
         loadFlatLaf();
+        
         MainFrame mainView = new MainFrame();
         
         WarehouseCategories warehouseCategories = new WarehouseCategories();
@@ -34,7 +37,9 @@ public class PuntoCafe {
         WarehouseDishes warehouseDishes = new WarehouseDishes();
         Warehouse warehouse = new Warehouse(warehouseCategories, warehouseProducts, warehouseDishes);
         
-        Access access = new Access();
+        AccessRoles accessRoles = new AccessRoles();
+        AccessUsers accessUsers = new AccessUsers();
+        Access access = new Access( accessRoles, accessUsers );
         
         PurchasesSuppliers purchasesSuppliers = new PurchasesSuppliers();
         Purchases purchases = new Purchases( purchasesSuppliers );

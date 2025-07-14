@@ -66,12 +66,82 @@ public class DishModel implements CrudInterface<Dish> {
 
     @Override
     public Dish getItemById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Dish dish = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM dish WHERE dish_id = ?");
+            statement.setInt(1, id);
+            result = statement.executeQuery();
+            
+            if( result.next() ) {
+                new Dish(
+                    result.getInt("dish_id"),
+                    result.getString("dish_name"),
+                    result.getString("dish_description"),
+                    result.getString("dish_image"),
+                    result.getDouble("dish_selling_price"),
+                    result.getBoolean("dish_is_active"),
+                    result.getDate("dish_createdAt"),
+                    result.getDate("dish_updatedAt"),
+                    result.getInt("category_id")
+                );
+                
+            }
+            
+            statement.close();
+            result.close();
+                    
+        } catch(SQLException e) {
+            System.out.println("No se pudieron obtener el platillo por id: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+        
+        return dish;
+
     }
 
     @Override
     public List listItems(String filter) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       List<Dish> dishes = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM dish ORDER BY dish_createdAt DESC");
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                dishes.add(
+                        new Dish(
+                                result.getInt("dish_id"),
+                                result.getString("dish_name"),
+                                result.getString("dish_description"),
+                                result.getString("dish_image"),
+                                result.getDouble("dish_selling_price"),
+                                result.getBoolean("dish_is_active"),
+                                result.getDate("dish_createdAt"),
+                                result.getDate("dish_updatedAt"),
+                                result.getInt("category_id")
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+                    
+        } catch(SQLException e) {
+            System.out.println("No se pudieron obtener todos los platillos: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+        
+        return dishes; 
+
     }
 
     @Override
@@ -186,7 +256,32 @@ public class DishModel implements CrudInterface<Dish> {
 
     @Override
     public boolean changeStatus(int id, boolean status) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        response = false;
+
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "UPDATE dish "
+                  + "SET dish_is_active = ? "
+                  + "WHERE dish_id = ?"  
+            );
+            statement.setBoolean(1, status);
+            statement.setInt(2, id);
+            
+            if ( statement.executeUpdate() > 0 ) {
+                response = true;
+            }
+            
+            statement.close();
+            
+        } catch(SQLException e) {
+           System.out.println("El platillo no pudo cambiar de estado: " + e.getMessage());
+        } finally {
+           DATABASE.disconnect();
+           statement = null;
+        }
+        
+        return response;
     }
 
     @Override
@@ -228,6 +323,129 @@ public class DishModel implements CrudInterface<Dish> {
         
         return response;
     }
+    
+    public List<Dish> getDishesByCategoryId( int categoryId, int page, int quantity ) {
+        List<Dish> dishes = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM dish WHERE category_id = ? ORDER BY dish_createdAt DESC LIMIT ?, ?");
+            statement.setInt(1, categoryId);
+            statement.setInt(2, (page - 1) * quantity);
+            statement.setInt(3, quantity);
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                dishes.add(
+                      new Dish(
+                            result.getInt("dish_id"),
+                            result.getString("dish_name"),
+                            result.getString("dish_description"),
+                            result.getString("dish_image"),
+                            result.getDouble("dish_selling_price"),
+                            result.getBoolean("dish_is_active"),
+                            result.getDate("dish_createdAt"),
+                            result.getDate("dish_updatedAt"),
+                            result.getInt("category_id")
+                      )  
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch (SQLException e) {
+            System.out.println("No se pudieron obtener los platillos por categoria: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return dishes;
+    }
+    
+    public List<Dish> getDishesByStatus( int status, int page, int quantity ) {
+        List<Dish> dishes = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM dish WHERE dish_is_active = ? ORDER BY dish_createdAt DESC LIMIT ?, ?");
+            statement.setInt(1, status);
+            statement.setInt(2, (page - 1) * quantity);
+            statement.setInt(3, quantity);
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                dishes.add(
+                      new Dish(
+                            result.getInt("dish_id"),
+                            result.getString("dish_name"),
+                            result.getString("dish_description"),
+                            result.getString("dish_image"),
+                            result.getDouble("dish_selling_price"),
+                            result.getBoolean("dish_is_active"),
+                            result.getDate("dish_createdAt"),
+                            result.getDate("dish_updatedAt"),
+                            result.getInt("category_id")
+                      )  
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch (SQLException e) {
+            System.out.println("No se pudieron obtener los platillos por estado: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return dishes;
+    }
+    
+    public List<Dish> getDishesByName( String dishName, int page, int quantity ) {
+        List<Dish> dishes = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM dish WHERE dish_name LIKE ? ORDER BY dish_createdAt DESC LIMIT ?, ?");
+            statement.setString(1, "%" + dishName + "%");
+            statement.setInt(2, (page - 1) * quantity);
+            statement.setInt(3, quantity);
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                dishes.add(
+                      new Dish(
+                            result.getInt("dish_id"),
+                            result.getString("dish_name"),
+                            result.getString("dish_description"),
+                            result.getString("dish_image"),
+                            result.getDouble("dish_selling_price"),
+                            result.getBoolean("dish_is_active"),
+                            result.getDate("dish_createdAt"),
+                            result.getDate("dish_updatedAt"),
+                            result.getInt("category_id")
+                      )  
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch (SQLException e) {
+            System.out.println("No se pudieron obtener los platillos por nombre: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return dishes;
+    }
 
     @Override
     public int getTotalItems() {
@@ -258,6 +476,96 @@ public class DishModel implements CrudInterface<Dish> {
         
     }
     
+    public int getTotalDishesByCategoryId(int categoryId) {
+        
+        int totalItems = 0;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT COUNT(*) FROM dish WHERE category_id = ?");
+            statement.setInt(1, categoryId);
+            
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                totalItems = result.getInt("COUNT(*)");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el total de platillos por categoría");
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return totalItems;
+        
+    }
     
+    public int getTotalDishesByStatus(String status) {
+        int totalItems = 0;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                  "SELECT COUNT(*) "
+                + "FROM dish "
+                + "WHERE dish_is_active = ? "
+            );
+            statement.setInt(1, status.equals("Activo") ? 1 : 0);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                totalItems = result.getInt("COUNT(*)");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el total de platillos por estado " + e.getMessage());
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return totalItems;
+    }
+    
+    public int getTotalDishesByName(String name) {
+        int totalItems = 0;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                  "SELECT COUNT(*) "
+                + "FROM dish "
+                + "WHERE dish_name LIKE ? "
+            );
+            statement.setString(1, "%" + name + "%");
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                totalItems = result.getInt("COUNT(*)");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el total de productos " + e.getMessage());
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return totalItems;
+    }
     
 }

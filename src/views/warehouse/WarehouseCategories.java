@@ -45,11 +45,6 @@ public class WarehouseCategories extends javax.swing.JPanel {
         quantityInactiveCategories = new javax.swing.JLabel();
         iconPanel3 = new javax.swing.JLabel();
         categoriesCreationPane = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        creationTitle = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        iconCreateCategory = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         iconInputMandatory = new javax.swing.JLabel();
@@ -64,24 +59,19 @@ public class WarehouseCategories extends javax.swing.JPanel {
         categoryRestrictionDescription = new javax.swing.JLabel();
         btnCancelSaveCategory = new javax.swing.JButton();
         btnSaveCategory = new javax.swing.JButton();
+        creationTitle = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        logoCreateCategory = new javax.swing.JLabel();
+        bannerBottom = new javax.swing.JLabel();
         categoriesUpdatePane = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         editCategoryNameTxt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btnEditCategory = new javax.swing.JButton();
         btnCancelEditCategory = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        creationTitle1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        iconCreateCategory1 = new javax.swing.JLabel();
-        iconEdit = new javax.swing.JLabel();
         iconInputMandatory1 = new javax.swing.JLabel();
         categoryRestrictionEditName = new javax.swing.JLabel();
         categoryRestrictionEditDescription = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        editCategoryDescriptionTxt = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         editCategoryTypeCombo = new javax.swing.JComboBox<>();
         iconInputMandatory3 = new javax.swing.JLabel();
@@ -101,8 +91,13 @@ public class WarehouseCategories extends javax.swing.JPanel {
         iconInfo = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         categoryStatusSelected = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        categoryDescriptionSelected = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        editCategoryDescriptionTxt = new javax.swing.JTextArea();
+        categoryDescriptionSelected = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        creationTitle1 = new javax.swing.JLabel();
+        logoCreateCategory1 = new javax.swing.JLabel();
+        bannerBottom2 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -287,8 +282,8 @@ public class WarehouseCategories extends javax.swing.JPanel {
         categoriesListPane.setLayout(categoriesListPaneLayout);
         categoriesListPaneLayout.setHorizontalGroup(
             categoriesListPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(categoriesListPaneLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoriesListPaneLayout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(categoriesListPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, categoriesListPaneLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -322,7 +317,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, categoriesListPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(quantityItems)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
         categoriesListPaneLayout.setVerticalGroup(
             categoriesListPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,9 +335,9 @@ public class WarehouseCategories extends javax.swing.JPanel {
                     .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(quantityItems)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(35, 35, 35)
                 .addGroup(categoriesListPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActivate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeactivate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -350,56 +345,12 @@ public class WarehouseCategories extends javax.swing.JPanel {
                     .addComponent(pageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
                     .addComponent(itemsPerPageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         categoriesNavegationPane.addTab("Listado", categoriesListPane);
 
         categoriesCreationPane.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel2.setBackground(new java.awt.Color(231, 241, 243));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(1192, 180));
-
-        creationTitle.setBackground(new java.awt.Color(51, 51, 51));
-        creationTitle.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        creationTitle.setForeground(new java.awt.Color(51, 51, 51));
-        creationTitle.setText("Crear una nueva categoría");
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Organiza mejor tus productos agrupándolos en categorías específicas.");
-
-        iconCreateCategory.setPreferredSize(new java.awt.Dimension(30, 30));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(creationTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(iconCreateCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 745, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(creationTitle)
-                    .addComponent(iconCreateCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addComponent(jLabel6)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -411,7 +362,8 @@ public class WarehouseCategories extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Tipo de categoría:");
 
-        categoryRestrictionName.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        categoryRestrictionName.setBackground(new java.awt.Color(102, 102, 102));
+        categoryRestrictionName.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         categoryRestrictionName.setText("Máximo 100 caracteres");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -422,7 +374,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
         categoryDescriptionTxt.setRows(5);
         jScrollPane3.setViewportView(categoryDescriptionTxt);
 
-        categoryRestrictionDescription.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        categoryRestrictionDescription.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         categoryRestrictionDescription.setText("Máximo 220 caracteres");
 
         btnCancelSaveCategory.setText("Cancelar");
@@ -436,7 +388,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -468,13 +420,13 @@ public class WarehouseCategories extends javax.swing.JPanel {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iconInputMandatory2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(iconInputMandatory, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(23, 23, 23)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(categoryNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(categoryTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -482,7 +434,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
                 .addComponent(categoryRestrictionName)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(23, 23, 23)
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(categoryRestrictionDescription)
@@ -490,46 +442,62 @@ public class WarehouseCategories extends javax.swing.JPanel {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelSaveCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSaveCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                .addGap(0, 0, 0))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 200, Short.MAX_VALUE))
-        );
+        creationTitle.setBackground(new java.awt.Color(255, 250, 199));
+        creationTitle.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        creationTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        creationTitle.setText("Crear una nueva categoría");
+        creationTitle.setOpaque(true);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setText("Organiza mejor tus productos agrupándolos en categorías específicas.");
+
+        bannerBottom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-bottom-2.png"))); // NOI18N
 
         javax.swing.GroupLayout categoriesCreationPaneLayout = new javax.swing.GroupLayout(categoriesCreationPane);
         categoriesCreationPane.setLayout(categoriesCreationPaneLayout);
         categoriesCreationPaneLayout.setHorizontalGroup(
             categoriesCreationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(categoriesCreationPaneLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addGap(180, 180, 180)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 174, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoriesCreationPaneLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(categoriesCreationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoriesCreationPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(203, 203, 203))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoriesCreationPaneLayout.createSequentialGroup()
+                        .addComponent(creationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(260, 260, 260)))
+                .addComponent(logoCreateCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
+            .addComponent(bannerBottom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         categoriesCreationPaneLayout.setVerticalGroup(
             categoriesCreationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(categoriesCreationPaneLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addGroup(categoriesCreationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(categoriesCreationPaneLayout.createSequentialGroup()
+                        .addComponent(creationTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6))
+                    .addComponent(logoCreateCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105)
+                .addComponent(bannerBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         categoriesNavegationPane.addTab("Creación", categoriesCreationPane);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        categoriesUpdatePane.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
@@ -546,62 +514,11 @@ public class WarehouseCategories extends javax.swing.JPanel {
         btnCancelEditCategory.setText("Cancelar");
         btnCancelEditCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jPanel7.setBackground(new java.awt.Color(231, 241, 243));
-        jPanel7.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel7.setPreferredSize(new java.awt.Dimension(1192, 180));
-
-        creationTitle1.setBackground(new java.awt.Color(51, 51, 51));
-        creationTitle1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        creationTitle1.setForeground(new java.awt.Color(51, 51, 51));
-        creationTitle1.setText("Editar Categoría");
-
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("Realiza los cambios que consideres necesarios para tus categorías");
-
-        iconCreateCategory1.setPreferredSize(new java.awt.Dimension(30, 30));
-
-        iconEdit.setPreferredSize(new java.awt.Dimension(20, 20));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(iconEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(creationTitle1)
-                        .addGap(35, 35, 35)
-                        .addComponent(iconCreateCategory1, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel9))
-                .addGap(0, 758, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(creationTitle1)
-                        .addComponent(iconEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(iconCreateCategory1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
         categoryRestrictionEditName.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         categoryRestrictionEditName.setText("Máximo 100 caracteres");
 
         categoryRestrictionEditDescription.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         categoryRestrictionEditDescription.setText("Máximo 220 caracteres");
-
-        editCategoryDescriptionTxt.setColumns(20);
-        editCategoryDescriptionTxt.setRows(5);
-        jScrollPane4.setViewportView(editCategoryDescriptionTxt);
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(153, 153, 153));
@@ -636,7 +553,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
 
         categoryUpdatedSelected.setPreferredSize(new java.awt.Dimension(20, 20));
 
-        jPanel4.setBackground(new java.awt.Color(231, 241, 243));
+        jPanel4.setBackground(new java.awt.Color(253, 233, 219));
 
         iconInfo.setPreferredSize(new java.awt.Dimension(20, 20));
 
@@ -734,136 +651,145 @@ public class WarehouseCategories extends javax.swing.JPanel {
                 .addGap(18, 18, 18))
         );
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 1123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(iconInputMandatory3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(categoryRestrictionEditName)
-                                .addComponent(editCategoryNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(iconInputMandatory1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(editCategoryTypeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(categoryRestrictionEditDescription)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnCancelEditCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel10))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel7))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(iconInputMandatory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(iconInputMandatory3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(22, 22, 22)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(editCategoryNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(editCategoryTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(categoryRestrictionEditName)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(categoryRestrictionEditDescription)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelEditCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(212, Short.MAX_VALUE))
-        );
+        editCategoryDescriptionTxt.setColumns(20);
+        editCategoryDescriptionTxt.setRows(5);
+        jScrollPane4.setViewportView(editCategoryDescriptionTxt);
+
+        categoryDescriptionSelected.setForeground(new java.awt.Color(255, 255, 255));
+        categoryDescriptionSelected.setOpaque(true);
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Realiza los cambios que consideres necesarios para tus categorías");
+
+        creationTitle1.setBackground(new java.awt.Color(255, 250, 199));
+        creationTitle1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        creationTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        creationTitle1.setText("Editar Categoría");
+        creationTitle1.setOpaque(true);
+
+        bannerBottom2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-bottom-2.png"))); // NOI18N
 
         javax.swing.GroupLayout categoriesUpdatePaneLayout = new javax.swing.GroupLayout(categoriesUpdatePane);
         categoriesUpdatePane.setLayout(categoriesUpdatePaneLayout);
         categoriesUpdatePaneLayout.setHorizontalGroup(
             categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 1125, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoriesUpdatePaneLayout.createSequentialGroup()
+                .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoriesUpdatePaneLayout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                .addComponent(btnCancelEditCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEditCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(iconInputMandatory3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(categoryRestrictionEditName)
+                                        .addComponent(editCategoryNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(57, 57, 57)
+                                .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                        .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9)
+                                            .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                                .addGap(82, 82, 82)
+                                                .addComponent(creationTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(logoCreateCategory1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                        .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addGap(127, 127, 127)
+                                                .addComponent(iconInputMandatory1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(editCategoryTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel8)
+                            .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(categoryRestrictionEditDescription)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoriesUpdatePaneLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(categoryDescriptionSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(56, 56, 56))
+            .addComponent(bannerBottom2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         categoriesUpdatePaneLayout.setVerticalGroup(
             categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoriesUpdatePaneLayout.createSequentialGroup()
+                        .addComponent(creationTitle1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, 0)
+                        .addComponent(categoryDescriptionSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logoCreateCategory1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                        .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(iconInputMandatory3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addGap(27, 27, 27)
+                                .addComponent(editCategoryNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(categoriesUpdatePaneLayout.createSequentialGroup()
+                                .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(iconInputMandatory1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
+                                .addComponent(editCategoryTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(13, 13, 13)
+                        .addComponent(categoryRestrictionEditName)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel8)
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(categoryRestrictionEditDescription)
+                        .addGap(50, 50, 50)
+                        .addGroup(categoriesUpdatePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelEditCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(90, 90, 90)
+                .addComponent(bannerBottom2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         categoriesNavegationPane.addTab("Edición", categoriesUpdatePane);
-
-        categoryDescriptionSelected.setBackground(new java.awt.Color(231, 241, 243));
-        categoryDescriptionSelected.setColumns(20);
-        categoryDescriptionSelected.setRows(5);
-        categoryDescriptionSelected.setBorder(null);
-        categoryDescriptionSelected.setOpaque(false);
-        jScrollPane5.setViewportView(categoryDescriptionSelected);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(categoriesNavegationPane)
                 .addContainerGap())
-            .addComponent(categoriesNavegationPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(categoriesNavegationPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(categoriesNavegationPane)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bannerBottom;
+    private javax.swing.JLabel bannerBottom2;
     public javax.swing.JButton btnActivate;
     public javax.swing.JButton btnCancelEditCategory;
     public javax.swing.JButton btnCancelSaveCategory;
@@ -879,7 +805,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
     public javax.swing.JTable categoriesTable;
     private javax.swing.JPanel categoriesUpdatePane;
     public javax.swing.JLabel categoryCreatedSelected;
-    public javax.swing.JTextArea categoryDescriptionSelected;
+    public javax.swing.JLabel categoryDescriptionSelected;
     public javax.swing.JTextArea categoryDescriptionTxt;
     public javax.swing.JLabel categoryIdSelected;
     public javax.swing.JLabel categoryNameSelected;
@@ -897,9 +823,6 @@ public class WarehouseCategories extends javax.swing.JPanel {
     public javax.swing.JTextArea editCategoryDescriptionTxt;
     public javax.swing.JTextField editCategoryNameTxt;
     public javax.swing.JComboBox<String> editCategoryTypeCombo;
-    private javax.swing.JLabel iconCreateCategory;
-    private javax.swing.JLabel iconCreateCategory1;
-    public javax.swing.JLabel iconEdit;
     public javax.swing.JLabel iconInfo;
     public javax.swing.JLabel iconInputMandatory;
     public javax.swing.JLabel iconInputMandatory1;
@@ -925,31 +848,27 @@ public class WarehouseCategories extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
+    public javax.swing.JLabel logoCreateCategory;
+    public javax.swing.JLabel logoCreateCategory1;
     public javax.swing.JComboBox<String> pageComboBox;
     public javax.swing.JPanel panelActive;
     public javax.swing.JPanel panelCreated;
     public javax.swing.JPanel panelInactive;
     public javax.swing.JLabel quantityActiveCategories;
     public javax.swing.JLabel quantityInactiveCategories;
-    public transient javax.swing.JLabel quantityItems;
+    public javax.swing.JLabel quantityItems;
     public javax.swing.JLabel quantityTotalCategories;
     public javax.swing.JTextField searchTxt;
     // End of variables declaration//GEN-END:variables

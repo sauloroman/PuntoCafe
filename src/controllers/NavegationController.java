@@ -7,7 +7,7 @@ import utils.enums.NavigationEnum;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import utils.helpers.ActivateButtonsNavegation;
-import views.Access;
+import views.access.Access;
 import views.Queries;
 import views.Sales;
 import views.warehouse.Warehouse;

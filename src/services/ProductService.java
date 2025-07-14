@@ -28,7 +28,8 @@ public class ProductService {
     }
     
     public List<Product> getProductsByStatus(String status, int page, int quantity) {
-        return model.getProductsByStatus(status, page, quantity);
+        int statusParsed = status.equals("Activo") ? 1 : 0;
+        return model.getProductsByStatus(statusParsed, page, quantity);
     }
     
     public List<Product> getProductsByName(String name, int page, int quantity) {

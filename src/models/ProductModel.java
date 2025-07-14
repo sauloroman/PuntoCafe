@@ -63,7 +63,42 @@ public class ProductModel implements CrudInterface<Product> {
 
     @Override
     public List<Product> listItems(String filter) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Product> products = new ArrayList<>();
+
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM product");
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                products.add(new Product(
+                    result.getInt("product_id"),
+                    result.getString("product_name"),
+                    result.getString("product_description"),
+                    result.getString("product_image"),
+                    result.getDouble("product_selling_price"),
+                    result.getInt("product_stock"),
+                    result.getInt("product_stock_min"),
+                    result.getBoolean("product_is_active"),
+                    result.getDate("product_createdAt"),
+                    result.getDate("product_updatedAt"),
+                    result.getInt("category_id"),
+                    result.getInt("supplier_id")   
+                ));
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudieron obtener todos los platillos: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+        
+        return products;
     }
 
     @Override
@@ -309,7 +344,7 @@ public class ProductModel implements CrudInterface<Product> {
             result.close();
             
         } catch(SQLException e) {
-            System.out.println("No se pudo obtener el total de productos");
+            System.out.println("No se pudo obtener el total de productos por categoría");
         } finally {
             statement = null;
             result = null;
@@ -390,7 +425,7 @@ public class ProductModel implements CrudInterface<Product> {
             statement = DATABASE.connect().prepareStatement(
                   "SELECT COUNT(*) "
                 + "FROM product "
-                + "WHERE product_is_active LIKE ? "
+                + "WHERE product_name LIKE ? "
             );
             statement.setString(1, "%" + name + "%");
             result = statement.executeQuery();
@@ -516,14 +551,14 @@ public class ProductModel implements CrudInterface<Product> {
         return products;
     }
      
-    public List<Product> getProductsByStatus( String status, int page, int quantity ) {
+    public List<Product> getProductsByStatus( int status, int page, int quantity ) {
         
         List<Product> products = new ArrayList<>();
         
         try {
             
             statement = DATABASE.connect().prepareStatement("SELECT * FROM product WHERE product_is_active = ? ORDER BY product_createdAt DESC LIMIT ?, ?");
-            statement.setInt(1, status.equals("Activo") ? 1 : 0 );
+            statement.setInt(1, status);
             statement.setInt(2, (page - 1) * quantity);
             statement.setInt(3, quantity);
             result = statement.executeQuery();

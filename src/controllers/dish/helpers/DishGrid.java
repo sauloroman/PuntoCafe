@@ -33,12 +33,6 @@ public class DishGrid {
         view.add(this.scroll);
     }
     
-    private void clearGrid() {
-        view.dishesGrid.removeAll();
-        view.dishesGrid.revalidate();
-        view.dishesGrid.repaint();
-    }
-    
     public void setOnDishClick( Consumer<Dish> listener ) {
         this.onDishClick = listener;
     }
@@ -51,6 +45,30 @@ public class DishGrid {
         }
     }
     
+    public void showDishesByCategory(int categoryId, int page) {
+        clearGrid();
+        dishes = dishService.getDishesByCategory(categoryId, page, QUANTITY_DISHES);
+        for ( Dish dish: dishes) {
+            addDish(dish);
+        }
+    }
+    
+    public void showDishesByStatus(String status, int page) {
+        clearGrid();
+        dishes = dishService.getDishesByStatus(status, page, QUANTITY_DISHES);
+        for ( Dish dish: dishes) {
+            addDish(dish);
+        }
+    }
+    
+    public void showDishesByName(String dishName, int page) {
+        clearGrid();
+        dishes = dishService.getDishesByName(dishName, page, QUANTITY_DISHES);
+        for ( Dish dish: dishes) {
+            addDish(dish);
+        }
+    }
+    
     private void addDish( Dish dish ) {
         Card card = new Card();
         Category categoryDish = categoryService.getById(dish.getCategoryId());
@@ -58,5 +76,9 @@ public class DishGrid {
         view.dishesGrid.add(card.createDish(categoryName, dish, onDishClick));
     }
     
-    
+    private void clearGrid() {
+        view.dishesGrid.removeAll();
+        view.dishesGrid.revalidate();
+        view.dishesGrid.repaint();
+    }
 }

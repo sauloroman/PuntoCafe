@@ -43,6 +43,7 @@ public class WarehouseCategoriesInit {
         inputGenerator.roundedArea(view.editCategoryDescriptionTxt, INPUT_COLOR, 8);
         inputGenerator.roundedComboBox(view.pageComboBox, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.itemsPerPageComboBox, INPUT_COLOR, 10);
+        inputGenerator.roundedComboBox(view.editCategoryTypeCombo, INPUT_COLOR, 10);
         
         buttonGenerator.outlineButton(view.btnEdit, ViewConstants.textBtn, ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnEdit, "icon-pencil", 20);
@@ -63,13 +64,13 @@ public class WarehouseCategoriesInit {
         buttonGenerator.outlineButton(view.btnCancelEditCategory, ViewConstants.errorColor, ViewConstants.errorColor);
         buttonGenerator.addIcon(view.btnCancelEditCategory, "icon-left-red", 20);
         
-        imageGenerator.addImage(view.creationTitle, "icon-folder", 20);
+        imageGenerator.addImageFix(view.logoCreateCategory, "logo-rh", 50, 50);
+        imageGenerator.addImageFix(view.logoCreateCategory1, "logo-rh", 50, 50);
         imageGenerator.addImage(view.iconInputMandatory, "icon-lock", 16);
         imageGenerator.addImage(view.iconInputMandatory1, "icon-lock", 16);
         imageGenerator.addImage(view.iconInputMandatory2, "icon-lock", 16);
         imageGenerator.addImage(view.iconInputMandatory3, "icon-lock", 16);
         imageGenerator.addImage(view.iconInfo, "icon-info", 16);
-        imageGenerator.addImage(view.iconEdit, "icon-edit", 20);
         imageGenerator.addImage(view.iconPanel, "icon-folder", 30);
         imageGenerator.addImage(view.iconPanel2, "icon-check-3d", 30);
         imageGenerator.addImage(view.iconPanel3, "icon-wrong-3d", 30);

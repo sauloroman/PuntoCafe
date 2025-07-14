@@ -44,7 +44,7 @@ public class Warehouse extends javax.swing.JPanel {
         categoriesPane.setLayout(categoriesPaneLayout);
         categoriesPaneLayout.setHorizontalGroup(
             categoriesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1188, Short.MAX_VALUE)
+            .addGap(0, 1194, Short.MAX_VALUE)
         );
         categoriesPaneLayout.setVerticalGroup(
             categoriesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,7 +59,7 @@ public class Warehouse extends javax.swing.JPanel {
         productsPane.setLayout(productsPaneLayout);
         productsPaneLayout.setHorizontalGroup(
             productsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1188, Short.MAX_VALUE)
+            .addGap(0, 1194, Short.MAX_VALUE)
         );
         productsPaneLayout.setVerticalGroup(
             productsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +74,7 @@ public class Warehouse extends javax.swing.JPanel {
         dishesPane.setLayout(dishesPaneLayout);
         dishesPaneLayout.setHorizontalGroup(
             dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1188, Short.MAX_VALUE)
+            .addGap(0, 1194, Short.MAX_VALUE)
         );
         dishesPaneLayout.setVerticalGroup(
             dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +87,7 @@ public class Warehouse extends javax.swing.JPanel {
         menusPane.setLayout(menusPaneLayout);
         menusPaneLayout.setHorizontalGroup(
             menusPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1188, Short.MAX_VALUE)
+            .addGap(0, 1194, Short.MAX_VALUE)
         );
         menusPaneLayout.setVerticalGroup(
             menusPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +101,7 @@ public class Warehouse extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(navegationPane)
                 .addContainerGap())
         );

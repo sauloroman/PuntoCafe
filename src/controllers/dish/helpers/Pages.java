@@ -19,6 +19,24 @@ public class Pages {
         fillPageComboBox(pages);
     }
     
+    public void createByCategories( int categoryId ) {
+        int quantityDishes = dishService.getQuantityDishesByCategory(categoryId);
+        int pages = calculatePages(quantityDishes);
+        fillPageComboBox(pages);
+    }
+    
+    public void createByStatus(String status) {
+        int quantityDishes = dishService.getQuantityDishesByStatus(status);
+        int pages = calculatePages(quantityDishes);
+        fillPageComboBox(pages);
+    }
+    
+    public void createByName(String name) {
+        int quantityDishes = dishService.getQuantityDishesByName(name);
+        int pages = calculatePages(quantityDishes);
+        fillPageComboBox(pages);
+    }
+    
     private int calculatePages( int quantityDishes ) {
         return Math.max((int) Math.ceil((double) quantityDishes / 15), 1);
     }
@@ -34,6 +52,12 @@ public class Pages {
         }
         
         view.pageComboBox.setSelectedIndex(0);
+    }
+    
+    public int getSelectedPage() {
+        Object selectedItem = view.pageComboBox.getSelectedItem();
+        if ( selectedItem == null ) return 1;
+        return Integer.parseInt(selectedItem.toString());
     }
     
 }
