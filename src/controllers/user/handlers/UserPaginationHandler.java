@@ -30,7 +30,7 @@ public class UserPaginationHandler extends PaginationHandlerController<User, Acc
 
     @Override
     protected int getSelectedItemsPerPage() {
-        return 10;
+        return Integer.parseInt(view.itemsPerPageComboBox.getSelectedItem().toString());
     }
 
     @Override
@@ -70,8 +70,8 @@ public class UserPaginationHandler extends PaginationHandlerController<User, Acc
         view.usersTable.setModel(model);
         
         view.usersTable.getColumnModel().getColumn(1).setCellRenderer(new UserCellRenderer());
-        view.usersTable.getColumnModel().getColumn(2).setCellRenderer(new BadgeCellRenderer());
-        view.usersTable.getColumnModel().getColumn(5).setCellRenderer(new StatusBadgeCellRenderer());
+        view.usersTable.getColumnModel().getColumn(3).setCellRenderer(new BadgeCellRenderer());
+        view.usersTable.getColumnModel().getColumn(6).setCellRenderer(new StatusBadgeCellRenderer());
     }
 
     @Override

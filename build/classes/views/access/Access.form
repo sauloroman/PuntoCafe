@@ -114,8 +114,8 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Roles">
-                <Property name="tabTitle" type="java.lang.String" value="Roles"/>
+              <JTabbedPaneConstraints tabName="Informaci&#xf3;n de roles">
+                <Property name="tabTitle" type="java.lang.String" value="Informaci&#xf3;n de roles"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

@@ -62,7 +62,7 @@ public class Access extends javax.swing.JPanel {
             .addGap(0, 795, Short.MAX_VALUE)
         );
 
-        navegationPanel.addTab("Roles", rolesPane);
+        navegationPanel.addTab("Información de roles", rolesPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -2,11 +2,9 @@ package views.inits;
 
 import javax.swing.SwingUtilities;
 import views.access.AccessUsers;
-import utils.builders.BadgeCellRenderer;
 import views.components.Button;
 import views.components.Input;
 import views.components.Table;
-import utils.builders.UserCellRenderer;
 import utils.constants.ViewConstants;
 
 public class AccessUsersInit {
@@ -31,10 +29,8 @@ public class AccessUsersInit {
         buttonGenerator.addIcon(view.btnNewUser, "icon-plus-white", 20);
         buttonGenerator.solidButton(view.btnSearch, "#000000", "#FFFFFF");
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
-        buttonGenerator.solidButton(view.btnActivate, "#fff3bf", ViewConstants.textBtn);
-        buttonGenerator.addIcon(view.btnActivate, "icon-check", 20);
-        buttonGenerator.solidButton(view.btnDeactivate, "#ffe3e3", ViewConstants.textBtn);
-        buttonGenerator.addIcon(view.btnDeactivate, "icon-trash", 20);
+        buttonGenerator.outlineButton(view.btnSeeUser, "#DDDDDD", ViewConstants.textBtn);
+        buttonGenerator.addIcon(view.btnSeeUser, "icon-eye", 20);
         
         input.roundedComboBox(view.userRoleCombo, "#DDDDDD", 10);
         input.roundedField(view.searchUserTxt, "#DDDDDD", 10);

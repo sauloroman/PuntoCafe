@@ -8,7 +8,7 @@ import services.RoleService;
 public class UserTableBuilder {
 
     public static DefaultTableModel create(List<User> users, RoleService roleService ) {
-        String[] columnsTable = {"Id", "Usuario", "Role", "Fecha de creación", "Última actualización", "Estado" };
+        String[] columnsTable = {"Id", "Usuario", "Email", "Role", "Fecha de creación", "Última actualización", "Estado" };
         DefaultTableModel table = new DefaultTableModel(null, columnsTable){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -16,7 +16,7 @@ public class UserTableBuilder {
             }
         };
 
-        Object[] rowTable = new Object[6];
+        Object[] rowTable = new Object[7];
 
         for (User user : users) {
 
@@ -24,15 +24,16 @@ public class UserTableBuilder {
             
             rowTable[1] = new UserCellData(
                 user.getUserName() + " " + user.getUserLastname(),
-                user.getUserEmail(),
                 user.getUserImage()
             );
             
+            rowTable[2] = user.getUserEmail();
+            
             String roleName = roleService.getRoleById(user.getRoleId()).getRoleName();
-            rowTable[2] = new String[] {roleName};
-            rowTable[3] = user.getUserCreatedAt(); 
-            rowTable[4] = user.getUserUpdatedAt();
-            rowTable[5] = user.getIsActive() ? "Activo" : "Inactivo";
+            rowTable[3] = new String[] {roleName};
+            rowTable[4] = user.getUserCreatedAt(); 
+            rowTable[5] = user.getUserUpdatedAt();
+            rowTable[6] = user.getIsActive() ? "Activo" : "Inactivo";
 
             table.addRow(rowTable);
         }

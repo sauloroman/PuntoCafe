@@ -32,6 +32,8 @@ public class AccessCreateUserInit {
         buttonGenerator.addIcon(view.btnLoad, "icon-up", 20);
         buttonGenerator.outlineButton(view.btnRemove, "#dddddd", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnRemove, "icon-down", 20);
+        buttonGenerator.addIcon(view.btnShowPassword, "icon-eye", 14);
+        buttonGenerator.addIcon(view.btnShowConfirmPassword, "icon-eye", 14);
         
         inputGenerator.roundedField(view.userEmailTxt, "#DDDDDD", 10);
         inputGenerator.roundedField(view.userNameTxt, "#DDDDDD", 10);
@@ -41,7 +43,7 @@ public class AccessCreateUserInit {
         inputGenerator.roundedComboBox(view.userRoleCombo, "#DDDDDD", 10);
         
         imageGenerator.addImageFix(view.iconRH, "logo-rh", 50, 50);
-        imageGenerator.addImageUser(view.userImageLabel, "no-image.jpg", 200, 200);
+        imageGenerator.addImageUser(view.userImageLabel, "no-image.jpg", 150, 150);
         imageGenerator.addImage(view.iconInputMandatory, "icon-lock", 14);
         imageGenerator.addImage(view.iconInputMandatory1, "icon-lock", 14);
         imageGenerator.addImage(view.iconInputMandatory2, "icon-lock", 14);

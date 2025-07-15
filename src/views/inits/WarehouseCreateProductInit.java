@@ -24,7 +24,7 @@ public class WarehouseCreateProductInit {
         view.setResizable(false);
         
         buttonGenerator.solidButton(view.btnSaveProduct, "#000000", "#ffffff");
-        buttonGenerator.addIcon(view.btnSaveProduct, "icon-plus-white", 20);
+        buttonGenerator.addIcon(view.btnSaveProduct, "icon-save", 20);
         buttonGenerator.outlineButton(view.btnCancelSaveProduct, ViewConstants.errorColor, ViewConstants.errorColor);
         buttonGenerator.addIcon(view.btnCancelSaveProduct, "icon-left-red", 20);
         buttonGenerator.outlineButton(view.btnLoadImage, INPUT_COLOR, ViewConstants.textBtn);

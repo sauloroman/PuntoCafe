@@ -117,7 +117,7 @@ public class UploadUserImage {
         image = "no-image.jpg";
         originRoot = null;
         destinyRoot = null;
-        imageGenerator.addImageDish(createView.userImageLabel, "no-image.jpg", 200, 200);
+        imageGenerator.addImageDish(createView.userImageLabel, "no-image.jpg", 150, 150);
         //imageGenerator.addImageProduct(editView.dishEditImageLabel, "no-image.jpg", 200, 200);
     }
     

@@ -21,6 +21,7 @@ public class AccessRolesInit {
         image.addImageFix(view.iconAdmin, "icon-admin", 40, 40);
         image.addImageFix(view.iconSeller, "icon-seller", 40, 40);
         image.addImageFix(view.iconSupervisor, "icon-supervisor", 40, 40);
+        image.addImageFix(view.logoRH, "logo-rh", 50, 50);
     }
     
 }

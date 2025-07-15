@@ -1,5 +1,6 @@
 package controllers.user.helpers;
 
+import javax.swing.JPasswordField;
 import views.access.AccessCreateUser;
 import views.components.ImageCustom;
 
@@ -34,6 +35,14 @@ public class ResetElements {
         createView.userPassTxt.setText("");
         createView.userConfirmPassTxt.setText("");
         imageCustom.addImageUser(createView.userImageLabel, "no-image.jpg", 200, 200);
+    }
+    
+    public void showPassword(JPasswordField field) {
+        if (field.getEchoChar() == (char) 0) {
+            field.setEchoChar('●');
+        } else {
+            field.setEchoChar((char) 0);
+        }
     }
     
 }

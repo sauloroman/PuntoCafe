@@ -13,6 +13,10 @@ public class UserService {
         this.model = model;
     }
     
+    public User getUserById(int id) {
+        return model.getItemById(id);
+    }
+    
     public User getUserByEmail(String email) {
         return model.getUserByEmail(email);
     }
@@ -32,5 +36,9 @@ public class UserService {
     
     public List<User> getUsersByPage(int page, int quantity) {
         return model.listItemsByPage("", SearchCriteriaEnum.NONE, page, quantity);
+    }
+    
+    public int getQuantityUsers() {
+        return model.getTotalItems();
     }
 }

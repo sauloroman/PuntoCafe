@@ -57,8 +57,7 @@ public class UserCellRenderer extends JPanel implements TableCellRenderer {
             Image image = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(image));
 
-            // Texto nombre + correo
-            textArea.setText(data.getName() + "\n" + data.getEmail());
+            textArea.setText(data.getName());
         }
 
         return this;
