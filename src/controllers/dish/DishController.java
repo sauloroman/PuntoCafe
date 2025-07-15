@@ -259,10 +259,10 @@ public class DishController {
         
         if (!upload.handleUploadForCreate()) {
             ((SaveDishHandler) saveDishHandler).setDishImage("no-image.jpg");
-            return;
+        } else {
+            ((SaveDishHandler) saveDishHandler).setDishImage(upload.image);
         }
         
-        ((SaveDishHandler) saveDishHandler).setDishImage(upload.image);
         saveDishHandler.execute();
         dishGrid.showAllDishes(1);
         safelyRebuildPagination(() -> pages.create());

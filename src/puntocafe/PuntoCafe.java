@@ -3,6 +3,7 @@ package puntocafe;
 import com.formdev.flatlaf.FlatLightLaf;
 import controllers.category.CategoryController;
 import controllers.NavegationController;
+import controllers.user.UserController;
 import controllers.dish.DishController;
 import controllers.product.ProductController;
 import controllers.supplier.SupplierController;
@@ -10,7 +11,9 @@ import javax.swing.UIManager;
 import models.CategoryModel;
 import models.DishModel;
 import models.ProductModel;
+import models.RoleModel;
 import models.SupplierModel;
+import models.UserModel;
 import views.access.Access;
 import views.MainFrame;
 import views.purchases.Purchases;
@@ -58,6 +61,12 @@ public class PuntoCafe {
         
         DishModel dishModel = new DishModel();
         new DishController(warehouseDishes, dishModel, categoryModel);
+        
+        RoleModel roleModel = new RoleModel();
+        
+        
+        UserModel userModel = new UserModel();
+        new UserController(accessUsers, userModel, roleModel);
         
         new NavegationController( 
             mainView,

@@ -27,7 +27,7 @@ public class PurchasesSuppliersInit {
     public void init() {
         view.setVisible(true);
         view.setSize(PANEL_WIDTH, PANEL_HEIGHT);
-        Table.tableStyle1(view.suppliersTable);
+        Table.tableStyle3(view.suppliersTable);
         TabPane.styleGeneralTab(view.suppliersNavegationTab);
         
         NavegationTabs.activateTabPane(view.suppliersNavegationTab, 3, 0);

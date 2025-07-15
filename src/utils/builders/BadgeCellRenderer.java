@@ -38,9 +38,9 @@ public class BadgeCellRenderer extends JPanel implements TableCellRenderer {
                 badgeLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 8, 2, 8));
 
                 switch (badge.toLowerCase()) {
-                    case "administrador" -> badgeLabel.setBackground(new Color(16, 185, 129));
-                    case "vendedor" -> badgeLabel.setBackground(new Color(59, 130, 246));
-                    case "supervisor" -> badgeLabel.setBackground(new Color(139, 92, 246));
+                    case "administrador" -> badgeLabel.setBackground(Color.decode("#9933FF"));
+                    case "vendedor" -> badgeLabel.setBackground(Color.decode("#FFCC00"));
+                    case "supervisor" -> badgeLabel.setBackground(Color.decode("#009933"));
                     default -> badgeLabel.setBackground(Color.GRAY);
                 }
 

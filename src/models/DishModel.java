@@ -450,7 +450,7 @@ public class DishModel implements CrudInterface<Dish> {
     @Override
     public int getTotalItems() {
         
-         int totalItems = 0;
+        int totalItems = 0;
         
         try {
             

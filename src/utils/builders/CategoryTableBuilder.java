@@ -10,7 +10,12 @@ public class CategoryTableBuilder {
     
     public static DefaultTableModel create( List<Category> categories ) {
         String[] columnsTable = {"Id", "Nombre", "Descripción", "Tipo", "Fecha de creación", "Última actualización", "Estado"};
-        DefaultTableModel table = new DefaultTableModel(null, columnsTable);
+        DefaultTableModel table = new DefaultTableModel(null, columnsTable){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         
         String[] rowTable = new String[7];
         

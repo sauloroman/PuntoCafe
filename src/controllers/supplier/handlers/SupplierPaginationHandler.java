@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import services.SupplierService;
+import utils.builders.StatusBadgeCellRenderer;
 import utils.builders.SupplierTableBuilder;
 import utils.enums.SearchCriteriaEnum;
 import views.purchases.PurchasesSuppliers;
@@ -63,6 +64,7 @@ public class SupplierPaginationHandler extends PaginationHandlerController<Suppl
     @Override
     protected void setTableModel(DefaultTableModel model) {
         view.suppliersTable.setModel(model);
+        view.suppliersTable.getColumnModel().getColumn(9).setCellRenderer(new StatusBadgeCellRenderer());
     }
 
     @Override

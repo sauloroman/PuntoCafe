@@ -136,9 +136,9 @@
                                   </Group>
                                   <Component id="btnSearchSuppliers" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="367" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnActivateSupplier" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   <Component id="btnDeactivateSupplier" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -573,7 +573,7 @@
                           <Component id="btnSaveSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnCancelSaveSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="280" max="32767" attributes="0"/>
+                      <EmptySpace pref="295" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1145,7 +1145,7 @@
                           </Group>
                           <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="272" max="32767" attributes="0"/>
+                      <EmptySpace pref="287" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

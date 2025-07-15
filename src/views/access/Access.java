@@ -21,8 +21,8 @@ public class Access extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         navegationPanel = new javax.swing.JTabbedPane();
-        rolesPane = new javax.swing.JPanel();
         usersPane = new javax.swing.JPanel();
+        rolesPane = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1200, 900));
@@ -33,21 +33,6 @@ public class Access extends javax.swing.JPanel {
         jLabel1.setText("Control de usuarios del sistema");
 
         navegationPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        rolesPane.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout rolesPaneLayout = new javax.swing.GroupLayout(rolesPane);
-        rolesPane.setLayout(rolesPaneLayout);
-        rolesPaneLayout.setHorizontalGroup(
-            rolesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
-        );
-        rolesPaneLayout.setVerticalGroup(
-            rolesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 795, Short.MAX_VALUE)
-        );
-
-        navegationPanel.addTab("Roles", rolesPane);
 
         usersPane.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -63,6 +48,21 @@ public class Access extends javax.swing.JPanel {
         );
 
         navegationPanel.addTab("Usuarios", usersPane);
+
+        rolesPane.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout rolesPaneLayout = new javax.swing.GroupLayout(rolesPane);
+        rolesPane.setLayout(rolesPaneLayout);
+        rolesPaneLayout.setHorizontalGroup(
+            rolesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1300, Short.MAX_VALUE)
+        );
+        rolesPaneLayout.setVerticalGroup(
+            rolesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+
+        navegationPanel.addTab("Roles", rolesPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

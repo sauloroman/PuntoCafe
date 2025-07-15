@@ -67,7 +67,7 @@ public class CategoryModel implements CrudInterface<Category> {
     
     @Override
     public List<Category> listItemsByPage(String filter, SearchCriteriaEnum criteria, int page, int itemsPerPage) {
-          List<Category> categories = new ArrayList<>();
+        List<Category> categories = new ArrayList<>();
         
         try {
             

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import utils.builders.CategoryTableBuilder;
+import utils.builders.StatusBadgeCellRenderer;
 import utils.enums.SearchCriteriaEnum;
 import views.warehouse.WarehouseCategories;
 
@@ -68,6 +69,7 @@ public class CategoryPaginationHandler extends PaginationHandlerController<Categ
     @Override
     protected void setTableModel(DefaultTableModel model) {
         view.categoriesTable.setModel(model);
+        view.categoriesTable.getColumnModel().getColumn(6).setCellRenderer(new StatusBadgeCellRenderer());
     }
 
     @Override

@@ -4,6 +4,8 @@ import config.Database;
 import entities.Role;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import models.interfaces.CrudInterface;
 import utils.enums.SearchCriteriaEnum;
@@ -21,17 +23,116 @@ public class RoleModel implements CrudInterface<Role> {
 
     @Override
     public Role getItemByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Role role = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * FROM role WHERE role_name = ?"
+            );
+            statement.setString(1, name);
+            result = statement.executeQuery();
+            
+            if ( result.next() ) {
+                role = new Role(
+                        result.getInt("role_id"),
+                        result.getString("role_name"),
+                        result.getString("role_description"),
+                        result.getBoolean("role_is_active"),
+                        result.getDate("role_createdAt"),
+                        result.getDate("role_updatedAt")
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el role por id: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+    
+        return role;
+
     }
 
     @Override
     public Role getItemById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        Role role = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * FROM role WHERE role_id = ?"
+            );
+            statement.setInt(1, id);
+            result = statement.executeQuery();
+            
+            if ( result.next() ) {
+                role = new Role(
+                        result.getInt("role_id"),
+                        result.getString("role_name"),
+                        result.getString("role_description"),
+                        result.getBoolean("role_is_active"),
+                        result.getDate("role_createdAt"),
+                        result.getDate("role_updatedAt")
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el role por id: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+    
+        return role;
     }
+    
 
     @Override
     public List<Role> listItems(String filter) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        List<Role> roles = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM role");
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                roles.add(
+                        new Role(
+                            result.getInt("role_id"),
+                            result.getString("role_name"),
+                            result.getString("role_description"),
+                            result.getBoolean("role_is_active"),
+                            result.getDate("role_createdAt"),
+                            result.getDate("role_updatedAt")    
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudieron obtener todos los roles: " + e.getMessage());
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return roles;
     }
 
     @Override

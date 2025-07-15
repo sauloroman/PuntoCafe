@@ -2,6 +2,43 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/dish/helpers/DishValidator.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/entities/Role.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/user/helpers/ResetElements.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/dish/helpers/ResetElements.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/access/AccessCreateUser.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/inits/AccessCreateUserInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/inits/AccessInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/inits/MainFrameInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/inits/PurchasesInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/inits/WarehouseCreateDishInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/inits/WarehouseCategoriesInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/inits/WarehouseCreateProductInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/access/Access.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/user/UserController.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/puntocafe/PuntoCafe.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/components/ImageCustom.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/access/AccessUsers.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/components/Card.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/RoleService.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/UserService.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/ProductService.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/RoleModel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/CategoryModel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/user/helpers/FillBoxes.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/dish/helpers/FillComboBoxes.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/CategoryService.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/user/helpers/UploadUserImage.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/dish/helpers/UploadDishImage.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/product/ProductController.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/user/helpers/UserTableRefresher.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/dish/DishController.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/user/helpers/UserValidator.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/utils/validators/SupplierValidator.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/user/handlers/CreateUserHandler.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/UserModel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/entities/User.java</file>
+        </group>
     </open-files>
 </project-private>

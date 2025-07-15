@@ -3,14 +3,20 @@ package utils.builders;
 import entities.User;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import services.RoleService;
 
 public class UserTableBuilder {
 
-    public static DefaultTableModel create(List<User> users) {
-        String[] columnsTable = {"Id", "Usuario", "Role", "Fecha de creación", "Última actualización"};
-        DefaultTableModel table = new DefaultTableModel(null, columnsTable);
+    public static DefaultTableModel create(List<User> users, RoleService roleService ) {
+        String[] columnsTable = {"Id", "Usuario", "Role", "Fecha de creación", "Última actualización", "Estado" };
+        DefaultTableModel table = new DefaultTableModel(null, columnsTable){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
-        Object[] rowTable = new Object[5];
+        Object[] rowTable = new Object[6];
 
         for (User user : users) {
 
@@ -22,9 +28,11 @@ public class UserTableBuilder {
                 user.getUserImage()
             );
             
-            //rowTable[2] = new String[] {role};
+            String roleName = roleService.getRoleById(user.getRoleId()).getRoleName();
+            rowTable[2] = new String[] {roleName};
             rowTable[3] = user.getUserCreatedAt(); 
             rowTable[4] = user.getUserUpdatedAt();
+            rowTable[5] = user.getIsActive() ? "Activo" : "Inactivo";
 
             table.addRow(rowTable);
         }

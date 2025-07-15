@@ -32,7 +32,7 @@ public final class Table {
         // Tabla (cuerpo)
         table.setBackground(Color.WHITE);
         table.setForeground(Color.decode("#202124"));
-         table.setFont(new Font("sansserif", Font.PLAIN, 12));
+        table.setFont(new Font("sansserif", Font.PLAIN, 12));
         table.setRowHeight(30);
 
         // Selección
@@ -51,24 +51,19 @@ public final class Table {
         // Encabezado: fondo claro, texto oscuro, sin bordes fuertes
         table.getTableHeader().setBackground(Color.decode("#F9FAFB")); // Un gris muy claro
         table.getTableHeader().setForeground(Color.decode("#111827")); // Gris oscuro, casi negro
-        table.getTableHeader().setFont(new Font("sansserif", Font.BOLD, 13));
+        table.getTableHeader().setFont(new Font("sansserif", Font.BOLD, 12));
         table.getTableHeader().setReorderingAllowed(false);
         table.getTableHeader().setOpaque(true);
 
         // Cuerpo de la tabla: fondo blanco, texto gris oscuro
         table.setBackground(Color.WHITE);
         table.setForeground(Color.decode("#374151")); // Gris oscuro
-        table.setFont(new Font("sansserif", Font.PLAIN, 13));
+        table.setFont(new Font("sansserif", Font.PLAIN, 12));
         table.setRowHeight(50); // Un poco más alto para mostrar imágenes y badges
 
         // Selección: azul muy claro
-        table.setSelectionBackground(Color.decode("#E5F3FF"));
+        table.setSelectionBackground(Color.decode("#E8F0FE"));
         table.setSelectionForeground(Color.decode("#111827"));
-
-        // Bordes sutiles
-        table.setShowHorizontalLines(true);
-        table.setShowVerticalLines(false);
-        table.setGridColor(Color.decode("#E5E7EB")); // Gris muy claro
 
         // Espaciado de celdas
         table.setIntercellSpacing(new Dimension(0, 0));

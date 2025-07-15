@@ -31,7 +31,7 @@ public class WarehouseCategoriesInit {
         view.setSize(PANEL_WIDTH, PANEL_HEIGHT);
         
         TabPane.styleGeneralTab(view.categoriesNavegationPane);
-        Table.tableStyle1(view.categoriesTable);
+        Table.tableStyle3(view.categoriesTable);
         
         NavegationTabs.activateTabPane(view.categoriesNavegationPane, 3, 0);
         
@@ -45,7 +45,7 @@ public class WarehouseCategoriesInit {
         inputGenerator.roundedComboBox(view.itemsPerPageComboBox, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.editCategoryTypeCombo, INPUT_COLOR, 10);
         
-        buttonGenerator.outlineButton(view.btnEdit, ViewConstants.textBtn, ViewConstants.textBtn);
+        buttonGenerator.outlineButton(view.btnEdit, INPUT_COLOR, ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnEdit, "icon-pencil", 20);
         buttonGenerator.solidButton(view.btnActivate, "#fff3bf", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnActivate, "icon-check", 20);

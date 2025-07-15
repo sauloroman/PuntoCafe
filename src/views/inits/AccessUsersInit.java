@@ -1,11 +1,13 @@
 package views.inits;
 
+import javax.swing.SwingUtilities;
 import views.access.AccessUsers;
 import utils.builders.BadgeCellRenderer;
 import views.components.Button;
 import views.components.Input;
 import views.components.Table;
 import utils.builders.UserCellRenderer;
+import utils.constants.ViewConstants;
 
 public class AccessUsersInit {
     
@@ -25,15 +27,21 @@ public class AccessUsersInit {
         
         Table.tableStyle3(view.usersTable);
         
-        view.usersTable.getColumnModel().getColumn(0).setCellRenderer(new UserCellRenderer());
-        view.usersTable.getColumnModel().getColumn(1).setCellRenderer(new BadgeCellRenderer());
-        
         buttonGenerator.solidButton(view.btnNewUser, "#000000", "#FFFFFF");
         buttonGenerator.addIcon(view.btnNewUser, "icon-plus-white", 20);
         buttonGenerator.solidButton(view.btnSearch, "#000000", "#FFFFFF");
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
+        buttonGenerator.solidButton(view.btnActivate, "#fff3bf", ViewConstants.textBtn);
+        buttonGenerator.addIcon(view.btnActivate, "icon-check", 20);
+        buttonGenerator.solidButton(view.btnDeactivate, "#ffe3e3", ViewConstants.textBtn);
+        buttonGenerator.addIcon(view.btnDeactivate, "icon-trash", 20);
         
         input.roundedComboBox(view.userRoleCombo, "#DDDDDD", 10);
         input.roundedField(view.searchUserTxt, "#DDDDDD", 10);
+        input.roundedComboBox(view.pageCombo, "#DDDDDD", 10);
+        input.roundedComboBox(view.itemsPerPageComboBox, "#DDDDDD", 10);
+        
+        SwingUtilities.updateComponentTreeUI(view);
+        
     }
 }

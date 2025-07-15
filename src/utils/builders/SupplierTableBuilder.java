@@ -10,7 +10,12 @@ public class SupplierTableBuilder {
     
      public static DefaultTableModel create(List<Supplier> suppliers) {
         String[] columnsTable = {"Id", "Nombre", "Apellido", "Compañia", "Teléfono", "Email", "Dirección", "Fecha de creación", "Fecha de actualización", "Estatus"};
-        DefaultTableModel table = new DefaultTableModel(null, columnsTable);
+        DefaultTableModel table = new DefaultTableModel(null, columnsTable){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         String[] rowTable = new String[10];
         
         for( Supplier supplier: suppliers ) {  

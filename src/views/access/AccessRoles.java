@@ -124,10 +124,11 @@ public class AccessRoles extends javax.swing.JPanel {
         adminCheck5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         adminCheck5.setText("Sin restricciones en el módulo de venta");
 
-        jButton1.setBackground(new java.awt.Color(153, 51, 255));
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Asignar Rol");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -251,10 +252,11 @@ public class AccessRoles extends javax.swing.JPanel {
         adminCheck11.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         adminCheck11.setText("No puede consultar ventas de otros usuarios");
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 0));
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Asignar Rol");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         adminCheck12.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         adminCheck12.setText("No puede modificar ventas pasadas.");
@@ -379,10 +381,11 @@ public class AccessRoles extends javax.swing.JPanel {
         adminCheck18.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         adminCheck18.setText("No puede registrar nuevas ventas");
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 51));
+        jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Asignar Rol");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         adminCheck19.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         adminCheck19.setText("No puede modificar precios y ventas realizadas");

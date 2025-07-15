@@ -50,6 +50,24 @@ public final class ImageCustom {
         Image scaledImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         box.setIcon(new ImageIcon(scaledImage));
     }
+    
+    public void addImageUser(JLabel box, String nameImage, int maxWidth, int maxHeight) {
+        ImageIcon icon = new ImageIcon("assets/images/users/" + nameImage);
+        Image image = icon.getImage();
+
+        int originalWidth = image.getWidth(null);
+        int originalHeight = image.getHeight(null);
+
+        double widthRatio = (double) maxWidth / originalWidth;
+        double heightRatio = (double) maxHeight / originalHeight;
+        double ratio = Math.min(widthRatio, heightRatio);
+
+        int newWidth = (int) (originalWidth * ratio);
+        int newHeight = (int) (originalHeight * ratio);
+
+        Image scaledImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        box.setIcon(new ImageIcon(scaledImage));
+    }
 
     public void addImageDish(JLabel box, String nameImage, int maxWidth, int maxHeight) {
         ImageIcon icon = new ImageIcon("assets/images/dishes/" + nameImage);

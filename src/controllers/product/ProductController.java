@@ -198,9 +198,10 @@ public class ProductController {
     private void createProduct() {
         if ( !productValidator.isValidCreation() ) return;
         
-        if ( !upload.handleUploadForCreate() ) {
+        if (!upload.handleUploadForCreate()) {
             ((SaveProductHandler) saveProductHandler).setProductImage("no-image.jpg");
-            return;
+        } else {
+            ((SaveProductHandler) saveProductHandler).setProductImage(upload.image);
         }
         
         ((SaveProductHandler) saveProductHandler).setProductImage(upload.image);
