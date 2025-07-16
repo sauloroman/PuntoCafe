@@ -3,6 +3,7 @@ package controllers.user.helpers;
 import entities.User;
 import java.awt.Color;
 import services.RoleService;
+import views.access.AccessEditUser;
 import views.access.AccessInfoUser;
 import views.components.ImageCustom;
 
@@ -10,10 +11,12 @@ public class LoadInformation {
     
     private final ImageCustom image = new ImageCustom();
     private final AccessInfoUser infoView;
+    private final AccessEditUser editView;
     private final RoleService roleService;
     
-    public LoadInformation(AccessInfoUser infoView, RoleService roleService) {
+    public LoadInformation(AccessInfoUser infoView, AccessEditUser editView, RoleService roleService) {
         this.infoView = infoView;
+        this.editView = editView;
         this.roleService = roleService;
     }
     
@@ -28,6 +31,15 @@ public class LoadInformation {
         infoView.userInfoUpdatedAt.setText(user.getUserUpdatedAt().toString());
         image.addImageUser(infoView.userInfoImage, user.getUserImage(), 120, 120);
         setColorRolLabel(roleName);
+    }
+    
+    public void loadInfoEdit(User user) {
+        String roleName = roleService.getRoleById(user.getRoleId()).getRoleName();
+        editView.userNameTxt.setText(user.getUserName());
+        editView.userLastnameTxt.setText(user.getUserLastname());
+        editView.userEmailTxt.setText(user.getUserEmail());
+        editView.userRoleCombo.setSelectedItem(roleName);
+        image.addImageUser(editView.userImageLabel, user.getUserImage(), 150, 150);
     }
     
     private void setColorRolLabel(String roleName) {

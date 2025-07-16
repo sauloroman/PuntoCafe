@@ -42,7 +42,7 @@ public class ChangeCategoryStatusHandler implements ChangeStatusInterface {
     
     @Override
     public boolean isStatusValid(int row) {
-         String status = String.valueOf(view.categoriesTable.getValueAt(row, 6));
+        String status = String.valueOf(view.categoriesTable.getValueAt(row, 6));
         
         if ( activate && status.equals("Activo") ) {
            modal.show("La categoría ya está activa", ModalTypeEnum.error );

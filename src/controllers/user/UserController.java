@@ -1,10 +1,13 @@
 package controllers.user;
 
 import controllers.interfaces.HandlerController;
+import controllers.user.handlers.ChangeUserStatusHandler;
 import controllers.user.handlers.CreateUserHandler;
+import controllers.user.handlers.EditUserHandler;
 import controllers.user.handlers.UserPaginationHandler;
 import controllers.user.helpers.ResetElements;
 import controllers.user.helpers.FillBoxes;
+import controllers.user.helpers.FilterUsers;
 import controllers.user.helpers.GetUserFromTable;
 import controllers.user.helpers.LoadInformation;
 import controllers.user.helpers.UploadUserImage;
@@ -20,6 +23,7 @@ import utils.enums.SearchCriteriaEnum;
 import utils.helpers.Modal;
 import utils.helpers.SelectedRowTable;
 import views.access.AccessCreateUser;
+import views.access.AccessEditUser;
 import views.access.AccessInfoUser;
 import views.access.AccessUsers;
 
@@ -32,6 +36,7 @@ public class UserController {
     private final RoleService roleService;
     private final AccessCreateUser createUserView;
     private final AccessInfoUser infoUserView;
+    private final AccessEditUser editUserView;
     private final FillBoxes fillBoxes;
     private final UploadUserImage upload;
     private final ResetElements reset;
@@ -39,9 +44,13 @@ public class UserController {
     private final UserTableRefresher refresher;
     private final UserPaginationHandler paginationHandler;
     private final HandlerController createUserHandler;
+    private final HandlerController editUserHandler;
     private final SelectedRowTable selectedRow;
     private final LoadInformation loadUserInfo;
     private final GetUserFromTable fromTable;
+    private final FilterUsers filter;
+    private final ChangeUserStatusHandler activateUser;
+    private final ChangeUserStatusHandler deactivateUser;
     private final Modal modal = new Modal("Usuarios del sistema - PuntoCafé");
     private User userSelected = null;
     
@@ -56,21 +65,26 @@ public class UserController {
         
         this.createUserView = new AccessCreateUser();
         this.infoUserView = new AccessInfoUser();
+        this.editUserView = new AccessEditUser();
         
         this.userService = new UserService(this.model);
         this.roleService = new RoleService(this.roleModel);
         
         this.paginationHandler = new UserPaginationHandler(view, userService, roleService);
-        this.validator = new UserValidator(createUserView, modal);
-        this.fillBoxes = new FillBoxes(createUserView);
-        this.upload = new UploadUserImage(createUserView, modal);
-        this.reset = new ResetElements(createUserView);
+        this.validator = new UserValidator(createUserView, editUserView, modal);
+        this.fillBoxes = new FillBoxes(createUserView, editUserView);
+        this.upload = new UploadUserImage(createUserView, editUserView, modal);
+        this.reset = new ResetElements(view, createUserView, editUserView);
         this.refresher = new UserTableRefresher(paginationHandler);
         this.selectedRow = new SelectedRowTable(modal, view.usersTable);
-        this.loadUserInfo = new LoadInformation(infoUserView, roleService);
+        this.loadUserInfo = new LoadInformation(infoUserView, editUserView, roleService);
         this.fromTable = new GetUserFromTable(view, userService);
+        this.filter = new FilterUsers(view);
         
         this.createUserHandler = new CreateUserHandler(createUserView, userService, roleService, modal);
+        this.editUserHandler = new EditUserHandler(editUserView, userService, roleService, modal);
+        this.activateUser = new ChangeUserStatusHandler(userService, true, modal);
+        this.deactivateUser = new ChangeUserStatusHandler(userService, false, modal);
         
         init();
         initListeners();
@@ -79,12 +93,18 @@ public class UserController {
     private void init() {
         paginationHandler.execute();
         fillBoxes.fillRoleBox(roleService.getRoles());
+        fillBoxes.fillRoleEditBox(roleService.getRoles());
         setTotalUsers();
     }
     
     private void initListeners() {
         view.btnNewUser.addActionListener(e -> openCreateUserWindow());
         view.btnSeeUser.addActionListener(e -> openInfoUserWindow());
+        view.pageCombo.addActionListener(e -> paginationHandler.executeLoadSelectedPage(SearchCriteriaEnum.NAME));
+        view.itemsPerPageComboBox.addActionListener(e -> safelyRebuildPagination(SearchCriteriaEnum.NAME));
+        view.userRoleCombo.addActionListener(e -> filterUsersByRole());
+        view.btnRestore.addActionListener(e -> restoreFilters());
+        view.btnSearch.addActionListener(e -> filterUsersByName());
         
         createUserView.btnCancelSaveUser.addActionListener(e -> closeCreateUserWindow());
         createUserView.btnLoad.addActionListener(e -> uploadImage(false));
@@ -93,6 +113,101 @@ public class UserController {
         createUserView.btnShowConfirmPassword.addActionListener(e -> reset.showPassword(createUserView.userConfirmPassTxt));
         createUserView.btnShowPassword.addActionListener( e -> reset.showPassword(createUserView.userPassTxt)); 
         
+        infoUserView.btnEdit.addActionListener(e -> openEditUserWindow());
+        infoUserView.btnActivate.addActionListener(e -> activateUser());
+        infoUserView.btnDeactivate.addActionListener(e -> deactivateUser());
+        
+        editUserView.btnEditUser.addActionListener(e -> editUser());
+        editUserView.btnLoad.addActionListener( e -> uploadImage(true) );
+        editUserView.btnRemove.addActionListener( e -> removeImage() );
+        editUserView.btnCancelEditUser.addActionListener(e -> closeEditUser());
+    }
+    
+    private void restoreFilters() {
+        safelyRebuildPagination(SearchCriteriaEnum.NAME);
+        filter.restoreRoleSelected();
+        filter.restoreUserSearched();
+        reset.showPagination();
+    }
+    
+    private void filterUsersByName() {
+        String userSearched = filter.getUserSearched();
+        
+        if ( userSearched == null ) {
+            restoreFilters();
+            return;
+        }
+        
+        refresher.refresh(SearchCriteriaEnum.NAME, userSearched);
+        reset.hidePagination();
+    }
+    
+    private void filterUsersByRole() {
+        String selectedRole = filter.getRoleSelected();
+        
+        if ( selectedRole == null ) {
+            restoreFilters();
+            return;
+        }
+        
+        String roleId = String.valueOf(roleService.getRoleByName(selectedRole).getRoleId());
+        refresher.refresh(SearchCriteriaEnum.USER_ROLE, roleId);
+        reset.hidePagination();
+    }
+    
+    private void closeEditUser() {
+        editUserView.setVisible(false);
+        reset.hideButtonUploadImage();
+        reset.clearEditUserForm();
+    }
+    
+    private void editUser() {
+        if (!validator.isValidEdition()) return;
+        
+        if (!upload.handleUploadForEdit()) {
+            ((EditUserHandler) editUserHandler).setImage("no-image.jpg");
+        } else {
+            ((EditUserHandler) editUserHandler).setImage(upload.image);
+        }
+        
+        ((EditUserHandler) editUserHandler).setId(userSelected.getUserId());
+        ((EditUserHandler) editUserHandler).setEmail(userSelected.getUserEmail());
+        
+        editUserHandler.execute();
+        safelyRebuildPagination(SearchCriteriaEnum.NAME);
+        reset.clearEditUserForm();
+        reset.hideButtonUploadImage();
+        upload.removeImage();
+        setTotalUsers();
+        editUserView.setVisible(false);
+        infoUserView.setVisible(false);
+    }
+    
+    private void openEditUserWindow() {
+        if ( userSelected == null ) return;
+        reset.hideButtonUploadImage();
+        loadUserInfo.loadInfoEdit(userSelected);
+        editUserView.setVisible(true);
+    }
+    
+    private void activateUser() {
+        if ( userSelected == null ) return;
+        if ( !activateUser.isValidStatus(userSelected.getIsActive())) return;
+        if ( !activateUser.confirmChange() ) return;
+        
+        activateUser.change( userSelected.getUserId() );
+        safelyRebuildPagination(SearchCriteriaEnum.NAME);
+        infoUserView.setVisible(false);
+    }
+    
+    private void deactivateUser() {
+        if ( userSelected == null ) return;
+        if ( !deactivateUser.isValidStatus(userSelected.getIsActive())) return;
+        if ( !deactivateUser.confirmChange() ) return;
+        
+        deactivateUser.change( userSelected.getUserId() );
+        safelyRebuildPagination(SearchCriteriaEnum.NAME);
+        infoUserView.setVisible(false);
     }
     
     private void createUser() {
@@ -121,6 +236,7 @@ public class UserController {
     }
     
     private void openCreateUserWindow() {
+        reset.showButtonUploadImage();
         createUserView.setVisible(true);
     }
     

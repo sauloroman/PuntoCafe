@@ -13,11 +13,13 @@ import javax.swing.JFileChooser;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;
 import views.access.AccessCreateUser;
+import views.access.AccessEditUser;
 import views.components.ImageCustom;
 
 public class UploadUserImage {
     
     private final AccessCreateUser createView;
+    private final AccessEditUser editView;
     private final Modal modal;
     private final String DIRECTORY = "assets/images/users/";
     private final ImageCustom imageGenerator = new ImageCustom();
@@ -26,8 +28,9 @@ public class UploadUserImage {
     private String destinyRoot;
     public String image = "no-image.jpg";
     
-    public UploadUserImage( AccessCreateUser createView, Modal modal ) {
+    public UploadUserImage( AccessCreateUser createView, AccessEditUser editView, Modal modal ) {
         this.createView = createView;
+        this.editView = editView;
         this.modal = modal;
     }
     
@@ -104,8 +107,8 @@ public class UploadUserImage {
             );
             
             if ( isEdit ) {
-                //editView.dishEditImageLabel.setIcon(icon);
-                //editView.dishEditImageLabel.repaint();
+                editView.userImageLabel.setIcon(icon);
+                editView.userImageLabel.repaint();
             } else {
                 createView.userImageLabel.setIcon(icon);
                 createView.userImageLabel.repaint();
@@ -118,7 +121,7 @@ public class UploadUserImage {
         originRoot = null;
         destinyRoot = null;
         imageGenerator.addImageDish(createView.userImageLabel, "no-image.jpg", 150, 150);
-        //imageGenerator.addImageProduct(editView.dishEditImageLabel, "no-image.jpg", 200, 200);
+        imageGenerator.addImageProduct(editView.userImageLabel, "no-image.jpg", 150, 150);
     }
     
 }

@@ -31,6 +31,7 @@ public class AccessUsers extends javax.swing.JPanel {
         itemsPerPageComboBox = new javax.swing.JComboBox<>();
         quantityItems = new javax.swing.JLabel();
         btnSeeUser = new javax.swing.JButton();
+        btnRestore = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -81,15 +82,20 @@ public class AccessUsers extends javax.swing.JPanel {
         jLabel17.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel17.setText("Registros por página");
 
-        itemsPerPageComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "20" }));
+        itemsPerPageComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "15", "20" }));
         itemsPerPageComboBox.setPreferredSize(new java.awt.Dimension(70, 22));
 
         quantityItems.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         quantityItems.setForeground(new java.awt.Color(102, 102, 102));
         quantityItems.setText("Visualizando 10 de 30 categorías");
 
+        btnSeeUser.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnSeeUser.setText("Ver Usuario");
         btnSeeUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnRestore.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnRestore.setText("Reestablecer");
+        btnRestore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -106,7 +112,7 @@ public class AccessUsers extends javax.swing.JPanel {
                         .addComponent(quantityItems))
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
@@ -127,7 +133,9 @@ public class AccessUsers extends javax.swing.JPanel {
                             .addGap(18, 18, 18)
                             .addComponent(jLabel17)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(itemsPerPageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(itemsPerPageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
@@ -152,21 +160,22 @@ public class AccessUsers extends javax.swing.JPanel {
                         .addComponent(quantityUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(quantityItems))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17)
-                    .addComponent(itemsPerPageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                    .addComponent(itemsPerPageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnNewUser;
+    public javax.swing.JButton btnRestore;
     public javax.swing.JButton btnSearch;
     public javax.swing.JButton btnSeeUser;
     public javax.swing.JComboBox<String> itemsPerPageComboBox;

@@ -34,6 +34,20 @@ public class User {
     }
     
     public User(
+            String userName, 
+            String userLastname, 
+            String userImage,
+            String userEmail,  
+            int roleId
+    ) {
+        this.userName = userName;
+        this.userLastname = userLastname;
+        this.userImage = userImage;
+        this.userEmail = userEmail;
+        this.roleId = roleId;
+    }
+    
+    public User(
             int userId, 
             String userName, 
             String userLastname, 

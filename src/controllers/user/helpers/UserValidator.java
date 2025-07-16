@@ -4,14 +4,17 @@ import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;
 import utils.validators.EmailValidator;
 import views.access.AccessCreateUser;
+import views.access.AccessEditUser;
 
 public class UserValidator {
     
     private final AccessCreateUser createView;
+    private final AccessEditUser editView;
     private final Modal modal; 
     
-    public UserValidator(AccessCreateUser createView, Modal modal) {
+    public UserValidator(AccessCreateUser createView, AccessEditUser editView, Modal modal) {
         this.createView = createView;
+        this.editView = editView;
         this.modal = modal;
     }
     
@@ -55,6 +58,37 @@ public class UserValidator {
         }
         
         return true;
+    }
+    
+    public boolean isValidEdition() {
+        
+        String name = editView.userNameTxt.getText();
+        String lastname = editView.userLastnameTxt.getText();
+        String email = editView.userEmailTxt.getText();
+        String role = editView.userRoleCombo.getSelectedItem().toString();
+
+        if (!isValidName(name)) {
+            modal.show("El nombre del usuario es obligatorio y menor a 60 caracteres", ModalTypeEnum.error);
+            return false;
+        }
+        
+        if (!isValidLastname(lastname)) {
+            modal.show("El apellido del usuario es obligatorio y menor a 60 caracteres", ModalTypeEnum.error);
+            return false;
+        }
+        
+        if (!isValidEmail(email)) {
+            modal.show("El correo es obligatorio y debe ser menor a 100 caracteres", ModalTypeEnum.error);
+            return false;
+        }
+        
+        if (!isValidRole(role) ) {
+            modal.show("El rol es obligatorio", ModalTypeEnum.error);
+            return false; 
+        }
+        
+        return true;
+        
     }
     
     private boolean isValidName(String name) {

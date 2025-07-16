@@ -34,11 +34,24 @@ public class UserService {
         return model.getTotalItems();
     }
     
-    public List<User> getUsersByPage(int page, int quantity) {
-        return model.listItemsByPage("", SearchCriteriaEnum.NONE, page, quantity);
+    public List<User> getUsersByPage(String filter, SearchCriteriaEnum criteria, int page, int quantity) {
+        return model.listItemsByPage(filter, criteria, page, quantity);
     }
     
     public int getQuantityUsers() {
         return model.getTotalItems();
     }
+    
+    public boolean updateUser(User user, int id) {
+        if ( user == null || id < 0 ) return false;
+        return model.updateItem(user, id);
+    }
+    
+    public boolean activateUser( int userId ) {
+        return model.changeStatus(userId, true);
+    }
+    
+    public boolean deactivateUser( int userId ) {
+        return model.changeStatus(userId, false);
+    } 
 }

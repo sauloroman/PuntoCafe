@@ -6,6 +6,7 @@ public enum SearchCriteriaEnum {
     STATUS,
     PRODUCT_CATEGORY,
     PRODUCT_SUPPLIER,
+    USER_ROLE,
     DISH_CATEGORY,
     NONE
 }

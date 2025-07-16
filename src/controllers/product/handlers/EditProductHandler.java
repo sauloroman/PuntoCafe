@@ -21,7 +21,7 @@ public class EditProductHandler implements HandlerController {
     private final ProductService productsService;
     private String image = null;
     private int productId = 0;
-    private String productOldName = null; 
+    private String productOldName = null;
 
     public EditProductHandler(
             WarehouseEditProduct view, 

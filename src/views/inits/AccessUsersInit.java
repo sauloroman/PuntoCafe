@@ -31,6 +31,8 @@ public class AccessUsersInit {
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
         buttonGenerator.outlineButton(view.btnSeeUser, "#DDDDDD", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnSeeUser, "icon-eye", 20);
+        buttonGenerator.solidButton(view.btnRestore, ViewConstants.skyColor, ViewConstants.whiteColor);
+        view.btnRestore.setVisible(false);
         
         input.roundedComboBox(view.userRoleCombo, "#DDDDDD", 10);
         input.roundedField(view.searchUserTxt, "#DDDDDD", 10);

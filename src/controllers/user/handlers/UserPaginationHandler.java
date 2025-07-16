@@ -57,7 +57,7 @@ public class UserPaginationHandler extends PaginationHandlerController<User, Acc
 
     @Override
     protected List<User> listItemsByPage(String filter, SearchCriteriaEnum criteria, int page, int perPage) {
-        return service.getUsersByPage(page, 10);
+        return service.getUsersByPage(filter, criteria, page, getSelectedItemsPerPage());
     }
 
     @Override

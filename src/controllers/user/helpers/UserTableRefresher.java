@@ -16,6 +16,7 @@ public class UserTableRefresher {
     } 
     
     public void refresh(SearchCriteriaEnum criteria, String filter) {
+        System.out.println("Criterio en user table refresher: " + criteria);
         paginationHandler.getItemsPerFilter(criteria, filter);
     }
     

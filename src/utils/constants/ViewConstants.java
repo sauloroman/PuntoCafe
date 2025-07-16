@@ -10,5 +10,7 @@ public final class ViewConstants {
     public static String updateColor = "#fff3bf";
     public static String purpleColor = "#70448e8";
     public static String blueColor = "#E7F1F3";
+    public static String skyColor = "#3183F1";
+    public static String whiteColor = "#FFFFFF";
 }
 
