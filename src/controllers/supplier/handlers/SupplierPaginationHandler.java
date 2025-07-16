@@ -1,6 +1,6 @@
 package controllers.supplier.handlers;
 
-import controllers.interfaces.PaginationHandlerController;
+import interfaces.PaginationHandlerController;
 import entities.Supplier;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;

@@ -1,6 +1,6 @@
 package controllers.product.handlers;
 
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import entities.Category;
 import entities.Product;
 import entities.Supplier;

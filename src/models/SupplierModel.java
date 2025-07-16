@@ -7,7 +7,7 @@ import config.Database;
 import entities.Supplier;
 import java.util.ArrayList;
 import java.util.List;
-import models.interfaces.CrudInterface;
+import interfaces.CrudInterface;
 import utils.enums.SearchCriteriaEnum;
 
 public class SupplierModel implements CrudInterface<Supplier> {

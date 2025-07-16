@@ -1,7 +1,7 @@
 package controllers.product.handlers;
 
 import services.CategoryService;
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import services.ProductService;
 import services.SupplierService;
 import entities.Category;

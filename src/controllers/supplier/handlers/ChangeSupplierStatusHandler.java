@@ -1,6 +1,6 @@
 package controllers.supplier.handlers;
 
-import controllers.interfaces.ChangeStatusInterface;
+import interfaces.ChangeStatusInterface;
 import services.SupplierService;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;

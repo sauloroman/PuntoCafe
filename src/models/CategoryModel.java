@@ -7,7 +7,7 @@ import config.Database;
 import entities.Category;
 import java.util.ArrayList;
 import java.util.List;
-import models.interfaces.CrudInterface;
+import interfaces.CrudInterface;
 import utils.enums.SearchCriteriaEnum;
 
 public class CategoryModel implements CrudInterface<Category> {

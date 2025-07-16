@@ -1,13 +1,13 @@
 package controllers.category.handlers;
 
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import entities.Category;
 import services.CategoryService;
 import utils.enums.ModalTypeEnum;
 import views.warehouse.WarehouseCategories;
 import utils.helpers.Modal;
 import utils.helpers.NavegationTabs;
-import utils.validators.CategoryValidator;
+import controllers.category.helpers.CategoryValidator;
 import views.components.Label;
 
 public class EditCategoryHandler implements HandlerController {

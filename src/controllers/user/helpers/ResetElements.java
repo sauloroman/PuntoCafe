@@ -65,7 +65,7 @@ public class ResetElements {
     
     public void showPassword(JPasswordField field) {
         if (field.getEchoChar() == (char) 0) {
-            field.setEchoChar('*');
+            field.setEchoChar('▪');
         } else {
             field.setEchoChar((char) 0);
         }

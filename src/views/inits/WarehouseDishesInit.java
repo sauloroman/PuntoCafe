@@ -33,7 +33,7 @@ public class WarehouseDishesInit {
         
         inputGenerator.roundedComboBox(view.dishStatusCombo, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.dishCategoryCombo, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.dishSearchByNameTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.dishSearchByNameTxt, INPUT_COLOR, 10, "Busca platillos por nombre");
         inputGenerator.roundedComboBox(view.pageComboBox, INPUT_COLOR, 10);
     }
     

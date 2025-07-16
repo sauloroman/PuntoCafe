@@ -1,7 +1,7 @@
 package controllers.category.handlers;
 
 import services.CategoryService;
-import controllers.interfaces.PaginationHandlerController;
+import interfaces.PaginationHandlerController;
 import entities.Category;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;

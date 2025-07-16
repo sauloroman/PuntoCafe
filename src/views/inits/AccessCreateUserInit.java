@@ -35,11 +35,11 @@ public class AccessCreateUserInit {
         buttonGenerator.addIcon(view.btnShowPassword, "icon-eye", 14);
         buttonGenerator.addIcon(view.btnShowConfirmPassword, "icon-eye", 14);
         
-        inputGenerator.roundedField(view.userEmailTxt, "#DDDDDD", 10);
-        inputGenerator.roundedField(view.userNameTxt, "#DDDDDD", 10);
-        inputGenerator.roundedField(view.userLastnameTxt, "#DDDDDD", 10);
-        inputGenerator.roundedField(view.userPassTxt, "#DDDDDD", 10);
-        inputGenerator.roundedField(view.userConfirmPassTxt, "#DDDDDD", 10);
+        inputGenerator.roundedField(view.userEmailTxt, "#DDDDDD", 10, "");
+        inputGenerator.roundedField(view.userNameTxt, "#DDDDDD", 10, "");
+        inputGenerator.roundedField(view.userLastnameTxt, "#DDDDDD", 10, "");
+        inputGenerator.roundedField(view.userPassTxt, "#DDDDDD", 10, "");
+        inputGenerator.roundedField(view.userConfirmPassTxt, "#DDDDDD", 10, "");
         inputGenerator.roundedComboBox(view.userRoleCombo, "#DDDDDD", 10);
         
         imageGenerator.addImageFix(view.iconRH, "logo-rh", 50, 50);

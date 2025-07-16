@@ -1,9 +1,9 @@
 package controllers.product;
 
-import controllers.interfaces.ChangeStatusNoTableInterface;
+import interfaces.ChangeStatusNoTableInterface;
 import services.ProductService;
 import services.CategoryService;
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import controllers.product.handlers.ChangeProductStatusHandler;
 import controllers.product.handlers.EditProductHandler;
 import controllers.product.handlers.SaveProductHandler;

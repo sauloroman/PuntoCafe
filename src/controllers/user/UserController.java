@@ -1,14 +1,15 @@
 package controllers.user;
 
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import controllers.user.handlers.ChangeUserStatusHandler;
 import controllers.user.handlers.CreateUserHandler;
 import controllers.user.handlers.EditUserHandler;
+import controllers.user.handlers.QuantityUsersByRoleHandler;
 import controllers.user.handlers.UserPaginationHandler;
 import controllers.user.helpers.ResetElements;
 import controllers.user.helpers.FillBoxes;
 import controllers.user.helpers.FilterUsers;
-import controllers.user.helpers.GetUserFromTable;
+import controllers.user.helpers.UserFromTable;
 import controllers.user.helpers.LoadInformation;
 import controllers.user.helpers.UploadUserImage;
 import controllers.user.helpers.UserTableRefresher;
@@ -25,11 +26,13 @@ import utils.helpers.SelectedRowTable;
 import views.access.AccessCreateUser;
 import views.access.AccessEditUser;
 import views.access.AccessInfoUser;
+import views.access.AccessRoles;
 import views.access.AccessUsers;
 
 public class UserController {
     
     private final AccessUsers view;
+    private final AccessRoles rolesView;
     private final UserModel model;
     private final RoleModel roleModel;
     private final UserService userService;
@@ -45,9 +48,10 @@ public class UserController {
     private final UserPaginationHandler paginationHandler;
     private final HandlerController createUserHandler;
     private final HandlerController editUserHandler;
+    private final HandlerController quantityUsersByRoleHandler;
     private final SelectedRowTable selectedRow;
     private final LoadInformation loadUserInfo;
-    private final GetUserFromTable fromTable;
+    private final UserFromTable fromTable;
     private final FilterUsers filter;
     private final ChangeUserStatusHandler activateUser;
     private final ChangeUserStatusHandler deactivateUser;
@@ -56,10 +60,12 @@ public class UserController {
     
     public UserController(
             AccessUsers view, 
+            AccessRoles rolesView,
             UserModel model,
             RoleModel roleModel
     ) {
         this.view = view;
+        this.rolesView = rolesView;
         this.model = model;
         this.roleModel = roleModel;
         
@@ -78,9 +84,10 @@ public class UserController {
         this.refresher = new UserTableRefresher(paginationHandler);
         this.selectedRow = new SelectedRowTable(modal, view.usersTable);
         this.loadUserInfo = new LoadInformation(infoUserView, editUserView, roleService);
-        this.fromTable = new GetUserFromTable(view, userService);
+        this.fromTable = new UserFromTable(view, userService);
         this.filter = new FilterUsers(view);
         
+        this.quantityUsersByRoleHandler = new QuantityUsersByRoleHandler(rolesView, roleService, userService);
         this.createUserHandler = new CreateUserHandler(createUserView, userService, roleService, modal);
         this.editUserHandler = new EditUserHandler(editUserView, userService, roleService, modal);
         this.activateUser = new ChangeUserStatusHandler(userService, true, modal);
@@ -91,6 +98,7 @@ public class UserController {
     }
     
     private void init() {
+        quantityUsersByRoleHandler.execute();
         paginationHandler.execute();
         fillBoxes.fillRoleBox(roleService.getRoles());
         fillBoxes.fillRoleEditBox(roleService.getRoles());
@@ -181,6 +189,7 @@ public class UserController {
         setTotalUsers();
         editUserView.setVisible(false);
         infoUserView.setVisible(false);
+        quantityUsersByRoleHandler.execute();
     }
     
     private void openEditUserWindow() {
@@ -225,6 +234,7 @@ public class UserController {
         setTotalUsers();
         createUserView.setVisible(false);
         upload.removeImage();
+        quantityUsersByRoleHandler.execute();
     }
     
     private void openInfoUserWindow() {

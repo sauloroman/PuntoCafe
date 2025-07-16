@@ -1,8 +1,8 @@
 package controllers.supplier;
 
 import java.awt.event.ActionListener;
-import controllers.interfaces.ChangeStatusInterface;
-import controllers.interfaces.HandlerController;
+import interfaces.ChangeStatusInterface;
+import interfaces.HandlerController;
 import controllers.supplier.handlers.ChangeSupplierStatusHandler;
 import controllers.supplier.handlers.EditSupplierHandler;
 import controllers.supplier.helpers.FilterSuppliers;

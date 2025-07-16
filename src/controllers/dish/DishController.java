@@ -12,7 +12,7 @@ import controllers.dish.helpers.LoadInformationDish;
 import controllers.dish.helpers.ResetElements;
 import controllers.dish.helpers.UploadDishImage;
 import controllers.dish.helpers.Pages;
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import entities.Dish;
 import java.awt.event.ActionListener;
 import models.CategoryModel;

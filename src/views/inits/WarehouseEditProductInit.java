@@ -32,9 +32,9 @@ public class WarehouseEditProductInit {
         buttonGenerator.outlineButton(view.btnRemoveImage, INPUT_COLOR, ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnRemoveImage, "icon-down", 20);
         
-        inputGenerator.roundedField(view.productEditNameTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.productEditStockTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.productEditStockMinTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.productEditNameTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.productEditStockTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.productEditStockMinTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedComboBox(view.productEditCategoryCombo, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.productEditSupplierCombo, INPUT_COLOR, 10);
         inputGenerator.roundedArea(view.productEditDescriptionTxt, INPUT_COLOR, 10);

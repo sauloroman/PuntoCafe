@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import models.interfaces.CrudInterface;
+import interfaces.CrudInterface;
 import utils.enums.SearchCriteriaEnum;
 
 public class ProductModel implements CrudInterface<Product> {

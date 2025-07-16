@@ -32,24 +32,24 @@ public class PurchasesSuppliersInit {
         
         NavegationTabs.activateTabPane(view.suppliersNavegationTab, 3, 0);
         
-        inputGenerator.roundedField(view.searchSuppliersTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.searchSuppliersTxt, INPUT_COLOR, 10, "Buscar proveedores por nombre");
         inputGenerator.roundedComboBox(view.suppliersCompanyCombo, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.suppliersStatusCombo, INPUT_COLOR, 10);
         
-        inputGenerator.roundedField(view.supplierNameTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierLastnameTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierEmailTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierAddressTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierNewCompanyTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierPhoneTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.supplierNameTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierLastnameTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierEmailTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierAddressTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierNewCompanyTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierPhoneTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedComboBox(view.supplierCompanyTxt, INPUT_COLOR, 10);
         
-        inputGenerator.roundedField(view.supplierEditNameTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierEditLastnameTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierEditPhoneTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierEditEmailTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierEditAddressTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.supplierEditNewCompanyTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.supplierEditNameTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierEditLastnameTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierEditPhoneTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierEditEmailTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierEditAddressTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.supplierEditNewCompanyTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedComboBox(view.supplierEditCompanyTxt, INPUT_COLOR, 10);
         
         inputGenerator.roundedComboBox(view.pageComboBox, INPUT_COLOR, 10);

@@ -35,7 +35,7 @@ public class AccessUsersInit {
         view.btnRestore.setVisible(false);
         
         input.roundedComboBox(view.userRoleCombo, "#DDDDDD", 10);
-        input.roundedField(view.searchUserTxt, "#DDDDDD", 10);
+        input.roundedField(view.searchUserTxt, "#DDDDDD", 10, "");
         input.roundedComboBox(view.pageCombo, "#DDDDDD", 10);
         input.roundedComboBox(view.itemsPerPageComboBox, "#DDDDDD", 10);
         

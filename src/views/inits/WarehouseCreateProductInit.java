@@ -32,13 +32,13 @@ public class WarehouseCreateProductInit {
         buttonGenerator.outlineButton(view.btnRemoveImage, INPUT_COLOR, ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnRemoveImage, "icon-down", 20);
         
-        inputGenerator.roundedField(view.productNameTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.productStockTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.productStockMinTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.productNameTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.productStockTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.productStockMinTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedComboBox(view.productCategoryCombo, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.productSupplierCombo, INPUT_COLOR, 10);
         inputGenerator.roundedArea(view.productDescriptionTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.productPriceTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.productPriceTxt, INPUT_COLOR, 10, "");
         
         imageGenerator.addImage(view.iconCreateProduct, "icon-create-product", 20);
         imageGenerator.addImageProduct(view.productImageLabel, "no-image.jpg", 200, 200);

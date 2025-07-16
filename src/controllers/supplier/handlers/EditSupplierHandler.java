@@ -1,6 +1,6 @@
 package controllers.supplier.handlers;
 
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import entities.Supplier;
 import services.SupplierService;
 import utils.enums.ModalTypeEnum;

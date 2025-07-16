@@ -32,10 +32,10 @@ public class WarehouseCreateDishInit {
         buttonGenerator.outlineButton(view.btnRemoveImage, INPUT_COLOR, ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnRemoveImage, "icon-down", 20);
         
-        inputGenerator.roundedField(view.dishNameTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.dishNameTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedComboBox(view.dishCategoryCombo, INPUT_COLOR, 10);
         inputGenerator.roundedArea(view.dishDescriptionTxt, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.dishPriceTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.dishPriceTxt, INPUT_COLOR, 10, "");
         
         imageGenerator.addImage(view.iconCreateDish, "icon-create-product", 20);
         imageGenerator.addImageProduct(view.dishImageLabel, "no-image.jpg", 200, 200);

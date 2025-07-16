@@ -35,9 +35,9 @@ public class AccessEditUserInit {
         buttonGenerator.outlineButton(view.btnUpdatePassword, "#dddddd", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnUpdatePassword, "icon-pencil", 20);
         
-        inputGenerator.roundedField(view.userEmailTxt, "#DDDDDD", 10);
-        inputGenerator.roundedField(view.userNameTxt, "#DDDDDD", 10);
-        inputGenerator.roundedField(view.userLastnameTxt, "#DDDDDD", 10);
+        inputGenerator.roundedField(view.userEmailTxt, "#DDDDDD", 10, "");
+        inputGenerator.roundedField(view.userNameTxt, "#DDDDDD", 10, "");
+        inputGenerator.roundedField(view.userLastnameTxt, "#DDDDDD", 10, "");
         inputGenerator.roundedComboBox(view.userRoleCombo, "#DDDDDD", 10);
         
         imageGenerator.addImageFix(view.iconRH, "logo-rh", 50, 50);

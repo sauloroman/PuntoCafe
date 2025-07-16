@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import models.interfaces.CrudInterface;
+import interfaces.CrudInterface;
 import utils.enums.SearchCriteriaEnum;
 
 public class UserModel implements CrudInterface<User> {
@@ -152,11 +152,7 @@ public class UserModel implements CrudInterface<User> {
     public List<User> listItemsByPage(String filter, SearchCriteriaEnum criteria, int page, int itemsPerPage) {
         List<User> users = new ArrayList<>();
         
-        try {
-            
-            System.out.println("Filtro en modelo: " + filter);
-            System.out.println("Criterio en modelo: " + criteria);
-            
+        try {            
             if ( criteria.equals(SearchCriteriaEnum.NAME) ) {
                 statement = DATABASE.connect().prepareStatement(
                     "SELECT * "
@@ -363,6 +359,35 @@ public class UserModel implements CrudInterface<User> {
             
         } catch(SQLException e) {
             System.out.println("No se pudo obtener el total de usuarios: " + e.getMessage());
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return totalItems;
+
+    }
+    
+    public int getTotalUsersByRole( int role ) {
+        
+        int totalItems = 0;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT COUNT(*) FROM user WHERE role_id = ?");
+            statement.setInt(1, role);
+            result = statement.executeQuery();
+            
+            while( result.next() ) { 
+                totalItems = result.getInt("COUNT(*)");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el total de usuarios por rol: " + e.getMessage());
         } finally {
             statement = null;
             result = null;

@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import models.interfaces.CrudInterface;
+import interfaces.CrudInterface;
 import utils.enums.SearchCriteriaEnum;
 
 public class RoleModel implements CrudInterface<Role> {

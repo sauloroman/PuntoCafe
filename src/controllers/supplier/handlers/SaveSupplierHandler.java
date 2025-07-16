@@ -1,11 +1,11 @@
 package controllers.supplier.handlers;
 
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import entities.Supplier;
 import services.SupplierService;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;
-import utils.validators.SupplierValidator;
+import controllers.supplier.helpers.SupplierValidator;
 import views.components.Label;
 import views.purchases.PurchasesSuppliers;
 

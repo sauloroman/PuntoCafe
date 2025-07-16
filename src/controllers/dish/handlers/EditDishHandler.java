@@ -1,6 +1,6 @@
 package controllers.dish.handlers;
 
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import entities.Category;
 import entities.Dish;
 import services.CategoryService;

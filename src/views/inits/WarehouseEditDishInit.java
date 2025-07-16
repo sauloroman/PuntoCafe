@@ -32,7 +32,7 @@ public class WarehouseEditDishInit {
         buttonGenerator.outlineButton(view.btnRemoveImage, INPUT_COLOR, ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnRemoveImage, "icon-down", 20);
         
-        inputGenerator.roundedField(view.dishEditNameTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.dishEditNameTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedComboBox(view.dishEditCategoryCombo, INPUT_COLOR, 10);
         inputGenerator.roundedArea(view.dishEditDescriptionTxt, INPUT_COLOR, 10);
         

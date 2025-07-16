@@ -35,7 +35,7 @@ public class WarehouseProductsInit {
         inputGenerator.roundedComboBox(view.productStatusCombo, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.productCategoryCombo, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.productSupplierCombo, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.productSearchByNameTxt, INPUT_COLOR, 10);
+        inputGenerator.roundedField(view.productSearchByNameTxt, INPUT_COLOR, 10, "Busca productos por nombre");
         inputGenerator.roundedComboBox(view.pageComboBox, INPUT_COLOR, 10);
     }
     

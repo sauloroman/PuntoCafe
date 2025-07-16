@@ -1,6 +1,6 @@
 package controllers.category.handlers;
 
-import controllers.interfaces.ChangeStatusInterface;
+import interfaces.ChangeStatusInterface;
 import services.CategoryService;
 import utils.enums.ModalTypeEnum;
 import views.warehouse.WarehouseCategories;

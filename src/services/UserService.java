@@ -42,6 +42,10 @@ public class UserService {
         return model.getTotalItems();
     }
     
+    public int getQuantityUserByRole(int role) {
+        return model.getTotalUsersByRole(role);
+    }
+    
     public boolean updateUser(User user, int id) {
         if ( user == null || id < 0 ) return false;
         return model.updateItem(user, id);

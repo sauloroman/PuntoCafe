@@ -1,6 +1,6 @@
 package controllers.dish.handlers;
 
-import controllers.interfaces.ChangeStatusNoTableInterface;
+import interfaces.ChangeStatusNoTableInterface;
 import services.DishService;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;

@@ -1,6 +1,6 @@
 package controllers.user.handlers;
 
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import entities.User;
 import services.RoleService;
 import services.UserService;

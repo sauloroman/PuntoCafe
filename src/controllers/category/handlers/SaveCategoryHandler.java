@@ -1,11 +1,11 @@
 package controllers.category.handlers;
 
 import services.CategoryService;
-import controllers.interfaces.HandlerController;
+import interfaces.HandlerController;
 import entities.Category;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;
-import utils.validators.CategoryValidator;
+import controllers.category.helpers.CategoryValidator;
 import views.components.Label;
 import views.warehouse.WarehouseCategories;
 

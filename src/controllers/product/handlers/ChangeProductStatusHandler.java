@@ -1,6 +1,6 @@
 package controllers.product.handlers;
 
-import controllers.interfaces.ChangeStatusNoTableInterface;
+import interfaces.ChangeStatusNoTableInterface;
 import services.ProductService;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;

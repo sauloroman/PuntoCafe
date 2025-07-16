@@ -35,11 +35,11 @@ public class WarehouseCategoriesInit {
         
         NavegationTabs.activateTabPane(view.categoriesNavegationPane, 3, 0);
         
-        inputGenerator.roundedField(view.searchTxt, INPUT_COLOR, 8);
-        inputGenerator.roundedField(view.categoryNameTxt, INPUT_COLOR, 8);
+        inputGenerator.roundedField(view.searchTxt, INPUT_COLOR, 8, "Buscar categoría por nombre");
+        inputGenerator.roundedField(view.categoryNameTxt, INPUT_COLOR, 8, "");
         inputGenerator.roundedArea(view.categoryDescriptionTxt, INPUT_COLOR, 8);
         inputGenerator.roundedComboBox(view.categoryTypeCombo, INPUT_COLOR, 10);
-        inputGenerator.roundedField(view.editCategoryNameTxt, INPUT_COLOR, 8);
+        inputGenerator.roundedField(view.editCategoryNameTxt, INPUT_COLOR, 8, "");
         inputGenerator.roundedArea(view.editCategoryDescriptionTxt, INPUT_COLOR, 8);
         inputGenerator.roundedComboBox(view.pageComboBox, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.itemsPerPageComboBox, INPUT_COLOR, 10);
