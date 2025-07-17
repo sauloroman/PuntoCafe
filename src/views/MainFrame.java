@@ -1,7 +1,5 @@
 package views;
 
-import views.inits.MainFrameInit;
-
 public class MainFrame extends javax.swing.JFrame {
     
     private final MainFrameInit styleView = new MainFrameInit(this);
@@ -44,89 +42,94 @@ public class MainFrame extends javax.swing.JFrame {
 
         boxLogo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        btnWarehouse.setBackground(new java.awt.Color(152, 188, 176));
-        btnWarehouse.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnWarehouse.setForeground(new java.awt.Color(18, 22, 21));
-        btnWarehouse.setText("ALMACEN");
+        btnWarehouse.setBackground(new java.awt.Color(40, 60, 117));
+        btnWarehouse.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnWarehouse.setForeground(new java.awt.Color(204, 204, 204));
+        btnWarehouse.setText("Almacen");
         btnWarehouse.setBorder(null);
         btnWarehouse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnWarehouse.setFocusPainted(false);
+        btnWarehouse.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnWarehouse.setIconTextGap(10);
 
-        btnPurchases.setBackground(new java.awt.Color(152, 188, 176));
-        btnPurchases.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnPurchases.setForeground(new java.awt.Color(18, 22, 21));
-        btnPurchases.setText("COMPRAS");
+        btnPurchases.setBackground(new java.awt.Color(40, 60, 117));
+        btnPurchases.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnPurchases.setForeground(new java.awt.Color(204, 204, 204));
+        btnPurchases.setText("Compras");
         btnPurchases.setBorder(null);
         btnPurchases.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPurchases.setFocusPainted(false);
+        btnPurchases.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPurchases.setIconTextGap(10);
 
-        btnSales.setBackground(new java.awt.Color(152, 188, 176));
-        btnSales.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnSales.setForeground(new java.awt.Color(18, 22, 21));
-        btnSales.setText("VENTAS");
+        btnSales.setBackground(new java.awt.Color(40, 60, 117));
+        btnSales.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnSales.setForeground(new java.awt.Color(204, 204, 204));
+        btnSales.setText("Ventas");
         btnSales.setBorder(null);
         btnSales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSales.setFocusPainted(false);
-        btnSales.setHideActionText(true);
+        btnSales.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSales.setIconTextGap(10);
 
-        btnAccess.setBackground(new java.awt.Color(152, 188, 176));
-        btnAccess.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnAccess.setForeground(new java.awt.Color(18, 22, 21));
-        btnAccess.setText("ACCESO");
+        btnAccess.setBackground(new java.awt.Color(40, 60, 117));
+        btnAccess.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnAccess.setForeground(new java.awt.Color(204, 204, 204));
+        btnAccess.setText("Acceso");
         btnAccess.setBorder(null);
         btnAccess.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAccess.setFocusPainted(false);
+        btnAccess.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAccess.setIconTextGap(10);
 
-        btnQueries.setBackground(new java.awt.Color(152, 188, 176));
-        btnQueries.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnQueries.setForeground(new java.awt.Color(18, 22, 21));
-        btnQueries.setText("CONSULTAS");
+        btnQueries.setBackground(new java.awt.Color(40, 60, 117));
+        btnQueries.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnQueries.setForeground(new java.awt.Color(204, 204, 204));
+        btnQueries.setText("Consultas");
         btnQueries.setBorder(null);
         btnQueries.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnQueries.setFocusPainted(false);
+        btnQueries.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQueries.setIconTextGap(10);
         btnQueries.setRolloverEnabled(false);
 
+        logoName.setForeground(new java.awt.Color(255, 255, 255));
         logoName.setText("PuntoCafé");
 
+        logoName1.setBackground(new java.awt.Color(255, 255, 255));
         logoName1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        logoName1.setForeground(new java.awt.Color(18, 22, 21));
+        logoName1.setForeground(new java.awt.Color(255, 255, 255));
         logoName1.setText("Cooperativas RH");
 
         javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
         sidebar.setLayout(sidebarLayout);
         sidebarLayout.setHorizontalGroup(
             sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnWarehouse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnPurchases, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnSales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnWarehouse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnPurchases, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnAccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnQueries, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnQueries, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(sidebarLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(32, 32, 32)
                 .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(5, 5, 5)
                 .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logoName)
                     .addComponent(logoName1))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         sidebarLayout.setVerticalGroup(
             sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidebarLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(sidebarLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addGap(13, 13, 13)
                         .addComponent(logoName)
                         .addGap(1, 1, 1)
                         .addComponent(logoName1))
-                    .addGroup(sidebarLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(btnWarehouse, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -137,7 +140,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(btnQueries, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(536, Short.MAX_VALUE))
+                .addContainerGap(538, Short.MAX_VALUE))
         );
 
         header.setBackground(new java.awt.Color(255, 255, 255));
@@ -200,14 +203,14 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
-        mainPanel.setPreferredSize(new java.awt.Dimension(1200, 900));
+        mainPanel.setBackground(new java.awt.Color(240, 240, 240));
+        mainPanel.setPreferredSize(new java.awt.Dimension(1300, 900));
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1233, Short.MAX_VALUE)
+            .addGap(0, 1320, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,15 +223,16 @@ public class MainFrame extends javax.swing.JFrame {
             mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainLayout.createSequentialGroup()
                 .addComponent(sidebar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addGroup(mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 1239, Short.MAX_VALUE)
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 1320, Short.MAX_VALUE)
                     .addGroup(mainLayout.createSequentialGroup()
-                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1233, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         mainLayout.setVerticalGroup(
             mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
             .addGroup(mainLayout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -240,7 +244,9 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

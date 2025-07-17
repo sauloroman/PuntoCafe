@@ -20,6 +20,7 @@ import models.RoleModel;
 import models.UserModel;
 import services.RoleService;
 import services.UserService;
+import utils.enums.ModalTypeEnum;
 import utils.enums.SearchCriteriaEnum;
 import utils.helpers.Modal;
 import utils.helpers.SelectedRowTable;
@@ -82,7 +83,7 @@ public class UserController {
         this.upload = new UploadUserImage(createUserView, editUserView, modal);
         this.reset = new ResetElements(view, createUserView, editUserView);
         this.refresher = new UserTableRefresher(paginationHandler);
-        this.selectedRow = new SelectedRowTable(modal, view.usersTable);
+        this.selectedRow = new SelectedRowTable(view.usersTable);
         this.loadUserInfo = new LoadInformation(infoUserView, editUserView, roleService);
         this.fromTable = new UserFromTable(view, userService);
         this.filter = new FilterUsers(view);
@@ -238,9 +239,12 @@ public class UserController {
     }
     
     private void openInfoUserWindow() {
-        if ( !selectedRow.validate("Selecciona un usuario") ) return;
-        userSelected = fromTable.getUser(selectedRow.getSelectedRow());
+        if ( !selectedRow.validate() ) {
+            modal.show("Seleccione un usuario", ModalTypeEnum.error);
+            return;
+        }
         
+        userSelected = fromTable.getUser(selectedRow.getSelectedRow());
         loadUserInfo.loadInfoUser(userSelected);
         infoUserView.setVisible(true);
     }

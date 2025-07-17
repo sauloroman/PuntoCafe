@@ -32,7 +32,7 @@ public class Card {
         JLabel imageLabel = new JLabel();
         imageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         String image = "Producto sin imagen".equals(product.getProductImage()) ? "no-image.jpg" : product.getProductImage();
-        imageGenerator.addImageProduct( imageLabel, product.getProductIsActive() ? image : "image-disabled.png", 100, 100);
+        imageGenerator.addImageProduct( imageLabel, product.getProductIsActive() ? image : "image-disabled.png", 90, 90);
         
         JLabel nameLabel = new JLabel(product.getProductName());
         nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
@@ -83,7 +83,7 @@ public class Card {
         JLabel imageLabel = new JLabel();
         imageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         String image = "Platillo sin imagen".equals(dish.getDishImage()) ? "no-image.jpg" : dish.getDishImage();
-        imageGenerator.addImageDish(imageLabel, dish.getIsActive() ? image : "image-disabled.png", 100, 100);
+        imageGenerator.addImageDish(imageLabel, dish.getIsActive() ? image : "image-disabled.png", 90, 90);
         
         JLabel nameLabel = new JLabel(dish.getDishName());
         nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));

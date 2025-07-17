@@ -1,28 +1,33 @@
 package utils.helpers;
 
 import javax.swing.JTable;
-import utils.enums.ModalTypeEnum;
 
 public final class SelectedRowTable {
 
-    private final Modal modal;
     private final JTable table;
     
-    public SelectedRowTable( Modal modal, JTable table ) {
-        this.modal = modal;
+    public SelectedRowTable( JTable table ) {
         this.table = table;
     }
         
-    public boolean validate(String message) {
-        if ( table.getSelectedRowCount() == 0 ) {
-            modal.show(message, ModalTypeEnum.error);
-            return false;
-        }
-        return true;
+    public boolean validate() {
+        return table.getSelectedRowCount() != 0;
     }
     
     public int getSelectedRow() {
         return table.getSelectedRow();
+    }
+    
+    public String getStatus() {
+        return table.getValueAt(getSelectedRow(), 6).toString();
+    }
+    
+    public String getName() {
+        return table.getValueAt(getSelectedRow(), 1).toString();
+    }
+    
+    public int getId() {
+        return Integer.parseInt(table.getValueAt(getSelectedRow(), 0).toString());
     }
     
 }

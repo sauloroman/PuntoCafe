@@ -1,7 +1,5 @@
 package views.access;
 
-import views.inits.AccessInfoUserInit;
-
 public class AccessInfoUser extends javax.swing.JFrame {
 
     private final AccessInfoUserInit style = new AccessInfoUserInit(this);
@@ -39,7 +37,7 @@ public class AccessInfoUser extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-left_1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-blue.png"))); // NOI18N
 
         userInfoImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
 

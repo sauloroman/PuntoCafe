@@ -41,9 +41,15 @@ public class PuntoCafe {
     public static void main(String[] args) {
         loadFlatLaf();
         
-        SwingUtilities.invokeLater(() -> {
-            new PuntoCafe().showLogin();
-        });       
+        new PuntoCafe().run();
+        
+//        SwingUtilities.invokeLater(() -> {
+//            new PuntoCafe().showLogin();
+//        });       
+    }
+    
+    private void run() {
+        initApp();
     }
     
     private static void loadFlatLaf() {

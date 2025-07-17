@@ -1,7 +1,5 @@
 package views.access;
 
-import views.inits.AccessEditUserInit;
-
 public class AccessEditUser extends javax.swing.JFrame {
 
     private final AccessEditUserInit style = new AccessEditUserInit(this);
@@ -58,7 +56,7 @@ public class AccessEditUser extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Correo Electrónico");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-left_1.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-blue.png"))); // NOI18N
 
         userImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
 

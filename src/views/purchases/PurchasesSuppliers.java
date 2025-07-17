@@ -1,7 +1,5 @@
 package views.purchases;
 
-import views.inits.PurchasesSuppliersInit;
-
 public class PurchasesSuppliers extends javax.swing.JPanel {
    
     private final PurchasesSuppliersInit styleView = new PurchasesSuppliersInit(this);

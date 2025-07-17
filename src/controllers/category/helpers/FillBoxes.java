@@ -11,10 +11,10 @@ public class FillBoxes {
     }
     
     public void fill(String typeProduct, String typeDish ) {
-        view.categoryTypeCombo.addItem(typeProduct);
-        view.categoryTypeCombo.addItem(typeDish);
-        view.editCategoryTypeCombo.addItem(typeProduct);
-        view.editCategoryTypeCombo.addItem(typeDish);
+//        view.categoryTypeCombo.addItem(typeProduct);
+//        view.categoryTypeCombo.addItem(typeDish);
+//        view.editCategoryTypeCombo.addItem(typeProduct);
+//        view.editCategoryTypeCombo.addItem(typeDish);
     }
     
 }

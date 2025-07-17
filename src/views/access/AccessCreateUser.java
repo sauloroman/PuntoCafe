@@ -1,7 +1,5 @@
 package views.access;
 
-import views.inits.AccessCreateUserInit;
-
 public class AccessCreateUser extends javax.swing.JFrame {
 
     private final AccessCreateUserInit style = new AccessCreateUserInit(this);
@@ -73,7 +71,7 @@ public class AccessCreateUser extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setText("Repetir contraseña");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-left_1.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-blue.png"))); // NOI18N
 
         userImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
 
@@ -165,7 +163,6 @@ public class AccessCreateUser extends javax.swing.JFrame {
                                 .addComponent(userImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel9)
                                     .addGap(28, 28, 28))))))
                 .addContainerGap(63, Short.MAX_VALUE))

@@ -1,7 +1,5 @@
 package views.access;
 
-import views.inits.AccessInit;
-
 public class Access extends javax.swing.JPanel {
     
     private final AccessInit styleView = new AccessInit(this);

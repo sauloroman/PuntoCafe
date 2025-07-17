@@ -1,7 +1,5 @@
 package views.access;
 
-import views.inits.AccessRolesInit;
-
 public class AccessRoles extends javax.swing.JPanel {
 
     private final AccessRolesInit style = new AccessRolesInit(this);

@@ -1,7 +1,5 @@
 package views.login;
 
-import views.inits.LoginInit;
-
 public class Login extends javax.swing.JFrame {
 
     private final LoginInit style = new LoginInit(this);

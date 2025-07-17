@@ -16,6 +16,7 @@ import controllers.supplier.helpers.HidePaginationControls;
 import controllers.supplier.helpers.SupplierTableRefresher;
 import models.SupplierModel;
 import services.SupplierService;
+import utils.enums.ModalTypeEnum;
 import utils.enums.SearchCriteriaEnum;
 import utils.helpers.NavegationTabs;
 import utils.helpers.Modal;
@@ -63,7 +64,7 @@ public class SupplierController {
         this.searchSupplier = new SearchSuppliers(view);
         this.filterSuppliers = new FilterSuppliers(view);
         this.loadEditHandler = new LoadEditSupplier(view);
-        this.selectedRow = new SelectedRowTable(modal, view.suppliersTable);
+        this.selectedRow = new SelectedRowTable(view.suppliersTable);
         
         init();
         initListeners();     
@@ -105,7 +106,7 @@ public class SupplierController {
     }
     
     private void deactivateSupplier() {
-        if ( !selectedRow.validate("Seleccione un proveedor") ) return;
+        if ( !checkIfOneCategoryIsSelected() ) return;
         int row = selectedRow.getSelectedRow();
         if ( !deactivateSupplier.isStatusValid(row) ) return;
         if ( !deactivateSupplier.confirmChange(row) ) return;
@@ -115,7 +116,7 @@ public class SupplierController {
     }
     
     private void activateSupplier() {
-        if ( !selectedRow.validate("Seleccione un proveedor") ) return;
+        if ( !checkIfOneCategoryIsSelected() ) return;
         int row = selectedRow.getSelectedRow();
         if ( !activateSupplier.isStatusValid(row) ) return;
         if ( !activateSupplier.confirmChange(row) ) return;
@@ -154,7 +155,7 @@ public class SupplierController {
     }
     
     private void loadInfoToEdit() {
-        if ( !selectedRow.validate("Seleccione un proveedor") ) return;
+        if ( !checkIfOneCategoryIsSelected() ) return;
             
         loadEditHandler.load();
         NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 2);
@@ -167,6 +168,14 @@ public class SupplierController {
         safelyRebuildPagination( SearchCriteriaEnum.NAME );
         NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 0);
         hidePagination.show();
+    }
+    
+    private boolean checkIfOneCategoryIsSelected() {
+        if ( !selectedRow.validate() ) {
+            modal.show("Seleccione un proveedor", ModalTypeEnum.error);
+            return false;
+        }
+        return true;
     }
     
     private void safelyRebuildPagination (SearchCriteriaEnum criteria) {

@@ -1,7 +1,5 @@
 package views.warehouse;
 
-import views.inits.WarehouseInit;
-
 public class Warehouse extends javax.swing.JPanel {
     
     private final WarehouseInit styleView = new WarehouseInit(this); 
@@ -31,12 +29,13 @@ public class Warehouse extends javax.swing.JPanel {
         menusPane = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1200, 900));
+        setPreferredSize(new java.awt.Dimension(1300, 900));
 
         navegationPane.setBackground(new java.awt.Color(255, 255, 255));
         navegationPane.setAlignmentX(1.0F);
         navegationPane.setAlignmentY(1.0F);
         navegationPane.setFocusable(false);
+        navegationPane.setPreferredSize(new java.awt.Dimension(1300, 900));
 
         categoriesPane.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -44,11 +43,11 @@ public class Warehouse extends javax.swing.JPanel {
         categoriesPane.setLayout(categoriesPaneLayout);
         categoriesPaneLayout.setHorizontalGroup(
             categoriesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1194, Short.MAX_VALUE)
+            .addGap(0, 1395, Short.MAX_VALUE)
         );
         categoriesPaneLayout.setVerticalGroup(
             categoriesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 859, Short.MAX_VALUE)
+            .addGap(0, 865, Short.MAX_VALUE)
         );
 
         navegationPane.addTab("Categorías", categoriesPane);
@@ -59,11 +58,11 @@ public class Warehouse extends javax.swing.JPanel {
         productsPane.setLayout(productsPaneLayout);
         productsPaneLayout.setHorizontalGroup(
             productsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1194, Short.MAX_VALUE)
+            .addGap(0, 1395, Short.MAX_VALUE)
         );
         productsPaneLayout.setVerticalGroup(
             productsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 859, Short.MAX_VALUE)
+            .addGap(0, 865, Short.MAX_VALUE)
         );
 
         navegationPane.addTab("Productos", productsPane);
@@ -74,11 +73,11 @@ public class Warehouse extends javax.swing.JPanel {
         dishesPane.setLayout(dishesPaneLayout);
         dishesPaneLayout.setHorizontalGroup(
             dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1194, Short.MAX_VALUE)
+            .addGap(0, 1395, Short.MAX_VALUE)
         );
         dishesPaneLayout.setVerticalGroup(
             dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 859, Short.MAX_VALUE)
+            .addGap(0, 865, Short.MAX_VALUE)
         );
 
         navegationPane.addTab("Platillos", dishesPane);
@@ -87,11 +86,11 @@ public class Warehouse extends javax.swing.JPanel {
         menusPane.setLayout(menusPaneLayout);
         menusPaneLayout.setHorizontalGroup(
             menusPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1194, Short.MAX_VALUE)
+            .addGap(0, 1395, Short.MAX_VALUE)
         );
         menusPaneLayout.setVerticalGroup(
             menusPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 859, Short.MAX_VALUE)
+            .addGap(0, 865, Short.MAX_VALUE)
         );
 
         navegationPane.addTab("Menús Semanales", menusPane);
@@ -100,16 +99,13 @@ public class Warehouse extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(navegationPane)
-                .addContainerGap())
+            .addComponent(navegationPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1395, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(navegationPane))
+                .addGap(0, 0, 0)
+                .addComponent(navegationPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

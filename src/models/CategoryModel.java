@@ -124,7 +124,9 @@ public class CategoryModel implements CrudInterface<Category> {
             String categoryDescription = obj.getCategoryDescription();
             String categoryType = obj.getCategoryType();
             
-            if ( categoryDescription == null || categoryDescription.isEmpty() ) {
+            boolean hashDescription  = categoryDescription != null && !categoryDescription.isEmpty();
+            
+            if ( hashDescription ) {
                 statement = DATABASE.connect().prepareStatement(
                     "INSERT INTO category (category_name, category_type) "
                   + "VALUES (?, ?)"     
@@ -251,7 +253,7 @@ public class CategoryModel implements CrudInterface<Category> {
             );
             
             statement.setString(1, categoryName);
-            statement.setString(2, categoryDescription);
+            statement.setString(2, categoryDescription.isEmpty() ? "Categoría sin descripción" : categoryDescription);
             statement.setString(3, categoryType);
             statement.setInt(4, id);
             

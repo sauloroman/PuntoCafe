@@ -1,7 +1,5 @@
 package views.access;
 
-import views.inits.AccessUsersInit;
-
 public class AccessUsers extends javax.swing.JPanel {
 
     private final AccessUsersInit style = new AccessUsersInit(this);

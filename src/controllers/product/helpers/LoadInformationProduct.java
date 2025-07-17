@@ -33,7 +33,6 @@ public class LoadInformationProduct {
         String supplierName = supplier.getSupplierName() + " " + supplier.getSupplierLastname();
         String supplierCompany = supplier.getSupplierCompany();
         
-        view.productTitle.setText("Producto Seleccionado - " + product.getProductName());
         view.productId.setText("" + product.getProductId());
         view.productName.setText(product.getProductName());
         view.productDescription.setText(product.getProductDescription());

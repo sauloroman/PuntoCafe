@@ -1,7 +1,5 @@
 package views.warehouse;
 
-import views.inits.WarehouseInfoDishInit;
-
 public class WarehouseInfoDish extends javax.swing.JFrame {
 
     private final WarehouseInfoDishInit styleView = new WarehouseInfoDishInit(this);
