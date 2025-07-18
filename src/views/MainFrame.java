@@ -21,8 +21,6 @@ public class MainFrame extends javax.swing.JFrame {
         btnSales = new javax.swing.JButton();
         btnAccess = new javax.swing.JButton();
         btnQueries = new javax.swing.JButton();
-        logoName = new javax.swing.JLabel();
-        logoName1 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
@@ -93,14 +91,6 @@ public class MainFrame extends javax.swing.JFrame {
         btnQueries.setIconTextGap(10);
         btnQueries.setRolloverEnabled(false);
 
-        logoName.setForeground(new java.awt.Color(255, 255, 255));
-        logoName.setText("PuntoCafé");
-
-        logoName1.setBackground(new java.awt.Color(255, 255, 255));
-        logoName1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        logoName1.setForeground(new java.awt.Color(255, 255, 255));
-        logoName1.setText("Cooperativas RH");
-
         javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
         sidebar.setLayout(sidebarLayout);
         sidebarLayout.setHorizontalGroup(
@@ -109,27 +99,16 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(btnPurchases, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnSales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnAccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnQueries, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logoName)
-                    .addComponent(logoName1))
-                .addContainerGap(38, Short.MAX_VALUE))
+            .addComponent(btnQueries, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         sidebarLayout.setVerticalGroup(
             sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidebarLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sidebarLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(logoName)
-                        .addGap(1, 1, 1)
-                        .addComponent(logoName1))
-                    .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(btnWarehouse, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -276,8 +255,6 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JPanel header;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
-    public javax.swing.JLabel logoName;
-    public javax.swing.JLabel logoName1;
     public javax.swing.JPanel main;
     public javax.swing.JPanel mainPanel;
     public javax.swing.JPanel sidebar;

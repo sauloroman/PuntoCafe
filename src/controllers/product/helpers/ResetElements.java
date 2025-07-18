@@ -49,7 +49,7 @@ public class ResetElements {
         viewEdit.productEditPriceTxt.setText("");
         viewEdit.productEditStockTxt.setText("");
         viewEdit.productEditStockMinTxt.setText("");
-        imageGenerator.addImageFix(viewCreate.productImageLabel, "no-image.jpg", 200, 200);        
+        imageGenerator.addImageProduct(viewCreate.productImageLabel, "no-image.jpg", 200, 200);        
         hideButtonUploadImage();
     }
     

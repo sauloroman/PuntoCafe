@@ -17,18 +17,12 @@ public class Access extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         navegationPanel = new javax.swing.JTabbedPane();
         usersPane = new javax.swing.JPanel();
         rolesPane = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1200, 900));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(55, 123, 76));
-        jLabel1.setText("Control de usuarios del sistema");
 
         navegationPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -38,11 +32,11 @@ public class Access extends javax.swing.JPanel {
         usersPane.setLayout(usersPaneLayout);
         usersPaneLayout.setHorizontalGroup(
             usersPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
+            .addGap(0, 1331, Short.MAX_VALUE)
         );
         usersPaneLayout.setVerticalGroup(
             usersPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 795, Short.MAX_VALUE)
+            .addGap(0, 859, Short.MAX_VALUE)
         );
 
         navegationPanel.addTab("Usuarios", usersPane);
@@ -53,11 +47,11 @@ public class Access extends javax.swing.JPanel {
         rolesPane.setLayout(rolesPaneLayout);
         rolesPaneLayout.setHorizontalGroup(
             rolesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
+            .addGap(0, 1331, Short.MAX_VALUE)
         );
         rolesPaneLayout.setVerticalGroup(
             rolesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 795, Short.MAX_VALUE)
+            .addGap(0, 859, Short.MAX_VALUE)
         );
 
         navegationPanel.addTab("Información de roles", rolesPane);
@@ -66,19 +60,11 @@ public class Access extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(navegationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(navegationPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(navegationPanel)
                 .addContainerGap())
         );
@@ -86,7 +72,6 @@ public class Access extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     public javax.swing.JTabbedPane navegationPanel;
     public javax.swing.JPanel rolesPane;
     public javax.swing.JPanel usersPane;

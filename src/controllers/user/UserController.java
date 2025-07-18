@@ -6,7 +6,7 @@ import controllers.user.handlers.CreateUserHandler;
 import controllers.user.handlers.EditUserHandler;
 import controllers.user.handlers.QuantityUsersByRoleHandler;
 import controllers.user.handlers.UserPaginationHandler;
-import controllers.user.helpers.ResetElements;
+import controllers.user.helpers.ViewElements;
 import controllers.user.helpers.FillBoxes;
 import controllers.user.helpers.FilterUsers;
 import controllers.user.helpers.UserFromTable;
@@ -43,7 +43,7 @@ public class UserController {
     private final AccessEditUser editUserView;
     private final FillBoxes fillBoxes;
     private final UploadUserImage upload;
-    private final ResetElements reset;
+    private final ViewElements reset;
     private final UserValidator validator;
     private final UserTableRefresher refresher;
     private final UserPaginationHandler paginationHandler;
@@ -81,7 +81,7 @@ public class UserController {
         this.validator = new UserValidator(createUserView, editUserView, modal);
         this.fillBoxes = new FillBoxes(createUserView, editUserView);
         this.upload = new UploadUserImage(createUserView, editUserView, modal);
-        this.reset = new ResetElements(view, createUserView, editUserView);
+        this.reset = new ViewElements(view, createUserView, editUserView);
         this.refresher = new UserTableRefresher(paginationHandler);
         this.selectedRow = new SelectedRowTable(view.usersTable);
         this.loadUserInfo = new LoadInformation(infoUserView, editUserView, roleService);
@@ -165,7 +165,7 @@ public class UserController {
     }
     
     private void closeEditUser() {
-        editUserView.setVisible(false);
+        editUserView.dispose();
         reset.hideButtonUploadImage();
         reset.clearEditUserForm();
     }
@@ -188,8 +188,8 @@ public class UserController {
         reset.hideButtonUploadImage();
         upload.removeImage();
         setTotalUsers();
-        editUserView.setVisible(false);
-        infoUserView.setVisible(false);
+        editUserView.dispose();
+        infoUserView.dispose();
         quantityUsersByRoleHandler.execute();
     }
     

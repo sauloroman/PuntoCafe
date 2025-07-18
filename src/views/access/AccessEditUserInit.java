@@ -2,7 +2,6 @@ package views.access;
 
 import javax.swing.WindowConstants;
 import utils.constants.ViewConstants;
-import views.access.AccessEditUser;
 import views.components.Button;
 import views.components.ImageCustom;
 import views.components.Input;
@@ -24,7 +23,7 @@ public class AccessEditUserInit {
         
         view.btnRemove.setVisible(false);
         
-        buttonGenerator.solidButton(view.btnEditUser, "#000000", "#FFFFFF", 11);
+        buttonGenerator.solidButton(view.btnEditUser, ViewConstants.skyColor, "#FFFFFF", 12);
         buttonGenerator.addIcon(view.btnEditUser, "icon-save", 20);
         buttonGenerator.outlineButton(view.btnCancelEditUser, ViewConstants.errorColor, ViewConstants.errorColor);
         buttonGenerator.addIcon(view.btnCancelEditUser, "icon-left-red", 20);

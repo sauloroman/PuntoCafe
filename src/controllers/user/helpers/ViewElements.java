@@ -6,14 +6,14 @@ import views.access.AccessEditUser;
 import views.access.AccessUsers;
 import views.components.ImageCustom;
 
-public class ResetElements {
+public class ViewElements {
     
     private final ImageCustom imageCustom = new ImageCustom();
     private final AccessUsers view;
     private final AccessCreateUser createView;
     private final AccessEditUser editView;
 
-    public ResetElements(AccessUsers view, AccessCreateUser createView, AccessEditUser editView) {
+    public ViewElements(AccessUsers view, AccessCreateUser createView, AccessEditUser editView) {
         this.view = view;
         this.createView = createView;
         this.editView = editView;
@@ -46,13 +46,16 @@ public class ResetElements {
     public void hidePagination() {
         view.pageCombo.setVisible(false);
         view.itemsPerPageComboBox.setVisible(false);
-        view.btnRestore.setVisible(true);
+        view.titlePage.setVisible(false);
+        view.titleItems.setVisible(false);
+        view.titleItems.setVisible(false);
     }
     
     public void showPagination() {
         view.pageCombo.setVisible(true);
         view.itemsPerPageComboBox.setVisible(true);
-        view.btnRestore.setVisible(false);
+        view.titleItems.setVisible(true);
+        view.titleItems.setVisible(true);
     }
     
     public void clearEditUserForm() {

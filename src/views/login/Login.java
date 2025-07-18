@@ -104,7 +104,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(nameApp)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(55, 55, 55)
+                .addGap(50, 50, 50)
                 .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)

@@ -8,7 +8,7 @@ import views.purchases.Purchases;
 public class PurchasesInit {
    
     private final Purchases view;
-    private final int WINDOW_WIDTH = 1500;
+    private final int WINDOW_WIDTH = 1320;
     private final int WINDOW_HEIGHT = 1000;
 
     public PurchasesInit(Purchases view) {
@@ -24,7 +24,7 @@ public class PurchasesInit {
         view.navegationPane.setFont( tabFont );
         view.navegationPane.setSelectedIndex(0);
         view.navegationPane.setEnabledAt(0, true);
-        view.title.setForeground(Color.decode(ViewConstants.titleColor));
+        //view.title.setForeground(Color.decode(ViewConstants.titleColor));
     }
     
 }

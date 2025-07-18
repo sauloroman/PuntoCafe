@@ -23,7 +23,7 @@ public class AccessCreateUserInit {
         
         view.btnRemove.setVisible(false);
         
-        buttonGenerator.solidButton(view.btnSaveUser, "#000000", "#FFFFFF", 11);
+        buttonGenerator.solidButton(view.btnSaveUser, ViewConstants.skyColor, "#FFFFFF", 12);
         buttonGenerator.addIcon(view.btnSaveUser, "icon-save", 20);
         buttonGenerator.outlineButton(view.btnCancelSaveUser, ViewConstants.errorColor, ViewConstants.errorColor);
         buttonGenerator.addIcon(view.btnCancelSaveUser, "icon-left-red", 20);

@@ -1,17 +1,14 @@
 package views;
 
 import java.awt.Color;
-import java.awt.Font;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import utils.constants.ViewConstants;
-import views.MainFrame;
 import views.components.Button;
 import views.components.ImageCustom;
 
 public class MainFrameInit {
     
     private final MainFrame view; 
-    private final String COLOR_LOGOUT_BTN = ViewConstants.mainColor;
     private final String COLOR_SIDE_BAR = ViewConstants.mainColor;
     private final String COLOR_SETTINGS_BTN = "#f9f9f9";
     private final Button buttonGenerator  = new Button();
@@ -27,8 +24,7 @@ public class MainFrameInit {
         view.header.setVisible(true);
         view.header.setBackground(Color.WHITE);
         
-        imageGenerator.addImageFix(view.boxLogo, "logo-white", 60, 60);
-        view.logoName.setFont( new Font("sansserif", Font.BOLD, 16) );
+        imageGenerator.addImageFix(view.boxLogo, "logo-3", 200, 200);
         view.sidebar.setBackground(Color.decode(COLOR_SIDE_BAR));
         
         buttonGenerator.solidButton(view.btnLogout, ViewConstants.blackColor, "#FFFFFF", 11);

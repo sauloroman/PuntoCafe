@@ -39,7 +39,8 @@ public class WarehouseCategoriesInit {
         buttonGenerator.addIcon(view.btnNew, "icon-plus-white", 20);
         buttonGenerator.solidButton(view.btnSearch, ViewConstants.blackColor, ViewConstants.whiteColor, 12);
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
-        buttonGenerator.solidButton(view.btnRestore, ViewConstants.blackColor, ViewConstants.whiteColor, 12);
+        buttonGenerator.outlineButton(view.btnRestore, "#DDDDDD", ViewConstants.textBtn);
+        buttonGenerator.addIcon(view.btnRestore, "icon-reload", 16);
         
         SwingUtilities.updateComponentTreeUI(view); 
     }

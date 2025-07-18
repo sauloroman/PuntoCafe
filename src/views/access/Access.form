@@ -24,22 +24,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="navegationPanel" min="-2" pref="1300" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
+          <Component id="navegationPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
               <Component id="navegationPanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -47,20 +37,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="SansSerif" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="4c" green="7b" red="37" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Control de usuarios del sistema"/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JTabbedPane" name="navegationPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -93,12 +69,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1300" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1331" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="795" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="859" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -123,12 +99,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1300" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1331" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="795" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="859" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

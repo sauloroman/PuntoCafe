@@ -1,7 +1,6 @@
 package views.access;
 
 import java.awt.Font;
-import views.access.Access;
 
 public class AccessInit {
     private final Access view;

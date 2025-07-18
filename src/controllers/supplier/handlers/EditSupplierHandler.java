@@ -25,45 +25,45 @@ public class EditSupplierHandler implements HandlerController {
 
     @Override
     public void execute() {
-        
-        String newName = view.supplierEditNameTxt.getText().trim();
-        String newLastname = view.supplierEditLastnameTxt.getText().trim();
-        String newPhone = view.supplierEditPhoneTxt.getText().trim();
-        String newEmail = view.supplierEditEmailTxt.getText().trim();
-        String newAddress = view.supplierEditAddressTxt.getText().trim();
-        String newCompany;
+//        
+//        String newName = view.supplierEditNameTxt.getText().trim();
+//        String newLastname = view.supplierEditLastnameTxt.getText().trim();
+//        String newPhone = view.supplierEditPhoneTxt.getText().trim();
+//        String newEmail = view.supplierEditEmailTxt.getText().trim();
+//        String newAddress = view.supplierEditAddressTxt.getText().trim();
+//        String newCompany;
                 
-        String newCompanyTxt = view.supplierEditNewCompanyTxt.getText().trim();
+//        String newCompanyTxt = view.supplierEditNewCompanyTxt.getText().trim();
         
-        if ( !newCompanyTxt.isEmpty() ) {
-            newCompany = newCompanyTxt;
-            
-            if ( service.getSupplierByCompany(newCompany) != null ) {
-                modal.show("La empresa que intentas crear está entre las opciones disponibles", ModalTypeEnum.error);
-                return;
-            }
-            
-        } else {
-            newCompany = view.supplierEditCompanyTxt.getSelectedItem().toString();
-        }
+//        if ( !newCompanyTxt.isEmpty() ) {
+//            newCompany = newCompanyTxt;
+//            
+//            if ( service.getSupplierByCompany(newCompany) != null ) {
+//                modal.show("La empresa que intentas crear está entre las opciones disponibles", ModalTypeEnum.error);
+//                return;
+//            }
+//            
+//        } else {
+//            newCompany = view.supplierEditCompanyTxt.getSelectedItem().toString();
+//        }
                 
-        Supplier supplier = new Supplier(
-                newName,
-                newLastname,
-                newCompany,
-                newPhone,
-                newEmail,
-                newAddress
-        );
+//        Supplier supplier = new Supplier(
+//                newName,
+//                newLastname,
+//                newCompany,
+//                newPhone,
+//                newEmail,
+//                newAddress
+//        );
+//        
+//        int id = Integer.parseInt(view.supplierIDSelected.getText());
         
-        int id = Integer.parseInt(view.supplierIDSelected.getText());
-        
-        if ( !service.updateSupplier(supplier, id ) ) {
-            modal.show("El proveedor no pudo ser actualizado", ModalTypeEnum.error);
-            return;
-        }
-        
-        modal.show("El proveedor ha sido actualizado", ModalTypeEnum.success);
+//        if ( !service.updateSupplier(supplier, id ) ) {
+//            modal.show("El proveedor no pudo ser actualizado", ModalTypeEnum.error);
+//            return;
+//        }
+//        
+//        modal.show("El proveedor ha sido actualizado", ModalTypeEnum.success);
     }
 
 }

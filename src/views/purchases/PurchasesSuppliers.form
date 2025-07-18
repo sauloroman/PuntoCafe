@@ -21,1904 +21,362 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="suppliersNavegationTab" min="-2" pref="1200" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="titlePages" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="pageComboBox" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="titleItems" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="itemsPerPageComboBox" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnRestore" min="-2" pref="130" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="quantitySuppliers" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="quantityItems" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="title" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnSeeSupplier" min="-2" pref="125" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnPrintSuppliers" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="suppliersStatusCombo" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="suppliersCompanyCombo" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnNewSupplier" min="-2" pref="160" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnSearchSuppliers" min="-2" pref="96" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="searchSuppliersTxt" min="-2" pref="390" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="suppliersNavegationTab" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnNewSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnPrintSuppliers" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="suppliersStatusCombo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="suppliersCompanyCombo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnSeeSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="searchSuppliersTxt" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnSearchSuppliers" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="title" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="quantitySuppliers" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="quantityItems" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel3" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="470" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="titlePages" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pageComboBox" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="titleItems" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="itemsPerPageComboBox" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="btnRestore" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="92" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="suppliersNavegationTab">
+    <Component class="javax.swing.JTextField" name="searchSuppliersTxt">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRestore">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="SansSerif" size="12" style="0"/>
         </Property>
-        <Property name="tabPlacement" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" value="Reestablecer"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="15" green="16" red="12" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Hand Cursor"/>
         </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="listSupplier">
+        <Component class="javax.swing.JTable" name="suppliersTable">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="10" rowCount="0">
+                <Column editable="true" title="Id" type="java.lang.Object"/>
+                <Column editable="true" title="Nombre" type="java.lang.Object"/>
+                <Column editable="true" title="Apellido" type="java.lang.Object"/>
+                <Column editable="true" title="Compa&#xf1;&#xed;a" type="java.lang.Object"/>
+                <Column editable="true" title="Tel&#xe9;fono" type="java.lang.Object"/>
+                <Column editable="true" title="Email" type="java.lang.Object"/>
+                <Column editable="true" title="Direcci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="true" title="Fecha de creaci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="true" title="Fecha de actualizaci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="true" title="Estado" type="java.lang.Object"/>
+              </Table>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Listado">
-                <Property name="tabTitle" type="java.lang.String" value="Listado"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnActivateSupplier" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="btnDeactivateSupplier" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="pageComboBox" min="-2" pref="92" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="itemsPerPageComboBox" min="-2" pref="92" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="suppliersStatusCombo" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="suppliersCompanyCombo" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnPrintSuppliers" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnEditSupplier" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnNewSupplier" min="-2" pref="160" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnSearchSuppliers" min="-2" pref="96" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="searchSuppliersTxt" min="-2" pref="378" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnSeeAllSuppliers" min="-2" pref="129" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="quantityItems" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane1" min="-2" pref="1057" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="39" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnNewSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnPrintSuppliers" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnEditSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="suppliersStatusCombo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="suppliersCompanyCombo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                      <Component id="searchSuppliersTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="quantityItems" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="btnSearchSuppliers" min="-2" pref="32" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="367" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnActivateSupplier" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="btnDeactivateSupplier" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pageComboBox" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="itemsPerPageComboBox" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="btnSeeAllSuppliers" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="340" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JComboBox" name="suppliersStatusCombo">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Estado"/>
-                    <StringItem index="1" value="Activo"/>
-                    <StringItem index="2" value="Inactivo"/>
-                  </StringArray>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="suppliersCompanyCombo">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Empresa"/>
-                  </StringArray>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnNewSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar Proveedor"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnPrintSuppliers">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exportar "/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnSearchSuppliers">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="15" green="16" red="12" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="searchSuppliersTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="quantityItems">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="66" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Visualizando 10 de 30 proveedores"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="suppliersTable">
-                  <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="10" rowCount="0">
-                        <Column editable="true" title="Id" type="java.lang.Object"/>
-                        <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                        <Column editable="true" title="Apellido" type="java.lang.Object"/>
-                        <Column editable="true" title="Compa&#xf1;&#xed;a" type="java.lang.Object"/>
-                        <Column editable="true" title="Tel&#xe9;fono" type="java.lang.Object"/>
-                        <Column editable="true" title="Email" type="java.lang.Object"/>
-                        <Column editable="true" title="Direcci&#xf3;n" type="java.lang.Object"/>
-                        <Column editable="true" title="Fecha de creaci&#xf3;n" type="java.lang.Object"/>
-                        <Column editable="true" title="Fecha de actualizaci&#xf3;n" type="java.lang.Object"/>
-                        <Column editable="true" title="Estado" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JButton" name="btnActivateSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Activar Proveedor"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnDeactivateSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Desactivar Proveedor"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel16">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="No. P&#xe1;gina"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="pageComboBox">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[70, 22]"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel17">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Registros por p&#xe1;gina"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="itemsPerPageComboBox">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="10"/>
-                    <StringItem index="1" value="20"/>
-                    <StringItem index="2" value="25"/>
-                  </StringArray>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[70, 22]"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnEditSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar "/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnSeeAllSuppliers">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Reestablecer"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="15" green="16" red="12" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="createSupplier">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Creaci&#xf3;n">
-                <Property name="tabTitle" type="java.lang.String" value="Creaci&#xf3;n"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel4" alignment="0" pref="1125" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="supplierCompanyTxt" min="-2" pref="221" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel9" min="-2" pref="62" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnCreateCompany" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="iconInputMandatory4" min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="supplierNewCompanyTxt" min="-2" pref="381" max="-2" attributes="0"/>
-                                      <Component id="supplierNewCompanyLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
-                                          <Component id="iconInputMandatory" min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="supplierRestrictionName" min="-2" max="-2" attributes="0"/>
-                                          <Component id="supplierNameTxt" min="-2" pref="300" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="supplierRestrictionLastname" min="-2" max="-2" attributes="0"/>
-                                      <Component id="supplierLastnameTxt" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="iconInputMandatory2" min="-2" pref="20" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="supplierRestrictionAddress" min="-2" max="-2" attributes="0"/>
-                                  <Component id="supplierAddressTxt" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="supplierPhoneTxt" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel5" min="-2" pref="148" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                              <Component id="iconInputMandatory3" min="-2" pref="20" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="supplierRestrictionPhone" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                              <Component id="jLabel7" min="-2" pref="148" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace pref="71" max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="supplierRestrictionEmail" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="supplierEmailTxt" alignment="1" min="-2" pref="386" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Component id="supplierRestrictionNewCompany" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnCancelSaveSupplier" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnSaveSupplier" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel4" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <Component id="iconInputMandatory2" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="supplierLastnameTxt" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="supplierRestrictionLastname" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="iconInputMandatory" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="supplierNameTxt" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="supplierRestrictionName" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="iconInputMandatory3" min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="supplierPhoneTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="supplierEmailTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="supplierRestrictionPhone" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="supplierRestrictionEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="supplierAddressTxt" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="supplierRestrictionAddress" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnCreateCompany" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="supplierNewCompanyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="supplierCompanyTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="supplierNewCompanyTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="supplierRestrictionNewCompany" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="iconInputMandatory4" min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnSaveSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnCancelSaveSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="295" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel4">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f3" green="f1" red="e7" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="dd" green="dd" red="dd" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[1192, 180]"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="iconCreateSupplier" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="creationTitle" min="-2" pref="226" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="0" pref="677" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="creationTitle" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="iconCreateSupplier" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="creationTitle">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="14" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Crear un nuevo proveedor"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Los proveedores de tus sistemas son pieza fundamental. Registra oportunamente."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="iconCreateSupplier">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[30, 30]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nombre del proveedor:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Apellido del proveedor:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierLastnameTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierNameTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionName">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 100 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionLastname">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 100 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Tel&#xe9;fono de contacto:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Correo electr&#xf3;nico:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="supplierPhoneTxt">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="###-###-##-##" subtype="-1" type="5"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionPhone">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 15 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierEmailTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionEmail">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 100 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierAddressTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionAddress">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 200 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel9">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Empresa:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnCreateCompany">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Crear"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="supplierCompanyTxt">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierNewCompanyLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nombre de empresa:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierNewCompanyTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionNewCompany">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 100 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnCancelSaveSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnSaveSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Guardar Proveedor"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="iconInputMandatory">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="iconInputMandatory2">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="iconInputMandatory3">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="iconInputMandatory4">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="updateSupplier">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Edici&#xf3;n">
-                <Property name="tabTitle" type="java.lang.String" value="Edici&#xf3;n"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel5" alignment="0" pref="1125" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="supplierRestrictionAddress1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="supplierEditPhoneTxt" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel12" min="-2" pref="185" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="iconInputMandatory7" min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="supplierRestrictionPhone1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="supplierRestrictionEmail1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="supplierEditEmailTxt" min="-2" pref="356" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel13" min="-2" pref="175" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="supplierEditAddressTxt" min="-2" pref="655" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="iconInputMandatory5" min="-2" pref="20" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-                                              <Component id="supplierRestrictionName1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="supplierEditNameTxt" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="supplierRestrictionLastname1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="supplierEditLastnameTxt" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="iconInputMandatory6" min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="supplierEditCompanyTxt" min="-2" pref="221" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel10" min="-2" pref="62" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnEditCreateCompany" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="iconInputMandatory8" min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="supplierEditNewCompanyLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="supplierEditNewCompanyTxt" min="-2" pref="377" max="-2" attributes="0"/>
-                                      <Component id="supplierEditRestrictionNewCompany" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnCancelEditSupplier" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnUpdateSupplier" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel5" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="iconInputMandatory5" min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="iconInputMandatory6" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="supplierEditLastnameTxt" min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="supplierEditNameTxt" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="supplierRestrictionName1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="supplierRestrictionLastname1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="iconInputMandatory7" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="supplierEditEmailTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="supplierEditPhoneTxt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="supplierRestrictionPhone1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="supplierRestrictionEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="supplierEditAddressTxt" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="supplierRestrictionAddress1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnEditCreateCompany" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="supplierEditCompanyTxt" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="iconInputMandatory8" min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="supplierEditNewCompanyLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="supplierEditNewCompanyTxt" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="supplierEditRestrictionNewCompany" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnUpdateSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="btnCancelEditSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="287" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JTextField" name="supplierEditAddressTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionAddress1">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 200 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel10">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Empresa:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnEditCreateCompany">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Crear"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="supplierEditCompanyTxt">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierEditNewCompanyLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nombre de empresa:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierEditNewCompanyTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierEditRestrictionNewCompany">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 100 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnCancelEditSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nuevo nombre:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnUpdateSupplier">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar Proveedor"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel11">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nuevo apellido:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierEditLastnameTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="iconInputMandatory5">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="iconInputMandatory6">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierEditNameTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="iconInputMandatory7">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionName1">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 100 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="iconInputMandatory8">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionLastname1">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 100 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel12">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nuevo tel&#xe9;fono de contacto:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel13">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nuevo correo electr&#xf3;nico:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="supplierEditPhoneTxt">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="###-###-##-##" subtype="-1" type="5"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionPhone1">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 15 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="supplierEditEmailTxt">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="supplierRestrictionEmail1">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe1;ximo 100 caracteres"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel14">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nueva direcci&#xf3;n:"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Container class="javax.swing.JPanel" name="jPanel5">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f3" green="f1" red="e7" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="dd" green="dd" red="dd" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[1192, 180]"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="iconEditSupplier" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="creationTitle1" min="-2" pref="226" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="0" pref="541" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="creationTitle1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="iconEditSupplier" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="creationTitle1">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="14" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Editar proveedor"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel15">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Actualiza la informaci&#xf3;n de tus proveedores y no pierdas contacto para el abastecimiento de tus productos"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="iconEditSupplier">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[30, 30]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="jPanel3">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="dd" green="dd" red="dd" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierUpdatedAtSelected" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierCreatedAtSelected" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierStatusSelected" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierCompanySelected" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierAddressSelected" min="-2" pref="184" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierEmailSelected" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierPhoneSelected" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierLastnameSelected" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierNameSelected" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="supplierIDSelected" min="-2" pref="180" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="11" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
-                              <Component id="supplierIDSelected" alignment="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
-                              <Component id="supplierNameSelected" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel23" max="32767" attributes="0"/>
-                              <Component id="supplierLastnameSelected" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="supplierPhoneSelected" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="supplierEmailSelected" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel20" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="supplierAddressSelected" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="supplierCompanySelected" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="supplierStatusSelected" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="supplierCreatedAtSelected" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="supplierUpdatedAtSelected" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel18">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Proveedor ID:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Telefono:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel20">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Email:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel21">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierIDSelected">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[20, 20]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierEmailSelected">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[20, 20]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel22">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierNameSelected">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel23">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Apellido:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierLastnameSelected">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierAddressSelected">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[20, 20]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Container class="javax.swing.JPanel" name="jPanel6">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f3" green="f1" red="e7" type="rgb"/>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="119" max="32767" attributes="0"/>
-                              <Component id="iconInfo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="iconInfo" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="iconInfo">
-                      <Properties>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[20, 20]"/>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel24">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="SansSerif" size="12" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Proveedor Seleccionada"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JLabel" name="supplierPhoneSelected">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[20, 20]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Empresa:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierCompanySelected">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[20, 20]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel26">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Estado:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierStatusSelected">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[20, 20]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel27">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Fecha de creaci&#xf3;n:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierCreatedAtSelected">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[20, 20]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel28">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Fecha de actualizaci&#xf3;n:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="supplierUpdatedAtSelected">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[20, 20]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
+        </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JComboBox" name="suppliersStatusCombo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Estado"/>
+            <StringItem index="1" value="Activo"/>
+            <StringItem index="2" value="Inactivo"/>
+          </StringArray>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="suppliersCompanyCombo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="Empresa"/>
+          </StringArray>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="pageComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[70, 22]"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnNewSupplier">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agregar Proveedor"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPrintSuppliers">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Exportar "/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="itemsPerPageComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="10"/>
+            <StringItem index="1" value="20"/>
+            <StringItem index="2" value="25"/>
+          </StringArray>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[70, 22]"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSearchSuppliers">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Buscar"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="15" green="16" red="12" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="titlePages">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="No. P&#xe1;gina"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="titleItems">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registros por p&#xe1;gina"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSeeSupplier">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ver Proveedor"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="title">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="SansSerif" size="16" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Proveedores del sistema"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="SansSerif" size="12" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Las alianzas de tu negocio son lo m&#xe1;s importante para su funcionamiento."/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Todos los proveedores &gt;"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="quantitySuppliers">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c7" green="fa" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="SansSerif" size="22" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="10"/>
+        <Property name="opaque" type="boolean" value="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="quantityItems">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="SansSerif" size="12" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Visualizando 10 de 30 proveedores"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </SubComponents>
 </Form>

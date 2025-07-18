@@ -1,13 +1,12 @@
 package views.access;
 
-import views.access.AccessRoles;
 import views.components.ImageCustom;
 
 public class AccessRolesInit {
  
     private final ImageCustom image = new ImageCustom();
     private final AccessRoles view;
-    private final int PANEL_WIDTH = 1200;
+    private final int PANEL_WIDTH = 1320;
     private final int PANEL_HEIGHT = 900;
     
     public AccessRolesInit(AccessRoles view) {

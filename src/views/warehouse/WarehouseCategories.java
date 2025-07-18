@@ -100,7 +100,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
         itemsPerPageComboBox.setPreferredSize(new java.awt.Dimension(70, 22));
 
         btnRestore.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnRestore.setText("Reestablecer");
+        btnRestore.setText("Restablecer");
         btnRestore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRestore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +124,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(itemsPerPageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(scrollTable)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +153,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -183,7 +183,7 @@ public class WarehouseCategories extends javax.swing.JPanel {
                     .addComponent(pageItems)
                     .addComponent(itemsPerPageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

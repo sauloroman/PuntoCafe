@@ -8,25 +8,28 @@ import controllers.supplier.handlers.EditSupplierHandler;
 import controllers.supplier.helpers.FilterSuppliers;
 import controllers.supplier.helpers.LoadEditSupplier;
 import controllers.supplier.handlers.SupplierPaginationHandler;
-import controllers.supplier.helpers.FillCompanies;
+import controllers.supplier.helpers.FillBoxes;
 import controllers.supplier.handlers.SaveSupplierHandler;
 import controllers.supplier.helpers.SearchSuppliers;
 import controllers.supplier.helpers.CreationCompanyForm;
-import controllers.supplier.helpers.HidePaginationControls;
+import controllers.supplier.helpers.ViewElements;
 import controllers.supplier.helpers.SupplierTableRefresher;
 import models.SupplierModel;
 import services.SupplierService;
 import utils.enums.ModalTypeEnum;
 import utils.enums.SearchCriteriaEnum;
-import utils.helpers.NavegationTabs;
 import utils.helpers.Modal;
 import utils.helpers.SelectedRowTable;
+import views.purchases.PurchasesCreateSupplier;
+import views.purchases.PurchasesInfoSupplier;
 import views.purchases.PurchasesSuppliers;
 
 public class SupplierController {
     
     private final Modal modal = new Modal("Proveedores del sistema - PuntoCafé");
     private final PurchasesSuppliers view;
+    private final PurchasesCreateSupplier createView;
+    private final PurchasesInfoSupplier infoView;
     private final SupplierModel model;
     private final int QUANTITY_TABS = 3;
     private final SupplierService suppliersService;
@@ -34,11 +37,11 @@ public class SupplierController {
     private final HandlerController editSupplierHandler;
     private final ChangeStatusInterface activateSupplier;
     private final ChangeStatusInterface deactivateSupplier;
-    private final FillCompanies fillCompanies;
+    private final FillBoxes fillCompanies;
     private final SupplierPaginationHandler paginationHandler;
     private final CreationCompanyForm creationCompanyForm;
     private final SupplierTableRefresher refresher;
-    private final HidePaginationControls hidePagination;
+    private final ViewElements elements;
     private final SearchSuppliers searchSupplier;
     private final FilterSuppliers filterSuppliers;
     private final LoadEditSupplier loadEditHandler;
@@ -48,6 +51,9 @@ public class SupplierController {
         this.view = view;
         this.model = model;
         
+        this.createView = new PurchasesCreateSupplier();
+        this.infoView = new PurchasesInfoSupplier();
+        
         this.suppliersService = new SupplierService(this.model);
         
         this.saveSupplierHandler = new SaveSupplierHandler(view, suppliersService, modal);
@@ -56,11 +62,11 @@ public class SupplierController {
         this.activateSupplier = new ChangeSupplierStatusHandler(view, suppliersService, modal, true);
         this.deactivateSupplier = new ChangeSupplierStatusHandler(view, suppliersService, modal, false);
         
-        this.fillCompanies = new FillCompanies(view, suppliersService);
+        this.fillCompanies = new FillBoxes(view, createView);
         this.paginationHandler = new SupplierPaginationHandler(view, suppliersService);
         this.creationCompanyForm = new CreationCompanyForm(view);
         this.refresher = new SupplierTableRefresher(paginationHandler);
-        this.hidePagination = new HidePaginationControls(view);
+        this.elements = new ViewElements(view, createView);
         this.searchSupplier = new SearchSuppliers(view);
         this.filterSuppliers = new FilterSuppliers(view);
         this.loadEditHandler = new LoadEditSupplier(view);
@@ -72,36 +78,43 @@ public class SupplierController {
     
     private void init() {
         paginationHandler.execute();  
-        fillCompanies.fillCompaniesBoxes();
-        hidePagination.show();
+        elements.toggleCreateCompanyForm();
+        fillCompanies.fillCompaniesBox(suppliersService.getCompaniesUnique());
+        fillCompanies.fillCompaniesBoxCreate(suppliersService.getCompaniesUnique());
     }
     
-    private void initListeners() {     
-        view.btnSaveSupplier.addActionListener(e -> createSupplier());
-        view.btnCancelSaveSupplier.addActionListener(e -> NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 0));
-        view.btnCancelEditSupplier.addActionListener(e -> NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 0));
-        view.btnEditSupplier.addActionListener(e -> loadInfoToEdit());
-        view.btnUpdateSupplier.addActionListener(e -> editSupplier());
-        view.btnCreateCompany.addActionListener(e -> creationCompanyForm.toggleCompanyCreationFields());    
-        view.btnEditCreateCompany.addActionListener(e -> creationCompanyForm.toggleCompanyCreationFields());
-        view.suppliersStatusCombo.addActionListener(e -> filterSuppliersByStatus());
-        view.suppliersCompanyCombo.addActionListener(e -> filterSuppiersByCompany());
-        view.btnSearchSuppliers.addActionListener(e -> filterSuppliersByName());
-        view.btnActivateSupplier.addActionListener(e -> activateSupplier());
-        view.btnDeactivateSupplier.addActionListener(e -> deactivateSupplier());
-        view.pageComboBox.addActionListener(e -> paginationHandler.executeLoadSelectedPage(SearchCriteriaEnum.NAME));
-        view.itemsPerPageComboBox.addActionListener(e -> safelyRebuildPagination( SearchCriteriaEnum.NAME ));
-        view.btnNewSupplier.addActionListener(e -> navigateToCreateSupplierView());
-        view.btnSeeAllSuppliers.addActionListener(e -> seeAllSuppliers());
+    private void initListeners() { 
+        
+        view.btnNewSupplier.addActionListener(e -> openCreateSupplierWindow());
+        view.btnSeeSupplier.addActionListener(e -> openInfoSupplierWindow());
+        
+        createView.btnCancelSaveSupplier.addActionListener(e -> closeCreateSupplierWindow());
+        createView.btnNewCompany.addActionListener(e -> elements.toggleCreateCompanyForm());
+        
+//        view.btnSaveSupplier.addActionListener(e -> createSupplier());
+//        view.btnCancelSaveSupplier.addActionListener(e -> NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 0));
+//        view.btnCancelEditSupplier.addActionListener(e -> NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 0));
+//        view.btnEditSupplier.addActionListener(e -> loadInfoToEdit());
+//        view.btnUpdateSupplier.addActionListener(e -> editSupplier());
+//        view.btnCreateCompany.addActionListener(e -> creationCompanyForm.toggleCompanyCreationFields());    
+//        view.btnEditCreateCompany.addActionListener(e -> creationCompanyForm.toggleCompanyCreationFields());
+//        view.suppliersStatusCombo.addActionListener(e -> filterSuppliersByStatus());
+//        view.suppliersCompanyCombo.addActionListener(e -> filterSuppiersByCompany());
+//        view.btnSearchSuppliers.addActionListener(e -> filterSuppliersByName());
+//        view.btnActivateSupplier.addActionListener(e -> activateSupplier());
+//        view.btnDeactivateSupplier.addActionListener(e -> deactivateSupplier());
+//        view.pageComboBox.addActionListener(e -> paginationHandler.executeLoadSelectedPage(SearchCriteriaEnum.NAME));
+//        view.itemsPerPageComboBox.addActionListener(e -> safelyRebuildPagination( SearchCriteriaEnum.NAME ));
+//        view.btnNewSupplier.addActionListener(e -> navigateToCreateSupplierView());
+//        view.btnRestore.addActionListener(e -> seeAllSuppliers());
     }
     
     private void seeAllSuppliers() {
         refresher.refresh(SearchCriteriaEnum.NAME, "");
-        hidePagination.show();
+        elements.showPaginationControls();
     }
     
     private void navigateToCreateSupplierView() {
-        NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 1);
         creationCompanyForm.hideCompanyCreationFields();
     }
     
@@ -128,7 +141,7 @@ public class SupplierController {
     private void filterSuppliersByName() {
         String input = searchSupplier.getSearchInput();
         if ( !input.isEmpty() ) {
-            hidePagination.hide();
+            elements.hidePaginationControls();
         }
         refresher.refresh(SearchCriteriaEnum.NAME, input);
     }
@@ -136,38 +149,35 @@ public class SupplierController {
     private void filterSuppiersByCompany() {
         String company = filterSuppliers.filterByCompany();
         refresher.refresh(SearchCriteriaEnum.SUPPLIER_COMPANY_NAME, company);
-        hidePagination.hide();
+        elements.hidePaginationControls();
     }
     
     private void filterSuppliersByStatus() {
         String status = filterSuppliers.filterByStatus();
         refresher.refresh(SearchCriteriaEnum.STATUS, status);
-        hidePagination.hide();
+        elements.hidePaginationControls();
     }
     
     private void editSupplier() {
         editSupplierHandler.execute();
-        fillCompanies.fillCompaniesBoxes();
+        fillCompanies.fillCompaniesBoxCreate(suppliersService.getCompaniesUnique());
         safelyRebuildPagination(SearchCriteriaEnum.NAME );
         creationCompanyForm.hideCompanyCreationFields();
-        hidePagination.show();
-        NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 0);
+        elements.showPaginationControls();
     }
     
     private void loadInfoToEdit() {
         if ( !checkIfOneCategoryIsSelected() ) return;
             
         loadEditHandler.load();
-        NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 2);
         creationCompanyForm.hideCompanyCreationFields();       
     }
     
     private void createSupplier() {
         saveSupplierHandler.execute();
-        fillCompanies.fillCompaniesBoxes();
+        fillCompanies.fillCompaniesBoxCreate(suppliersService.getCompaniesUnique());
         safelyRebuildPagination( SearchCriteriaEnum.NAME );
-        NavegationTabs.activateTabPane(view.suppliersNavegationTab, QUANTITY_TABS, 0);
-        hidePagination.show();
+        elements.showPaginationControls();
     }
     
     private boolean checkIfOneCategoryIsSelected() {
@@ -176,6 +186,20 @@ public class SupplierController {
             return false;
         }
         return true;
+    }
+    
+    private void openInfoSupplierWindow() {
+        infoView.setVisible(true);
+    }
+    
+    private void openCreateSupplierWindow() {
+        fillCompanies.fillCompaniesBoxCreate(suppliersService.getCompaniesUnique());
+        createView.setVisible(true);
+    }
+    
+    private void closeCreateSupplierWindow() {
+        createView.dispose();
+        elements.clearCreateSupplierForm();
     }
     
     private void safelyRebuildPagination (SearchCriteriaEnum criteria) {

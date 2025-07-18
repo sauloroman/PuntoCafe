@@ -98,7 +98,7 @@
                   <Component id="nameApp" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="emailTxt" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>

@@ -41,11 +41,11 @@ public class PuntoCafe {
     public static void main(String[] args) {
         loadFlatLaf();
         
-        new PuntoCafe().run();
+        //new PuntoCafe().run();
         
-//        SwingUtilities.invokeLater(() -> {
-//            new PuntoCafe().showLogin();
-//        });       
+        SwingUtilities.invokeLater(() -> {
+            new PuntoCafe().showLogin();
+        });       
     }
     
     private void run() {
