@@ -92,6 +92,7 @@ public class CategoryController {
           view.btnRestore.addActionListener(e -> resetCategories());
           view.pageCombo.addActionListener(e -> paginateHandler.executeLoadSelectedPage(SearchCriteriaEnum.NAME));
           view.itemsPerPageComboBox.addActionListener(e -> safelyRebuildPagination(SearchCriteriaEnum.NAME));
+          view.categoryTypeCombo.addActionListener(e -> filterCategoriesByType());
           
           createView.btnCancelSaveCategory.addActionListener( e -> closeCreateCategoryWindow());
           createView.btnSaveCategory.addActionListener(e -> saveCategory());
@@ -166,6 +167,14 @@ public class CategoryController {
         if ( nameSearched == null ) return;
         
         refresher.refresh(SearchCriteriaEnum.NAME, nameSearched); 
+        elements.hidePagination();
+    }
+    
+    private void filterCategoriesByType() {
+        String typeSelected = inputReader.getTypeSelected();
+        if ( typeSelected == null ) return;
+        
+        refresher.refresh(SearchCriteriaEnum.CATEGORY_TYPE, typeSelected);
         elements.hidePagination();
     }
     

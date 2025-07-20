@@ -75,11 +75,24 @@ public class CategoryModel implements CrudInterface<Category> {
                 statement = DATABASE.connect().prepareStatement(
                     "SELECT * "
                   + "FROM category "
-                  + "WHERE category_name LIKE ?"
+                  + "WHERE category_name LIKE ? "
                   + "ORDER BY category_createdAt DESC "
                   + "LIMIT ?, ?"
                 );
                 statement.setString(1, "%" + filter + "%");
+                statement.setInt(2, (page - 1) * itemsPerPage);
+                statement.setInt(3, itemsPerPage);
+            } 
+            
+            if ( criteria.equals( SearchCriteriaEnum.CATEGORY_TYPE ) ) {
+                 statement = DATABASE.connect().prepareStatement(
+                    "SELECT * "
+                  + "FROM category "
+                  + "WHERE category_type = ? "
+                  + "ORDER BY category_createdAt DESC "
+                  + "LIMIT ?, ?"
+                );
+                statement.setString(1, filter);
                 statement.setInt(2, (page - 1) * itemsPerPage);
                 statement.setInt(3, itemsPerPage);
             }

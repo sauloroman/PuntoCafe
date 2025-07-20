@@ -1,4 +1,4 @@
-package controllers.dish.handlers;
+package controllers.dish.helpers;
 
 import interfaces.ChangeStatusNoTableInterface;
 import services.DishService;
@@ -6,14 +6,14 @@ import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;
 import views.warehouse.WarehouseInfoDish;
 
-public class ChangeDishStatusHandler implements ChangeStatusNoTableInterface {
+public class ChangeDishStatus implements ChangeStatusNoTableInterface {
 
     private final WarehouseInfoDish view;
     private final DishService service;
     private final Modal modal;
     private final boolean activate;
 
-    public ChangeDishStatusHandler(WarehouseInfoDish view, DishService service, Modal modal, boolean activate) {
+    public ChangeDishStatus(WarehouseInfoDish view, DishService service, Modal modal, boolean activate) {
         this.view = view;
         this.service = service;
         this.modal = modal;

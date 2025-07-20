@@ -16,6 +16,12 @@ public class InputReader {
         this.editView = editView;
     }
     
+    public String getTypeSelected() {
+        String typeSelected = view.categoryTypeCombo.getSelectedItem().toString();
+        if ( typeSelected == null || typeSelected.equals("Tipo de Categoría")) return null;
+        return typeSelected.toLowerCase();
+    }
+    
     public String getNameSearched() {
         String nameSearched = view.searchTxt.getText().trim();
         if ( nameSearched.isEmpty() || nameSearched.equals("Buscar categoría por nombre")) return null;

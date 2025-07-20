@@ -2,15 +2,18 @@ package controllers.dish.helpers;
 
 import views.components.ImageCustom;
 import views.warehouse.WarehouseCreateDish;
+import views.warehouse.WarehouseDishes;
 import views.warehouse.WarehouseEditDish;
 
-public class ResetElements {
+public class ViewElements {
     
     private final ImageCustom imageGenerator = new ImageCustom();
+    private final WarehouseDishes view;
     private final WarehouseCreateDish createView;
     private final WarehouseEditDish editView;
 
-    public ResetElements(WarehouseCreateDish createView, WarehouseEditDish editView) {
+    public ViewElements(WarehouseDishes view, WarehouseCreateDish createView, WarehouseEditDish editView) {
+        this.view = view;
         this.createView = createView;
         this.editView = editView;
     }
@@ -45,6 +48,10 @@ public class ResetElements {
         editView.dishEditCategoryCombo.setSelectedIndex(0);
         imageGenerator.addImageDish(editView.dishEditImageLabel, "no-image.jpg", 200, 200);
         hideButtonUploadImage();
+    }
+    
+    public void clearInputSearch() {
+        view.dishSearchByNameTxt.setText("");
     }
     
 }

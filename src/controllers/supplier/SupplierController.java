@@ -102,7 +102,7 @@ public class SupplierController {
         
         createView.btnCancelSaveSupplier.addActionListener(e -> closeCreateSupplierWindow());
         createView.btnNewCompany.addActionListener(e -> elements.toggleCreateCompanyForm());
-        createView.btnSaveSupplier.addActionListener(e -> createSupplier());
+        createView.btnSaveSupplier.addActionListener(e -> saveSupplier());
     
         editView.btnCancelEditSupplier.addActionListener( e -> closeEditSupplierWindow());
         editView.btnEditSupplier.addActionListener(e -> editSupplier());
@@ -218,7 +218,7 @@ public class SupplierController {
         infoView.dispose();
     }
 
-    private void createSupplier() {
+    private void saveSupplier() {
         String name = inputReader.getNameCreate();
         String lastName = inputReader.getLastNameCreate();
         String phone = inputReader.getPhoneCreate();

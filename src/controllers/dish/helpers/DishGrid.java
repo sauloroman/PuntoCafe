@@ -37,9 +37,14 @@ public class DishGrid {
         this.onDishClick = listener;
     }
     
+    public void setItemsByPage( int quantity ) {
+        view.quantityItems.setText("Visualizando " + quantity + " de " + dishService.getQuantityDishes() + " platillos");
+    }
+    
     public void showAllDishes( int page ) {
         clearGrid();
         dishes = dishService.getAllDishes(page, QUANTITY_DISHES);
+        setItemsByPage(dishes.size());
         for ( Dish dish: dishes) {
             addDish(dish);
         }
@@ -48,6 +53,7 @@ public class DishGrid {
     public void showDishesByCategory(int categoryId, int page) {
         clearGrid();
         dishes = dishService.getDishesByCategory(categoryId, page, QUANTITY_DISHES);
+        setItemsByPage(dishes.size());
         for ( Dish dish: dishes) {
             addDish(dish);
         }
@@ -56,6 +62,7 @@ public class DishGrid {
     public void showDishesByStatus(String status, int page) {
         clearGrid();
         dishes = dishService.getDishesByStatus(status, page, QUANTITY_DISHES);
+        setItemsByPage(dishes.size());
         for ( Dish dish: dishes) {
             addDish(dish);
         }
@@ -64,6 +71,7 @@ public class DishGrid {
     public void showDishesByName(String dishName, int page) {
         clearGrid();
         dishes = dishService.getDishesByName(dishName, page, QUANTITY_DISHES);
+        setItemsByPage(dishes.size());
         for ( Dish dish: dishes) {
             addDish(dish);
         }

@@ -62,6 +62,7 @@ public class WarehouseDishes extends javax.swing.JPanel {
 
         pageComboBox.setPreferredSize(new java.awt.Dimension(70, 22));
 
+        btnReload.setText("Reestablecer");
         btnReload.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -100,7 +101,7 @@ public class WarehouseDishes extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addComponent(dishStatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel16)
                         .addGap(25, 25, 25)

@@ -74,7 +74,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="productUpdatedAt" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="productCreatedAt" min="-2" max="-2" attributes="0"/>
                               <Component id="productPrice" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="iconStock" min="-2" pref="20" max="-2" attributes="0"/>
@@ -87,8 +86,11 @@
                               </Group>
                               <Component id="productName" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" alignment="0" pref="372" max="32767" attributes="0"/>
-                              <Component id="productStatus" alignment="0" max="32767" attributes="0"/>
                               <Component id="productSupplierName" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="productStatus" alignment="0" pref="150" max="32767" attributes="0"/>
+                                  <Component id="productCreatedAt" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>

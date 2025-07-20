@@ -2,6 +2,7 @@ package utils.enums;
 
 public enum SearchCriteriaEnum {
     NAME,
+    CATEGORY_TYPE,
     SUPPLIER_COMPANY_NAME,
     STATUS,
     PRODUCT_CATEGORY,

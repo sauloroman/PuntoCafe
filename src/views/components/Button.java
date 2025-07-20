@@ -25,7 +25,7 @@ public final class Button {
     public void outlineButton(JButton button, String borderColor, String textColor) {
         button.setBackground(new Color(0, 0, 0, 0)); 
         button.setForeground(Color.decode(textColor));
-        button.setFont(new Font("sansserif", Font.PLAIN, 11));
+        button.setFont(new Font("sansserif", Font.PLAIN, 12));
         button.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.decode(borderColor)),
                 BorderFactory.createEmptyBorder(3, 10, 3, 10)

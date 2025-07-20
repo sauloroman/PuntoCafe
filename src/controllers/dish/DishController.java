@@ -1,25 +1,22 @@
 package controllers.dish;
 
-import controllers.dish.handlers.ChangeDishStatusHandler;
-import controllers.dish.handlers.EditDishHandler;
-import controllers.dish.handlers.SaveDishHandler;
+import controllers.dish.helpers.ChangeDishStatus;
 import controllers.dish.helpers.DishGrid;
 import controllers.dish.helpers.DishValidator;
 import controllers.dish.helpers.FillComboBoxes;
-import controllers.dish.helpers.FilterDishes;
-import controllers.dish.helpers.LoadEditInformation;
-import controllers.dish.helpers.LoadInformationDish;
-import controllers.dish.helpers.ResetElements;
+import controllers.dish.helpers.InputReader;
+import controllers.dish.helpers.LoadInformation;
+import controllers.dish.helpers.ViewElements;
 import controllers.dish.helpers.UploadDishImage;
 import controllers.dish.helpers.Pages;
 import controllers.dish.helpers.QuantityDishes;
-import interfaces.HandlerController;
 import entities.Dish;
 import java.awt.event.ActionListener;
 import models.CategoryModel;
 import models.DishModel;
 import services.CategoryService;
 import services.DishService;
+import utils.enums.ModalTypeEnum;
 import utils.enums.SearchCriteriaEnum;
 import utils.helpers.GenerateReports;
 import utils.helpers.Modal;
@@ -40,20 +37,18 @@ public class DishController {
     private final WarehouseEditDish editDishWindow;
     private final FillComboBoxes fillComboBoxes;
     private final UploadDishImage upload;
-    private final ResetElements resetElements;
-    private final DishValidator dishValidator;
-    private final HandlerController saveDishHandler; 
-    private final HandlerController editDishHandler;
-    private final ChangeDishStatusHandler activateDish;
-    private final ChangeDishStatusHandler deactivateDish;
+    private final ViewElements elements;
+    private final DishValidator validator;
+    private final ChangeDishStatus activateDish;
+    private final ChangeDishStatus deactivateDish;
     private final Pages pages;
-    private final FilterDishes filter;
+    private final InputReader inputReader;
     private final DishGrid dishGrid;
     private final QuantityDishes quantity;
-    private final LoadInformationDish loadInfo;
-    private final LoadEditInformation loadEdit;
+    private final LoadInformation loadInfo;
     private final Modal modal = new Modal("Platillos del sistema - PuntoCafé");
     private Dish dishSelected = null;
+    private String image = null;
     private SearchCriteriaEnum filterSelected = SearchCriteriaEnum.NONE;
     
     public DishController(
@@ -71,22 +66,18 @@ public class DishController {
         this.createDishWindow = new WarehouseCreateDish();
         this.infoDishWindow = new WarehouseInfoDish();
         this.editDishWindow = new WarehouseEditDish();
-        
+
+        this.inputReader = new InputReader(view, createDishWindow, editDishWindow);
         this.dishGrid = new DishGrid(view, dishService, categoryService);
         this.pages = new Pages(view, dishService);
         this.upload = new UploadDishImage(createDishWindow, editDishWindow, modal);
         this.fillComboBoxes = new FillComboBoxes(view, createDishWindow, editDishWindow);
-        this.resetElements = new ResetElements(createDishWindow, editDishWindow);
-        this.dishValidator = new DishValidator(createDishWindow, editDishWindow, modal);
-        this.loadInfo = new LoadInformationDish(infoDishWindow, categoryService);
-        this.loadEdit = new LoadEditInformation(editDishWindow, categoryService);
-        this.filter = new FilterDishes(view, categoryService);
+        this.elements = new ViewElements(view, createDishWindow, editDishWindow);
+        this.validator = new DishValidator(modal);
+        this.loadInfo = new LoadInformation(infoDishWindow, editDishWindow, categoryService);
         this.quantity = new QuantityDishes(view);
-        
-        this.activateDish = new ChangeDishStatusHandler(infoDishWindow, dishService, modal, true);
-        this.deactivateDish = new ChangeDishStatusHandler(infoDishWindow, dishService, modal, false);
-        this.saveDishHandler = new SaveDishHandler(createDishWindow, categoryService, dishService, modal);
-        this.editDishHandler = new EditDishHandler(editDishWindow, categoryService, dishService, modal);
+        this.activateDish = new ChangeDishStatus(infoDishWindow, dishService, modal, true);
+        this.deactivateDish = new ChangeDishStatus(infoDishWindow, dishService, modal, false);
         
         init();
         initListeners();
@@ -95,7 +86,7 @@ public class DishController {
     private void init() {
         pages.create();
         quantity.setQuantity(dishService.getQuantityDishes());
-        resetElements.showButtonUploadImage();
+        elements.showButtonUploadImage();
         fillComboBoxes.categoriesFilterBox(categoryService.getDishesCategories());
         fillComboBoxes.categoriesCreateBox(categoryService.getDishesCategories());
     }
@@ -107,9 +98,10 @@ public class DishController {
         view.pageComboBox.addActionListener(e -> changePage(filterSelected));
         view.btnSearch.addActionListener(e -> filterDishesByName());
         view.btnExportDishes.addActionListener(e -> generateReport());
+        view.btnReload.addActionListener(e -> seeAllDishes());
         
         createDishWindow.btnCancelSaveDish.addActionListener(e -> closeCreateDishWindow());
-        createDishWindow.btnSaveDish.addActionListener(e -> createDish());
+        createDishWindow.btnSaveDish.addActionListener(e -> saveDish());
         createDishWindow.btnLoadImage.addActionListener(e -> upload.load(false));
         createDishWindow.btnRemoveImage.addActionListener(e -> removeImage());
     
@@ -127,60 +119,80 @@ public class DishController {
         dishGrid.showAllDishes(1);
     }
     
-    private void changePage(SearchCriteriaEnum criteria) {
-        int selectedPage = pages.getSelectedPage();
+    private void saveDish() {
+        String dishName = inputReader.getNameCreate();
+        String categorySelected = inputReader.getCategoryCreate();
+        String price = inputReader.getPriceCreate();
+        String description = inputReader.getDescriptionCreate();
         
-        switch ( criteria ) {
-            case SearchCriteriaEnum.NONE -> dishGrid.showAllDishes(selectedPage);
-            case SearchCriteriaEnum.NAME -> dishGrid.showDishesByName(filter.getDishNameSearched(), selectedPage);
-            case SearchCriteriaEnum.DISH_CATEGORY -> dishGrid.showDishesByCategory(filter.getCategoryIDSelected(), selectedPage);
-            case SearchCriteriaEnum.STATUS -> dishGrid.showDishesByStatus(filter.getStatusSelected(), selectedPage);
+        if ( !validator.isValidForm(dishName, description, price, categorySelected) ) return;
+        
+        if (!upload.handleUploadForCreate()) {
+            image = "no-image.jpg";
+            return;
         }
-    }
-    
-    private void filterDishesByName() {
-        String dishNameSearched = filter.getDishNameSearched();
-        
-        if ( dishNameSearched == null ) {
-            safelyRebuildPagination(() -> pages.create());
-            filterSelected = SearchCriteriaEnum.NONE;
-            dishGrid.showAllDishes(1);
+        image = upload.image;
+                
+        if ( dishService.getDishByName(dishName) != null ) {
+            modal.show("El platillo ya existe", ModalTypeEnum.error);
             return;
         }
         
-        safelyRebuildPagination(() -> pages.createByName(dishNameSearched));
-        dishGrid.showDishesByName(dishNameSearched, 1);
-        filterSelected = SearchCriteriaEnum.NAME;
+        int categoryId = categoryService.getByName(categorySelected).getCategoryId();
+        Dish dish = new Dish( dishName, description, image, Double.valueOf(price), categoryId );
+        
+        if ( !dishService.saveDish(dish) ) {
+            modal.show("El platillo no pudo ser creado", ModalTypeEnum.error);
+            return; 
+        }
+        
+        modal.show("El platillo ha sido creado exitosamente", ModalTypeEnum.success); 
+        dishGrid.showAllDishes(1);
+        safelyRebuildPagination(() -> pages.create());
+        quantity.setQuantity(dishService.getQuantityDishes());
+        elements.resetCreateForm();
+        createDishWindow.setVisible(false);
+        upload.removeImage();
     }
     
-    private void filterDishesByStatus() {
-        String statusSelected = filter.getStatusSelected();
+    private void editDish() {
+        String dishName = inputReader.getNameEdition();
+        String categorySelected = inputReader.getCategoryEdition();
+        String price = inputReader.getPriceEdition();
+        String description = inputReader.getDescriptionEdition();
         
-        if ( statusSelected == null ) {
-            safelyRebuildPagination(() -> pages.create());
-            filterSelected = SearchCriteriaEnum.NONE;
-            dishGrid.showAllDishes(1);
+        if (!validator.isValidForm(dishName, description, price, categorySelected)) return;
+        
+        if (!upload.handleUploadForEdit()) {
+            image = "no-image.jpg";
+            return;
+        }
+        image = upload.image;
+        
+        Dish existingDish = dishService.getDishByName(dishName);
+        int dishId = dishSelected.getDishID();
+        String oldDishName = dishSelected.getDishName();
+        
+        if ( !dishName.equals(oldDishName) && existingDish != null && existingDish.getDishID() != dishId ) {
+            modal.show("El platillo ya existe", ModalTypeEnum.error);
             return;
         }
         
-        safelyRebuildPagination(() -> pages.createByStatus(statusSelected));
-        dishGrid.showDishesByStatus(statusSelected, 1);
-        filterSelected = SearchCriteriaEnum.STATUS;
-    }
-    
-    private void filterDishByCategory() {
-        int categorySelected = filter.getCategoryIDSelected();
+        int categoryId = categoryService.getByName(categorySelected).getCategoryId();
+        Dish dish = new Dish(dishName, description, image, Double.valueOf(price), categoryId);
         
-        if ( categorySelected == -1 ) {
-            safelyRebuildPagination(() -> pages.create());
-            filterSelected = SearchCriteriaEnum.NONE;
-            dishGrid.showAllDishes(1);
+        if (!dishService.editDish(dish, dishId)) {
+            modal.show("El platillo no pudo ser actualizado", ModalTypeEnum.error);
             return;
         }
         
-        safelyRebuildPagination(() -> pages.createByCategories(categorySelected));
-        dishGrid.showDishesByCategory(categorySelected, 1);
-        filterSelected = SearchCriteriaEnum.DISH_CATEGORY;
+        modal.show("El platillo ha sido actualizado exitosamente", ModalTypeEnum.success);        
+        dishGrid.showAllDishes(1);
+        safelyRebuildPagination(() -> pages.create());
+        elements.resetEditForm();
+        infoDishWindow.setVisible(false);
+        editDishWindow.setVisible(false);
+        upload.removeImage();
     }
     
     private void activateDish() {
@@ -203,84 +215,96 @@ public class DishController {
         infoDishWindow.setVisible(false);
     }
     
-    private void editDish() {
-        if (!dishValidator.isValidEdition()) return;
+    private void changePage(SearchCriteriaEnum criteria) {
+        int selectedPage = pages.getSelectedPage();
         
-        if (!upload.handleUploadForEdit()) {
-            ((EditDishHandler) editDishHandler).setDishImage("no-image.jpg");
+        switch ( criteria ) {
+            case SearchCriteriaEnum.NONE -> dishGrid.showAllDishes(selectedPage);
+            case SearchCriteriaEnum.NAME -> dishGrid.showDishesByName(inputReader.getDishNameSearched(), selectedPage);
+            case SearchCriteriaEnum.DISH_CATEGORY -> {
+                int categoryId = categoryService.getByName(inputReader.getCategorySelected()).getCategoryId();
+                dishGrid.showDishesByCategory(categoryId, selectedPage);
+            }
+            case SearchCriteriaEnum.STATUS -> dishGrid.showDishesByStatus(inputReader.getStatusSelected(), selectedPage);
+        }
+    }
+    
+    private void filterDishesByName() {
+        String dishNameSearched = inputReader.getDishNameSearched();
+        
+        if ( dishNameSearched == null ) {
+            safelyRebuildPagination(() -> pages.create());
+            filterSelected = SearchCriteriaEnum.NONE;
+            dishGrid.showAllDishes(1);
             return;
         }
         
-        ((EditDishHandler) editDishHandler).setDishImage(upload.image);
-        ((EditDishHandler) editDishHandler).setDishId(dishSelected.getDishID());
-        editDishHandler.execute();
-        dishGrid.showAllDishes(1);
+        safelyRebuildPagination(() -> pages.createByName(dishNameSearched));
+        dishGrid.showDishesByName(dishNameSearched, 1);
+        filterSelected = SearchCriteriaEnum.NAME;
+    }
+    
+    private void filterDishesByStatus() {
+        String statusSelected = inputReader.getStatusSelected();
+        if ( statusSelected == null ) return;
+        
+        safelyRebuildPagination(() -> pages.createByStatus(statusSelected));
+        dishGrid.showDishesByStatus(statusSelected, 1);
+        filterSelected = SearchCriteriaEnum.STATUS;
+    }
+    
+    private void filterDishByCategory() {
+        String categorySelected = inputReader.getCategorySelected();
+        if ( categorySelected == null ) return;
+        
+        int categoryId = categoryService.getByName(categorySelected).getCategoryId();
+        safelyRebuildPagination(() -> pages.createByCategories(categoryId));
+        dishGrid.showDishesByCategory(categoryId, 1);
+        filterSelected = SearchCriteriaEnum.DISH_CATEGORY;
+    }
+    
+    private void seeAllDishes() {
         safelyRebuildPagination(() -> pages.create());
-        resetElements.resetEditForm();
-        infoDishWindow.setVisible(false);
-        editDishWindow.setVisible(false);
-        upload.removeImage();
+        filterSelected = SearchCriteriaEnum.NONE;
+        elements.clearInputSearch();
+        dishGrid.showAllDishes(1);
     }
     
     private void removeImage() {
         upload.removeImage();
-        resetElements.showButtonUploadImage();
+        elements.showButtonUploadImage();
     }
     
     private void closeEditDishWindow() {
-        infoDishWindow.setVisible(false);
-        editDishWindow.setVisible(false);
-        resetElements.resetEditForm();
-        ((EditDishHandler) editDishHandler).setDishOldName(null);
-        ((EditDishHandler) editDishHandler).setDishId(0);
-        ((EditDishHandler) editDishHandler).setDishImage(null);
+        infoDishWindow.dispose();
+        editDishWindow.dispose();
+        elements.resetEditForm();
+        image = null;
     }
     
     private void openEditDishWindow() {
         editDishWindow.setVisible(true);
-        
-        if ( dishSelected != null ) {
-            ((EditDishHandler) editDishHandler).setDishOldName(dishSelected.getDishName());
-            upload.image = dishSelected.getDishImage();
-            fillComboBoxes.categoriesEditBox(categoryService.getDishesCategories());
-            resetElements.hideButtonUploadImage();
-            loadEdit.load(dishSelected);
-        }
+        upload.image = dishSelected.getDishImage();
+        fillComboBoxes.categoriesEditBox(categoryService.getDishesCategories());
+        elements.hideButtonUploadImage();
+        loadInfo.loadEditInfo(dishSelected, categoryService.getById(dishSelected.getCategoryId()).getCategoryName());
     }
     
     private void openInfoDish(Dish dish) {
         dishSelected = dish;
-        loadInfo.load(dish);
+        loadInfo.loadDishInfo(dishSelected, categoryService.getById(dishSelected.getCategoryId()).getCategoryName());
         infoDishWindow.setVisible(true);
     }
     
     private void closeCreateDishWindow() {
-        resetElements.resetCreateForm();
+        elements.resetCreateForm();
         upload.removeImage();
-        createDishWindow.setVisible(false);
-    }
-    
-    private void createDish() {
-        if ( !dishValidator.isValidCreation() ) return; 
-        
-        if (!upload.handleUploadForCreate()) {
-            ((SaveDishHandler) saveDishHandler).setDishImage("no-image.jpg");
-        } else {
-            ((SaveDishHandler) saveDishHandler).setDishImage(upload.image);
-        }
-        
-        saveDishHandler.execute();
-        dishGrid.showAllDishes(1);
-        safelyRebuildPagination(() -> pages.create());
-        quantity.setQuantity(dishService.getQuantityDishes());
-        resetElements.resetCreateForm();
-        createDishWindow.setVisible(false);
-        upload.removeImage();
+        createDishWindow.dispose();
     }
     
     private void openCreateDishWindow() {
         fillComboBoxes.categoriesCreateBox(categoryService.getDishesCategories());
-        resetElements.showButtonUploadImage();
+        elements.showButtonUploadImage();
         createDishWindow.setVisible(true);
     }
     

@@ -22,7 +22,6 @@ public class WarehouseInfoDishInit {
         view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         view.setResizable(false);
         
-        imageGenerator.addImage(view.iconInfoDish, "icon-info", 24);
         inputGenerator.areaInfo(view.dishDescription);
         
         buttonGenerator.solidButton(view.btnEditDish, "#000000", "#ffffff", 11);

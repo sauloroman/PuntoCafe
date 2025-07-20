@@ -29,7 +29,7 @@ public class WarehouseDishesInit {
         buttonGenerator.addIcon(view.btnExportDishes, "icon-print", 20);
         buttonGenerator.solidButton(view.btnSearch, ViewConstants.blackColor, "#FFFFFF", 11);
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
-        buttonGenerator.solidButton(view.btnReload, ViewConstants.blackColor, "#FFFFFF", 12);
+        buttonGenerator.outlineButton(view.btnReload, "#DDDDDD", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnReload, "icon-reload", 20);
         
         inputGenerator.roundedComboBox(view.dishStatusCombo, INPUT_COLOR, 10);

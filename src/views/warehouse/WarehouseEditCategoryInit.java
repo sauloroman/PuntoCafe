@@ -33,7 +33,7 @@ public class WarehouseEditCategoryInit {
         
         image.addImage(view.iconInputMandatory, "icon-lock", 16);
         image.addImage(view.iconInputMandatory2, "icon-lock", 16);
-        image.addImageFix(view.iconRH, "logo-rh", 40, 40);
+        image.addImageFix(view.iconRH, "logo-rh", 50, 50);
         
     }
     
