@@ -89,7 +89,7 @@ public class ProductGrid {
     public void addProduct( Product product ) {
         Card card = new Card();
         
-        Supplier supplierProduct = querySuppliers.getByID(product.getSupplierId());
+        Supplier supplierProduct = querySuppliers.getById(product.getSupplierId());
         String supplierCompany = supplierProduct.getSupplierCompany();
         
         view.productsGrid.add(card.createProduct(

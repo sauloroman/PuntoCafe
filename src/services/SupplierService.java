@@ -28,7 +28,7 @@ public class SupplierService {
         return supplier;
     }
     
-    public Supplier getByID(int id) {
+    public Supplier getById(int id) {
         Supplier supplier = model.getItemById(id);
         return supplier;
     }

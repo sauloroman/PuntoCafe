@@ -32,7 +32,7 @@ public class LoadEditInformation {
         Category category = categoryService.getById(product.getCategoryId());
         String categoryName = category.getCategoryName();
         
-        Supplier supplier = supplierService.getByID(product.getSupplierId());
+        Supplier supplier = supplierService.getById(product.getSupplierId());
         String supplierName = supplier.getSupplierName();
         String supplierCompany = supplier.getSupplierCompany();
         

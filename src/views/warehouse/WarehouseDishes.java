@@ -19,7 +19,7 @@ public class WarehouseDishes extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         dishSearchByNameTxt = new javax.swing.JTextField();
         dishCategoryCombo = new javax.swing.JComboBox<>();
-        btnExportProducts = new javax.swing.JButton();
+        btnExportDishes = new javax.swing.JButton();
         dishesGrid = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         pageComboBox = new javax.swing.JComboBox<>();
@@ -42,8 +42,8 @@ public class WarehouseDishes extends javax.swing.JPanel {
         dishCategoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoría" }));
         dishCategoryCombo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnExportProducts.setText("Exportar");
-        btnExportProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExportDishes.setText("Exportar");
+        btnExportDishes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         dishesGrid.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -106,7 +106,7 @@ public class WarehouseDishes extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addComponent(pageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
-                        .addComponent(btnExportProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnExportDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
                         .addComponent(btnNewDish, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35))
@@ -122,7 +122,7 @@ public class WarehouseDishes extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNewDish, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnExportProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnExportDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(pageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,7 +156,7 @@ public class WarehouseDishes extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnExportProducts;
+    public javax.swing.JButton btnExportDishes;
     public javax.swing.JButton btnNewDish;
     public javax.swing.JButton btnReload;
     public javax.swing.JButton btnSearch;

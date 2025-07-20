@@ -23,7 +23,7 @@ import services.UserService;
 import utils.enums.ModalTypeEnum;
 import utils.enums.SearchCriteriaEnum;
 import utils.helpers.Modal;
-import utils.helpers.SelectedRowTable;
+import controllers.category.helpers.SelectedRowTable;
 import views.access.AccessCreateUser;
 import views.access.AccessEditUser;
 import views.access.AccessInfoUser;

@@ -1,13 +1,12 @@
 package controllers.supplier.helpers;
 
-import controllers.supplier.handlers.SupplierPaginationHandler;
 import utils.enums.SearchCriteriaEnum;
 
 public class SupplierTableRefresher {
     
-    private final SupplierPaginationHandler paginationHandler;
+    private final SupplierPagination paginationHandler;
 
-    public SupplierTableRefresher(SupplierPaginationHandler paginationHandler) {
+    public SupplierTableRefresher(SupplierPagination paginationHandler) {
         this.paginationHandler = paginationHandler;
     }
     

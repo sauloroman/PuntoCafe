@@ -23,7 +23,7 @@ import controllers.category.helpers.InputReader;
 import utils.enums.SearchCriteriaEnum;
 import utils.helpers.Modal;
 import utils.enums.ModalTypeEnum;
-import utils.helpers.SelectedRowTable;
+import controllers.category.helpers.SelectedRowTable;
 
 import java.awt.event.ActionListener;
 
@@ -163,12 +163,7 @@ public class CategoryController {
     
     private void filterCategoriesByName() {
         String nameSearched = inputReader.getNameSearched();
-        
-        if ( nameSearched == null ) {
-            elements.showPagination();
-            safelyRebuildPagination(SearchCriteriaEnum.NAME);
-            return;
-        }
+        if ( nameSearched == null ) return;
         
         refresher.refresh(SearchCriteriaEnum.NAME, nameSearched); 
         elements.hidePagination();
@@ -195,7 +190,7 @@ public class CategoryController {
         boolean wasStatusChangedSuccessfully = activate.change(id);
         
         if ( !wasStatusChangedSuccessfully ) {
-            modal.show("La categoría no pudo cambiar de estado", ModalTypeEnum.warning);
+            modal.show("La categoría no pudo cambiar de estado", ModalTypeEnum.error);
             return;
         }
         
@@ -219,7 +214,7 @@ public class CategoryController {
         boolean wasStatusChangedSuccessfully = deactivate.change(id);
         
         if ( !wasStatusChangedSuccessfully ) {
-            modal.show("La categoría no pudo cambiar de estado", ModalTypeEnum.warning);
+            modal.show("La categoría no pudo cambiar de estado", ModalTypeEnum.error);
             return;
         }
         
@@ -236,7 +231,6 @@ public class CategoryController {
         
         Category category = fromTable.categorySelectedInTable(selectedRow.getSelectedRow());
         categorySelected = category;
-        
         loadInfo.load(category);
         infoView.setVisible(true);
     }

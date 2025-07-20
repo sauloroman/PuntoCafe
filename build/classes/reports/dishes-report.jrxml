@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 5.5.2  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dishes-report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="363855c8-0471-4c7f-a08d-c2596f49b93c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Connection"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT puntocafe.dish.dish_id,
+	puntocafe.dish.dish_name,
+	puntocafe.dish.dish_selling_price,
+	puntocafe.dish.dish_is_active,
+	puntocafe.category.category_name,
+	(SELECT COUNT(*) FROM dish) AS total_dishes,
+	(SELECT COUNT(*) FROM dish WHERE dish_is_active = 1) AS total_dishes_active,
+	(SELECT COUNT(*) FROM dish WHERE dish_is_active = 0) AS total_dishes_inactive
+FROM puntocafe.dish
+	INNER JOIN puntocafe.category ON 
+	 puntocafe.dish.category_id = puntocafe.category.category_id]]>
+	</queryString>
+	<field name="dish_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="dish_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="dish_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dish"/>
+	</field>
+	<field name="dish_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dish_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="dish_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dish"/>
+	</field>
+	<field name="dish_selling_price" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="dish_selling_price"/>
+		<property name="com.jaspersoft.studio.field.label" value="dish_selling_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dish"/>
+	</field>
+	<field name="dish_is_active" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="dish_is_active"/>
+		<property name="com.jaspersoft.studio.field.label" value="dish_is_active"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dish"/>
+	</field>
+	<field name="category_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="category_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="category_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="category"/>
+	</field>
+	<field name="total_dishes" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_dishes"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_dishes"/>
+	</field>
+	<field name="total_dishes_active" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_dishes_active"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_dishes_active"/>
+	</field>
+	<field name="total_dishes_inactive" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_dishes_inactive"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_dishes_inactive"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="79" forecolor="#030303" backcolor="#263358" uuid="011d7c99-b9f7-4e7a-a6a2-63a909bcf48b"/>
+			</rectangle>
+			<image>
+				<reportElement x="420" y="10" width="130" height="69" uuid="4c62e9f9-db86-49b6-bcc1-a05af8b4a976"/>
+				<imageExpression><![CDATA["C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/images/logo-blue.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="10" y="20" width="242" height="30" forecolor="#FFFFFF" uuid="8074ba55-e167-4b73-b4fe-f1eb992a8b75"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de platillos del sistema]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="50" width="100" height="20" forecolor="#FFFFFF" uuid="a003ffbc-cdf3-40d1-896e-3ccc99550b8a"/>
+				<text><![CDATA[Fecha de elaboración:]]></text>
+			</staticText>
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="110" y="50" width="100" height="20" forecolor="#FFFFFF" uuid="4f1241ac-31f1-482c-b561-7dc34f594925"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="80" height="20" forecolor="#030303" uuid="55b78b90-9b33-4998-a01a-8d88056b5569"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de platillos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="110" height="20" forecolor="#030303" uuid="2686ad63-6ca5-4d61-a4a6-e175a963d8fb"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de platillos activos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="110" height="20" forecolor="#030303" uuid="7ec739de-cd3d-434f-99d5-0b191d8cf2f3"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de platillos inactivos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="10" width="70" height="18" uuid="0cd739cd-5a09-46c8-90f7-fc5918fec24f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_dishes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="20" width="100" height="18" uuid="9d749f56-dacc-4a65-9628-c124103f737f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_dishes_active}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="30" width="100" height="12" uuid="649cdaad-a49c-4721-96f0-fdd99a00bcb2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_dishes_inactive}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="50" height="20" backcolor="#A8C6F0" uuid="39b70d15-3f9e-4e91-bed2-b8f0d2967467">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="50" y="0" width="170" height="20" backcolor="#A8C6F0" uuid="63970684-6c2e-4498-be12-4c2fadabd7e6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del platillo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="220" y="0" width="90" height="20" backcolor="#A8C6F0" uuid="d51f3e05-7806-4d74-aa23-5084dbe484e4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="310" y="0" width="90" height="20" backcolor="#A8C6F0" uuid="6921c02b-f1a3-4b57-b931-84e7f7bf0e61">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="400" y="0" width="155" height="20" backcolor="#A8C6F0" uuid="55b47186-7caa-498e-8f4e-4fa6c91012b4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoría]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" uuid="582f30e1-426b-4760-a65b-bcdb43f5fad6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4e64d19b-26a3-4e61-bd2d-2ebf2dd42638"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dish_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="170" height="20" uuid="030b04cf-a03d-4189-a5ba-0b4530c93282">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6ca6502e-da9e-445f-81d3-87db94f81659"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dish_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="0" width="90" height="20" uuid="8daf155f-3d1b-4570-bc0a-7cdb335db609">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1c4774a-1f94-4472-936c-4fb7b4d417ac"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["$" + $F{dish_selling_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="90" height="20" uuid="c03719b8-890d-4902-9c0e-c07b141f100c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f8fedd5-50bf-4825-b741-15880faa0e70"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dish_is_active} ? "Activo" : "Inactivo"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="155" height="20" uuid="e6e7bec6-f085-4b50-8b6f-f755cf3cc08f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8018cb0e-baee-4f05-a813-432d45650598"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{category_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="64" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="554" height="64" backcolor="#263358" uuid="1f357b77-73af-4ac3-bd5a-ea9669fb3557"/>
+			</rectangle>
+			<textField>
+				<reportElement x="180" y="30" width="100" height="30" forecolor="#FFFFFF" uuid="c08dd1e7-f8cd-4fba-960d-e862f45dfbc8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="30" width="100" height="30" forecolor="#FFFFFF" uuid="f95fc124-2f55-4b7c-b47b-88628ef35d25"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

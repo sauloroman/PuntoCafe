@@ -61,10 +61,10 @@ public class PurchasesSuppliersInit {
         
 //        buttonGenerator.outlineButton(view.btnEditSupplier, INPUT_COLOR, ViewConstants.textBtn);
 //        buttonGenerator.addIcon(view.btnEditSupplier, "icon-pencil", 20);
-        buttonGenerator.outlineButton(view.btnPrintSuppliers, INPUT_COLOR, ViewConstants.textBtn);
-        buttonGenerator.addIcon(view.btnPrintSuppliers, "icon-print", 20);
-        buttonGenerator.solidButton(view.btnSearchSuppliers, NEW_BTN_COLOR, "#FFFFFF", 11);
-        buttonGenerator.addIcon(view.btnSearchSuppliers, "icon-search", 20);
+        buttonGenerator.outlineButton(view.btnExportSuppliers, INPUT_COLOR, ViewConstants.textBtn);
+        buttonGenerator.addIcon(view.btnExportSuppliers, "icon-print", 20);
+        buttonGenerator.solidButton(view.btnSearch, NEW_BTN_COLOR, "#FFFFFF", 11);
+        buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
 //        buttonGenerator.solidButton(view.btnSaveSupplier, NEW_BTN_COLOR, "#ffffff", 11);
 //        buttonGenerator.addIcon(view.btnSaveSupplier, "icon-save", 20);
 //        buttonGenerator.solidButton(view.btnActivateSupplier, "#fff3bf", ViewConstants.textBtn, 11);

@@ -25,8 +25,8 @@ public class WarehouseDishesInit {
         
         buttonGenerator.solidButton(view.btnNewDish, ViewConstants.skyColor, "#FFFFFF", 12);
         buttonGenerator.addIcon(view.btnNewDish, "icon-plus-white", 20);
-        buttonGenerator.outlineButton(view.btnExportProducts, INPUT_COLOR, ViewConstants.textBtn);
-        buttonGenerator.addIcon(view.btnExportProducts, "icon-print", 20);
+        buttonGenerator.outlineButton(view.btnExportDishes, INPUT_COLOR, ViewConstants.textBtn);
+        buttonGenerator.addIcon(view.btnExportDishes, "icon-print", 20);
         buttonGenerator.solidButton(view.btnSearch, ViewConstants.blackColor, "#FFFFFF", 11);
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
         buttonGenerator.solidButton(view.btnReload, ViewConstants.blackColor, "#FFFFFF", 12);

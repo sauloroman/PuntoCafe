@@ -29,7 +29,7 @@ public class LoadInformationProduct {
         Category category = categoryService.getById(product.getCategoryId());
         String categoryName = category.getCategoryName();
         
-        Supplier supplier = supplierService.getByID(product.getSupplierId());
+        Supplier supplier = supplierService.getById(product.getSupplierId());
         String supplierName = supplier.getSupplierName() + " " + supplier.getSupplierLastname();
         String supplierCompany = supplier.getSupplierCompany();
         

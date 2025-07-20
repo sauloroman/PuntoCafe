@@ -21,9 +21,9 @@ public class PurchasesSuppliers extends javax.swing.JPanel {
         suppliersCompanyCombo = new javax.swing.JComboBox<>();
         pageComboBox = new javax.swing.JComboBox<>();
         btnNewSupplier = new javax.swing.JButton();
-        btnPrintSuppliers = new javax.swing.JButton();
+        btnExportSuppliers = new javax.swing.JButton();
         itemsPerPageComboBox = new javax.swing.JComboBox<>();
-        btnSearchSuppliers = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         titlePages = new javax.swing.JLabel();
         titleItems = new javax.swing.JLabel();
         btnSeeSupplier = new javax.swing.JButton();
@@ -61,15 +61,15 @@ public class PurchasesSuppliers extends javax.swing.JPanel {
         btnNewSupplier.setText("Agregar Proveedor");
         btnNewSupplier.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnPrintSuppliers.setText("Exportar ");
-        btnPrintSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExportSuppliers.setText("Exportar ");
+        btnExportSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         itemsPerPageComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "20", "25" }));
         itemsPerPageComboBox.setPreferredSize(new java.awt.Dimension(70, 22));
 
-        btnSearchSuppliers.setText("Buscar");
-        btnSearchSuppliers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(18, 22, 21)));
-        btnSearchSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSearch.setText("Buscar");
+        btnSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(18, 22, 21)));
+        btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         titlePages.setText("No. Página");
 
@@ -131,7 +131,7 @@ public class PurchasesSuppliers extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnSeeSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(25, 25, 25)
-                                .addComponent(btnPrintSuppliers)
+                                .addComponent(btnExportSuppliers)
                                 .addGap(25, 25, 25)
                                 .addComponent(suppliersStatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(25, 25, 25)
@@ -139,7 +139,7 @@ public class PurchasesSuppliers extends javax.swing.JPanel {
                                 .addGap(25, 25, 25)
                                 .addComponent(btnNewSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnSearchSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(searchSuppliersTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(35, 35, 35))
@@ -152,14 +152,14 @@ public class PurchasesSuppliers extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNewSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPrintSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExportSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(suppliersStatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(suppliersCompanyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSeeSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(searchSuppliersTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearchSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(title)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -184,10 +184,10 @@ public class PurchasesSuppliers extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnExportSuppliers;
     public javax.swing.JButton btnNewSupplier;
-    public javax.swing.JButton btnPrintSuppliers;
     public javax.swing.JButton btnRestore;
-    public javax.swing.JButton btnSearchSuppliers;
+    public javax.swing.JButton btnSearch;
     public javax.swing.JButton btnSeeSupplier;
     public javax.swing.JComboBox<String> itemsPerPageComboBox;
     public javax.swing.JLabel jLabel2;

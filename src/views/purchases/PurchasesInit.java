@@ -1,9 +1,6 @@
 package views.purchases;
 
-import java.awt.Color;
 import java.awt.Font;
-import utils.constants.ViewConstants;
-import views.purchases.Purchases;
 
 public class PurchasesInit {
    
@@ -24,7 +21,6 @@ public class PurchasesInit {
         view.navegationPane.setFont( tabFont );
         view.navegationPane.setSelectedIndex(0);
         view.navegationPane.setEnabledAt(0, true);
-        //view.title.setForeground(Color.decode(ViewConstants.titleColor));
     }
     
 }

@@ -6,9 +6,9 @@ import views.warehouse.WarehouseEditCategory;
 
 public class InputReader {
     
-    private WarehouseCategories view;
-    private WarehouseCreateCategory createView;
-    private WarehouseEditCategory editView;
+    private final WarehouseCategories view;
+    private final WarehouseCreateCategory createView;
+    private final WarehouseEditCategory editView;
 
     public InputReader(WarehouseCategories view, WarehouseCreateCategory createView, WarehouseEditCategory editView) {
         this.view = view;

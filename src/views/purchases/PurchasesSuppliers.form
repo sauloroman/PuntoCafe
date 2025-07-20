@@ -53,7 +53,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="btnSeeSupplier" min="-2" pref="125" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="btnPrintSuppliers" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnExportSuppliers" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="suppliersStatusCombo" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -62,7 +62,7 @@
                               <Component id="btnNewSupplier" min="-2" pref="160" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnSearchSuppliers" min="-2" pref="96" max="-2" attributes="0"/>
+                              <Component id="btnSearch" min="-2" pref="96" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="searchSuppliersTxt" min="-2" pref="390" max="-2" attributes="0"/>
                           </Group>
@@ -81,7 +81,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnNewSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnPrintSuppliers" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnExportSuppliers" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="suppliersStatusCombo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="suppliersCompanyCombo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnSeeSupplier" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -89,7 +89,7 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="searchSuppliersTxt" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnSearchSuppliers" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnSearch" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -238,7 +238,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="btnPrintSuppliers">
+    <Component class="javax.swing.JButton" name="btnExportSuppliers">
       <Properties>
         <Property name="text" type="java.lang.String" value="Exportar "/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -267,7 +267,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSearchSuppliers">
+    <Component class="javax.swing.JButton" name="btnSearch">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

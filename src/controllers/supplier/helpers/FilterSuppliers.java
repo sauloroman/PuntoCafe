@@ -19,8 +19,8 @@ public class FilterSuppliers {
     }
     
     public String filterByCompany() {
-        if ( view.suppliersCompanyCombo.getSelectedItem() == null ) return null;
         String company = view.suppliersCompanyCombo.getSelectedItem().toString();
+        if ( company.equals("Empresa") ) return null;
         return company;
     }
 }

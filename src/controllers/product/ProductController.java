@@ -16,6 +16,7 @@ import controllers.product.helpers.LoadInformationProduct;
 import controllers.product.helpers.UploadProductImage;
 import controllers.product.helpers.Pages;
 import controllers.product.helpers.ProductValidator;
+import controllers.product.helpers.QuantityProducts;
 import entities.Product;
 import java.awt.event.ActionListener;
 import services.SupplierService;
@@ -23,6 +24,7 @@ import models.CategoryModel;
 import models.ProductModel;
 import models.SupplierModel;
 import utils.enums.SearchCriteriaEnum;
+import utils.helpers.GenerateReports;
 import utils.helpers.Modal;
 import views.warehouse.WarehouseCreateProduct;
 import views.warehouse.WarehouseEditProduct;
@@ -38,7 +40,7 @@ public class ProductController {
     private final WarehouseInfoProduct infoProductWindow;
     private final WarehouseEditProduct editProductWindow;
     private final WarehouseCreateProduct createProductWindow;
-    private final ProductService products;
+    private final ProductService productsService;
     private final CategoryService categories;
     private final SupplierService suppliers;
     private final Pages pages;
@@ -51,6 +53,7 @@ public class ProductController {
     private final ChangeStatusNoTableInterface activateProduct;
     private final ChangeStatusNoTableInterface deactivateProduct;
     private final FilterProducts filter;
+    private final QuantityProducts quantity;
     private final ProductValidator productValidator;
     private final HandlerController saveProductHandler;
     private final HandlerController editProductHandler;
@@ -73,25 +76,26 @@ public class ProductController {
         this.editProductWindow = new WarehouseEditProduct();
         this.createProductWindow = new WarehouseCreateProduct();
         
-        this.products = new ProductService( this.model);
+        this.productsService = new ProductService( this.model);
         this.categories = new CategoryService(this.categoryModel);
         this.suppliers = new SupplierService(this.supplierModel);
         
-        this.pages = new Pages( view, products );
+        this.pages = new Pages( view, productsService );
         
+        this.quantity = new QuantityProducts(view);
         this.upload = new UploadProductImage(createProductWindow, editProductWindow, modal);
         this.fillComboBoxes = new FillComboBoxes(createProductWindow, editProductWindow, view);
-        this.productGrid = new ProductGrid(view, products, suppliers);
+        this.productGrid = new ProductGrid(view, productsService, suppliers);
         this.resetElements = new ResetElements(createProductWindow, editProductWindow);
         this.loadInfo = new LoadInformationProduct(infoProductWindow, categories, suppliers);
         this.loadEdit = new LoadEditInformation(editProductWindow, categories, suppliers);
         this.productValidator = new ProductValidator(createProductWindow, editProductWindow, modal);
-        this.activateProduct = new ChangeProductStatusHandler(infoProductWindow, products, modal, true);
-        this.deactivateProduct = new ChangeProductStatusHandler(infoProductWindow, products, modal, false);
+        this.activateProduct = new ChangeProductStatusHandler(infoProductWindow, productsService, modal, true);
+        this.deactivateProduct = new ChangeProductStatusHandler(infoProductWindow, productsService, modal, false);
         this.filter = new FilterProducts(view, categories);
         
-        this.saveProductHandler = new SaveProductHandler(createProductWindow, categories, suppliers, products, modal );
-        this.editProductHandler = new EditProductHandler(editProductWindow, categories, suppliers, products, modal);
+        this.saveProductHandler = new SaveProductHandler(createProductWindow, categories, suppliers, productsService, modal );
+        this.editProductHandler = new EditProductHandler(editProductWindow, categories, suppliers, productsService, modal);
         
         init();
         initListeners();
@@ -99,6 +103,7 @@ public class ProductController {
     
     private void init() {
         pages.create();
+        quantity.setQuantity(productsService.getQuantityProducts());
         resetElements.showButtonUploadImage();
         fillComboBoxes.categoriesCreateBox(categories.getProductCategories());
         fillComboBoxes.suppliersCreateBox(suppliers.getAll());
@@ -115,6 +120,7 @@ public class ProductController {
         view.productSupplierCombo.addActionListener(e -> filterProductsBySupplierCompany());
         view.productStatusCombo.addActionListener(e -> filterProductsByStatus() );
         view.btnSearch.addActionListener(e -> filterProductsByName());
+        view.btnExportProducts.addActionListener(e -> generateReport());
         
         createProductWindow.btnCancelSaveProduct.addActionListener(e -> closeCreateProductWindow());
         createProductWindow.btnLoadImage.addActionListener(e -> uploadImage(false));
@@ -208,6 +214,7 @@ public class ProductController {
         saveProductHandler.execute();
         productGrid.showAllProducts(1);
         safelyRebuildPagination(() -> pages.create());
+        quantity.setQuantity(productsService.getQuantityProducts());
         resetElements.resetCreateForm();
         createProductWindow.setVisible(false);
         upload.removeImage();
@@ -313,6 +320,10 @@ public class ProductController {
         fillComboBoxes.suppliersCreateBox(suppliers.getAll());
         resetElements.showButtonUploadImage();
         createProductWindow.setVisible(true);
+    }
+
+    private void generateReport() {
+        GenerateReports.generateReport("products-report", "Reporte de productos");
     }
     
     private void safelyRebuildPagination(Runnable rebuildLogic) {

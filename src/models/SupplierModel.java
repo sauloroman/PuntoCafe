@@ -270,7 +270,7 @@ public class SupplierModel implements CrudInterface<Supplier> {
     @Override
     public boolean saveItem(Supplier obj) {
         
-        response = true;
+        response = false;
         
         try {
             

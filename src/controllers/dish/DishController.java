@@ -12,6 +12,7 @@ import controllers.dish.helpers.LoadInformationDish;
 import controllers.dish.helpers.ResetElements;
 import controllers.dish.helpers.UploadDishImage;
 import controllers.dish.helpers.Pages;
+import controllers.dish.helpers.QuantityDishes;
 import interfaces.HandlerController;
 import entities.Dish;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ import models.DishModel;
 import services.CategoryService;
 import services.DishService;
 import utils.enums.SearchCriteriaEnum;
+import utils.helpers.GenerateReports;
 import utils.helpers.Modal;
 import views.warehouse.WarehouseCreateDish;
 import views.warehouse.WarehouseDishes;
@@ -47,6 +49,7 @@ public class DishController {
     private final Pages pages;
     private final FilterDishes filter;
     private final DishGrid dishGrid;
+    private final QuantityDishes quantity;
     private final LoadInformationDish loadInfo;
     private final LoadEditInformation loadEdit;
     private final Modal modal = new Modal("Platillos del sistema - PuntoCafé");
@@ -78,6 +81,7 @@ public class DishController {
         this.loadInfo = new LoadInformationDish(infoDishWindow, categoryService);
         this.loadEdit = new LoadEditInformation(editDishWindow, categoryService);
         this.filter = new FilterDishes(view, categoryService);
+        this.quantity = new QuantityDishes(view);
         
         this.activateDish = new ChangeDishStatusHandler(infoDishWindow, dishService, modal, true);
         this.deactivateDish = new ChangeDishStatusHandler(infoDishWindow, dishService, modal, false);
@@ -90,6 +94,7 @@ public class DishController {
     
     private void init() {
         pages.create();
+        quantity.setQuantity(dishService.getQuantityDishes());
         resetElements.showButtonUploadImage();
         fillComboBoxes.categoriesFilterBox(categoryService.getDishesCategories());
         fillComboBoxes.categoriesCreateBox(categoryService.getDishesCategories());
@@ -101,6 +106,7 @@ public class DishController {
         view.dishStatusCombo.addActionListener(e -> filterDishesByStatus());
         view.pageComboBox.addActionListener(e -> changePage(filterSelected));
         view.btnSearch.addActionListener(e -> filterDishesByName());
+        view.btnExportDishes.addActionListener(e -> generateReport());
         
         createDishWindow.btnCancelSaveDish.addActionListener(e -> closeCreateDishWindow());
         createDishWindow.btnSaveDish.addActionListener(e -> createDish());
@@ -266,6 +272,7 @@ public class DishController {
         saveDishHandler.execute();
         dishGrid.showAllDishes(1);
         safelyRebuildPagination(() -> pages.create());
+        quantity.setQuantity(dishService.getQuantityDishes());
         resetElements.resetCreateForm();
         createDishWindow.setVisible(false);
         upload.removeImage();
@@ -275,6 +282,10 @@ public class DishController {
         fillComboBoxes.categoriesCreateBox(categoryService.getDishesCategories());
         resetElements.showButtonUploadImage();
         createDishWindow.setVisible(true);
+    }
+    
+    private void generateReport() {
+        GenerateReports.generateReport("dishes-report", "Reporte de platillos del sistema");
     }
     
     private void safelyRebuildPagination(Runnable rebuildLogic) {
