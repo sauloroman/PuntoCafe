@@ -23,7 +23,7 @@ public class WarehouseEditDishInit {
         view.setResizable(false);
         
         buttonGenerator.solidButton(view.btnUpdateDish, ViewConstants.skyColor, "#ffffff", 11);
-        buttonGenerator.addIcon(view.btnUpdateDish, "icon-plus-white", 20);
+        buttonGenerator.addIcon(view.btnUpdateDish, "icon-save", 20);
         buttonGenerator.outlineButton(view.btnCancelEditDish, ViewConstants.errorColor, ViewConstants.errorColor);
         buttonGenerator.addIcon(view.btnCancelEditDish, "icon-left-red", 20);
         buttonGenerator.outlineButton(view.btnLoadImage, INPUT_COLOR, ViewConstants.textBtn);

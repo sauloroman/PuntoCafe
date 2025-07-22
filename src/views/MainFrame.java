@@ -1,14 +1,17 @@
 package views;
 
+import entities.User;
+
 public class MainFrame extends javax.swing.JFrame {
     
-    private final MainFrameInit styleView = new MainFrameInit(this);
+    private final MainFrameInit styleView;
     
-    public MainFrame() {
+    public MainFrame(User user) {
         initComponents();
+        styleView = new MainFrameInit(this, user);
         styleView.init();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -21,11 +24,16 @@ public class MainFrame extends javax.swing.JFrame {
         btnSales = new javax.swing.JButton();
         btnAccess = new javax.swing.JButton();
         btnQueries = new javax.swing.JButton();
-        header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnLogout = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         btnSettings = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        header = new javax.swing.JPanel();
+        welcomeMessage = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        userPhoto = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
+        userRole = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,6 +99,34 @@ public class MainFrame extends javax.swing.JFrame {
         btnQueries.setIconTextGap(10);
         btnQueries.setRolloverEnabled(false);
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Menú de navegación");
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Acciones Generales");
+
+        btnSettings.setBackground(new java.awt.Color(40, 60, 117));
+        btnSettings.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnSettings.setForeground(new java.awt.Color(204, 204, 204));
+        btnSettings.setText("Ajustes");
+        btnSettings.setBorder(null);
+        btnSettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSettings.setFocusPainted(false);
+        btnSettings.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSettings.setIconTextGap(10);
+
+        btnLogout.setBackground(new java.awt.Color(40, 60, 117));
+        btnLogout.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(204, 204, 204));
+        btnLogout.setText("Cerrar Sesión");
+        btnLogout.setBorder(null);
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogout.setFocusPainted(false);
+        btnLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLogout.setIconTextGap(10);
+
         javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
         sidebar.setLayout(sidebarLayout);
         sidebarLayout.setHorizontalGroup(
@@ -99,17 +135,27 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(btnPurchases, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnSales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnAccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnQueries, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+            .addComponent(btnQueries, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 19, Short.MAX_VALUE)
                 .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(sidebarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap(94, Short.MAX_VALUE))
+            .addComponent(btnSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         sidebarLayout.setVerticalGroup(
             sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidebarLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(boxLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
                 .addComponent(btnWarehouse, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnPurchases, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,30 +165,22 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(btnQueries, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(30, 30, 30)
+                .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(326, Short.MAX_VALUE))
         );
 
         header.setBackground(new java.awt.Color(255, 255, 255));
         header.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
         header.setPreferredSize(new java.awt.Dimension(974, 60));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(9, 6, 20));
-        jLabel1.setText("Bienvenido Román Santillán");
-
-        btnLogout.setText("Cerrar Sesión");
-        btnLogout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        btnLogout.setBorderPainted(false);
-        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogout.setFocusPainted(false);
-        btnLogout.setPreferredSize(new java.awt.Dimension(81, 20));
-
-        btnSettings.setBackground(new java.awt.Color(249, 249, 249));
-        btnSettings.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnSettings.setText("Ajustes");
-        btnSettings.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
-        btnSettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSettings.setFocusPainted(false);
+        welcomeMessage.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        welcomeMessage.setForeground(new java.awt.Color(55, 123, 76));
+        welcomeMessage.setText("Bienvenido Román Santillán");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -152,34 +190,52 @@ public class MainFrame extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 892, Short.MAX_VALUE)
+            .addGap(0, 880, Short.MAX_VALUE)
         );
+
+        userName.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        userName.setText("Saulo Román Santillán Nava");
+
+        userRole.setBackground(new java.awt.Color(255, 255, 153));
+        userRole.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        userRole.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userRole.setText("Administrador");
+        userRole.setOpaque(true);
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addComponent(welcomeMessage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userName, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(userRole, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(userPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(userPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5)
+                                .addComponent(userRole, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(welcomeMessage)))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         mainPanel.setBackground(new java.awt.Color(240, 240, 240));
@@ -193,7 +249,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout mainLayout = new javax.swing.GroupLayout(main);
@@ -211,12 +267,11 @@ public class MainFrame extends javax.swing.JFrame {
         );
         mainLayout.setVerticalGroup(
             mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
             .addGroup(mainLayout.createSequentialGroup()
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,14 +290,6 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel boxLogo;
     public javax.swing.JButton btnAccess;
@@ -253,10 +300,15 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton btnSettings;
     public javax.swing.JButton btnWarehouse;
     public javax.swing.JPanel header;
-    public javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
     public javax.swing.JPanel main;
     public javax.swing.JPanel mainPanel;
     public javax.swing.JPanel sidebar;
+    public javax.swing.JLabel userName;
+    public javax.swing.JLabel userPhoto;
+    public javax.swing.JLabel userRole;
+    public javax.swing.JLabel welcomeMessage;
     // End of variables declaration//GEN-END:variables
 }

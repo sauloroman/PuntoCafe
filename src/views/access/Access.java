@@ -70,7 +70,6 @@ public class Access extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTabbedPane navegationPanel;
     public javax.swing.JPanel rolesPane;

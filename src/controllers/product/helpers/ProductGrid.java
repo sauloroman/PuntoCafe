@@ -36,6 +36,10 @@ public class ProductGrid {
         view.add(this.scroll);
     }
     
+    public void setItemsByPage( int quantity ) {
+        view.quantityItems.setText("Visualizando " + quantity + " de " + queryProducts.getQuantityProducts()+ " productos");
+    }
+    
     private void clearGrid() {
         view.productsGrid.removeAll();
         view.productsGrid.revalidate();
@@ -49,6 +53,7 @@ public class ProductGrid {
     public void showAllProducts(int page) {
         clearGrid();
         products = queryProducts.getProducts( page, QUANTITY_PRODUCTS);
+        setItemsByPage(products.size());
         for (Product product : products) {
             addProduct(product);
         }
@@ -57,6 +62,7 @@ public class ProductGrid {
     public void showProductsByCategory( int categoryId, int page ) {
         clearGrid();
         products = queryProducts.getProductsByCategory(categoryId, page, QUANTITY_PRODUCTS);
+        setItemsByPage(products.size());
         for (Product product : products) {
             addProduct(product);
         }
@@ -65,6 +71,7 @@ public class ProductGrid {
     public void showProductsBySupplier(String supplierCompany, int page) {
         clearGrid();
         products = queryProducts.getProductsBySupplierCompany(supplierCompany, page, QUANTITY_PRODUCTS);
+        setItemsByPage(products.size());
         for (Product product : products) {
             addProduct(product);
         }
@@ -73,6 +80,7 @@ public class ProductGrid {
     public void showProductsByStatus(String status, int page) {
         clearGrid();
         products = queryProducts.getProductsByStatus(status, page, QUANTITY_PRODUCTS);
+        setItemsByPage(products.size());
         for (Product product : products) {
             addProduct(product);
         }
@@ -81,6 +89,7 @@ public class ProductGrid {
     public void showProductsByName(String name, int page) {
         clearGrid();
         products = queryProducts.getProductsByName(name, page, QUANTITY_PRODUCTS);
+        setItemsByPage(products.size());
         for(Product product: products) {
             addProduct(product);
         }

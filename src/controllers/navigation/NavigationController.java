@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import utils.helpers.ActivateButtonsNavegation;
 import views.access.Access;
 import views.Queries;
-import views.Sales;
+import views.sales.Sales;
 import views.warehouse.Warehouse;
 
 public class NavigationController {
@@ -42,6 +42,8 @@ public class NavigationController {
         mainFrame.btnSales.addActionListener(e -> showSalesView());
         mainFrame.btnAccess.addActionListener(e -> showAccessView());
         mainFrame.btnQueries.addActionListener(e -> showQueriesView());
+        
+        changeView(warehouse, NavigationEnum.WareHouse, mainFrame.btnWarehouse);
     }
     
     private void changeView( JPanel panel, NavigationEnum navTarget, JButton btn ) {
@@ -90,4 +92,4 @@ public class NavigationController {
        changeView(this.purchases, NavigationEnum.Purchases, this.mainFrame.btnPurchases );
     }
 }
-    
+

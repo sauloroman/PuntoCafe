@@ -5,15 +5,18 @@ import controllers.auth.helpers.ViewElements;
 import controllers.auth.helpers.InputReader;
 import controllers.auth.helpers.LoginValidator;
 import entities.User;
+import java.awt.Window;
 import java.util.function.Consumer;
 import models.AuthModel;
+import puntocafe.PuntoCafe;
 import services.AuthService;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;
+import views.MainFrame;
 import views.login.Login;
 
 public class AuthController {
-
+    
     private final Login loginView;
     private final AuthModel model;
     private final AuthService service;
@@ -21,11 +24,13 @@ public class AuthController {
     private final InputReader inputReader;
     private final LoginUserHandler loginUser;
     private final ViewElements elements;
-    private final Modal modal = new Modal("PuntoCafé - Inicio de sesión");
+    private final Modal modal = new Modal("PuntoCafé - Sesión de usuario");
     public User userLogged = null;
     private Consumer<User> onLoginSucess;
+    private final PuntoCafe app;
     
-    public AuthController(Login loginView, AuthModel model) {
+    public AuthController(PuntoCafe app, Login loginView, AuthModel model) {
+        this.app = app;
         this.loginView = loginView;
         this.model = model;
         
@@ -60,6 +65,11 @@ public class AuthController {
             return;
         }
         
+        if ( !user.getIsActive() ) {
+            modal.show("El usuario está desactivado. Hable con el administrador", ModalTypeEnum.error);
+            return;
+        }
+        
         modal.show("Bievenido de vuelta " + user.getUserName() + " " + user.getUserLastname() + "!", ModalTypeEnum.success);
         userLogged = user;
         loginView.dispose();
@@ -67,6 +77,18 @@ public class AuthController {
         if ( onLoginSucess != null ) {
             onLoginSucess.accept(user);
         }
+    }
+    
+    public void logoutUser(MainFrame mainFrame) {
+        if ( modal.confirm("¿Está seguro de cerrar la sesión?") != 0 ) return;
+
+        this.userLogged = null;
+
+        for (Window window : Window.getWindows()) {
+            window.dispose();
+        }
+        
+        this.app.showLogin();
     }
     
     public User getUserLogged() {

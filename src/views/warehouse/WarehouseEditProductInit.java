@@ -23,7 +23,7 @@ public class WarehouseEditProductInit {
         view.setResizable(false);
         
         buttonGenerator.solidButton(view.btnUpdateProduct, ViewConstants.skyColor, "#FFFFFF", 12);
-        buttonGenerator.addIcon(view.btnUpdateProduct, "icon-plus-white", 20);
+        buttonGenerator.addIcon(view.btnUpdateProduct, "icon-save", 20);
         buttonGenerator.outlineButton(view.btnCancelEditProduct, ViewConstants.errorColor, ViewConstants.errorColor);
         buttonGenerator.addIcon(view.btnCancelEditProduct, "icon-left-red", 20);
         buttonGenerator.outlineButton(view.btnLoadImage, INPUT_COLOR, ViewConstants.textBtn);
@@ -31,7 +31,7 @@ public class WarehouseEditProductInit {
         buttonGenerator.outlineButton(view.btnRemoveImage, INPUT_COLOR, ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnRemoveImage, "icon-down", 20);
         
-        inputGenerator.roundedField(view.productEditNameTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.productEditNameTxt, INPUT_COLOR, 10, "Ingrese el nombre del producto");
         inputGenerator.roundedField(view.productEditStockTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedField(view.productEditStockMinTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedComboBox(view.productEditCategoryCombo, INPUT_COLOR, 10);

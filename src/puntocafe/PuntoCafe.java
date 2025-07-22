@@ -1,29 +1,37 @@
 package puntocafe;
 
-import com.formdev.flatlaf.FlatLightLaf;
-import controllers.category.CategoryController;
-import controllers.navigation.NavigationController;
-import controllers.user.UserController;
-import controllers.dish.DishController;
-import controllers.auth.AuthController;
-import controllers.product.ProductController;
-import controllers.supplier.SupplierController;
-import entities.User;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.UIManager;
+
+import entities.User;
+
 import models.AuthModel;
 import models.CategoryModel;
 import models.DishModel;
 import models.ProductModel;
 import models.RoleModel;
+import models.SaleModel;
 import models.SupplierModel;
 import models.UserModel;
+import models.SaleProductDetailModel;
+import models.SaleDishDetailModel;
+
+import controllers.category.CategoryController;
+import controllers.navigation.NavigationController;
+import controllers.user.UserController;
+import controllers.dish.DishController;
+import controllers.auth.AuthController;
+import controllers.main.MainFrameController;
+import controllers.product.ProductController;
+import controllers.sale.SaleController;
+import controllers.supplier.SupplierController;
+
 import views.access.Access;
 import views.MainFrame;
 import views.purchases.Purchases;
 import views.Queries;
-import views.Sales;
+import views.sales.Sales;
 import views.access.AccessRoles;
 import views.access.AccessUsers;
 import views.components.SplashScreen;
@@ -34,9 +42,13 @@ import views.warehouse.WarehouseCategories;
 import views.warehouse.WarehouseDishes;
 import views.warehouse.WarehouseProducts;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import models.SaleProductDetailModel;
+
 public class PuntoCafe {
 
     private User user = null;
+    private AuthController authController;
     
     public static void main(String[] args) {
         loadFlatLaf();
@@ -60,11 +72,11 @@ public class PuntoCafe {
         }
     }
     
-    private void showLogin() {
+    public void showLogin() {
         Login loginView = new Login();
         AuthModel model = new AuthModel();
         
-        AuthController authController = new AuthController(loginView, model);
+        authController = new AuthController(this, loginView, model);
         
         authController.setOnLoginSuccess(user -> {
             this.user = user;
@@ -82,19 +94,25 @@ public class PuntoCafe {
         SwingWorker<Boolean, Void> worker = new SwingWorker<>() {
             @Override
             protected Boolean doInBackground() throws Exception {
+                
                 CategoryModel categoryModel = new CategoryModel();
                 SupplierModel supplierModel = new SupplierModel();
                 ProductModel productModel = new ProductModel();
                 DishModel dishModel = new DishModel();
                 UserModel userModel = new UserModel();
                 RoleModel roleModel = new RoleModel();
+                SaleModel saleModel = new SaleModel();
+                SaleProductDetailModel saleProductDetailModel = new SaleProductDetailModel();
+                SaleDishDetailModel saleDishDetailModel = new SaleDishDetailModel();
+                
                 return true;
             }
 
             @Override
             protected void done() {
-                MainFrame mainView = new MainFrame();
-
+                
+                MainFrame mainView = new MainFrame(user);
+                
                 WarehouseCategories warehouseCategories = new WarehouseCategories();
                 WarehouseProducts warehouseProducts = new WarehouseProducts();
                 WarehouseDishes warehouseDishes = new WarehouseDishes();
@@ -116,13 +134,25 @@ public class PuntoCafe {
                 DishModel dishModel = new DishModel();
                 UserModel userModel = new UserModel();
                 RoleModel roleModel = new RoleModel();
-
+                SaleModel saleModel = new SaleModel();
+                SaleProductDetailModel saleProductDetailModel = new SaleProductDetailModel();
+                SaleDishDetailModel saleDishDetailModel = new SaleDishDetailModel();
+                
+                User dummyUser = new User();
+                dummyUser.setUserName("Saulo Román");
+                dummyUser.setUserLastname("Santillán Nava");
+                dummyUser.setUserEmail("romansantillan1998@outlook.com");
+                dummyUser.setRoleId(1);
+                dummyUser.setUserImage("user-1.jpg");
+                
+                new MainFrameController(mainView, roleModel, dummyUser, authController);
                 new CategoryController(warehouseCategories, categoryModel);
                 new SupplierController(purchasesSuppliers, supplierModel);
                 new ProductController(warehouseProducts, productModel, categoryModel, supplierModel);
                 new DishController(warehouseDishes, dishModel, categoryModel);
                 new UserController(accessUsers, accessRoles, userModel, roleModel);
-
+                new SaleController( dummyUser, sales, saleModel, saleProductDetailModel, saleDishDetailModel, productModel);
+                
                 new NavigationController(
                         mainView,
                         warehouse,

@@ -1,6 +1,11 @@
 package views.components;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -85,6 +90,27 @@ public final class ImageCustom {
 
         Image scaledImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         box.setIcon(new ImageIcon(scaledImage));
+    }
+    
+    public void roundedImage(JLabel box) {
+        ImageIcon icon = (ImageIcon) box.getIcon();
+        if (icon == null) return;
+
+        Image image = icon.getImage();
+        int width = icon.getIconWidth();
+        int height = icon.getIconHeight();
+
+        BufferedImage rounded = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2 = rounded.createGraphics();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        Shape circle = new Ellipse2D.Double(0, 0, width, height);
+        g2.setClip(circle);
+        g2.drawImage(image, 0, 0, width, height, null);
+        g2.dispose();
+
+        box.setIcon(new ImageIcon(rounded));
     }
     
 }

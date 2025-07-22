@@ -31,7 +31,7 @@ public class WarehouseCreateProductInit {
         buttonGenerator.outlineButton(view.btnRemoveImage, INPUT_COLOR, ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnRemoveImage, "icon-down", 20);
         
-        inputGenerator.roundedField(view.productNameTxt, INPUT_COLOR, 10, "");
+        inputGenerator.roundedField(view.productNameTxt, INPUT_COLOR, 10, "Ingrese el nombre del producto");
         inputGenerator.roundedField(view.productStockTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedField(view.productStockMinTxt, INPUT_COLOR, 10, "");
         inputGenerator.roundedComboBox(view.productCategoryCombo, INPUT_COLOR, 10);

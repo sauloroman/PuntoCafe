@@ -29,7 +29,7 @@ public class WarehouseProductsInit {
         buttonGenerator.addIcon(view.btnExportProducts, "icon-print", 20);
         buttonGenerator.solidButton(view.btnSearch, "#000000", "#FFFFFF", 11);
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
-        buttonGenerator.solidButton(view.btnReload, ViewConstants.blackColor, "#FFFFFF", 12);
+        buttonGenerator.outlineButton(view.btnReload, "#DDDDDD", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnReload, "icon-reload", 20);
         
         inputGenerator.roundedComboBox(view.productStatusCombo, INPUT_COLOR, 10);

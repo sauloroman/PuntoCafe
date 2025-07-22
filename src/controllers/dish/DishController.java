@@ -151,7 +151,7 @@ public class DishController {
         safelyRebuildPagination(() -> pages.create());
         quantity.setQuantity(dishService.getQuantityDishes());
         elements.resetCreateForm();
-        createDishWindow.setVisible(false);
+        createDishWindow.dispose();
         upload.removeImage();
     }
     
@@ -190,8 +190,8 @@ public class DishController {
         dishGrid.showAllDishes(1);
         safelyRebuildPagination(() -> pages.create());
         elements.resetEditForm();
-        infoDishWindow.setVisible(false);
-        editDishWindow.setVisible(false);
+        infoDishWindow.dispose();
+        editDishWindow.dispose();
         upload.removeImage();
     }
     
