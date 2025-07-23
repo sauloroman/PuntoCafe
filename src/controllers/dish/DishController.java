@@ -89,6 +89,7 @@ public class DishController {
         elements.showButtonUploadImage();
         fillComboBoxes.categoriesFilterBox(categoryService.getDishesCategories());
         fillComboBoxes.categoriesCreateBox(categoryService.getDishesCategories());
+        fillComboBoxes.categoriesEditBox(categoryService.getDishesCategories());
     }
     
     private void initListeners() {
@@ -268,6 +269,7 @@ public class DishController {
         filterSelected = SearchCriteriaEnum.NONE;
         elements.clearInputSearch();
         dishGrid.showAllDishes(1);
+        safelyFillCategoriesFilterBox();
     }
     
     private void removeImage() {
@@ -322,6 +324,19 @@ public class DishController {
 
         for (ActionListener l : listeners) {
             view.pageComboBox.addActionListener(l);
+        }
+    }
+    
+    private void safelyFillCategoriesFilterBox() {
+        ActionListener[] listeners = view.dishCategoryCombo.getActionListeners();
+        for (ActionListener l : listeners) {
+            view.dishCategoryCombo.removeActionListener(l);
+        }
+
+        fillComboBoxes.categoriesFilterBox(categoryService.getDishesCategories());
+
+        for (ActionListener l : listeners) {
+            view.dishCategoryCombo.addActionListener(l);
         }
     }
     

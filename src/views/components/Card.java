@@ -2,9 +2,11 @@ package views.components;
 
 import entities.Dish;
 import entities.Product;
+import interfaces.SaleItem;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -34,7 +36,7 @@ public class Card {
         JLabel imageLabel = new JLabel();
         imageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         String image = "Producto sin imagen".equals(product.getProductImage()) ? "no-image.jpg" : product.getProductImage();
-        imageGenerator.addImageProduct( imageLabel, product.getProductIsActive() ? image : "image-disabled.png", 90, 90);
+        imageGenerator.addImageProduct( imageLabel, product.getProductIsActive() ? image : "image-disabled.png", 85, 85);
         
         JLabel nameLabel = new JLabel(product.getProductName());
         nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
@@ -85,7 +87,7 @@ public class Card {
         JLabel imageLabel = new JLabel();
         imageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         String image = "Platillo sin imagen".equals(dish.getDishImage()) ? "no-image.jpg" : dish.getDishImage();
-        imageGenerator.addImageDish(imageLabel, dish.getIsActive() ? image : "image-disabled.png", 90, 90);
+        imageGenerator.addImageDish(imageLabel, dish.getIsActive() ? image : "image-disabled.png", 75, 75);
         
         JLabel nameLabel = new JLabel(dish.getDishName());
         nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
@@ -127,12 +129,13 @@ public class Card {
         Consumer<Product> onClick
     ) {
         JPanel card = new JPanel();
-        card.setPreferredSize(new Dimension(140, 155));
+        card.setMaximumSize(new Dimension(200, 150));
+        card.setPreferredSize(new Dimension(200, 150));
+        card.setMinimumSize(new Dimension(200, 150));
         card.setBackground(Color.WHITE);
         card.setLayout(new BorderLayout());
         card.setBorder(javax.swing.BorderFactory.createLineBorder(Color.decode("#FFFFFF")));
 
-        // Panel superior para imagen y nombre
         JPanel topPanel = new JPanel();
         topPanel.setBackground(Color.WHITE);
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
@@ -140,7 +143,7 @@ public class Card {
         JLabel imageLabel = new JLabel();
         imageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         String image = "Producto sin imagen".equals(product.getProductImage()) ? "no-image.jpg" : product.getProductImage();
-        imageGenerator.addImageProduct(imageLabel, product.getProductIsActive() ? image : "image-disabled.png", 65, 65);
+        imageGenerator.addImageProduct(imageLabel, product.getProductIsActive()? image : "image-disabled.png", 65, 65);
 
         JLabel nameLabel = new JLabel(product.getProductName());
         nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
@@ -186,11 +189,87 @@ public class Card {
 
         return card;
     }
+    
+    public JPanel cartWrapper(JPanel card) {
+        JPanel wrapper = new JPanel();
+        wrapper.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        wrapper.setOpaque(false);
+        wrapper.setPreferredSize(card.getPreferredSize());
+        wrapper.add(card);
+        return wrapper;
+    }
+    
+    public JPanel createModernDishCard(
+        Dish dish,
+        Consumer<Dish> onClick
+    ) {
+        JPanel card = new JPanel();
+        card.setMaximumSize(new Dimension(200, 150));
+        card.setPreferredSize(new Dimension(200, 150));
+        card.setMinimumSize(new Dimension(200, 150));
+        card.setBackground(Color.WHITE);
+        card.setLayout(new BorderLayout());
+        card.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+
+        JPanel topPanel = new JPanel();
+        topPanel.setBackground(Color.WHITE);
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+
+        JLabel imageLabel = new JLabel();
+        imageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        String image = "Producto sin imagen".equals(dish.getDishImage()) ? "no-image.jpg" : dish.getDishImage();
+        imageGenerator.addImageDish(imageLabel, dish.getIsActive()? image : "image-disabled.png", 65, 65);
+
+        JLabel nameLabel = new JLabel(dish.getDishName());
+        nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
+        nameLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+
+        topPanel.add(Box.createVerticalStrut(10));
+        topPanel.add(imageLabel);
+        topPanel.add(Box.createVerticalStrut(10));
+        topPanel.add(nameLabel);
+
+        card.add(topPanel, BorderLayout.CENTER);
+
+        JPanel bottomPanel = new JPanel(new BorderLayout());
+        bottomPanel.setBackground(Color.WHITE);
+        bottomPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        JLabel priceLabel = new JLabel("$" + dish.getDishSellingPrice());
+        priceLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+        priceLabel.setForeground(Color.BLACK);
+
+        JPanel addButton = new JPanel();
+        addButton.setBackground(new Color(135, 206, 250)); 
+        addButton.setPreferredSize(new Dimension(30, 30));
+        JLabel plus = new JLabel("+");
+        plus.setForeground(Color.WHITE);
+        plus.setFont(new Font("SansSerif", Font.BOLD, 16));
+        addButton.add(plus);
+        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        addButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (onClick != null) {
+                    onClick.accept(dish);
+                }
+            }
+        });
+
+        bottomPanel.add(priceLabel, BorderLayout.WEST);
+        bottomPanel.add(addButton, BorderLayout.EAST);
+
+        card.add(bottomPanel, BorderLayout.SOUTH);
+
+        return card;
+    }
 
     public JPanel createSaleItemCard(
-        Product product,
+        SaleItem item,
         int quantity,
         double discount,
+        String type,
         Consumer<Integer> onDelete 
     ) {
         JPanel card = new JPanel();
@@ -200,12 +279,16 @@ public class Card {
         card.setPreferredSize(new Dimension(300, 80));
         card.setMinimumSize(new Dimension(300, 80));
         card.setAlignmentX(JPanel.CENTER_ALIGNMENT);
-        card.setBorder(javax.swing.BorderFactory.createLineBorder(Color.decode("#FFFFFF"), 1, true));
-
+        
         JLabel imageLabel = new JLabel();
         imageLabel.setPreferredSize(new Dimension(70, 70));
-        String image = "Producto sin imagen".equals(product.getProductImage()) ? "no-image.jpg" : product.getProductImage();
-        imageGenerator.addImageProduct(imageLabel, image, 70, 70);
+        String image = "Producto sin imagen".equals(item.getImage()) ? "no-image.jpg" : item.getImage();
+        
+        if ( type.equals("Producto") ) {
+            imageGenerator.addImageProduct(imageLabel, image, 70, 70);
+        } else {
+             imageGenerator.addImageDish(imageLabel, image, 70, 70);
+        }
 
         card.add(imageLabel, BorderLayout.WEST);
 
@@ -213,7 +296,7 @@ public class Card {
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
         centerPanel.setBackground(Color.WHITE);
 
-        JLabel nameLabel = new JLabel(product.getProductName());
+        JLabel nameLabel = new JLabel(item.getName());
         nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
         nameLabel.setForeground(Color.decode("#222222"));
 
@@ -221,7 +304,7 @@ public class Card {
         priceDiscountPanel.setLayout(new BoxLayout(priceDiscountPanel, BoxLayout.X_AXIS));
         priceDiscountPanel.setBackground(Color.WHITE);
 
-        JLabel priceLabel = new JLabel("$" + product.getProductSellingPrice());
+        JLabel priceLabel = new JLabel("$" + item.getSellingPrice());
         priceLabel.setFont(new Font("SansSerif", Font.BOLD, 18));
 
         priceDiscountPanel.add(priceLabel);
@@ -257,7 +340,7 @@ public class Card {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (onDelete != null) {
-                    onDelete.accept(product.getProductId()); 
+                    onDelete.accept(item.getId()); 
                 }
             }
         });

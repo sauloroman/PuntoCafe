@@ -1,5 +1,6 @@
 package models;
 
+import java.sql.Statement;
 import config.Database;
 import entities.Sale;
 import java.sql.PreparedStatement;
@@ -17,28 +18,41 @@ public class SaleModel {
         this.DATABASE = Database.getInstance();
     }
     
-    public boolean saveSale( Sale sale ) {
+    public Sale saveSale( Sale sale ) {
         
-        response = false;
+        Sale newSale = null;
         
         try {
             
-            String saleDate = sale.getSaleDate().toString();
+            String saleDate = sale.getSaleDate();
             Double saleTotal = sale.getTotal();
             String saleCode = sale.getSaleCode();
             int userId = sale.getUserId();
             
             statement = DATABASE.connect().prepareStatement(
                     "INSERT INTO sale (sale_date, sale_total, sale_code, user_id) "
-                  + "VALUES (?, ?, ?, ?)"
+                  + "VALUES (?, ?, ?, ?)",
+                    Statement.RETURN_GENERATED_KEYS
             );
             statement.setString(1, saleDate);
             statement.setDouble(2, saleTotal);
             statement.setString(3, saleCode);
             statement.setInt(4, userId);
             
-            if ( statement.executeUpdate() > 0 ) {
-                response = true;
+            int affectedRows = statement.executeUpdate();
+            
+            if (affectedRows > 0) {
+                result = statement.getGeneratedKeys();
+                if (result.next()) {
+                    int generatedId = result.getInt(1);
+                    newSale = new Sale(
+                            generatedId,
+                            saleDate,
+                            saleTotal,
+                            saleCode,
+                            userId
+                    );
+                }
             }
             
         } catch(SQLException e) {
@@ -48,7 +62,7 @@ public class SaleModel {
             statement = null;
         }
         
-        return response;
+        return newSale;
     }
     
 }

@@ -14,7 +14,6 @@ import models.RoleModel;
 import models.SaleModel;
 import models.SupplierModel;
 import models.UserModel;
-import models.SaleProductDetailModel;
 import models.SaleDishDetailModel;
 
 import controllers.category.CategoryController;
@@ -143,6 +142,7 @@ public class PuntoCafe {
                 dummyUser.setUserLastname("Santillán Nava");
                 dummyUser.setUserEmail("romansantillan1998@outlook.com");
                 dummyUser.setRoleId(1);
+                dummyUser.setUserId(5);
                 dummyUser.setUserImage("user-1.jpg");
                 
                 new MainFrameController(mainView, roleModel, dummyUser, authController);
@@ -151,7 +151,15 @@ public class PuntoCafe {
                 new ProductController(warehouseProducts, productModel, categoryModel, supplierModel);
                 new DishController(warehouseDishes, dishModel, categoryModel);
                 new UserController(accessUsers, accessRoles, userModel, roleModel);
-                new SaleController( dummyUser, sales, saleModel, saleProductDetailModel, saleDishDetailModel, productModel);
+                new SaleController( 
+                        dummyUser, 
+                        sales, 
+                        saleModel, 
+                        saleProductDetailModel, 
+                        saleDishDetailModel, 
+                        productModel, 
+                        dishModel
+                );
                 
                 new NavigationController(
                         mainView,

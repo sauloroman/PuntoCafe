@@ -5,18 +5,13 @@ import entities.ProductItem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import views.components.Card;
-import views.sales.CreateSale;
 
 public class ProductList {
 
-    private final CreateSale view;
     private Consumer<Integer> onDelete; 
     private final List<ProductItem> products = new ArrayList<>();
 
-    public ProductList(CreateSale view) {
-        this.view = view;
-    }
+    public ProductList() {}
 
     public void setOnDelete(Consumer<Integer> listener) {
         this.onDelete = listener;
@@ -34,18 +29,19 @@ public class ProductList {
         } else {
             products.add(new ProductItem(product, quantity, discount));
         }
-
-        renderProductList();
     }
 
     public void removeProduct(int productId) {
-        products.removeIf(item -> item.getProduct().getProductId() == productId);
-        renderProductList();
+        products.removeIf(item -> item.getItem().getProductId() == productId);
+    }
+    
+    public void clearList() {
+        products.clear();
     }
 
     private ProductItem findProductItemById(int productId) {
         for (ProductItem item : products) {
-            if (item.getProduct().getProductId() == productId) {
+            if (item.getItem().getProductId() == productId) {
                 return item;
             }
         }
@@ -54,23 +50,7 @@ public class ProductList {
 
     private void updateProductItem(ProductItem item, int quantity, double discount) {
         item.setQuantity(quantity);
-        item.setDisscount(discount);
+        item.setDiscount(discount);
     }
-
-    private void renderProductList() {
-        view.saleList.removeAll();
-
-        Card card = new Card();
-        for (ProductItem item : products) {
-            view.saleList.add(card.createSaleItemCard(
-                item.getProduct(),
-                item.getQuantity(),
-                item.getDisscount(),
-                onDelete
-            ));
-        }
-
-        view.saleList.revalidate();
-        view.saleList.repaint();
-    }
+    
 }

@@ -38,6 +38,11 @@ public class CreateSale extends javax.swing.JFrame {
         pageCombo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         dishesPane = new javax.swing.JPanel();
+        btnSearchDish = new javax.swing.JButton();
+        searchDishTxt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        pageComboDish = new javax.swing.JComboBox<>();
+        dishesGrid = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -136,7 +141,7 @@ public class CreateSale extends javax.swing.JFrame {
                             .addComponent(btnSaveSale, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                             .addGroup(itemsInSaleLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addGroup(itemsInSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(itemsInSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(itemsInSaleLayout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -145,11 +150,11 @@ public class CreateSale extends javax.swing.JFrame {
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(saleCode)
-                                        .addGap(54, 54, 54)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(saleDate)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 47, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, itemsInSaleLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -267,15 +272,56 @@ public class CreateSale extends javax.swing.JFrame {
 
         dishesPane.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnSearchDish.setText("Buscar");
+        btnSearchDish.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel4.setText("Página");
+
+        dishesGrid.setBackground(new java.awt.Color(245, 245, 245));
+
+        javax.swing.GroupLayout dishesGridLayout = new javax.swing.GroupLayout(dishesGrid);
+        dishesGrid.setLayout(dishesGridLayout);
+        dishesGridLayout.setHorizontalGroup(
+            dishesGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1108, Short.MAX_VALUE)
+        );
+        dishesGridLayout.setVerticalGroup(
+            dishesGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 605, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout dishesPaneLayout = new javax.swing.GroupLayout(dishesPane);
         dishesPane.setLayout(dishesPaneLayout);
         dishesPaneLayout.setHorizontalGroup(
             dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1148, Short.MAX_VALUE)
+            .addGroup(dishesPaneLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dishesGrid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(dishesPaneLayout.createSequentialGroup()
+                        .addComponent(btnSearchDish, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(searchDishTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(pageComboDish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20))
         );
         dishesPaneLayout.setVerticalGroup(
             dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 686, Short.MAX_VALUE)
+            .addGroup(dishesPaneLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSearchDish, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(dishesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchDishTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pageComboDish, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)))
+                .addGap(20, 20, 20)
+                .addComponent(dishesGrid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         navigationPane.addTab("Platillos", dishesPane);
@@ -310,24 +356,29 @@ public class CreateSale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnSaveSale;
     public javax.swing.JButton btnSearch;
+    public javax.swing.JButton btnSearchDish;
     public javax.swing.JLabel disccount;
+    public javax.swing.JPanel dishesGrid;
     public javax.swing.JPanel dishesPane;
     public javax.swing.JPanel itemsInSale;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     public javax.swing.JTabbedPane navigationPane;
     public javax.swing.JComboBox<String> pageCombo;
+    public javax.swing.JComboBox<String> pageComboDish;
     public javax.swing.JPanel productsGrid;
     public javax.swing.JPanel productsPane;
     public javax.swing.JLabel saleCode;
     public javax.swing.JLabel saleDate;
     public javax.swing.JPanel saleList;
     public javax.swing.JPanel saleListParent;
+    public javax.swing.JTextField searchDishTxt;
     public javax.swing.JTextField searchProductTxt;
     public javax.swing.JLabel subtotal;
     public javax.swing.JLabel titleSale;

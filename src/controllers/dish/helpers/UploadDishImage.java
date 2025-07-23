@@ -11,6 +11,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import utils.enums.ModalTypeEnum;
+import utils.helpers.ImageCache;
 import utils.helpers.Modal;
 import views.components.ImageCustom;
 import views.warehouse.WarehouseCreateDish;
@@ -55,6 +56,7 @@ public class UploadDishImage {
             }
             
             output.flush();
+            ImageCache.removeImage(image);
             return true;
             
         } catch(IOException e) {

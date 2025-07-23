@@ -4,6 +4,7 @@ import entities.Product;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import javax.swing.JPanel;
 import services.ProductService;
 import views.components.Card;
 import views.components.Grid;
@@ -24,7 +25,7 @@ public class ProductsGrid {
         this.view = view;
         this.productService = productService;
         
-        Grid.create(view.productsGrid, 5, 20);
+        Grid.create(view.productsGrid, 5, QUANTITY_PRODUCTS);
     }
     
     public void setOnProductClick(Consumer<Product> listener) {
@@ -54,8 +55,10 @@ public class ProductsGrid {
     }
      
     public void addProduct( Product product ) {
-        Card card = new Card();        
-        view.productsGrid.add(card.createModernProductCard(product, onProductClick));
+        Card cardFactory = new Card();    
+        JPanel card = cardFactory.createModernProductCard(product, onProductClick);
+        JPanel wrapper = cardFactory.cartWrapper(card);
+        view.productsGrid.add(wrapper);
     }
     
 }

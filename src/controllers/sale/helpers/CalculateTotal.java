@@ -1,6 +1,6 @@
 package controllers.sale.helpers;
 
-import entities.ProductItem;
+import interfaces.SaleItem;
 import java.util.List;
 import views.sales.CreateSale;
 
@@ -15,20 +15,23 @@ public class CalculateTotal {
         this.view = view;
     }
     
-    public void calculateAllProducts(List<ProductItem> products) {
-        
+    public void calculateAll(List<SaleItem> items) {
         subtotal = 0;
         discountAcc = 0;
         total = 0;
         
-        for ( ProductItem item: products ) {
-            double productSubtotal = item.getProduct().getProductSellingPrice() * item.getQuantity();
-            subtotal += productSubtotal;
-            discountAcc += item.getDisscount();
+        for ( SaleItem item: items ) {
+            double itemSubtotal = item.getSellingPrice() * item.getQuantity();
+            subtotal += itemSubtotal;
+            discountAcc += item.getDiscount();
         }
         
         total = subtotal - discountAcc;
         setValuesInView();
+    }
+    
+    public double getTotal() {
+        return total;
     }
     
     private void setValuesInView() {

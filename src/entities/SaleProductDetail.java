@@ -5,6 +5,7 @@ public class SaleProductDetail {
     private int saleProductDetailId;
     private int saleProductDetailQuantity;
     private double saleProductDetailUnitPrice;
+    private double saleProductDetailDiscount;
     private int saleId;
     private int productId;
 
@@ -14,12 +15,14 @@ public class SaleProductDetail {
             int saleProductDetailId, 
             int saleProductDetailQuantity, 
             double saleProductDetailUnitPrice, 
+            double saleProductDetailDiscount,
             int saleId, 
             int productId
     ) {
         this.saleProductDetailId = saleProductDetailId;
         this.saleProductDetailQuantity = saleProductDetailQuantity;
         this.saleProductDetailUnitPrice = saleProductDetailUnitPrice;
+        this.saleProductDetailDiscount = saleProductDetailDiscount;
         this.saleId = saleId;
         this.productId = productId;
     }
@@ -27,11 +30,13 @@ public class SaleProductDetail {
     public SaleProductDetail(
             int saleProductDetailQuantity, 
             double saleProductDetailUnitPrice, 
+            double saleProductDetailDiscount,
             int saleId, 
             int productId
     ) {
         this.saleProductDetailQuantity = saleProductDetailQuantity;
         this.saleProductDetailUnitPrice = saleProductDetailUnitPrice;
+        this.saleProductDetailDiscount = saleProductDetailDiscount;
         this.saleId = saleId;
         this.productId = productId;
     }
@@ -75,4 +80,13 @@ public class SaleProductDetail {
     public void setProductId(int productId) {
         this.productId = productId;
     }
+
+    public double getSaleProductDetailDiscount() {
+        return saleProductDetailDiscount;
+    }
+
+    public void setSaleProductDetailDiscount(double saleProductDetailDiscount) {
+        this.saleProductDetailDiscount = saleProductDetailDiscount;
+    } 
+    
 }

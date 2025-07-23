@@ -326,6 +326,8 @@ public class ProductController {
         safelyRebuildPagination(() -> pages.create());
         filterSelected = SearchCriteriaEnum.NONE;
         productGrid.showAllProducts(1);
+        safelyFillCategoriesFilterBox();
+        safelyFillSuppliersFilterBox();
         elements.clearSearchProduct();
     }
     
@@ -367,5 +369,32 @@ public class ProductController {
             view.pageComboBox.addActionListener(l);
         }
     }
+    
+    private void safelyFillCategoriesFilterBox() {
+        ActionListener[] listeners = view.productCategoryCombo.getActionListeners();
+        for (ActionListener l : listeners) {
+            view.productCategoryCombo.removeActionListener(l);
+        }
+
+        fillComboBoxes.categoriesFilterBox(categoriesService.getProductCategories());
+
+        for (ActionListener l : listeners) {
+            view.productCategoryCombo.addActionListener(l);
+        }
+    }
+
+    private void safelyFillSuppliersFilterBox() {
+        ActionListener[] listeners = view.productSupplierCombo.getActionListeners();
+        for (ActionListener l : listeners) {
+            view.productSupplierCombo.removeActionListener(l);
+        }
+
+        fillComboBoxes.suppliersFilterBox(suppliersService.getCompaniesUnique());
+
+        for (ActionListener l : listeners) {
+            view.productSupplierCombo.addActionListener(l);
+        }
+    }
+
     
 }

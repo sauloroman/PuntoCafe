@@ -27,7 +27,7 @@ public class MainFrameInit {
         view.header.setVisible(true);
         view.header.setBackground(Color.WHITE);
 
-        imageGenerator.addImageFix(view.boxLogo, "logo-3", 200, 200);
+        imageGenerator.addImageFixNoCache(view.boxLogo, "logo-3", 200, 200);
         view.sidebar.setBackground(Color.decode(COLOR_SIDE_BAR));
         
         buttonGenerator.solidButton(view.btnWarehouse, ViewConstants.mainColor, ViewConstants.whiteColor, 14);

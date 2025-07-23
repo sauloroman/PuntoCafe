@@ -13,7 +13,6 @@ public class CreateSaleProductQuantityInit {
     private final ImageCustom imageGenerator = new ImageCustom();
     private final Input inputGenerator = new Input();
 
-
     public CreateSaleProductQuantityInit(CreateSaleProductQuantity view) {
         this.view = view;
     }

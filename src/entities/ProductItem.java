@@ -1,41 +1,72 @@
 package entities;
 
-public class ProductItem {
- 
+import interfaces.SaleItem;
+
+public class ProductItem implements SaleItem<Product> {
+    
     private Product product;
     private int quantity;
-    private double disscount;
+    private double discount;
 
     public ProductItem(Product product, int quantity, double disscount) {
         this.product = product;
         this.quantity = quantity;
-        this.disscount = disscount;
+        this.discount = disscount;
     }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
+    
+    @Override
     public int getQuantity() {
-        return quantity;
+        return this.quantity;
     }
 
+    @Override
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public double getDisscount() {
-        return disscount;
+    @Override
+    public double getDiscount() {
+        return this.discount;
     }
 
-    public void setDisscount(double disscount) {
-        this.disscount = disscount;
+    @Override
+    public void setDiscount(double disscount) {
+        this.discount = disscount;
     }
-    
-    
-    
+
+    @Override
+    public Product getItem() {
+        return this.product;
+    }
+
+    @Override
+    public void setItem(Product item) {
+        this.product = item;
+                
+    }
+
+    @Override
+    public String getImage() {
+        return this.product.getProductImage();
+    }
+
+    @Override
+    public String getName() {
+        return this.product.getProductName();
+    }
+
+    @Override
+    public Double getSellingPrice() {
+        return this.product.getProductSellingPrice();
+    }
+
+    @Override
+    public int getId() {
+        return this.product.getProductId();
+    }
+
+    @Override
+    public boolean getIsActive() {
+        return this.product.getProductIsActive();
+    }
 }

@@ -36,12 +36,16 @@ public class CreateSaleInit {
         
         buttonGenerator.solidButton(view.btnSearch, ViewConstants.blackColor, "#FFFFFF", 12);
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 16);
+        buttonGenerator.solidButton(view.btnSearchDish, ViewConstants.blackColor, "#FFFFFF", 12);
+        buttonGenerator.addIcon(view.btnSearchDish, "icon-search", 16);
         
         buttonGenerator.solidButton(view.btnSaveSale, ViewConstants.skyColor, "#FFFFFF", 18);
         buttonGenerator.addIcon(view.btnSaveSale, "icon-save", 30);
         
         inputGenerator.roundedField(view.searchProductTxt, "#DDDDDD", 10, "Busca productos por su nombre");
         inputGenerator.roundedComboBox(view.pageCombo, "#DDDDDD", 10);
+        inputGenerator.roundedField(view.searchDishTxt, "#DDDDDD", 10, "Busca platillos por su nombre");
+        inputGenerator.roundedComboBox(view.pageComboDish, "#DDDDDD", 10);
         
         view.saleList.setLayout(new BoxLayout(view.saleList, BoxLayout.Y_AXIS));
         view.saleList.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));

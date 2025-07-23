@@ -8,20 +8,25 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import utils.helpers.ImageCache;
 
 public final class ImageCustom {
-    
-    public void addImage(JLabel box, String nameImage, int sizeImage ) {
-        String pathImage = "/views/images/" + nameImage + ".png";
-        ImageIcon logo = new ImageIcon( getClass().getResource(pathImage));
-        java.awt.Image image = logo.getImage().getScaledInstance(sizeImage, sizeImage, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon logoImage = new ImageIcon( image );
-        box.setIcon(logoImage);
+
+    public void addImage(JLabel box, String nameImage, int sizeImage) {
+        String resourcePath = "/views/images/" + nameImage + ".png";
+        ImageIcon icon = ImageCache.getResourceImage(resourcePath, sizeImage, sizeImage);
+        box.setIcon(icon);
     }
-    
+
     public void addImageFix(JLabel box, String nameImage, int maxWidth, int maxHeight) {
-        String pathImage = "/views/images/" + nameImage + ".png";
-        ImageIcon icon = new ImageIcon(getClass().getResource(pathImage));
+        String resourcePath = "/views/images/" + nameImage + ".png";
+        ImageIcon icon = ImageCache.getResourceImage(resourcePath, maxWidth, maxHeight);
+        box.setIcon(icon);
+    }
+    
+    public void addImageFixNoCache(JLabel box, String nameImage, int maxWidth, int maxHeight) {
+        String resourcePath = "/views/images/" + nameImage + ".png";
+        ImageIcon icon = new ImageIcon(getClass().getResource(resourcePath));
         Image image = icon.getImage();
 
         int originalWidth = image.getWidth(null);
@@ -37,61 +42,25 @@ public final class ImageCustom {
         Image scaledImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         box.setIcon(new ImageIcon(scaledImage));
     }
-    
+
     public void addImageProduct(JLabel box, String nameImage, int maxWidth, int maxHeight) {
-        ImageIcon icon = new ImageIcon("assets/images/products/" + nameImage);
-        Image image = icon.getImage();
-
-        int originalWidth = image.getWidth(null);
-        int originalHeight = image.getHeight(null);
-
-        double widthRatio = (double) maxWidth / originalWidth;
-        double heightRatio = (double) maxHeight / originalHeight;
-        double ratio = Math.min(widthRatio, heightRatio);
-
-        int newWidth = (int) (originalWidth * ratio);
-        int newHeight = (int) (originalHeight * ratio);
-
-        Image scaledImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        box.setIcon(new ImageIcon(scaledImage));
+        String path = "assets/images/products/" + nameImage;
+        ImageIcon icon = ImageCache.getImage(path, maxWidth, maxHeight);
+        box.setIcon(icon);
     }
-    
+
     public void addImageUser(JLabel box, String nameImage, int maxWidth, int maxHeight) {
-        ImageIcon icon = new ImageIcon("assets/images/users/" + nameImage);
-        Image image = icon.getImage();
-
-        int originalWidth = image.getWidth(null);
-        int originalHeight = image.getHeight(null);
-
-        double widthRatio = (double) maxWidth / originalWidth;
-        double heightRatio = (double) maxHeight / originalHeight;
-        double ratio = Math.min(widthRatio, heightRatio);
-
-        int newWidth = (int) (originalWidth * ratio);
-        int newHeight = (int) (originalHeight * ratio);
-
-        Image scaledImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        box.setIcon(new ImageIcon(scaledImage));
+        String path = "assets/images/users/" + nameImage;
+        ImageIcon icon = ImageCache.getImage(path, maxWidth, maxHeight);
+        box.setIcon(icon);
     }
 
     public void addImageDish(JLabel box, String nameImage, int maxWidth, int maxHeight) {
-        ImageIcon icon = new ImageIcon("assets/images/dishes/" + nameImage);
-        Image image = icon.getImage();
-
-        int originalWidth = image.getWidth(null);
-        int originalHeight = image.getHeight(null);
-
-        double widthRatio = (double) maxWidth / originalWidth;
-        double heightRatio = (double) maxHeight / originalHeight;
-        double ratio = Math.min(widthRatio, heightRatio);
-
-        int newWidth = (int) (originalWidth * ratio);
-        int newHeight = (int) (originalHeight * ratio);
-
-        Image scaledImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        box.setIcon(new ImageIcon(scaledImage));
+        String path = "assets/images/dishes/" + nameImage;
+        ImageIcon icon = ImageCache.getImage(path, maxWidth, maxHeight);
+        box.setIcon(icon);
     }
-    
+
     public void roundedImage(JLabel box) {
         ImageIcon icon = (ImageIcon) box.getIcon();
         if (icon == null) return;
@@ -112,5 +81,4 @@ public final class ImageCustom {
 
         box.setIcon(new ImageIcon(rounded));
     }
-    
 }

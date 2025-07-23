@@ -1,18 +1,16 @@
 package entities;
 
-import java.util.Date;
-
 public class Sale {
     
     private int saleId;
-    private Date saleDate;
+    private String saleDate;
     private double total;
     private String saleCode;
     private int userId;
 
     public Sale() {}
 
-    public Sale(int saleId, Date saleDate, double total, String saleCode, int userId) {
+    public Sale(int saleId, String saleDate, double total, String saleCode, int userId) {
         this.saleId = saleId;
         this.saleDate = saleDate;
         this.total = total;
@@ -20,7 +18,7 @@ public class Sale {
         this.userId = userId;
     }
 
-    public Sale(Date saleDate, double total, String saleCode, int userId) {
+    public Sale(String saleDate, double total, String saleCode, int userId) {
         this.saleDate = saleDate;
         this.total = total;
         this.saleCode = saleCode;
@@ -35,11 +33,11 @@ public class Sale {
         this.saleId = saleId;
     }
 
-    public Date getSaleDate() {
+    public String getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(Date saleDate) {
+    public void setSaleDate(String saleDate) {
         this.saleDate = saleDate;
     }
 

@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/SaleDishDetailModel.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/CreateSaleInit.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/puntocafe/PuntoCafe.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/SaleController.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/helpers/ViewElements.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/helpers/ProductsGrid.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/CreateSale.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/helpers/InputReader.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/CreateSaleProductQuantityInit.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/components/Card.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/helpers/ProductList.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/ProductService.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/CreateSaleProductQuantity.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/helpers/LoadInformation.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/helpers/CalculateTotal.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -19,7 +19,7 @@ public class SaleService {
         this.saleDishDetailModel = saleDishDetailModel;
     }
     
-    public boolean saveSale(Sale sale) {
+    public Sale saveSale(Sale sale) {
         return model.saveSale(sale);
     }
     
