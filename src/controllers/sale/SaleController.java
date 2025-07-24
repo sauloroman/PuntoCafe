@@ -13,12 +13,14 @@ import controllers.sale.helpers.ProductsGrid;
 import controllers.sale.helpers.LoadInformation;
 import controllers.sale.helpers.ProductList;
 import controllers.sale.helpers.SaleList;
+import controllers.sale.helpers.SaleRefresher;
 import controllers.sale.helpers.ViewElements;
 import entities.DishItem;
 import entities.ProductItem;
 import entities.Sale;
 import entities.SaleDishDetail;
 import entities.SaleProductDetail;
+import interfaces.SaleItem;
 
 import models.DishModel;
 import models.ProductModel;
@@ -37,8 +39,11 @@ import views.sales.CreateSaleProductQuantity;
 import views.sales.Sales;
 
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
+import models.UserModel;
 import services.SaleService;
+import services.UserService;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.DateGenerator;
 import utils.helpers.Modal;
@@ -57,11 +62,14 @@ public class SaleController {
     private final SaleDishDetailModel saleDishDetailModel;
     private final ProductModel productModel;
     private final DishModel dishModel;
+    private final UserModel userModel;
     
     private final ProductService productService;
     private final DishService dishService;
     private final SaleService saleService;
+    private final UserService userService;
     
+    private final SaleRefresher refresher;
     private final ProductsGrid productsGrid;
     private final DishGrid dishesGrid;
     private final InputReader inputReader;
@@ -86,7 +94,8 @@ public class SaleController {
             SaleProductDetailModel saleProductDetailModel,
             SaleDishDetailModel saleDishDetailModel,
             ProductModel productModel,
-            DishModel dishModel
+            DishModel dishModel,
+            UserModel userModel
     ) {
         this.user = user;
         this.view = view;
@@ -94,6 +103,7 @@ public class SaleController {
         this.productQuantityView = new CreateSaleProductQuantity();
         this.dishQuantityView = new CreateSaleDishQuantity();
     
+        this.userModel = userModel;
         this.saleModel = saleModel;
         this.saleProductDetailModel = saleProductDetailModel;
         this.saleDishDetailModel = saleDishDetailModel;
@@ -103,14 +113,16 @@ public class SaleController {
         this.productService = new ProductService(this.productModel);
         this.dishService = new DishService(this.dishModel);
         this.saleService = new SaleService(this.saleModel, this.saleProductDetailModel, this.saleDishDetailModel);
+        this.userService = new UserService(this.userModel);
         
+        this.refresher = new SaleRefresher(view, saleService, userService);
         this.calculateTotal = new CalculateTotal(createView);
         this.productList = new ProductList();
         this.dishList = new DishList();
         this.saleList = new SaleList(createView);
         this.codeGenerator = new CodeGenerator();
         this.elements = new ViewElements(createView, productQuantityView, dishQuantityView);
-        this.load = new LoadInformation(productQuantityView, dishQuantityView);
+        this.load = new LoadInformation(view, productQuantityView, dishQuantityView);
         this.pages = new Pages(createView, productService, dishService);
         this.inputReader = new InputReader(createView, productQuantityView, dishQuantityView);
         this.productsGrid = new ProductsGrid(createView, productService);
@@ -122,10 +134,14 @@ public class SaleController {
     
     private void init() {
         pages.create();
+        load.fillUserBox(userService.getAllUsers());
+        refresher.loadPage(0, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd());
+        loadStats();
     }
     
     private void initListeners() {
         view.btnNewSale.addActionListener(e -> openCreateSaleWindow());
+        view.btnReload.addActionListener(e -> refreshInfo());
         
         createView.pageCombo.addActionListener(e -> loadPage());
         createView.pageComboDish.addActionListener(e -> loadPageDish());
@@ -139,10 +155,34 @@ public class SaleController {
         productList.setOnDelete(id -> removeProduct( id ));
         dishList.setOnDelete(id -> removeDish(id));
         
+        saleList.setOnDelete(item -> removeItemOfList(item));
         productsGrid.setOnProductClick(product -> openProductQuantityWindow(product));
         dishesGrid.setOnDishClick(dish -> openDishQuantityWindow(dish));
         productsGrid.showAllProducts(1);
         dishesGrid.showAllDishes(1);
+    }
+    
+    private void refreshInfo() {
+        load.fillUserBox(userService.getAllUsers());
+        refresher.loadPage(0, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd());
+    }
+    
+    private void loadStats() {
+        load.setTotalSalesAmount(saleService.getTotalSalesAmount());
+        load.setTotalSales(saleService.getTotalSales());
+        load.setAvgSaleAmount(saleService.getAvgSaleAmount());
+        load.setTotalDiscountSalesAmount(saleService.getTotalDiscountSalesAmount());
+    }
+    
+    private void removeItemOfList(SaleItem item) {
+        if ( item instanceof ProductItem ) {
+            productList.removeProduct(item.getId());
+        } else {
+            dishList.removeDish(item.getId());
+        }
+        
+        saleList.removeItem(item.getId(), item.getClass());
+        calculateTotal.calculateAll(saleList.getItems());
     }
     
     private void saveSale() {
@@ -169,6 +209,9 @@ public class SaleController {
         elements.clearSaleList();
         saleCode = codeGenerator.generate(5);
         elements.clearTotalSale();
+        productsGrid.showAllProducts(1);
+        refresher.loadPage(0, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd());
+        loadStats();
     }
     
     private void saveSaleDishDetail( int saleId ) {
@@ -192,7 +235,7 @@ public class SaleController {
     }
     
     private void saveSaleProductDetail(int saleId) {
-         List<ProductItem> productsInSale = productList.getProducts();
+        List<ProductItem> productsInSale = productList.getProducts();
         
         for ( ProductItem product: productsInSale ) {
             
@@ -201,13 +244,38 @@ public class SaleController {
             double discount = product.getDiscount();
             int productId = product.getId();
             
+            if ( quantity > productSelected.getProductStock() ) {
+                modal.show("El stock del producto no es suficiente", ModalTypeEnum.error);
+                return;
+            }
+            
+            boolean wasStockUpdated = productService.discountStock(productId, quantity);
+            
+            if ( !wasStockUpdated ) {
+                modal.show("No se pudo actualizar el stock.", ModalTypeEnum.error);
+                return;
+            }
+            
             SaleProductDetail saleProductDetail = new SaleProductDetail(quantity, unitPrice, discount, saleId, productId);
             boolean wasSaleProductDetail = saleService.saveSaleProductDetail(saleProductDetail);
             
             if ( !wasSaleProductDetail ) {
                 modal.show("Error al crear la venta", ModalTypeEnum.error);
                 return;
-            }   
+            }
+            
+            checkProductStock();
+        }
+    }
+    
+    private void checkProductStock() {
+        Product product = productService.getProductById(productSelected.getProductId());
+        
+        if ( product.getProductStock() <= 0 ) {
+            productService.deactivateProduct(productSelected.getProductId());
+            modal.show("El stock de este producto '" + product.getProductName() + "' ha sido agotado. Producto desactivado. Reabastece y actualiza su información", ModalTypeEnum.warning);
+        } else if ( product.getProductStock() <= product.getProductStockMin() ) {
+            modal.show("El stock está en riesgo. Reabastece pronto y evita perdidas en tus ventas", ModalTypeEnum.warning);
         }
     }
     

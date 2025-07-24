@@ -12,13 +12,13 @@ public class SaleList {
     
     private final CreateSale view;
     private final List<SaleItem> items = new ArrayList<>();
-    private Consumer<Integer> onDelete;
+    private Consumer<SaleItem> onDelete;
 
     public SaleList(CreateSale view) {
         this.view = view;
     }
     
-    public void setOnDelete(Consumer<Integer> listener) {
+    public void setOnDelete(Consumer<SaleItem> listener) {
         this.onDelete = listener;
     }
     

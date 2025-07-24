@@ -60,6 +60,10 @@ public class ProductService {
         return model.getItemByName(productName);
     }
     
+    public Product getProductById(int productId) {
+        return model.getItemById(productId);
+    }
+    
     public boolean saveProduct(Product product) {
         return model.saveItem(product);
     }
@@ -74,6 +78,10 @@ public class ProductService {
     
     public boolean deactivateProduct(int productId) {
         return model.changeStatus(productId, false);
+    }
+    
+    public boolean discountStock(int productId, int quantityToDiscount) {
+        return model.discountStock(productId, quantityToDiscount);
     }
     
 }

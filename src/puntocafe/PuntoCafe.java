@@ -158,7 +158,8 @@ public class PuntoCafe {
                         saleProductDetailModel, 
                         saleDishDetailModel, 
                         productModel, 
-                        dishModel
+                        dishModel,
+                        userModel
                 );
                 
                 new NavigationController(

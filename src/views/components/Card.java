@@ -142,6 +142,7 @@ public class Card {
 
         JLabel imageLabel = new JLabel();
         imageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        
         String image = "Producto sin imagen".equals(product.getProductImage()) ? "no-image.jpg" : product.getProductImage();
         imageGenerator.addImageProduct(imageLabel, product.getProductIsActive()? image : "image-disabled.png", 65, 65);
 
@@ -270,7 +271,7 @@ public class Card {
         int quantity,
         double discount,
         String type,
-        Consumer<Integer> onDelete 
+        Consumer<SaleItem> onDelete 
     ) {
         JPanel card = new JPanel();
         card.setBackground(Color.WHITE);
@@ -340,7 +341,7 @@ public class Card {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (onDelete != null) {
-                    onDelete.accept(item.getId()); 
+                    onDelete.accept(item); 
                 }
             }
         });

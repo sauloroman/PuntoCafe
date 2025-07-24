@@ -450,7 +450,48 @@ public class ProductModel implements CrudInterface<Product> {
 
     @Override
     public Product getItemById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        Product product = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                  "SELECT * "
+                + "FROM product "
+                + "WHERE product_id = ? "
+            );
+            statement.setInt(1, id);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                product = new Product(
+                    result.getInt("product_id"),
+                    result.getString("product_name"),
+                    result.getString("product_description"),
+                    result.getString("product_image"),
+                    result.getDouble("product_selling_price"),
+                    result.getInt("product_stock"),
+                    result.getInt("product_stock_min"),
+                    result.getBoolean("product_is_active"),
+                    result.getDate("product_createdAt"),
+                    result.getDate("product_updatedAt"),
+                    result.getInt("category_id"),
+                    result.getInt("supplier_id")  
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el producto por id " + e.getMessage());
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return product;
     }
     
     public List<Product> getProductsByCategoryId( int categoryId, int page, int quantity ) {
@@ -642,4 +683,31 @@ public class ProductModel implements CrudInterface<Product> {
         return products;
         
     }
+
+    public boolean discountStock( int productId, int quantityToDiscount ) {
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "UPDATE product SET product_stock = product_stock - ? WHERE product_id = ? AND product_stock >= ?"
+            );
+            statement.setInt(1, quantityToDiscount);
+            statement.setInt(2, productId);
+            statement.setInt(3, quantityToDiscount);
+            
+            if ( statement.executeUpdate() > 0 ) {
+                response = true;
+            }
+            
+            statement.close();
+            
+        } catch( SQLException e ) {
+            System.out.println("Error al descontar stock: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+        }
+        
+        return response;
+    }
+    
 }

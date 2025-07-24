@@ -1,9 +1,13 @@
 package views.components;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import utils.constants.ViewConstants;
 
 public final class Table {
 
@@ -59,5 +63,43 @@ public final class Table {
 
         table.setIntercellSpacing(new Dimension(0, 0));
     }
+    
+    public static void tableDashboardStyle(JTable table) {
+        JTableHeader header = table.getTableHeader();
+        header.setBackground(Color.decode("#263358"));
+        header.setForeground(Color.decode("#FFFFFF"));
+        header.setFont(new Font("SansSerif", Font.BOLD, 12));
+        header.setReorderingAllowed(false);
+        header.setPreferredSize(new Dimension(header.getWidth(), 30));
 
+        table.setBackground(Color.WHITE);
+        table.setForeground(Color.decode("#1E1E1E"));
+        table.setFont(new Font("SansSerif", Font.PLAIN, 11));
+        table.setRowHeight(20);
+        table.setShowGrid(false);
+        table.setIntercellSpacing(new Dimension(0, 0));
+
+        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            private final Color borderColor = Color.decode("#E5E5E5");
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table,
+                                                           Object value,
+                                                           boolean isSelected,
+                                                           boolean hasFocus,
+                                                           int row,
+                                                           int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (!isSelected) {
+                    c.setBackground(Color.WHITE);
+                } else {
+                    c.setBackground(new Color(240, 240, 240));
+                }
+                setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, borderColor));
+                return c;
+            }
+        });
+    }
+
+    
 }

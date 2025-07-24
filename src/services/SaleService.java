@@ -3,6 +3,7 @@ package services;
 import entities.Sale;
 import entities.SaleDishDetail;
 import entities.SaleProductDetail;
+import java.util.List;
 import models.SaleDishDetailModel;
 import models.SaleModel;
 import models.SaleProductDetailModel;
@@ -29,6 +30,26 @@ public class SaleService {
     
     public boolean saveSaleDishDetail(SaleDishDetail saleDishDetail) {
         return saleDishDetailModel.saveSaleDishDetail(saleDishDetail);
+    }
+    
+    public List<Sale> getSales( int userId, String startDate, String endDate ) {
+        return model.getSales(userId, startDate, endDate);
+    }
+    
+    public double getTotalSalesAmount() {
+        return model.getTotalSalesAmount();
+    }
+    
+    public int getTotalSales() {
+        return model.getTotalSales();
+    }
+    
+    public double getAvgSaleAmount() {
+        return model.getAvgSaleAmount();
+    }
+    
+    public double getTotalDiscountSalesAmount() {
+        return model.getTotalDiscountSalesAmount();
     }
     
 }
