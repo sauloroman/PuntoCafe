@@ -23,8 +23,8 @@ public class DateFilterPanel {
         this.dateChooserStart = new JDateChooser();
         this.dateChooserEnd = new JDateChooser();
         
-        setupPanel(panelStart, "Inicio:", dateChooserStart);
-        setupPanel(panelEnd, "Fin:", dateChooserEnd);
+        setupPanel(this.panelStart, "Inicio:", dateChooserStart);
+        setupPanel(this.panelEnd, "Fin:", dateChooserEnd);
         
         dateChooserStart.setDate(new Date());
         dateChooserEnd.setDate(new Date());

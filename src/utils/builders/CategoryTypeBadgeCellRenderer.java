@@ -37,8 +37,8 @@ public class CategoryTypeBadgeCellRenderer extends JPanel implements TableCellRe
             badgeLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 8, 2, 8));
 
             switch (type.toLowerCase()) {
-                case "platillo" -> badgeLabel.setBackground(Color.decode("#009688")); // Verde tipo teal
-                case "producto" -> badgeLabel.setBackground(Color.decode("#3F51B5")); // Azul oscuro
+                case "platillo" -> badgeLabel.setBackground(Color.decode("#009688")); 
+                case "producto" -> badgeLabel.setBackground(Color.decode("#3F51B5")); 
                 default -> badgeLabel.setBackground(Color.GRAY);
             }
 

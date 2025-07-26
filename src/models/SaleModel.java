@@ -2,7 +2,9 @@ package models;
 
 import java.sql.Statement;
 import config.Database;
+import entities.MontlySale;
 import entities.Sale;
+import entities.SoldCategoryTotal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -74,7 +76,7 @@ public class SaleModel {
             StringBuilder query = new StringBuilder("SELECT * FROM sale WHERE 1=1 ");
 
             if (userId > 0) {
-                query.append("AND user_id = ? ORDER BY sale_date DESC");
+                query.append("AND user_id = ? ");
             }
 
             if (startDate != null && !startDate.isEmpty()) {
@@ -82,7 +84,9 @@ public class SaleModel {
             } else {
                 query.append("AND sale_date <= ? ");
             }
-
+            
+             query.append("ORDER BY sale_date DESC");
+            
             statement = DATABASE.connect().prepareStatement(query.toString());
 
             int paramIndex = 1;
@@ -239,5 +243,103 @@ public class SaleModel {
         return discount;
     }
     
+    public List<MontlySale> getTotalSalesPerMonth( int quantityMonths ) {
+        
+        List<MontlySale> monthlySales = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT " +
+                    "  DATE_FORMAT(sale_date, '%Y-%m') AS `year_month`, " +
+                    "  SUM(sale_total) AS total_amount " +
+                    "FROM " +
+                    "  sale " +
+                    "WHERE " +
+                    "  sale_date >= DATE_SUB(CURDATE(), INTERVAL ? MONTH) " +
+                    "GROUP BY " +
+                    "  DATE_FORMAT(sale_date, '%Y-%m') " +
+                    "ORDER BY " +
+                    "  `year_month` DESC"
+            );
+            statement.setInt(1, quantityMonths);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                String month = result.getString("year_month");
+                double total = result.getDouble("total_amount");
+                
+                monthlySales.add(new MontlySale(month, total));
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("Error al calcular ventas por mes: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+        
+        return monthlySales;
+    }
+    
+    public List<SoldCategoryTotal> getItemsCountPercentageByCategory() {
+        List<SoldCategoryTotal> totals = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "(SELECT 'Producto' AS category, SUM(spd.sale_product_detail_quantity) AS count " +
+                    "FROM sale_product_detail AS spd) " +
+                    "	UNION ALL" +
+                    "(SELECT 'Platillo' AS category, SUM(sdd.sale_dish_detail_quantity) AS count " +
+                    "FROM sale_dish_detail AS sdd)"
+            );
+            result = statement.executeQuery();
+            
+            int totalItems = 0;
+            int productCount = 0;
+            int dishCount = 0;
+            
+            while( result.next() ) {
+                String category = result.getString("category");
+                int count = result.getInt("count");
+                
+                if ( category.equals("Producto") ) {
+                    productCount = count;
+                } else {
+                    dishCount = count;
+                }
+                
+                totalItems += count;
+            }
+            
+            result.close();
+            statement.close();
+            
+            if ( totalItems > 0 ) {
+                double productPercentage = ((double) productCount / totalItems) * 100;
+                double dishPercentage = ((double) dishCount / totalItems ) * 100;
+                
+                totals.add(new SoldCategoryTotal("Productos", productCount, productPercentage));
+                totals.add(new SoldCategoryTotal("Platillos", dishCount, dishPercentage));
+            } else {
+                totals.add(new SoldCategoryTotal("Productos", 0, 0));
+                totals.add(new SoldCategoryTotal("Platillos", 0, 0));
+            }
+            
+        } catch(SQLException e) {
+            System.out.println("Error al obtener los ´porcentajes de items por categoría: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+        
+        return totals;
+    }
     
 }

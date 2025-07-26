@@ -62,7 +62,91 @@ public class UserModel implements CrudInterface<User> {
 
     @Override
     public User getItemByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        User user = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * "
+                  + "FROM user "
+                  + "WHERE user_name LIKE ?"
+            );
+            statement.setString(1, "%" + name + "%");
+            result = statement.executeQuery();
+            
+            if ( result.next() ) {
+                user = new User(
+                        result.getInt("user_id"),
+                        result.getString("user_name"),
+                        result.getString("user_lastname"),
+                        result.getString("user_image"),
+                        result.getString("user_email"),
+                        result.getString("user_password"),
+                        result.getBoolean("user_is_active"),
+                        result.getDate("user_createdAt"),
+                        result.getDate("user_updatedAt"),
+                        result.getInt("role_id")
+                );
+            }
+            
+            statement.close();
+            result.close();
+        
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el usuario por nombre: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return user;
+        
+    }
+    
+    public User getUserByNameAndLastname(String fullName) {
+        
+        User user = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * "
+                  + "FROM user "
+                  + "WHERE CONCAT(user_name, ' ', user_lastname) LIKE ?"
+            );
+            statement.setString(1, "%" + fullName + "%");
+            result = statement.executeQuery();
+            
+            if ( result.next() ) {
+                user = new User(
+                        result.getInt("user_id"),
+                        result.getString("user_name"),
+                        result.getString("user_lastname"),
+                        result.getString("user_image"),
+                        result.getString("user_email"),
+                        result.getString("user_password"),
+                        result.getBoolean("user_is_active"),
+                        result.getDate("user_createdAt"),
+                        result.getDate("user_updatedAt"),
+                        result.getInt("role_id")
+                );
+            }
+            
+            statement.close();
+            result.close();
+        
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el usuario por nombre y apellido: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return user;
+        
     }
 
     @Override

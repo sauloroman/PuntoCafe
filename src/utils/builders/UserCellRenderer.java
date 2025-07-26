@@ -52,7 +52,6 @@ public class UserCellRenderer extends JPanel implements TableCellRenderer {
         if (value instanceof UserCellData) {
             UserCellData data = (UserCellData) value;
             
-            // Cargar imagen circular
             ImageIcon icon = new ImageIcon("assets/images/users/" + data.getImageName());
             Image image = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(image));

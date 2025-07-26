@@ -3,7 +3,6 @@ package views.sales;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import utils.constants.ViewConstants;
-import utils.helpers.DateFilterPanel;
 import views.components.Button;
 import views.components.ImageCustom;
 import views.components.Input;
@@ -17,7 +16,6 @@ public class SalesInit {
     private final Button buttonGenerator = new Button(); 
     private final ImageCustom imageGenerator = new ImageCustom();
     private final Input inputGenerator = new Input();
-    private DateFilterPanel dateFilterPanel;
     
     public SalesInit(Sales view) {
         this.view = view;
@@ -26,10 +24,7 @@ public class SalesInit {
     public void init() {
         
         Table.tableStyle3(view.salesTable);
-        view.scrollPanel.setBorder(BorderFactory.createLineBorder(Color.decode("#DDDDDD"))); 
-        
-        this.dateFilterPanel = new DateFilterPanel(view.filterStartDate, view.filterEndDate);
-        
+        view.scrollPanel.setBorder(BorderFactory.createLineBorder(Color.decode("#DDDDDD")));        
         view.setSize(WIDTH_PANEL, HEIGHT_PANEL);
         
         buttonGenerator.solidButton(view.btnFilter, ViewConstants.blackColor, "#FFFFFF", 11);

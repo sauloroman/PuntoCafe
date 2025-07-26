@@ -1,8 +1,10 @@
 package services;
 
+import entities.MontlySale;
 import entities.Sale;
 import entities.SaleDishDetail;
 import entities.SaleProductDetail;
+import entities.SoldCategoryTotal;
 import java.util.List;
 import models.SaleDishDetailModel;
 import models.SaleModel;
@@ -36,6 +38,14 @@ public class SaleService {
         return model.getSales(userId, startDate, endDate);
     }
     
+    public List<SaleProductDetail> getProductDetails( int saleId ) {
+        return saleProductDetailModel.getProductDetailsBySaleId(saleId);
+    }
+    
+    public List<SaleDishDetail> getDishDetails( int saleId ) {
+        return saleDishDetailModel.getDishDetailsBySaleId(saleId);
+    }
+    
     public double getTotalSalesAmount() {
         return model.getTotalSalesAmount();
     }
@@ -50,6 +60,14 @@ public class SaleService {
     
     public double getTotalDiscountSalesAmount() {
         return model.getTotalDiscountSalesAmount();
+    }
+    
+    public List<MontlySale> getMonthlySalesAmount( int lastMonths ) {
+        return model.getTotalSalesPerMonth( lastMonths );
+    }
+    
+    public List<SoldCategoryTotal> getPercentageCategorySales() {
+        return model.getItemsCountPercentageByCategory();
     }
     
 }

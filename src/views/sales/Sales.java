@@ -47,7 +47,7 @@ public class Sales extends javax.swing.JPanel {
         btnReload = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        salesGraph1 = new javax.swing.JPanel();
+        salesItems = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1200, 900));
@@ -217,20 +217,21 @@ public class Sales extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Registro de ventas");
+        jLabel2.setText("Registro de ventas (Ingreso - Mes)");
 
         salesGraph.setBackground(new java.awt.Color(248, 249, 250));
         salesGraph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
+        salesGraph.setPreferredSize(new java.awt.Dimension(390, 210));
 
         javax.swing.GroupLayout salesGraphLayout = new javax.swing.GroupLayout(salesGraph);
         salesGraph.setLayout(salesGraphLayout);
         salesGraphLayout.setHorizontalGroup(
             salesGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 388, Short.MAX_VALUE)
         );
         salesGraphLayout.setVerticalGroup(
             salesGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
+            .addGap(0, 208, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -251,7 +252,7 @@ public class Sales extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(salesGraph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(248, 249, 250));
@@ -343,18 +344,19 @@ public class Sales extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Productos y platillos vendidos");
 
-        salesGraph1.setBackground(new java.awt.Color(248, 249, 250));
-        salesGraph1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
+        salesItems.setBackground(new java.awt.Color(248, 249, 250));
+        salesItems.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
+        salesItems.setPreferredSize(new java.awt.Dimension(390, 210));
 
-        javax.swing.GroupLayout salesGraph1Layout = new javax.swing.GroupLayout(salesGraph1);
-        salesGraph1.setLayout(salesGraph1Layout);
-        salesGraph1Layout.setHorizontalGroup(
-            salesGraph1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+        javax.swing.GroupLayout salesItemsLayout = new javax.swing.GroupLayout(salesItems);
+        salesItems.setLayout(salesItemsLayout);
+        salesItemsLayout.setHorizontalGroup(
+            salesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 388, Short.MAX_VALUE)
         );
-        salesGraph1Layout.setVerticalGroup(
-            salesGraph1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
+        salesItemsLayout.setVerticalGroup(
+            salesItemsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 208, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -364,9 +366,9 @@ public class Sales extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(salesGraph1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salesItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,8 +376,8 @@ public class Sales extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(salesGraph1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(salesItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -456,8 +458,8 @@ public class Sales extends javax.swing.JPanel {
     public javax.swing.JLabel saleDisscount;
     public javax.swing.JLabel saleMoney;
     public javax.swing.JLabel saleQuantity;
-    private javax.swing.JPanel salesGraph;
-    private javax.swing.JPanel salesGraph1;
+    public javax.swing.JPanel salesGraph;
+    public javax.swing.JPanel salesItems;
     public javax.swing.JTable salesTable;
     public javax.swing.JScrollPane scrollPanel;
     // End of variables declaration//GEN-END:variables

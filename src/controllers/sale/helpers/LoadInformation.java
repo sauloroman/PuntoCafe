@@ -3,7 +3,9 @@ package controllers.sale.helpers;
 import entities.Dish;
 import entities.Product;
 import entities.User;
+import java.awt.BorderLayout;
 import java.util.List;
+import org.jfree.chart.ChartPanel;
 import views.sales.CreateSaleDishQuantity;
 import views.sales.CreateSaleProductQuantity;
 import views.sales.Sales;
@@ -58,6 +60,22 @@ public class LoadInformation {
     
     public void setTotalDiscountSalesAmount( double quantity ) {
         view.saleDisscount.setText("$" + String.format("%.2f", quantity));
+    }
+    
+    public void createSalesAmountBarChart( ChartPanel chart ) {
+        view.salesGraph.removeAll();
+        view.salesGraph.setLayout(new BorderLayout());
+        view.salesGraph.add(chart, BorderLayout.CENTER);
+        view.salesGraph.revalidate();
+        view.salesGraph.repaint();
+    }
+    
+    public void createCategoryItemsCountDonutChart( ChartPanel chart ) {
+        view.salesItems.removeAll();
+        view.salesItems.setLayout(new BorderLayout());
+        view.salesItems.add(chart, BorderLayout.CENTER);
+        view.salesItems.revalidate();
+        view.salesItems.repaint();
     }
     
 }

@@ -138,12 +138,12 @@ public class PuntoCafe {
                 SaleDishDetailModel saleDishDetailModel = new SaleDishDetailModel();
                 
                 User dummyUser = new User();
-                dummyUser.setUserName("Saulo Román");
-                dummyUser.setUserLastname("Santillán Nava");
-                dummyUser.setUserEmail("romansantillan1998@outlook.com");
-                dummyUser.setRoleId(1);
-                dummyUser.setUserId(5);
-                dummyUser.setUserImage("user-1.jpg");
+                dummyUser.setUserName("Danna Janeth");
+                dummyUser.setUserLastname("Sánchez Carreón");
+                dummyUser.setUserEmail("dannajanethsanchez@outlook.es");
+                dummyUser.setRoleId(2);
+                dummyUser.setUserId(7);
+                dummyUser.setUserImage("user-2.jpg");
                 
                 new MainFrameController(mainView, roleModel, dummyUser, authController);
                 new CategoryController(warehouseCategories, categoryModel);

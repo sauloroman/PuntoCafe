@@ -21,6 +21,10 @@ public class UserService {
         return model.getUserByEmail(email);
     }
     
+    public User getUserByNameAndLastname(String fullName) {
+        return model.getUserByNameAndLastname(fullName);
+    }
+    
     public boolean saveUser(User user) {
         if ( user == null ) return false;
         return model.saveItem(user);

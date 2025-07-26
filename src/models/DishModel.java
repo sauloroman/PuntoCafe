@@ -75,7 +75,7 @@ public class DishModel implements CrudInterface<Dish> {
             result = statement.executeQuery();
             
             if( result.next() ) {
-                new Dish(
+                dish = new Dish(
                     result.getInt("dish_id"),
                     result.getString("dish_name"),
                     result.getString("dish_description"),

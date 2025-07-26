@@ -3,8 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/SaleController.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/helpers/InputReader.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/utils/helpers/DateFilterPanel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/Sales.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/SalesInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/UserService.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/UserModel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/SaleModel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/utils/builders/SalesTableBuilder.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/utils/helpers/TableRowClickHelper.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/helpers/SaleRefresher.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/SaleService.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/entities/SaleDishDetail.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/SaleProductDetailModel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/DishService.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/DishModel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/utils/builders/UserRoleBadgeCellRenderer.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/components/ImageCustom.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/navigation/NavigationController.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/MainFrame.java</file>
             <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/puntocafe/PuntoCafe.java</file>
             <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/CreateSale.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/CreateSaleInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/warehouse/WarehouseCategoriesInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/warehouse/WarehouseCategories.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/SaleDetail.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/sales/SaleDetailInit.java</file>
         </group>
     </open-files>
 </project-private>

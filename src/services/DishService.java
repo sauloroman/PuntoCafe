@@ -17,6 +17,10 @@ public class DishService {
         return model.getItemByName(name);
     }
     
+    public Dish getDishById( int id ) {
+        return model.getItemById(id);
+    }
+    
     public List<Dish> getAllDishes(int page, int quantity) {
         return model.listItemsByPage("", SearchCriteriaEnum.NONE, page, quantity);
     }

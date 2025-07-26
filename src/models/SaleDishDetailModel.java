@@ -2,9 +2,12 @@ package models;
 
 import config.Database;
 import entities.SaleDishDetail;
+import entities.SaleProductDetail;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SaleDishDetailModel {
     
@@ -56,6 +59,46 @@ public class SaleDishDetailModel {
         }
         
         return response;
+        
+    }
+    
+    public List<SaleDishDetail> getDishDetailsBySaleId( int saleId ) {
+        
+        List<SaleDishDetail> details = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * FROM sale_dish_detail where sale_id = ?"
+            );
+            statement.setInt(1, saleId);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                details.add(
+                        new SaleDishDetail(
+                                result.getInt("sale_dish_detail_id"),
+                                result.getInt("sale_dish_detail_quantity"),
+                                result.getDouble("sale_dish_detail_unit_price"),
+                                result.getDouble("sale_dish_detail_discount"),
+                                result.getInt("sale_id"),
+                                result.getInt("dish_id")
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudieron obtener los detalles de venta de platillos: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }   
+        
+        return details;
         
     }
     

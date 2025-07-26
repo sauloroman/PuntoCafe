@@ -1,33 +1,61 @@
 package controllers.sale.helpers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import utils.helpers.DateFilterPanel;
 import views.sales.CreateSale;
 import views.sales.CreateSaleDishQuantity;
 import views.sales.CreateSaleProductQuantity;
+import views.sales.Sales;
 
 public class InputReader {
 
-    private final CreateSale view;
+    private final Sales view;
+    private final CreateSale createView;
     private final CreateSaleProductQuantity productQuantity;
     private final CreateSaleDishQuantity dishQuantity;
+    private final DateFilterPanel dateFilterPanel;
 
     public InputReader(
-            CreateSale view, 
+            Sales view,
+            CreateSale createView, 
             CreateSaleProductQuantity productQuantity,
-            CreateSaleDishQuantity dishQuantity
+            CreateSaleDishQuantity dishQuantity,
+            DateFilterPanel dateFilterPanel
     ) {
         this.view = view;
+        this.createView = createView;
         this.productQuantity = productQuantity;
         this.dishQuantity = dishQuantity;
+        this.dateFilterPanel = dateFilterPanel;
+    }
+    
+    public String getUserFiltered() {
+        String user = view.filterUsers.getSelectedItem().toString();
+        if ( user.equals("Usuarios") ) return null;
+        return user;
+    }
+    
+    public String getStartDate() {
+        Date dateSelected = dateFilterPanel.getStartDate();
+        if ( dateSelected == null ) return null;
+        return new SimpleDateFormat("yyyy-MM-dd").format(dateSelected);
+    }
+    
+    public String getEndDate() {
+        Date dateSelected = dateFilterPanel.getEndDate();
+        if ( dateSelected == null ) return null;
+        return new SimpleDateFormat("yyyy-MM-dd").format(dateSelected);
     }
     
     public String getProductNameSearch() {
-       String nameSearched = view.searchProductTxt.getText().trim();
+       String nameSearched = createView.searchProductTxt.getText().trim();
        if ( nameSearched.equals("Busca productos por su nombre") ) return null;
        return nameSearched;
     }
     
     public String getDishNameSearch() {
-       String nameSearched = view.searchDishTxt.getText().trim();
+       String nameSearched = createView.searchDishTxt.getText().trim();
        if ( nameSearched.equals("Busca platillos por su nombre") ) return null;
        return nameSearched;
     }

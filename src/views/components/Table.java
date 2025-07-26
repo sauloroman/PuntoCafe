@@ -100,6 +100,49 @@ public final class Table {
             }
         });
     }
+    
+    public static void tableStripedStyle(JTable table) {
+        // Encabezado
+        JTableHeader header = table.getTableHeader();
+        header.setBackground(Color.decode("#F1F3F5"));
+        header.setForeground(Color.decode("#1E1E1E"));
+        header.setFont(new Font("sansserif", Font.BOLD, 12));
+        header.setReorderingAllowed(false);
+        header.setOpaque(true);
+        header.setPreferredSize(new Dimension(header.getWidth(), 30));
+
+        // Tabla general
+        table.setBackground(Color.WHITE);
+        table.setForeground(Color.decode("#1E1E1E"));
+        table.setFont(new Font("sansserif", Font.PLAIN, 12));
+        table.setRowHeight(28);
+        table.setShowGrid(false);
+        table.setIntercellSpacing(new Dimension(0, 0));
+
+        // Renderer con filas alternadas
+        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            private final Color evenColor = Color.WHITE;
+            private final Color oddColor = Color.decode("#E3F2FD"); // Azul cielo claro
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table,
+                                                           Object value,
+                                                           boolean isSelected,
+                                                           boolean hasFocus,
+                                                           int row,
+                                                           int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (isSelected) {
+                    c.setBackground(Color.decode("#BBDEFB")); // Azul más intenso al seleccionar
+                    c.setForeground(Color.BLACK);
+                } else {
+                    c.setBackground(row % 2 == 0 ? evenColor : oddColor);
+                    c.setForeground(Color.decode("#1E1E1E"));
+                }
+                return c;
+            }
+        });
+    }
 
     
 }
