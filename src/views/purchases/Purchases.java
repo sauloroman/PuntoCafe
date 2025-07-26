@@ -4,9 +4,10 @@ public class Purchases extends javax.swing.JPanel {
 
     private final PurchasesInit styleView = new PurchasesInit(this);
     
-    public Purchases( PurchasesSuppliers purchasesSuppliers ) {
+    public Purchases( PurchasesSuppliers purchasesSuppliers, PurchasesBuy purchasesBuy ) {
         initComponents();
         suppliersPane.add(purchasesSuppliers);
+        buyPanel.add(purchasesBuy);
         styleView.init();
     }
     
@@ -15,13 +16,26 @@ public class Purchases extends javax.swing.JPanel {
     private void initComponents() {
 
         navegationPane = new javax.swing.JTabbedPane();
+        buyPanel = new javax.swing.JPanel();
         suppliersPane = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1200, 900));
 
         navegationPane.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout buyPanelLayout = new javax.swing.GroupLayout(buyPanel);
+        buyPanel.setLayout(buyPanelLayout);
+        buyPanelLayout.setHorizontalGroup(
+            buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1331, Short.MAX_VALUE)
+        );
+        buyPanelLayout.setVerticalGroup(
+            buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 865, Short.MAX_VALUE)
+        );
+
+        navegationPane.addTab("Compras Realizadas", buyPanel);
 
         suppliersPane.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -37,19 +51,6 @@ public class Purchases extends javax.swing.JPanel {
         );
 
         navegationPane.addTab("Proveedores", suppliersPane);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1331, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 865, Short.MAX_VALUE)
-        );
-
-        navegationPane.addTab("Compras Realizadas", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -68,7 +69,7 @@ public class Purchases extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel2;
+    public javax.swing.JPanel buyPanel;
     public javax.swing.JTabbedPane navegationPane;
     public javax.swing.JPanel suppliersPane;
     // End of variables declaration//GEN-END:variables

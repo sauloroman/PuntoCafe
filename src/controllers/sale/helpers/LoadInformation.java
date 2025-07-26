@@ -8,20 +8,24 @@ import java.util.List;
 import org.jfree.chart.ChartPanel;
 import views.sales.CreateSaleDishQuantity;
 import views.sales.CreateSaleProductQuantity;
+import views.sales.SaleDetail;
 import views.sales.Sales;
 
 public class LoadInformation {
     
     private final Sales view;
+    private final SaleDetail detailView;
     private final CreateSaleProductQuantity productQuantityView;
     private final CreateSaleDishQuantity dishQuantityView;
 
     public LoadInformation(
             Sales view,
+            SaleDetail detailView,
             CreateSaleProductQuantity productQuantityView,
             CreateSaleDishQuantity dishQuantityView
     ) {
         this.view = view;
+        this.detailView = detailView;
         this.productQuantityView = productQuantityView;
         this.dishQuantityView = dishQuantityView;
     }
@@ -76,6 +80,10 @@ public class LoadInformation {
         view.salesItems.add(chart, BorderLayout.CENTER);
         view.salesItems.revalidate();
         view.salesItems.repaint();
+    }
+    
+    public void setSaleDateInDetailWindow(String date) {
+        detailView.saleDate.setText(date);
     }
     
 }

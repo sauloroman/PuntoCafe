@@ -1,11 +1,11 @@
 package entities;
 
-public class MontlySale {
+public class MontlyMoney {
     
     private String month;
     private double totalAmount;
 
-    public MontlySale(String month, double totalAmount) {
+    public MontlyMoney(String month, double totalAmount) {
         this.month = month;
         this.totalAmount = totalAmount;
     }

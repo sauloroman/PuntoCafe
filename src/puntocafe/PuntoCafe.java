@@ -42,7 +42,12 @@ import views.warehouse.WarehouseDishes;
 import views.warehouse.WarehouseProducts;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import controllers.purchase.PurchaseController;
+import entities.PurchaseDetail;
+import models.PurchaseDetailModel;
+import models.PurchaseModel;
 import models.SaleProductDetailModel;
+import views.purchases.PurchasesBuy;
 
 public class PuntoCafe {
 
@@ -122,12 +127,15 @@ public class PuntoCafe {
                 Access access = new Access(accessRoles, accessUsers);
 
                 PurchasesSuppliers purchasesSuppliers = new PurchasesSuppliers();
-                Purchases purchases = new Purchases(purchasesSuppliers);
+                PurchasesBuy purchasesBuy = new PurchasesBuy();
+                Purchases purchases = new Purchases(purchasesSuppliers, purchasesBuy);
 
                 Sales sales = new Sales();
                 Queries queries = new Queries();
 
                 CategoryModel categoryModel = new CategoryModel();
+                PurchaseModel purchaseModel = new PurchaseModel();
+                PurchaseDetailModel purchaseDetailModel = new PurchaseDetailModel();
                 SupplierModel supplierModel = new SupplierModel();
                 ProductModel productModel = new ProductModel();
                 DishModel dishModel = new DishModel();
@@ -148,6 +156,7 @@ public class PuntoCafe {
                 new MainFrameController(mainView, roleModel, dummyUser, authController);
                 new CategoryController(warehouseCategories, categoryModel);
                 new SupplierController(purchasesSuppliers, supplierModel);
+                new PurchaseController(dummyUser, purchasesBuy, purchaseModel, purchaseDetailModel, supplierModel);
                 new ProductController(warehouseProducts, productModel, categoryModel, supplierModel);
                 new DishController(warehouseDishes, dishModel, categoryModel);
                 new UserController(accessUsers, accessRoles, userModel, roleModel);

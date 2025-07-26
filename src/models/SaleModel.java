@@ -2,7 +2,7 @@ package models;
 
 import java.sql.Statement;
 import config.Database;
-import entities.MontlySale;
+import entities.MontlyMoney;
 import entities.Sale;
 import entities.SoldCategoryTotal;
 import java.sql.PreparedStatement;
@@ -16,7 +16,6 @@ public class SaleModel {
     private final Database DATABASE;
     private PreparedStatement statement;
     private ResultSet result;
-    private boolean response;
     
     public SaleModel() {
         this.DATABASE = Database.getInstance();
@@ -59,6 +58,9 @@ public class SaleModel {
                 }
             }
             
+            statement.close();
+            result.close();
+            
         } catch(SQLException e) {
             System.out.println("Error al crear la venta: " + e.getMessage());
         } finally {
@@ -67,6 +69,36 @@ public class SaleModel {
         }
         
         return newSale;
+    }
+    
+    public Sale getSaleById(int saleId) {
+        Sale sale = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM sale WHERE sale_id = ?");
+            statement.setInt(1, saleId);
+            result = statement.executeQuery();
+            
+            if ( result.next() ) {
+                sale = new Sale(
+                    result.getInt("sale_id"),
+                    result.getString("sale_date"),
+                    result.getDouble("sale_total"),
+                    result.getString("sale_code"),
+                    result.getInt("user_id")  
+                );
+            }
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener la venta por id: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+        
+        return sale;
     }
     
     public List<Sale> getSales(int userId, String startDate, String endDate) {        
@@ -114,16 +146,15 @@ public class SaleModel {
                 ));
             }
 
+            result.close();
+            statement.close();
+            
         } catch (SQLException e) {
             System.out.println("Error al traer las ventas: " + e.getMessage());
         } finally {
-            try {
-                if (result != null) result.close();
-                if (statement != null) statement.close();
-                DATABASE.disconnect();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            result = null;
+            statement = null;
+            DATABASE.disconnect();
         }
 
         return sales;
@@ -243,9 +274,9 @@ public class SaleModel {
         return discount;
     }
     
-    public List<MontlySale> getTotalSalesPerMonth( int quantityMonths ) {
+    public List<MontlyMoney> getTotalSalesPerMonth( int quantityMonths ) {
         
-        List<MontlySale> monthlySales = new ArrayList<>();
+        List<MontlyMoney> monthlySales = new ArrayList<>();
         
         try {
             
@@ -269,7 +300,7 @@ public class SaleModel {
                 String month = result.getString("year_month");
                 double total = result.getDouble("total_amount");
                 
-                monthlySales.add(new MontlySale(month, total));
+                monthlySales.add(new MontlyMoney(month, total));
             }
             
             statement.close();

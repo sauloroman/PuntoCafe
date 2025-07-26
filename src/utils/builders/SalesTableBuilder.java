@@ -4,10 +4,11 @@ import entities.Sale;
 import entities.User;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import services.UserService;
 
 public class SalesTableBuilder {
 
-    public static DefaultTableModel create(List<Sale> sales, User user) {
+    public static DefaultTableModel create(List<Sale> sales, UserService userService) {
 
         String[] columnsTable = {"Id", "Código", "Total", "Fecha", "Usuario"};
 
@@ -34,7 +35,7 @@ public class SalesTableBuilder {
             rowTable[1] = sale.getSaleCode();
             rowTable[2] = "$" + String.format("%.2f", sale.getTotal());
             rowTable[3] = sale.getSaleDate();
-            rowTable[4] = user;
+            rowTable[4] = userService.getUserById(sale.getUserId());
 
             table.addRow(rowTable);
         }

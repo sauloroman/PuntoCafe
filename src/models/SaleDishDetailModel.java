@@ -2,7 +2,6 @@ package models;
 
 import config.Database;
 import entities.SaleDishDetail;
-import entities.SaleProductDetail;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

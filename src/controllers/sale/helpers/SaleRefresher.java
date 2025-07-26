@@ -1,16 +1,14 @@
 package controllers.sale.helpers;
 
-import entities.Dish;
-import entities.Product;
 import entities.Sale;
 import entities.SaleDishDetail;
 import entities.SaleProductDetail;
-import entities.User;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import services.DishService;
 import services.ProductService;
+import services.UserService;
 import utils.builders.SaleDetailTableBuilder;
 import utils.builders.SalesTableBuilder;
 import utils.builders.UserRoleBadgeCellRenderer;
@@ -19,28 +17,28 @@ import views.sales.Sales;
 
 public class SaleRefresher {
     
-    private final User user;
     private final Sales view;
     private final SaleDetail detailView;
     private final ProductService productService;
     private final DishService dishService;
+    private final UserService userService;
 
     public SaleRefresher(
-            User user,
             Sales view, 
             SaleDetail detailView,
             ProductService productService,
-            DishService dishService
+            DishService dishService,
+            UserService userService
     ) {
-        this.user = user;
         this.view = view;
         this.detailView = detailView;
         this.productService = productService;
         this.dishService = dishService;
+        this.userService = userService;
     }
     
     public void load( List<Sale> sales) {
-        DefaultTableModel tableModel = buildTableModel(sales, user);
+        DefaultTableModel tableModel = buildTableModel(sales);
         setTableModel(tableModel);
         setRowSorter(new TableRowSorter<>(tableModel));
     }
@@ -57,8 +55,8 @@ public class SaleRefresher {
         setSaleDishDetailRowSorter(new TableRowSorter<>(tableModel));
     }
     
-    private DefaultTableModel buildTableModel(List<Sale> sales, User user) {
-        return SalesTableBuilder.create(sales, user);
+    private DefaultTableModel buildTableModel(List<Sale> sales) {
+        return SalesTableBuilder.create(sales, userService);
     }
     
     private DefaultTableModel buildProductSaleDetail(List<SaleProductDetail> detail) {

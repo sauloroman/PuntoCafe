@@ -70,6 +70,7 @@ public class SaleDetail extends javax.swing.JFrame {
         jScrollPane3.setViewportView(dishesTable);
 
         btnExport.setText("Exportar");
+        btnExport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setText("Subtotal:");

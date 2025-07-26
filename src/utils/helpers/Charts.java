@@ -1,6 +1,6 @@
 package utils.helpers;
 
-import entities.MontlySale;
+import entities.MontlyMoney;
 import entities.SoldCategoryTotal;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,10 +23,10 @@ import org.jfree.ui.VerticalAlignment;
 
 public class Charts {
 
-    public static ChartPanel createMonthlySalesBarChart(List<MontlySale> monthlySales, String chartTitle) {
+    public static ChartPanel createMonthlySalesBarChart(List<MontlyMoney> monthlySales, String chartTitle) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        for (MontlySale ms : monthlySales) {
+        for (MontlyMoney ms : monthlySales) {
             dataset.addValue(ms.getTotalAmount(), "Ventas", ms.getMonth());
         }
 
@@ -113,10 +113,10 @@ public class Charts {
         }
 
         JFreeChart donutChart = ChartFactory.createRingChart(
-                null, // sin título
+                null, 
                 dataset,
-                false, // sin leyenda
-                true, // tooltips
+                false, 
+                true, 
                 false
         );
 
@@ -138,12 +138,12 @@ public class Charts {
             i++;
         }
 
-        TextTitle centerText = new TextTitle("Total\n" + totalItems);
-        centerText.setFont(new Font("SansSerif", Font.BOLD, 14));
-        centerText.setPaint(Color.DARK_GRAY);
-        centerText.setHorizontalAlignment(HorizontalAlignment.CENTER);
-        centerText.setVerticalAlignment(VerticalAlignment.CENTER);
-        donutChart.addSubtitle(centerText);
+//        TextTitle centerText = new TextTitle("Total\n" + totalItems);
+//        centerText.setFont(new Font("SansSerif", Font.BOLD, 14));
+//        centerText.setPaint(Color.DARK_GRAY);
+//        centerText.setHorizontalAlignment(HorizontalAlignment.CENTER);
+//        centerText.setVerticalAlignment(VerticalAlignment.CENTER);
+//        donutChart.addSubtitle(centerText);
 
         ChartPanel chartPanel = new ChartPanel(donutChart);
         chartPanel.setPreferredSize(new Dimension(390, 200));

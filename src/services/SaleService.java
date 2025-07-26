@@ -1,6 +1,6 @@
 package services;
 
-import entities.MontlySale;
+import entities.MontlyMoney;
 import entities.Sale;
 import entities.SaleDishDetail;
 import entities.SaleProductDetail;
@@ -62,7 +62,7 @@ public class SaleService {
         return model.getTotalDiscountSalesAmount();
     }
     
-    public List<MontlySale> getMonthlySalesAmount( int lastMonths ) {
+    public List<MontlyMoney> getMonthlySalesAmount( int lastMonths ) {
         return model.getTotalSalesPerMonth( lastMonths );
     }
     

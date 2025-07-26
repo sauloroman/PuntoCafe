@@ -1,7 +1,6 @@
 package views.warehouse;
 
 import java.awt.Font;
-import views.warehouse.Warehouse;
 
 public class WarehouseInit {
     

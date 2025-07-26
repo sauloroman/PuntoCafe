@@ -50,3 +50,4 @@ public class UserRoleBadgeCellRenderer extends JPanel implements TableCellRender
         return this;
     }
 }
+    

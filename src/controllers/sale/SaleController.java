@@ -40,7 +40,9 @@ import views.sales.CreateSaleProductQuantity;
 import views.sales.Sales;
 
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import models.UserModel;
 import services.SaleService;
 import services.UserService;
@@ -48,6 +50,7 @@ import utils.enums.ModalTypeEnum;
 import utils.helpers.Charts;
 import utils.helpers.DateFilterPanel;
 import utils.helpers.DateGenerator;
+import utils.helpers.GenerateReports;
 import utils.helpers.Modal;
 import utils.helpers.TableRowClickHelper;
 import views.sales.SaleDetail;
@@ -93,6 +96,7 @@ public class SaleController {
     private Product productSelected = null;
     private Dish dishSelected = null;
     private String saleCode = null;
+    private int saleIdSelected = -1;
     
     public SaleController(
             User user,
@@ -124,7 +128,7 @@ public class SaleController {
         this.userService = new UserService(this.userModel);
         
         this.dateFilter = new DateFilterPanel(view.filterStartDate, view.filterEndDate);
-        this.refresher = new SaleRefresher(user, view, saleDetailView, productService, dishService);
+        this.refresher = new SaleRefresher(view, saleDetailView, productService, dishService, userService);
         this.calculateTotal = new CalculateTotal(createView);
         this.calculateTotalDetail = new CalculateTotalSaleDetail(saleDetailView);
         this.productList = new ProductList();
@@ -132,7 +136,7 @@ public class SaleController {
         this.saleList = new SaleList(createView);
         this.codeGenerator = new CodeGenerator();
         this.elements = new ViewElements(createView, productQuantityView, dishQuantityView);
-        this.load = new LoadInformation(view, productQuantityView, dishQuantityView);
+        this.load = new LoadInformation(view, saleDetailView, productQuantityView, dishQuantityView);
         this.pages = new Pages(createView, productService, dishService);
         this.inputReader = new InputReader(view, createView, productQuantityView, dishQuantityView, dateFilter);
         this.productsGrid = new ProductsGrid(createView, productService);
@@ -145,7 +149,9 @@ public class SaleController {
     private void init() {
         pages.create();
         load.fillUserBox(userService.getAllUsers());
-        refresher.load(saleService.getSales(0, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd()));
+        refresher.load(
+            saleService.getSales(0, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd())
+        );
         loadStats();
         loadGraphs();
     }
@@ -154,6 +160,8 @@ public class SaleController {
         view.btnNewSale.addActionListener(e -> openCreateSaleWindow());
         view.btnReload.addActionListener(e -> refreshInfo());
         view.btnFilter.addActionListener(e -> filterSales());
+        
+        saleDetailView.btnExport.addActionListener(e -> generateSaleDetailReport());
         
         createView.pageCombo.addActionListener(e -> loadPage());
         createView.pageComboDish.addActionListener(e -> loadPageDish());
@@ -178,6 +186,10 @@ public class SaleController {
     
     private void openSaleDetailWindow(int selectedRow) { 
         int saleId = Integer.parseInt(view.salesTable.getValueAt(selectedRow, 0).toString());
+        saleIdSelected = saleId;
+        String saleDate = view.salesTable.getValueAt(selectedRow, 3).toString();
+        
+        load.setSaleDateInDetailWindow(saleDate);
         List<SaleProductDetail> productDetails = saleService.getProductDetails(saleId);
         List<SaleDishDetail> dishDetails = saleService.getDishDetails(saleId);
         
@@ -191,12 +203,19 @@ public class SaleController {
         saleDetailView.setVisible(true);
     }
     
+    private void generateSaleDetailReport() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("sale_id", saleIdSelected);
+        GenerateReports.generateReport("detail_sale", "PuntoCafé - Detalle de venta", params);
+    }
+    
     private void filterSales() {
         String userFilter = inputReader.getUserFiltered();
         int userId = 0;
         if ( userFilter != null ) {
             userId = userService.getUserByNameAndLastname(userFilter).getUserId();
         }
+        
         String startDate = inputReader.getStartDate();
         String endDate = inputReader.getEndDate();
         
@@ -264,7 +283,7 @@ public class SaleController {
         saveSaleDishDetail(saleSaved.getSaleId());
         saveSaleProductDetail(saleSaved.getSaleId());
         
-        modal.show("La venta se ha realizado exitosamente\n. Folio: " + code + "\nFecha: " + date, ModalTypeEnum.success);
+        modal.show("La venta se ha realizado exitosamente\n.Folio: " + code + "\nFecha: " + date, ModalTypeEnum.success);
         saleList.clearList();
         productList.clearList();
         dishList.clearList();
@@ -440,6 +459,11 @@ public class SaleController {
             return;
         }
 
+        if ( discount > price ) {
+            modal.show("No puedes descontar más del precio del producto", ModalTypeEnum.error);
+            return;
+        }
+        
         if ( productSelected != null && quantity > 0 && price > 0 ) {
             productList.addProduct(productSelected, quantity, discount);
             saleList.addItem(new ProductItem(productSelected, quantity, discount));
@@ -458,6 +482,11 @@ public class SaleController {
         
         if ( price < 0 ) {
             modal.show("El precio no puede ser negativo", ModalTypeEnum.error);
+            return;
+        }
+        
+        if ( discount > price ) {
+            modal.show("No puedes descontar más del precio del platillo", ModalTypeEnum.error);
             return;
         }
 
