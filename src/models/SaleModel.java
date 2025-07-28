@@ -282,18 +282,14 @@ public class SaleModel {
             
             statement = DATABASE.connect().prepareStatement(
                     "SELECT " +
-                    "  DATE_FORMAT(sale_date, '%Y-%m') AS `year_month`, " +
-                    "  SUM(sale_total) AS total_amount " +
-                    "FROM " +
-                    "  sale " +
-                    "WHERE " +
-                    "  sale_date >= DATE_SUB(CURDATE(), INTERVAL ? MONTH) " +
-                    "GROUP BY " +
-                    "  DATE_FORMAT(sale_date, '%Y-%m') " +
-                    "ORDER BY " +
-                    "  `year_month` DESC"
+                        "DATE_FORMAT(sale_date, '%Y-%m') AS `year_month`, " + 
+                        "SUM(sale_total) AS total_amount " +
+                    "FROM sale " +
+                    "WHERE DATE_FORMAT(sale_date, '%Y-%m') >= DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL ? MONTH), '%Y-%m') " +
+                    "GROUP BY DATE_FORMAT(sale_date, '%Y-%m') " +
+                    "ORDER BY `year_month` DESC "
             );
-            statement.setInt(1, quantityMonths);
+            statement.setInt(1, quantityMonths - 1);
             result = statement.executeQuery();
             
             while( result.next() ) {

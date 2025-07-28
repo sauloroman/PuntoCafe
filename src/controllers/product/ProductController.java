@@ -277,6 +277,9 @@ public class ProductController {
     private void activateProduct() {
         if ( !activateProduct.isValidStatus(productSelected.getProductIsActive() ) ) return;
         if ( !activateProduct.confirmChange() ) return;
+        if ( productSelected.getProductStock() == 0 ) {
+            modal.show("El stock de este producto está agotado. Rehabastece pronto y evita pérdidas.", ModalTypeEnum.warning);
+        }
             
         int productId = productSelected.getProductId();
         activateProduct.change(productId);

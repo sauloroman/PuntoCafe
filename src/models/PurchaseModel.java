@@ -255,7 +255,7 @@ public class PurchaseModel {
                   + "FROM purchase p "
                   + "JOIN supplier s ON s.supplier_id = p.supplier_id "
                   + "GROUP BY s.supplier_id "
-                  + "ORDER BY inversion "
+                  + "ORDER BY inversion DESC "
                   + "LIMIT 1"  
             );
             result = statement.executeQuery();
@@ -290,18 +290,14 @@ public class PurchaseModel {
             
             statement = DATABASE.connect().prepareStatement(
                     "SELECT " +
-                    "  DATE_FORMAT(purchase_date, '%Y-%m') AS `year_month`, " +
-                    "  SUM(pruchase_total) AS total_amount " +
-                    "FROM " +
-                    "  purchase " +
-                    "WHERE " +
-                    "  purchase_date >= DATE_SUB(CURDATE(), INTERVAL ? MONTH) " +
-                    "GROUP BY " +
-                    "  DATE_FORMAT(purchase_date, '%Y-%m') " +
-                    "ORDER BY " +
-                    "  `year_month` DESC"
+                    "DATE_FORMAT(purchase_date, '%Y-%m') AS `year_month`, " +
+                    "SUM(purchase_total) AS total_amount " +
+                    "FROM purchase " +
+                    "WHERE DATE_FORMAT(purchase_date, '%Y-%m') >= DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL ? MONTH), '%Y-%m') " +
+                    "GROUP BY DATE_FORMAT(purchase_date, '%Y-%m') " +
+                    "ORDER BY `year_month` DESC "
             );
-            statement.setInt(1, quantityMonths);
+            statement.setInt(1, quantityMonths - 1);
             result = statement.executeQuery();
             
             while( result.next() ) {
@@ -336,7 +332,7 @@ public class PurchaseModel {
                   + "FROM purchase_detail pd "
                   + "JOIN product p ON p.product_id = pd.product_id "
                   + "GROUP BY p.product_id "
-                  + "ORDER BY total_quantity DESC"
+                  + "ORDER BY total_quantity DESC "
                   + "LIMIT ?"
             );
             statement.setInt(1, quantityProducts);

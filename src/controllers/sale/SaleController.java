@@ -224,10 +224,8 @@ public class SaleController {
     
     private void refreshInfo() {
         load.fillUserBox(userService.getAllUsers());
-        
         String startDate = DateGenerator.getCurrentDateStart(2);
         String endDate = DateGenerator.getCurrentDateEnd();
-        
         refresher.load(saleService.getSales(0, startDate, endDate));
     }
     
@@ -239,14 +237,14 @@ public class SaleController {
     }
     
     private void loadGraphs() {
-        load.createSalesAmountBarChart(
-                Charts.createMonthlySalesBarChart(
+        load.setMontlySalesChart(
+                Charts.createMonthlyBarChart(
                         saleService.getMonthlySalesAmount(6), 
                         "Ventas por Mes (Últimos 6 meses)"
                 )
         );
         
-        load.createCategoryItemsCountDonutChart(
+        load.setAmountCategoryItemsChart(
                 Charts.createItemsDonutChart(
                         saleService.getPercentageCategorySales()
                 )
@@ -459,7 +457,7 @@ public class SaleController {
             return;
         }
 
-        if ( discount > price ) {
+        if ( discount > price * quantity ) {
             modal.show("No puedes descontar más del precio del producto", ModalTypeEnum.error);
             return;
         }
@@ -485,7 +483,7 @@ public class SaleController {
             return;
         }
         
-        if ( discount > price ) {
+        if ( discount > price * quantity ) {
             modal.show("No puedes descontar más del precio del platillo", ModalTypeEnum.error);
             return;
         }

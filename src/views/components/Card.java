@@ -2,6 +2,7 @@ package views.components;
 
 import entities.Dish;
 import entities.Product;
+import entities.PurchaseItem;
 import interfaces.SaleItem;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -353,5 +354,63 @@ public class Card {
 
         return card;
     }    
+    
+    public JPanel createMinimalSaleItemCard(
+        PurchaseItem item,
+        Consumer<PurchaseItem> onDelete
+    ) {
+        JPanel card = new JPanel();
+        card.setBackground(Color.WHITE);
+        card.setLayout(new BorderLayout());
+        card.setMaximumSize(new Dimension(290, 50));
+        card.setPreferredSize(new Dimension(290, 50));
+        card.setMinimumSize(new Dimension(290, 50));
+        card.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        centerPanel.setBackground(Color.WHITE);
+
+        JLabel nameLabel = new JLabel(item.getProduct().getProductName());
+        nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
+        nameLabel.setForeground(Color.decode("#222222"));
+
+        JLabel priceLabel = new JLabel("$" + item.getPrice());
+        priceLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        priceLabel.setForeground(Color.GRAY);
+
+        centerPanel.add(nameLabel);
+        centerPanel.add(priceLabel);
+
+        JPanel rightPanel = new JPanel();
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.X_AXIS));
+        rightPanel.setBackground(Color.WHITE);
+
+        JLabel quantityLabel = new JLabel(" x" + item.getQuantity() + " ");
+        quantityLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
+
+        JLabel deleteLabel = new JLabel("🗑️");
+        deleteLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+        deleteLabel.setForeground(Color.RED);
+        deleteLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        deleteLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (onDelete != null) {
+                    onDelete.accept(item);
+                }
+            }
+        });
+
+        rightPanel.add(quantityLabel);
+        rightPanel.add(deleteLabel);
+
+        card.add(centerPanel, BorderLayout.CENTER);
+        card.add(rightPanel, BorderLayout.EAST);
+
+        return card;
+    }
+
 
 }

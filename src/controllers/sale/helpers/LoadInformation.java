@@ -66,7 +66,7 @@ public class LoadInformation {
         view.saleDisscount.setText("$" + String.format("%.2f", quantity));
     }
     
-    public void createSalesAmountBarChart( ChartPanel chart ) {
+    public void setMontlySalesChart( ChartPanel chart ) {
         view.salesGraph.removeAll();
         view.salesGraph.setLayout(new BorderLayout());
         view.salesGraph.add(chart, BorderLayout.CENTER);
@@ -74,7 +74,7 @@ public class LoadInformation {
         view.salesGraph.repaint();
     }
     
-    public void createCategoryItemsCountDonutChart( ChartPanel chart ) {
+    public void setAmountCategoryItemsChart( ChartPanel chart ) {
         view.salesItems.removeAll();
         view.salesItems.setLayout(new BorderLayout());
         view.salesItems.add(chart, BorderLayout.CENTER);

@@ -28,6 +28,11 @@ public class SupplierService {
         return supplier;
     }
     
+    public Supplier getByNameAndLastname(String fullName) {
+        Supplier supplier = model.getSupplierByNameAndLastname(fullName);
+        return supplier;
+    }
+    
     public Supplier getById(int id) {
         Supplier supplier = model.getItemById(id);
         return supplier;

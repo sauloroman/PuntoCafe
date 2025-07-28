@@ -33,7 +33,7 @@ public class DishService {
         int statusParsed = status.equals("Activo") ? 1 : 0;
         return model.getDishesByStatus(statusParsed, page, quantity);
     }
-    
+
     public List<Dish> getDishesByName(String dishName, int page, int quantity) {
         return model.getDishesByName(dishName, page, quantity);
     }

@@ -61,6 +61,48 @@ public class ProductModel implements CrudInterface<Product> {
         return product;
     }
 
+    public List<Product> getAllProducts() {
+        List<Product> products = new ArrayList<>();
+                
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM product ORDER BY product_is_active ASC");
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                products.add(
+                        new Product(
+                                result.getInt("product_id"),
+                                result.getString("product_name"),
+                                result.getString("product_description"),
+                                result.getString("product_image"),
+                                result.getDouble("product_selling_price"),
+                                result.getInt("product_stock"),
+                                result.getInt("product_stock_min"),
+                                result.getBoolean("product_is_active"),
+                                result.getDate("product_createdAt"),
+                                result.getDate("product_updatedAt"),
+                                result.getInt("category_id"),
+                                result.getInt("supplier_id")  
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudieron obtener todos los productos: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+            result = null;
+        }
+        
+        return products;
+        
+    }
+    
     @Override
     public List<Product> listItems(String filter) {
         List<Product> products = new ArrayList<>();
@@ -638,6 +680,49 @@ public class ProductModel implements CrudInterface<Product> {
         
     }
     
+    public List<Product> getValidProductsToSell(int page, int quantity) {
+        List<Product> products = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM product WHERE product_is_active = 1 AND product_stock > 0 ORDER BY product_createdAt DESC LIMIT ?, ?");
+            statement.setInt(1, (page - 1) * quantity);
+            statement.setInt(2, quantity);
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                products.add(
+                        new Product(
+                                result.getInt("product_id"),
+                                result.getString("product_name"),
+                                result.getString("product_description"),
+                                result.getString("product_image"),
+                                result.getDouble("product_selling_price"),
+                                result.getInt("product_stock"),
+                                result.getInt("product_stock_min"),
+                                result.getBoolean("product_is_active"),
+                                result.getDate("product_createdAt"),
+                                result.getDate("product_updatedAt"),
+                                result.getInt("category_id"),
+                                result.getInt("supplier_id")
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch (SQLException e) {
+            System.out.println("No se pudieron obtener los productos por categoria: " + e.getMessage() );
+        } finally {
+            statement = null;
+            result = null;
+            DATABASE.disconnect();
+        }
+        
+        return products;
+    }
+    
     public List<Product> getProductsByName( String name, int page, int quantity ) {
         
         List<Product> products = new ArrayList<>();
@@ -673,7 +758,7 @@ public class ProductModel implements CrudInterface<Product> {
             result.close();
             
         } catch (SQLException e) {
-            System.out.println("No se pudieron obtener los productos por categoria: " + e.getMessage() );
+            System.out.println("No se pudieron obtener los productos nombre: " + e.getMessage() );
         } finally {
             statement = null;
             result = null;

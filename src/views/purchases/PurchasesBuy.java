@@ -37,10 +37,10 @@ public class PurchasesBuy extends javax.swing.JPanel {
         suppleirName = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        salesGraph2 = new javax.swing.JPanel();
+        purchasesGraph = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        salesGraph3 = new javax.swing.JPanel();
+        purchasesTopProducts = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         endDatePanel = new javax.swing.JPanel();
         btnFilter = new javax.swing.JButton();
@@ -53,6 +53,7 @@ public class PurchasesBuy extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         btnNewBuy.setText("Registrar Compra");
+        btnNewBuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel1.setBackground(new java.awt.Color(38, 51, 88));
         jPanel1.setPreferredSize(new java.awt.Dimension(275, 120));
@@ -233,18 +234,18 @@ public class PurchasesBuy extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Inversión mensual (Ingreso - mes)");
 
-        salesGraph2.setBackground(new java.awt.Color(248, 249, 250));
-        salesGraph2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
-        salesGraph2.setPreferredSize(new java.awt.Dimension(390, 210));
+        purchasesGraph.setBackground(new java.awt.Color(248, 249, 250));
+        purchasesGraph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
+        purchasesGraph.setPreferredSize(new java.awt.Dimension(390, 210));
 
-        javax.swing.GroupLayout salesGraph2Layout = new javax.swing.GroupLayout(salesGraph2);
-        salesGraph2.setLayout(salesGraph2Layout);
-        salesGraph2Layout.setHorizontalGroup(
-            salesGraph2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout purchasesGraphLayout = new javax.swing.GroupLayout(purchasesGraph);
+        purchasesGraph.setLayout(purchasesGraphLayout);
+        purchasesGraphLayout.setHorizontalGroup(
+            purchasesGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 388, Short.MAX_VALUE)
         );
-        salesGraph2Layout.setVerticalGroup(
-            salesGraph2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        purchasesGraphLayout.setVerticalGroup(
+            purchasesGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 183, Short.MAX_VALUE)
         );
 
@@ -255,7 +256,7 @@ public class PurchasesBuy extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(salesGraph2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(purchasesGraph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -265,7 +266,7 @@ public class PurchasesBuy extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(salesGraph2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(purchasesGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -276,18 +277,18 @@ public class PurchasesBuy extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("Productos más comprados");
 
-        salesGraph3.setBackground(new java.awt.Color(248, 249, 250));
-        salesGraph3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
-        salesGraph3.setPreferredSize(new java.awt.Dimension(390, 210));
+        purchasesTopProducts.setBackground(new java.awt.Color(248, 249, 250));
+        purchasesTopProducts.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
+        purchasesTopProducts.setPreferredSize(new java.awt.Dimension(390, 210));
 
-        javax.swing.GroupLayout salesGraph3Layout = new javax.swing.GroupLayout(salesGraph3);
-        salesGraph3.setLayout(salesGraph3Layout);
-        salesGraph3Layout.setHorizontalGroup(
-            salesGraph3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout purchasesTopProductsLayout = new javax.swing.GroupLayout(purchasesTopProducts);
+        purchasesTopProducts.setLayout(purchasesTopProductsLayout);
+        purchasesTopProductsLayout.setHorizontalGroup(
+            purchasesTopProductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 388, Short.MAX_VALUE)
         );
-        salesGraph3Layout.setVerticalGroup(
-            salesGraph3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        purchasesTopProductsLayout.setVerticalGroup(
+            purchasesTopProductsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 183, Short.MAX_VALUE)
         );
 
@@ -299,7 +300,7 @@ public class PurchasesBuy extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(salesGraph3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(purchasesTopProducts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -308,7 +309,7 @@ public class PurchasesBuy extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(salesGraph3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(purchasesTopProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -477,11 +478,11 @@ public class PurchasesBuy extends javax.swing.JPanel {
     public javax.swing.JPanel jPanel9;
     public javax.swing.JLabel purchaseAvg;
     public javax.swing.JLabel purchasesFavoriteSupplier;
+    public javax.swing.JPanel purchasesGraph;
     public javax.swing.JLabel purchasesMoney;
     public javax.swing.JLabel purchasesQuantity;
     public javax.swing.JTable purchasesTable;
-    public javax.swing.JPanel salesGraph2;
-    public javax.swing.JPanel salesGraph3;
+    public javax.swing.JPanel purchasesTopProducts;
     public javax.swing.JScrollPane scrollPanel;
     public javax.swing.JPanel startDatePanel;
     public javax.swing.JLabel suppleirName;

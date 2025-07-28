@@ -82,7 +82,7 @@ public class InputReader {
     }
     
     public String getLastNameEdit() {
-        String lastname = editView.supplierNameTxt.getText().trim();
+        String lastname = editView.supplierLastnameTxt.getText().trim();
         if ( lastname.equals("Ingrese apellido de proveedor") ) return "";
         return lastname;
     }

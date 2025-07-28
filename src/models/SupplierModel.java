@@ -84,7 +84,6 @@ public class SupplierModel implements CrudInterface<Supplier> {
             
         } catch(SQLException e) {
             System.out.println("Error al obtener el registro: " + e.getMessage());
-            return supplier;
         } finally {
            statement = null;
            result = null;
@@ -93,6 +92,48 @@ public class SupplierModel implements CrudInterface<Supplier> {
         
         return supplier;
         
+    }
+    
+    public Supplier  getSupplierByNameAndLastname(String supplierFullName) {
+        Supplier supplier = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * "
+                  + "FROM supplier "
+                  + "WHERE CONCAT(supplier_name, ' ', supplier_lastname) LIKE ? "
+            );
+            statement.setString(1, '%' + supplierFullName + '%');
+            result = statement.executeQuery();
+            
+            if ( result.next() ) {
+                supplier = new Supplier(
+                        result.getInt(1),
+                        result.getString(2),
+                        result.getString(3),
+                        result.getString(4),
+                        result.getString(5),
+                        result.getString(6),
+                        result.getString(7),
+                        result.getBoolean(8),
+                        result.getDate(9),
+                        result.getDate(10)
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("Error al obtener el proveedor por nombre y apellido: " + e.getMessage());
+        } finally {
+           statement = null;
+           result = null;
+           DATABASE.disconnect(); 
+        }
+        
+        return supplier;
     }
 
     public Supplier getItemByCompany(String companyName) {

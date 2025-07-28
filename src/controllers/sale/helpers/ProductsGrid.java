@@ -40,7 +40,7 @@ public class ProductsGrid {
     
      public void showAllProducts(int page) {
         clearGrid();
-        products = productService.getProductsByStatus("Activo", page, QUANTITY_PRODUCTS);
+        products = productService.getActiveProductsAndValidStock(page, QUANTITY_PRODUCTS);
         for (Product product : products) {
             addProduct(product);
         }

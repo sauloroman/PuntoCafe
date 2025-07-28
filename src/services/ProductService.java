@@ -32,8 +32,16 @@ public class ProductService {
         return model.getProductsByStatus(statusParsed, page, quantity);
     }
     
+    public List<Product> getActiveProductsAndValidStock(int page, int quantity) {
+        return model.getValidProductsToSell(page, quantity);
+    }
+    
     public List<Product> getProductsByName(String name, int page, int quantity) {
         return model.getProductsByName(name, page, quantity);
+    }
+    
+    public List<Product> getProductsToChoseInPurchase() {
+        return model.getAllProducts();
     }
     
     public int getQuantityProducts() {
