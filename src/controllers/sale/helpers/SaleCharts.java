@@ -1,8 +1,7 @@
-package utils.helpers;
+package controllers.sale.helpers;
 
 import entities.MontlyMoney;
 import entities.SoldCategoryTotal;
-import entities.TopProduct;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,15 +11,14 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardCategoryToolTipGenerator;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.RingPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
-public class Charts {
-
+public class SaleCharts {
+    
     public static ChartPanel createMonthlyBarChart(List<MontlyMoney> monthlySales, String title) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -66,41 +64,6 @@ public class Charts {
         return chartPanel;
     }    
     
-    public static ChartPanel createItemsPieChart(List<SoldCategoryTotal> categoryTotals) {
-        
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        
-        for( SoldCategoryTotal item: categoryTotals ) {
-            dataset.setValue(item.getCategory() + "(" + String.format("%.1f", item.getPercentage()) + "%)", item.getCount());
-        }
-        
-        JFreeChart pieChart = ChartFactory.createPieChart(null, dataset, false, true, false);
-        
-        PiePlot plot = (PiePlot) pieChart.getPlot();
-        plot.setBackgroundPaint(Color.WHITE);
-        plot.setOutlineVisible(false);
-        plot.setLabelFont(new Font("sanserif", Font.PLAIN, 12));
-        plot.setLabelBackgroundPaint(Color.WHITE);
-        plot.setLabelOutlinePaint(null);
-        plot.setLabelShadowPaint(null);
-        plot.setShadowPaint(null);
-        
-        Color[] colors = { new Color(193, 150, 255), new Color(255, 128, 171)};
-        int i = 0;
-        
-        for (Object keyObj : dataset.getKeys()) {
-            if (keyObj instanceof Comparable comparable) {
-                plot.setSectionPaint(comparable, colors[i % colors.length]);
-                i++;
-            }
-        }
-        
-        ChartPanel chartPanel = new ChartPanel(pieChart);
-        chartPanel.setPreferredSize(new Dimension(390, 200));
-        
-        return chartPanel;
-    }
-
     public static ChartPanel createItemsDonutChart(List<SoldCategoryTotal> categoryTotals) {
         DefaultPieDataset dataset = new DefaultPieDataset();
 
@@ -139,52 +102,5 @@ public class Charts {
 
         return chartPanel;
     }
-
-    public static ChartPanel createTopProductsDonutChart(List<TopProduct> topProducts) {
-        DefaultPieDataset dataset = new DefaultPieDataset();
-
-        for (TopProduct product : topProducts) {
-            dataset.setValue(product.getProductName(), product.getTotalQuantity());
-        }
-
-        JFreeChart donutChart = ChartFactory.createRingChart(
-                null, 
-                dataset,
-                false, 
-                true, 
-                false
-        );
-
-        RingPlot plot = (RingPlot) donutChart.getPlot();
-        plot.setBackgroundPaint(Color.WHITE);
-        plot.setOutlineVisible(false);
-        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
-        plot.setLabelBackgroundPaint(Color.WHITE);
-        plot.setLabelOutlinePaint(null);
-        plot.setLabelShadowPaint(null);
-        plot.setSectionDepth(0.35);
-        plot.setSeparatorPaint(new Color(0, 0, 0, 0));
-        plot.setShadowPaint(null);
-
-        Color[] colors = {
-            new Color(193, 150, 255),
-            new Color(255, 243, 191),
-            new Color(255, 200, 221),
-            new Color(180, 255, 214),
-            new Color(150, 200, 255)
-        };
-
-        int i = 0;
-        for (Object key : dataset.getKeys()) {
-            plot.setSectionPaint((Comparable<?>) key, colors[i % colors.length]);
-            i++;
-        }
-
-        ChartPanel chartPanel = new ChartPanel(donutChart);
-        chartPanel.setPreferredSize(new Dimension(390, 200));
-
-        return chartPanel;
-    }
-
     
 }

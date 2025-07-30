@@ -668,23 +668,19 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel17" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel17" alignment="0" pref="296" max="32767" attributes="0"/>
                               <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnProductsSold" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
-                              <Component id="jLabel15" min="-2" pref="296" max="-2" attributes="0"/>
+                              <Component id="btnProductsSold" alignment="0" pref="296" max="32767" attributes="0"/>
+                              <Component id="jLabel15" pref="296" max="32767" attributes="0"/>
                               <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnProductsEarn" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel13" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnProductsLowStock" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel11" max="32767" attributes="0"/>
-                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnProductsLowRotation" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="btnProductsEarn" alignment="0" pref="296" max="32767" attributes="0"/>
+                              <Component id="jLabel13" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnProductsLowStock" alignment="0" pref="296" max="32767" attributes="0"/>
+                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnProductsLowRotation" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="42" max="32767" attributes="0"/>
                       </Group>
@@ -733,12 +729,15 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Productos que no se han vendido en los &#xfa;ltimos 10 d&#xed;as."/>
+                    <Property name="text" type="java.lang.String" value="Productos que no se han vendido en los &#xfa;ltimos d&#xed;as."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnProductsLowRotation">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -754,12 +753,15 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel13">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Productos que no se han vendido en los &#xfa;ltimos 10 d&#xed;as."/>
+                    <Property name="text" type="java.lang.String" value="Productos cuyo inventario es menor al stock m&#xed;nimo"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnProductsLowStock">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -782,6 +784,9 @@
                 <Component class="javax.swing.JButton" name="btnProductsEarn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -803,6 +808,9 @@
                 <Component class="javax.swing.JButton" name="btnProductsSold">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -896,6 +904,9 @@
                 <Component class="javax.swing.JButton" name="btnGrowAvgMonth">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -909,6 +920,9 @@
                 <Component class="javax.swing.JButton" name="btnGrowMontly">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -930,6 +944,9 @@
                 <Component class="javax.swing.JButton" name="btnGrowBestMonths">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -951,6 +968,9 @@
                 <Component class="javax.swing.JButton" name="btnGrowMostQuantity">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -1044,7 +1064,13 @@
                 <Component class="javax.swing.JButton" name="btnPurchasesSuppliers">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
@@ -1070,7 +1096,13 @@
                 <Component class="javax.swing.JButton" name="btnPurchasesBestMonths">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel30">
                   <Properties>
@@ -1080,7 +1112,13 @@
                 <Component class="javax.swing.JButton" name="btnPurchasesTime">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel31">
                   <Properties>
@@ -1098,7 +1136,13 @@
                 <Component class="javax.swing.JButton" name="btnPurchasesNoSold">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ver reporte"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel33">
                   <Properties>

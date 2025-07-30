@@ -345,16 +345,18 @@ public class Queries extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel10.setText("Productos con baja rotación");
 
-        jLabel11.setText("Productos que no se han vendido en los últimos 10 días.");
+        jLabel11.setText("Productos que no se han vendido en los últimos días.");
 
         btnProductsLowRotation.setText("Ver reporte");
+        btnProductsLowRotation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel12.setText("Stock bajo o crítico");
 
-        jLabel13.setText("Productos que no se han vendido en los últimos 10 días.");
+        jLabel13.setText("Productos cuyo inventario es menor al stock mínimo");
 
         btnProductsLowStock.setText("Ver reporte");
+        btnProductsLowStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -363,6 +365,7 @@ public class Queries extends javax.swing.JPanel {
         jLabel15.setText("Por margen o total bruto.");
 
         btnProductsEarn.setText("Ver reporte");
+        btnProductsEarn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel16.setText("Productos más vendido del mes");
@@ -370,6 +373,7 @@ public class Queries extends javax.swing.JPanel {
         jLabel17.setText("Los 10 con mayor cantidad o monto vendido.");
 
         btnProductsSold.setText("Ver reporte");
+        btnProductsSold.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -377,21 +381,19 @@ public class Queries extends javax.swing.JPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                     .addComponent(jLabel16)
-                    .addComponent(btnProductsSold, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProductsSold, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                     .addComponent(jLabel14)
-                    .addComponent(btnProductsEarn, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel12)
-                        .addComponent(btnProductsLowStock, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addComponent(btnProductsLowRotation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnProductsEarn, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12)
+                    .addComponent(btnProductsLowStock, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(btnProductsLowRotation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -434,10 +436,12 @@ public class Queries extends javax.swing.JPanel {
         jLabel19.setText("Crecimiento mensual");
 
         btnGrowAvgMonth.setText("Ver reporte");
+        btnGrowAvgMonth.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel20.setText("Tabla con el % de crecimiento o decrecimiento mes a mes.");
 
         btnGrowMontly.setText("Ver reporte");
+        btnGrowMontly.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel21.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel21.setText("Top meses con mayores ventas");
@@ -445,6 +449,7 @@ public class Queries extends javax.swing.JPanel {
         jLabel22.setText("Los 3 meses con más ingresos históricos.");
 
         btnGrowBestMonths.setText("Ver reporte");
+        btnGrowBestMonths.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel23.setText(" Meses con mayor número de ventas realizadas");
@@ -452,6 +457,7 @@ public class Queries extends javax.swing.JPanel {
         jLabel24.setText("Por cantidad de tickets/ventas, no por total.");
 
         btnGrowMostQuantity.setText("Ver reporte");
+        btnGrowMostQuantity.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel25.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel25.setText("Promedio diario por mes");
@@ -514,6 +520,7 @@ public class Queries extends javax.swing.JPanel {
         jLabel26.setText("Ranking de proveedores por compras totales.  ");
 
         btnPurchasesSuppliers.setText("Ver reporte");
+        btnPurchasesSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel27.setText("Meses donde se invirtió más en stock.");
 
@@ -524,10 +531,12 @@ public class Queries extends javax.swing.JPanel {
         jLabel29.setText("Tiempo entre compra y venta por producto");
 
         btnPurchasesBestMonths.setText("Ver reporte");
+        btnPurchasesBestMonths.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel30.setText("Lista de productos con su tiempo promedio de rotación.");
 
         btnPurchasesTime.setText("Ver reporte");
+        btnPurchasesTime.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel31.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel31.setText("Productos comprados no vendidos aún");
@@ -535,6 +544,7 @@ public class Queries extends javax.swing.JPanel {
         jLabel32.setText("Posibles productos mal abastecidos.");
 
         btnPurchasesNoSold.setText("Ver reporte");
+        btnPurchasesNoSold.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel33.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel33.setText("Top proveedores por volumen comprado");
@@ -665,10 +675,10 @@ public class Queries extends javax.swing.JPanel {
     public javax.swing.JButton btnProductsLowRotation;
     public javax.swing.JButton btnProductsLowStock;
     public javax.swing.JButton btnProductsSold;
-    private javax.swing.JButton btnPurchasesBestMonths;
-    private javax.swing.JButton btnPurchasesNoSold;
-    private javax.swing.JButton btnPurchasesSuppliers;
-    private javax.swing.JButton btnPurchasesTime;
+    public javax.swing.JButton btnPurchasesBestMonths;
+    public javax.swing.JButton btnPurchasesNoSold;
+    public javax.swing.JButton btnPurchasesSuppliers;
+    public javax.swing.JButton btnPurchasesTime;
     public javax.swing.JLabel earnMoney;
     public javax.swing.JLabel growPercentage;
     public javax.swing.JLabel iconCoin;

@@ -43,9 +43,11 @@ import views.warehouse.WarehouseProducts;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import controllers.purchase.PurchaseController;
+import controllers.queries.QueriesController;
 import models.PurchaseDetailModel;
 import models.PurchaseModel;
 import models.SaleProductDetailModel;
+import models.StatsModel;
 import views.purchases.PurchasesBuy;
 
 public class PuntoCafe {
@@ -143,6 +145,7 @@ public class PuntoCafe {
                 SaleModel saleModel = new SaleModel();
                 SaleProductDetailModel saleProductDetailModel = new SaleProductDetailModel();
                 SaleDishDetailModel saleDishDetailModel = new SaleDishDetailModel();
+                StatsModel statsModel = new StatsModel();
                 
                 User dummyUser = new User();
                 dummyUser.setUserName("Danna Janeth");
@@ -159,6 +162,7 @@ public class PuntoCafe {
                 new ProductController(warehouseProducts, productModel, categoryModel, supplierModel);
                 new DishController(warehouseDishes, dishModel, categoryModel);
                 new UserController(accessUsers, accessRoles, userModel, roleModel);
+                new QueriesController(queries, statsModel);
                 new SaleController( 
                         dummyUser, 
                         sales, 

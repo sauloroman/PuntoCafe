@@ -11,6 +11,7 @@ import controllers.purchase.helpers.ViewElements;
 import controllers.purchase.helpers.CalculateTotal;
 import controllers.purchase.helpers.CalculateTotalPurchaseDetail;
 import controllers.purchase.helpers.ProductsList;
+import controllers.purchase.helpers.PurchaseCharts;
 import controllers.purchase.helpers.PurchaseList;
 
 import entities.Product;
@@ -31,7 +32,6 @@ import services.PurchaseService;
 import services.SupplierService;
 
 import utils.enums.ModalTypeEnum;
-import utils.helpers.Charts;
 import utils.helpers.CodeGenerator;
 import utils.helpers.DateFilterPanel;
 import utils.helpers.DateGenerator;
@@ -233,14 +233,14 @@ public class PurchaseController {
     
     private void loadGraphs() {
         load.setMontlyPurchasesChart(
-                Charts.createMonthlyBarChart(
+                PurchaseCharts.createMonthlyBarChart(
                         purchaseService.getMonthlyPurchasesAmount(6), 
                         "Compras por Mes (Últimos 6 meses)"
                 )
         );
         
         load.setTopProductsPurchasesChart(
-                Charts.createTopProductsDonutChart(
+                PurchaseCharts.createTopProductsDonutChart(
                         purchaseService.getTopProducts(5)
                 )
         );

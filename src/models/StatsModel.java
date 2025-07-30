@@ -27,13 +27,13 @@ public class StatsModel {
         try {
             
             statement = DATABASE.connect().prepareStatement(
-                    "SELECT p.product_id, p.product_name "
+                    "SELECT p.product_id, p.product_name, p.product_stock, p.product_stock_min "
                   + "FROM product p "
                   + "LEFT JOIN ("
                   + "   SELECT DISTINCT product_id "
                   + "   FROM sale_product_detail AS spd "
                   + "   JOIN sale s ON s.sale_id = spd.sale_id "
-                  + "   WHERE s.sale_date >= DATE_SUB(CURDATE(), INTERVALE ? days) "
+                  + "   WHERE s.sale_date >= DATE_SUB(CURDATE(), INTERVAL ? DAY) "
                   + ") AS recent_sales ON recent_sales.product_id = p.product_id "
                   + "WHERE recent_sales.product_id IS NULL"
             );
@@ -41,7 +41,12 @@ public class StatsModel {
             result = statement.executeQuery();
             
             while( result.next() ) {
-                products.add(new Product( result.getInt("product_id"), result.getString("product_name") ));
+                products.add(new Product( 
+                        result.getInt("product_id"), 
+                        result.getString("product_name") ,
+                        result.getInt("product_stock"),
+                        result.getInt("product_stock_min")
+                ));
             }
             
         } catch(SQLException e) {
@@ -101,7 +106,7 @@ public class StatsModel {
                         "GROUP BY product_id " +
                     ") AS avg_prices ON avg_prices.product_id = p.product_id " +
                     "GROUP BY p.product_id, p.product_name " +
-                    "ORDER BY total_profit DESC"
+                    "ORDER BY total_profit DESC LIMIT 10"
             );
             result = statement.executeQuery();
             
@@ -118,7 +123,7 @@ public class StatsModel {
         return profits;
     }   
     
-    public Map<String, Integer> getTopSellingProductsOfMonth() {
+    public Map<String, Integer> getTopSellingProductsOfMonth( int quantity ) {
         Map<String, Integer> products = new LinkedHashMap<>();
 
         try {
@@ -129,8 +134,9 @@ public class StatsModel {
                 "JOIN product p ON p.product_id = spd.product_id " +
                 "WHERE MONTH(s.sale_date) = MONTH(CURDATE()) AND YEAR(s.sale_date) = YEAR(CURDATE()) " +
                 "GROUP BY p.product_id, p.product_name " +
-                "ORDER BY total_quantity DESC"
+                "ORDER BY total_quantity DESC LIMIT ?"
             );
+            statement.setInt(1, quantity);
 
             result = statement.executeQuery();
 

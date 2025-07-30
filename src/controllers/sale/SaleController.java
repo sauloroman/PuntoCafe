@@ -14,6 +14,7 @@ import controllers.sale.helpers.InputReader;
 import controllers.sale.helpers.ProductsGrid;
 import controllers.sale.helpers.LoadInformation;
 import controllers.sale.helpers.ProductList;
+import controllers.sale.helpers.SaleCharts;
 import controllers.sale.helpers.SaleList;
 import controllers.sale.helpers.SaleRefresher;
 import controllers.sale.helpers.ViewElements;
@@ -42,7 +43,6 @@ import services.UserService;
 
 import utils.helpers.CodeGenerator;
 import utils.enums.ModalTypeEnum;
-import utils.helpers.Charts;
 import utils.helpers.DateFilterPanel;
 import utils.helpers.DateGenerator;
 import utils.helpers.GenerateReports;
@@ -238,14 +238,14 @@ public class SaleController {
     
     private void loadGraphs() {
         load.setMontlySalesChart(
-                Charts.createMonthlyBarChart(
+                SaleCharts.createMonthlyBarChart(
                         saleService.getMonthlySalesAmount(6), 
                         "Ventas por Mes (Últimos 6 meses)"
                 )
         );
         
         load.setAmountCategoryItemsChart(
-                Charts.createItemsDonutChart(
+                SaleCharts.createItemsDonutChart(
                         saleService.getPercentageCategorySales()
                 )
         );
