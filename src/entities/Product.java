@@ -19,6 +19,18 @@ public class Product {
 
     public Product() {
     }
+    
+    public Product( int productId, String productName ) {
+        this.productId = productId;
+        this.productName = productName;
+    }
+    
+     public Product( int productId, String productName, int stock, int stockMin ) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productStock = stock;
+        this.productStockMin = stockMin;
+    }
 
     public Product(
             int productId, 

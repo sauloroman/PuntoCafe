@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/reports/products_purchase.jrxml</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/reports/products-report.jrxml</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/reports/detail_sale.jrxml</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/reports/purchase_detail.jrxml</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/purchase/PurchaseController.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/utils/helpers/GenerateReports.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/SaleController.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -13,6 +13,10 @@ public class CalculateTotal {
         this.view = view;
     }
     
+    public double getTotal() {
+        return total;
+    }
+    
     public void calculate(List<PurchaseItem> items) {
         total = 0;
         

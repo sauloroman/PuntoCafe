@@ -52,11 +52,11 @@ public class PurchaseModel {
                     int generatedId = result.getInt(1);
                     newPurchase = new Purchase(
                             generatedId,
-                            result.getString("purchase_date"),
-                            result.getDouble("purchase_total"),
-                            result.getString("purchase_code"),
-                            result.getInt("supplier_id"),
-                            result.getInt("user_id")
+                            purchaseDate,
+                            purchaseTotal,
+                            purchaseCode,
+                            supplierId,
+                            userId
                     );
                 }
             }
@@ -65,7 +65,7 @@ public class PurchaseModel {
             result.close();
             
         } catch(SQLException e) {
-            System.out.println("Error al crear la venta: " + e.getMessage());
+            System.out.println("Error al crear la compra: " + e.getMessage());
         } finally {
             DATABASE.disconnect();
             statement = null;

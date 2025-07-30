@@ -770,6 +770,8 @@ public class ProductModel implements CrudInterface<Product> {
     }
 
     public boolean discountStock( int productId, int quantityToDiscount ) {
+        response = false;
+        
         try {
             
             statement = DATABASE.connect().prepareStatement(
@@ -787,6 +789,34 @@ public class ProductModel implements CrudInterface<Product> {
             
         } catch( SQLException e ) {
             System.out.println("Error al descontar stock: " + e.getMessage());
+        } finally {
+            DATABASE.disconnect();
+            statement = null;
+        }
+        
+        return response;
+    }
+    
+    public boolean incrementStock( int productId, int quantityToIncrement ) {
+        
+        response = false;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "UPDATE product SET product_stock = product_stock + ? WHERE product_id = ?"
+            );
+            statement.setInt(1, quantityToIncrement);
+            statement.setInt(2, productId);
+            
+            if ( statement.executeUpdate() > 0 ) {
+                response = true;
+            }
+            
+            statement.close();
+            
+        } catch( SQLException e ) {
+            System.out.println("Error al aumentar stock: " + e.getMessage());
         } finally {
             DATABASE.disconnect();
             statement = null;

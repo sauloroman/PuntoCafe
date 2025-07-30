@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import utils.helpers.ActivateButtonsNavegation;
 import views.access.Access;
-import views.Queries;
+import views.queries.Queries;
 import views.sales.Sales;
 import views.warehouse.Warehouse;
 

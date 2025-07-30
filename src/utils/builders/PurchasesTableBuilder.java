@@ -1,9 +1,11 @@
 package utils.builders;
 
 import entities.Purchase;
+import entities.PurchaseDetail;
 import entities.Supplier;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import services.ProductService;
 import services.SupplierService;
 
 public class PurchasesTableBuilder {
@@ -41,6 +43,32 @@ public class PurchasesTableBuilder {
             table.addRow(rowTable);
         }
 
+        return table;
+    }
+    
+    public static DefaultTableModel createProductDetail( List<PurchaseDetail> detail, ProductService productService ) {
+        
+        String[] columnsTable = {"Id", "Producto", "Cantidad", "Precio De Compra", "Subtotal"};
+        
+        DefaultTableModel table = new DefaultTableModel(columnsTable, 0){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        String[] rowTable = new String[5];
+        
+        for( PurchaseDetail item: detail ) {
+            rowTable[0] = String.valueOf(item.getProductId());
+            rowTable[1] = productService.getProductById(item.getProductId()).getProductName();
+            rowTable[2] = String.valueOf(item.getPurchaseDetailQuantity());
+            rowTable[3] = "$" + String.format("%.2f", item.getPurchaseDetailUnitPrice());
+            double subtotal = item.getPurchaseDetailUnitPrice() * item.getPurchaseDetailQuantity();
+            rowTable[4] = "$" + String.format("%.2f", subtotal);
+            table.addRow(rowTable);
+        }
+        
         return table;
     }
     

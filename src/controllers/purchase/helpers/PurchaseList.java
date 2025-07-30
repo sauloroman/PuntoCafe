@@ -39,8 +39,8 @@ public class PurchaseList {
         render();
     }
     
-    public void removeItem( int id, Class<?> type) {
-        items.removeIf(i -> i.getProduct().getProductId() == id && i.getClass().equals(type));
+    public void removeItem( int id) {
+        items.removeIf(i -> i.getProduct().getProductId() == id);
         render();
     }
     

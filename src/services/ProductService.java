@@ -92,4 +92,8 @@ public class ProductService {
         return model.discountStock(productId, quantityToDiscount);
     }
     
+    public boolean incrementStock(int productId, int quantityToIncrement) {
+        return model.incrementStock(productId, quantityToIncrement);
+    }
+    
 }

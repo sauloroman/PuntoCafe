@@ -7,15 +7,18 @@ import java.util.List;
 import org.jfree.chart.ChartPanel;
 import views.purchases.PurchasesBuy;
 import views.purchases.PurchasesCreateBuy;
+import views.purchases.PurchasesDetail;
 
 public class LoadInformation {
     
     private final PurchasesBuy view;
     private final PurchasesCreateBuy createView;
+    private final PurchasesDetail detailView;
 
-    public LoadInformation(PurchasesBuy view, PurchasesCreateBuy createView) {
+    public LoadInformation(PurchasesBuy view, PurchasesCreateBuy createView, PurchasesDetail detailView) {
         this.view = view;
         this.createView = createView;
+        this.detailView = detailView;
     }
     
     public void fillSuppliersBox(List<Supplier> suppliers) {
@@ -67,6 +70,10 @@ public class LoadInformation {
         view.purchasesTopProducts.add(chart, BorderLayout.CENTER);
         view.purchasesTopProducts.revalidate();
         view.purchasesTopProducts.repaint();
+    }
+    
+    public void setPurchaseDateInDetailWindow(String date) {
+        detailView.purchaseDate.setText(date);
     }
     
 }

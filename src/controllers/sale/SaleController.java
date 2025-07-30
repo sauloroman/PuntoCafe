@@ -1,8 +1,9 @@
 package controllers.sale;
 
-import entities.Dish;
-import entities.Product;
-import entities.User;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import controllers.sale.helpers.DishGrid;
 import controllers.sale.helpers.CalculateTotal;
@@ -16,6 +17,10 @@ import controllers.sale.helpers.ProductList;
 import controllers.sale.helpers.SaleList;
 import controllers.sale.helpers.SaleRefresher;
 import controllers.sale.helpers.ViewElements;
+
+import entities.Dish;
+import entities.Product;
+import entities.User;
 import entities.DishItem;
 import entities.ProductItem;
 import entities.Sale;
@@ -23,6 +28,7 @@ import entities.SaleDishDetail;
 import entities.SaleProductDetail;
 import interfaces.SaleItem;
 
+import models.UserModel;
 import models.DishModel;
 import models.ProductModel;
 import models.SaleDishDetailModel;
@@ -31,21 +37,10 @@ import models.SaleProductDetailModel;
 
 import services.DishService;
 import services.ProductService;
-
-import utils.helpers.CodeGenerator;
-
-import views.sales.CreateSale;
-import views.sales.CreateSaleDishQuantity;
-import views.sales.CreateSaleProductQuantity;
-import views.sales.Sales;
-
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import models.UserModel;
 import services.SaleService;
 import services.UserService;
+
+import utils.helpers.CodeGenerator;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Charts;
 import utils.helpers.DateFilterPanel;
@@ -53,6 +48,11 @@ import utils.helpers.DateGenerator;
 import utils.helpers.GenerateReports;
 import utils.helpers.Modal;
 import utils.helpers.TableRowClickHelper;
+
+import views.sales.CreateSale;
+import views.sales.CreateSaleDishQuantity;
+import views.sales.CreateSaleProductQuantity;
+import views.sales.Sales;
 import views.sales.SaleDetail;
 
 public class SaleController {
@@ -263,6 +263,11 @@ public class SaleController {
     }
     
     private void saveSale() {
+        if ( productList.getProducts().isEmpty() && dishList.getDishes().isEmpty() ){
+            modal.show("No hay artículos en el registro de venta. Agrege algunos para continuar", ModalTypeEnum.error);
+            return;
+        }
+        
         if ( modal.confirm("¿Desea confirmar el registro de venta?") != 0 ) return;
         
         double total = calculateTotal.getTotal();
@@ -281,7 +286,7 @@ public class SaleController {
         saveSaleDishDetail(saleSaved.getSaleId());
         saveSaleProductDetail(saleSaved.getSaleId());
         
-        modal.show("La venta se ha realizado exitosamente\n.Folio: " + code + "\nFecha: " + date, ModalTypeEnum.success);
+        modal.show("La venta se ha realizado exitosamente.\nFolio: " + code + "\nFecha: " + date, ModalTypeEnum.success);
         saleList.clearList();
         productList.clearList();
         dishList.clearList();
@@ -289,9 +294,7 @@ public class SaleController {
         saleCode = codeGenerator.generate(5);
         elements.clearTotalSale();
         productsGrid.showAllProducts(1);
-        String startDate = DateGenerator.getCurrentDateStart(2);
-        String endDate = DateGenerator.getCurrentDateEnd();
-        refresher.load(saleService.getSales(userId, startDate, endDate));
+        refresher.load(saleService.getSales(userId, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd()));
         loadStats();
         loadGraphs();
     }
@@ -300,12 +303,9 @@ public class SaleController {
         List<DishItem> dishesInSale = dishList.getDishes();
         
         for ( DishItem dishItem: dishesInSale ) {
-            
             int quantity = dishItem.getQuantity();
-            
             Dish dish = dishService.getDishById(dishItem.getId());
             double unitPrice = dish.getDishSellingPrice();
-            
             double discount = dishItem.getDiscount();
             int dishId = dishItem.getId();
             

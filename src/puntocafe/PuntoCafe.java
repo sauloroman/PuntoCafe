@@ -29,7 +29,7 @@ import controllers.supplier.SupplierController;
 import views.access.Access;
 import views.MainFrame;
 import views.purchases.Purchases;
-import views.Queries;
+import views.queries.Queries;
 import views.sales.Sales;
 import views.access.AccessRoles;
 import views.access.AccessUsers;

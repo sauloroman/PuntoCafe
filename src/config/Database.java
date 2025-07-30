@@ -15,7 +15,7 @@ public class Database {
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
     
     public Connection connectionStr;
-    public static Database instance;
+    private static Database instance;
     
     private Database() {
         connectionStr = null;

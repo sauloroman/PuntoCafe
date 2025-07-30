@@ -32,6 +32,12 @@ public class InputReader {
         return supplier;
     }
     
+    public String getSupplierCreatePurchase() {
+        String supplier = createView.filterSupplier.getSelectedItem().toString();
+        if ( supplier.equals("Selecciona un proveedor")) return null;
+        return supplier;
+    }
+    
     public String getStartDate() {
         Date dateSelected = dateFilterPanel.getStartDate();
         if ( dateSelected == null ) return null;

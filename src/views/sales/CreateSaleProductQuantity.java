@@ -52,11 +52,6 @@ public class CreateSaleProductQuantity extends javax.swing.JFrame {
 
         btnAddToList.setText("Agregar a lista de venta");
         btnAddToList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAddToList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddToListActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
@@ -149,17 +144,6 @@ public class CreateSaleProductQuantity extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddToListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToListActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddToListActionPerformed
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CreateSaleProductQuantity().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddToList;
