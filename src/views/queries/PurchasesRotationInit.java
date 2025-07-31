@@ -3,12 +3,12 @@ package views.queries;
 import javax.swing.WindowConstants;
 import views.components.Input;
 
-public class ProductsMostSoldInit {
-
-    private final ProductsMostSold view;
-    private final Input inputGenerator = new Input();
+public class PurchasesRotationInit {
     
-    public ProductsMostSoldInit(ProductsMostSold view) {
+    private final PurchasesRotation view;
+    private final Input inputGenerator = new Input();
+
+    public PurchasesRotationInit(PurchasesRotation view) {
         this.view = view;
     }
     

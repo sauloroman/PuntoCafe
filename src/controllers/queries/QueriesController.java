@@ -6,14 +6,19 @@ import controllers.queries.helpers.ViewElements;
 import entities.Product;
 import models.StatsModel;
 import services.QueriesService;
+import views.components.UnsoldProductsList;
 import views.queries.ProductsHighestRetribution;
 import views.queries.ProductsLowRotation;
 import views.queries.ProductsLowStock;
 import views.queries.ProductsMostSold;
-import views.queries.PurchasesAvgSaleMonth;
-import views.queries.PurchasesMontlyGrow;
+import views.queries.PurchasesProductsNoSold;
+import views.queries.PurchasesRotation;
 import views.queries.PurchasesTopMonths;
-import views.queries.PurchasesTopMonthsSales;
+import views.queries.PurchasesTopSuppliers;
+import views.queries.SalesAvgSaleMonth;
+import views.queries.SalesMontlyGrow;
+import views.queries.SalesTopMonths;
+import views.queries.SalesTopMonthsSales;
 import views.queries.Queries;
 
 public class QueriesController {
@@ -23,10 +28,14 @@ public class QueriesController {
     private final ProductsLowStock productsLowStockView;
     private final ProductsHighestRetribution productsHighestRetribution;
     private final ProductsMostSold productsMostSoldView;
-    private final PurchasesMontlyGrow montlyGrowView;
-    private final PurchasesTopMonths topMonthsView;
-    private final PurchasesTopMonthsSales topMonthsSalesView;
-    private final PurchasesAvgSaleMonth avgSaleMonthView;
+    private final SalesMontlyGrow montlyGrowView;
+    private final SalesTopMonths topMonthsView;
+    private final SalesTopMonthsSales topMonthsSalesView;
+    private final SalesAvgSaleMonth avgSaleMonthView;
+    private final PurchasesRotation rotationView;
+    private final PurchasesProductsNoSold unsoldProductsView;
+    private final PurchasesTopSuppliers topSuppliersView;
+    private final PurchasesTopMonths topMonthsPurchasesView;
     
     private final StatsModel statsModel;
     
@@ -41,16 +50,21 @@ public class QueriesController {
         this.productsLowStockView = new ProductsLowStock();
         this.productsHighestRetribution = new ProductsHighestRetribution();
         this.productsMostSoldView = new ProductsMostSold();
-        this.montlyGrowView = new PurchasesMontlyGrow();
-        this.topMonthsView = new PurchasesTopMonths();
-        this.topMonthsSalesView = new PurchasesTopMonthsSales();
-        this.avgSaleMonthView = new PurchasesAvgSaleMonth();
+        this.montlyGrowView = new SalesMontlyGrow();
+        this.topMonthsView = new SalesTopMonths();
+        this.topMonthsSalesView = new SalesTopMonthsSales();
+        this.avgSaleMonthView = new SalesAvgSaleMonth();
+        this.rotationView = new PurchasesRotation();
+        this.unsoldProductsView = new PurchasesProductsNoSold();
+        this.topSuppliersView = new PurchasesTopSuppliers();
+        this.topMonthsPurchasesView = new PurchasesTopMonths();
         
         this.statsModel = statsModel;
         
         this.queriesService = new QueriesService(this.statsModel);
         
         this.elements = new ViewElements(
+                view,
                 productsLowRotationView,
                 productsLowStockView,
                 productsHighestRetribution,
@@ -58,16 +72,23 @@ public class QueriesController {
                 montlyGrowView,
                 topMonthsView,
                 topMonthsSalesView,
-                avgSaleMonthView
+                avgSaleMonthView,
+                rotationView,
+                unsoldProductsView,
+                topSuppliersView,
+                topMonthsPurchasesView
         );
         
         this.inputReader = new InputReader(
+                view,
                 productsLowRotationView, 
                 productsMostSoldView,
                 montlyGrowView,
                 topMonthsView,
                 topMonthsSalesView,
-                avgSaleMonthView
+                avgSaleMonthView,
+                rotationView,
+                topSuppliersView
         );
         
         init();
@@ -75,10 +96,13 @@ public class QueriesController {
     }
     
     private void init() {
-        
+        createChartComparativeSalesAndPurchases();
+        setPanelsStats();
     }
     
     private void initListeners() {   
+        view.timeBox.addActionListener(e -> createChartComparativeSalesAndPurchases());
+        
         view.btnProductsLowRotation.addActionListener(e -> showChartProductsLowRotation());
         view.btnProductsLowStock.addActionListener(e -> showChartProductsLowStock());
         view.btnProductsEarn.addActionListener(e -> showChartMostProfitableProducts());
@@ -89,13 +113,33 @@ public class QueriesController {
         view.btnGrowMostQuantity.addActionListener(e -> showChartTopMonthsSales());
         view.btnGrowAvgMonth.addActionListener(e -> showChartAvgSalePerMonth());
         
+        view.btnPurchasesTime.addActionListener(e -> showChartRotationProducts());
+        view.btnPurchasesNoSold.addActionListener(e -> showProductsUnSold());
+        view.btnPurchasesSuppliers.addActionListener(e -> showChartTopSuppliers());
+        view.btnPurchasesBestMonths.addActionListener(e -> showTopMonthsPurchases());
+        
+        topSuppliersView.quantityCombo.addActionListener(e -> createChartTopSuppliers());
+        rotationView.quantityCombo.addActionListener(e -> createChartRotationProducts());
         avgSaleMonthView.quantityCombo.addActionListener(e -> createChartAvgSalePerMonth());
         topMonthsSalesView.quantityCombo.addActionListener(e -> createChartTopMonthsSales());
         topMonthsView.quantityCombo.addActionListener(e -> createChartTopMonths());
         montlyGrowView.quantityCombo.addActionListener(e -> createChartMontlyGrowthSales());
         productsMostSoldView.quantityCombo.addActionListener(e -> createChartMostSoldProductsInMonth());
         productsLowRotationView.quantityCombo.addActionListener(e -> createChartProductsLowRotation());
-        
+    }
+    
+    private void setPanelsStats() {
+        elements.setEstimatedNetProfit(queriesService.getEstimatedNetProfit());
+        elements.setMonthlyGrowthPercentage(queriesService.getMonthlyGrowthPercentage());
+        elements.setTopSellingProduct(queriesService.getTopSellingProduct());
+        elements.setTopSellerUser(queriesService.getTopSellerUser());
+    }
+    
+    private void createChartComparativeSalesAndPurchases() {
+        int quantityToWatch = inputReader.getQuantityMonthsComparativeSalesPurchases();
+        elements.setPurchasesSalesComparative(QueriesCharts.createMonthlySalesVsPurchasesLineChart(
+                queriesService.getDailyPurchaseAndSaleTotalsForLastMonth(quantityToWatch)
+        ));
     }
     
     private void createChartProductsLowRotation() {
@@ -158,6 +202,32 @@ public class QueriesController {
         ));
     }
     
+    private void createChartRotationProducts() {
+        int quantityToWatch = inputReader.getQuantityProductsRotation();
+        elements.setRotationProductsChart(QueriesCharts.createAvgTimeBetweenPurchaseAndSaleChart(
+               queriesService.getRotationProducts(quantityToWatch)
+        ));
+    }
+    
+    private void createListUnsoldProducts() {
+        elements.setUnsoldProductsList(UnsoldProductsList.create(
+               queriesService.getUnsoldproducts()
+        ));
+    }
+    
+    private void createChartTopSuppliers() {
+        int quantityToWatch = inputReader.getQuantityTopSuppliers();
+        elements.setTopSuppliersChart(QueriesCharts.createSupplierInvestmentDonutChart(
+                queriesService.getTopSuppliers(quantityToWatch)
+        ));
+    }
+    
+    private void createChartTopMonthsPurchases() {
+        elements.setTopMonthsPurchasesChart(QueriesCharts.createTopPurchasesLineChart(
+               queriesService.getTopMonthsPurchases()
+        ));
+    }
+    
     private void showChartProductsLowStock() {
         productsLowStockView.setVisible(true);
         createChartProductsLowStock();
@@ -196,6 +266,26 @@ public class QueriesController {
     private void showChartAvgSalePerMonth() {
         avgSaleMonthView.setVisible(true);
         createChartAvgSalePerMonth();
+    }
+    
+    private void showChartRotationProducts() {
+        rotationView.setVisible(true);
+        createChartRotationProducts();
+    }
+    
+    private void showProductsUnSold() {
+        unsoldProductsView.setVisible(true);
+        createListUnsoldProducts();
+    }
+    
+    private void showChartTopSuppliers() {
+        topSuppliersView.setVisible(true);
+        createChartTopSuppliers();
+    }
+    
+    private void showTopMonthsPurchases() {
+        topMonthsPurchasesView.setVisible(true);
+        createChartTopMonthsPurchases();
     }
     
 }

@@ -1,10 +1,10 @@
 package views.queries;
 
-public class PurchasesAvgSaleMonth extends javax.swing.JFrame {
+public class SalesTopMonthsSales extends javax.swing.JFrame {
 
-    private final PurchasesAvgSaleMonthInit style = new PurchasesAvgSaleMonthInit(this);
+    private final SalesTopMonthsSalesInit style = new SalesTopMonthsSalesInit(this);
     
-    public PurchasesAvgSaleMonth() {
+    public SalesTopMonthsSales() {
         initComponents();
         style.init();
     }
@@ -28,7 +28,7 @@ public class PurchasesAvgSaleMonth extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Promedio de venta por mes");
+        jLabel2.setText("Mejores meses en cantidad de ventas");
 
         panelGraph.setBackground(new java.awt.Color(255, 255, 255));
         panelGraph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));

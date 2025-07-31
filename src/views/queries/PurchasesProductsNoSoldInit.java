@@ -2,11 +2,11 @@ package views.queries;
 
 import javax.swing.WindowConstants;
 
-public class PurchasesTopMonthsInit {
+public class PurchasesProductsNoSoldInit {
     
-    private final PurchasesTopMonths view;
+    private final PurchasesProductsNoSold view;
 
-    public PurchasesTopMonthsInit(PurchasesTopMonths view) {
+    public PurchasesProductsNoSoldInit(PurchasesProductsNoSold view) {
         this.view = view;
     }
     
@@ -14,4 +14,5 @@ public class PurchasesTopMonthsInit {
         view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         view.setResizable(false);
     }
+    
 }

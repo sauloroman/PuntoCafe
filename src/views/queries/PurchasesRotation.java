@@ -1,10 +1,10 @@
 package views.queries;
 
-public class PurchasesMontlyGrow extends javax.swing.JFrame {
+public class PurchasesRotation extends javax.swing.JFrame {
 
-    private final PurchasesMontlyGrowInit style = new PurchasesMontlyGrowInit(this);
+    private final PurchasesRotationInit style = new PurchasesRotationInit(this);
     
-    public PurchasesMontlyGrow() {
+    public PurchasesRotation() {
         initComponents();
         style.init();
     }
@@ -28,7 +28,7 @@ public class PurchasesMontlyGrow extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Crecimiento mensual de ventas");
+        jLabel2.setText("Tiempo (días) de rotación de productos");
 
         panelGraph.setBackground(new java.awt.Color(255, 255, 255));
         panelGraph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 221, 221)));
@@ -37,7 +37,7 @@ public class PurchasesMontlyGrow extends javax.swing.JFrame {
         panelGraph.setLayout(panelGraphLayout);
         panelGraphLayout.setHorizontalGroup(
             panelGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGap(0, 858, Short.MAX_VALUE)
         );
         panelGraphLayout.setVerticalGroup(
             panelGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -45,14 +45,15 @@ public class PurchasesMontlyGrow extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel3.setText("Últimos (*) meses");
+        jLabel3.setText("Cantidad de productos");
 
-        quantityCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "4", "5" }));
+        quantityCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "15", "20", "50", "100" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -63,22 +64,21 @@ public class PurchasesMontlyGrow extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(quantityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(quantityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                        .addComponent(jLabel3)))
+                .addGap(19, 19, 19)
                 .addComponent(panelGraph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

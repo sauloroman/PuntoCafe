@@ -3,12 +3,12 @@ package views.queries;
 import javax.swing.WindowConstants;
 import views.components.Input;
 
-public class PurchasesMontlyGrowInit {
+public class SalesTopMonthsInit {
     
-    private final PurchasesMontlyGrow view;
+    private final SalesTopMonths view;
     private final Input inputGenerator = new Input();
 
-    public PurchasesMontlyGrowInit(PurchasesMontlyGrow view) {
+    public SalesTopMonthsInit(SalesTopMonths view) {
         this.view = view;
     }
     

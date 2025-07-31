@@ -2,11 +2,11 @@ package views.queries;
 
 import javax.swing.WindowConstants;
 
-public class PurchasesTopMonthsSalesInit {
+public class SalesTopMonthsSalesInit {
     
-    private final PurchasesTopMonthsSales view;
+    private final SalesTopMonthsSales view;
 
-    public PurchasesTopMonthsSalesInit(PurchasesTopMonthsSales view) {
+    public SalesTopMonthsSalesInit(SalesTopMonthsSales view) {
         this.view = view;
     }
     
