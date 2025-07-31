@@ -153,7 +153,7 @@ public class StatsModel {
         return products;
     }
 
-    public Map<String, Double> getMonthlyGrowth() {
+    public Map<String, Double> getMonthlyGrowth( int quantityMonths ) {
         Map<String, Double> monthlyTotals = new LinkedHashMap<>();
 
         try {
@@ -162,9 +162,10 @@ public class StatsModel {
                 "       SUM(sale_total) AS total_sales " +
                 "FROM sale " +
                 "GROUP BY month " +
-                "ORDER BY month ASC"
+                "ORDER BY month ASC LIMIT ?"
             );
-
+            statement.setInt(1, quantityMonths);
+            
             result = statement.executeQuery();
 
             String previousMonth = null;
@@ -195,8 +196,8 @@ public class StatsModel {
     }
     
     
-    public List<String> getTopSalesMonths(int limit) {
-        List<String> topMonths = new ArrayList<>();
+    public Map<String, Double> getTopSalesMonths(int limit) {
+        Map<String, Double> topMonths = new LinkedHashMap<>();
 
         try {
             statement = DATABASE.connect().prepareStatement(
@@ -213,7 +214,8 @@ public class StatsModel {
 
             while (result.next()) {
                 String month = result.getString("month");
-                topMonths.add(month);
+                double total = result.getDouble("total_sales");
+                topMonths.put(month, total);
             }
 
         } catch (SQLException e) {
@@ -225,8 +227,8 @@ public class StatsModel {
         return topMonths;
     }
     
-    public List<String> getTopSalesCountMonths(int limit) {
-        List<String> topMonths = new ArrayList<>();
+    public Map<String, Integer> getTopSalesCountMonths(int limit) {
+        Map<String, Integer> topMonths = new LinkedHashMap<>();
 
         try {
             statement = DATABASE.connect().prepareStatement(
@@ -243,7 +245,8 @@ public class StatsModel {
 
             while (result.next()) {
                 String month = result.getString("month");
-                topMonths.add(month);
+                int count = result.getInt("total_sales_count");
+                topMonths.put(month, count);
             }
 
         } catch (SQLException e) {
@@ -255,8 +258,8 @@ public class StatsModel {
         return topMonths;
     }
 
-    public List<String> getAverageDailySalesPerMonth(int limit) {
-        List<String> results = new ArrayList<>();
+    public Map<String, Double> getAverageDailySalesPerMonth(int limit) {
+        Map<String, Double> results = new LinkedHashMap<>();
 
         try {
             statement = DATABASE.connect().prepareStatement(
@@ -274,7 +277,7 @@ public class StatsModel {
             while (result.next()) {
                 String month = result.getString("month");
                 double average = result.getDouble("avg_daily_sales");
-                results.add(month + " - $" + average);
+                results.put(month, average);
             }
 
         } catch (SQLException e) {

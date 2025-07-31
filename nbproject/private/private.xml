@@ -3,13 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/reports/products_purchase.jrxml</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/reports/products-report.jrxml</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/reports/detail_sale.jrxml</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/reports/purchase_detail.jrxml</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/purchase/PurchaseController.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/utils/helpers/GenerateReports.java</file>
-            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/sale/SaleController.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/queries/PurchasesMontlyGrow.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/queries/PurchasesMontlyGrowInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/models/StatsModel.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/services/QueriesService.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/queries/QueriesController.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/queries/helpers/QueriesCharts.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/queries/helpers/InputReader.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/queries/ProductsMostSold.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/controllers/queries/helpers/ViewElements.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/queries/Queries.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/queries/ProductsMostSoldInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/queries/ProductsLowRotationInit.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/queries/PurchasesTopMonths.java</file>
+            <file>file:/C:/Users/roman/OneDrive/Documentos/ProyectoSCI/PuntoCafe/src/views/queries/PurchasesTopMonthsInit.java</file>
         </group>
     </open-files>
 </project-private>
