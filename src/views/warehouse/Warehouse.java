@@ -7,14 +7,14 @@ public class Warehouse extends javax.swing.JPanel {
     public Warehouse(
             WarehouseCategories warehouseCategories, 
             WarehouseProducts warehouseProducts,
-            WarehouseDishes warehouseDishes
+            WarehouseDishes warehouseDishes,
+            WarehouseMenus warehouseMenus
     ) {
         initComponents();
-        
         categoriesPane.add(warehouseCategories);
         productsPane.add(warehouseProducts);
         dishesPane.add(warehouseDishes);
-        
+        menusPane.add(warehouseMenus);
         styleView.init();
     }
 
@@ -81,6 +81,8 @@ public class Warehouse extends javax.swing.JPanel {
         );
 
         navegationPane.addTab("Platillos", dishesPane);
+
+        menusPane.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout menusPaneLayout = new javax.swing.GroupLayout(menusPane);
         menusPane.setLayout(menusPaneLayout);

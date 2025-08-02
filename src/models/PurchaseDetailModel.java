@@ -47,6 +47,8 @@ public class PurchaseDetailModel {
                 response = true;
             }
             
+            statement.close();
+            
         } catch(SQLException e) {
             System.out.println("Error al crear el detalle de compra: " + e.getMessage());
         } finally {

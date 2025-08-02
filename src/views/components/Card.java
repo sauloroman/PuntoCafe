@@ -6,6 +6,7 @@ import entities.PurchaseItem;
 import interfaces.SaleItem;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -17,6 +18,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import utils.constants.ViewConstants;
 
 public class Card {
@@ -289,7 +291,7 @@ public class Card {
         if ( type.equals("Producto") ) {
             imageGenerator.addImageProduct(imageLabel, image, 70, 70);
         } else {
-             imageGenerator.addImageDish(imageLabel, image, 70, 70);
+            imageGenerator.addImageDish(imageLabel, image, 70, 70);
         }
 
         card.add(imageLabel, BorderLayout.WEST);
@@ -411,6 +413,64 @@ public class Card {
 
         return card;
     }
+    
+    public JPanel createMinimalDishCard(
+        Dish dish,
+        Consumer<Dish> onDelete
+    ) {
+        JPanel card = new JPanel();
+        card.setBackground(Color.WHITE);
+        card.setLayout(new BorderLayout());
+        card.setMaximumSize(new Dimension(290, 50));
+        card.setPreferredSize(new Dimension(290, 50));
+        card.setMinimumSize(new Dimension(290, 50));
+        card.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 
+        JLabel imageLabel = new JLabel();
+        imageLabel.setPreferredSize(new Dimension(40, 40));
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
+        if (dish.getDishImage()!= null) {
+            imageGenerator.addImageDish(imageLabel, dish.getDishImage(), 30, 30);
+            imageGenerator.roundedImage(imageLabel);
+        }
+        
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        centerPanel.setBackground(Color.WHITE);
+
+        JLabel nameLabel = new JLabel(dish.getDishName());
+        nameLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
+        nameLabel.setForeground(Color.decode("#222222"));
+
+        centerPanel.add(Box.createVerticalGlue());
+        centerPanel.add(nameLabel);
+        centerPanel.add(Box.createVerticalGlue());
+
+        JPanel rightPanel = new JPanel();
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.X_AXIS));
+        rightPanel.setBackground(Color.WHITE);
+
+        JLabel deleteLabel = new JLabel("🗑️");
+        deleteLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+        deleteLabel.setForeground(Color.RED);
+        deleteLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        deleteLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (onDelete != null) {
+                    onDelete.accept(dish);
+                }
+            }
+        });
+
+        rightPanel.add(deleteLabel);
+
+        card.add(imageLabel, BorderLayout.WEST);
+        card.add(centerPanel, BorderLayout.CENTER);
+        card.add(rightPanel, BorderLayout.EAST);
+
+        return card;
+    }
 }

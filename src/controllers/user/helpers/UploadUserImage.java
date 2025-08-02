@@ -1,15 +1,8 @@
 package controllers.user.helpers;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
+import java.io.*;
+import javax.swing.*;
 import utils.enums.ModalTypeEnum;
 import utils.helpers.Modal;
 import views.access.AccessCreateUser;
@@ -28,85 +21,77 @@ public class UploadUserImage {
     private String destinyRoot;
     public String image = "no-image.jpg";
     
-    public UploadUserImage( AccessCreateUser createView, AccessEditUser editView, Modal modal ) {
+    private boolean imageRemoved = false;
+    private boolean newImageUploaded = false;
+    
+    public UploadUserImage(AccessCreateUser createView, AccessEditUser editView, Modal modal) {
         this.createView = createView;
         this.editView = editView;
         this.modal = modal;
     }
-    
+
     public boolean upload() {
         if (originRoot == null || destinyRoot == null || image == null || image.isBlank()) {
             return false;
         }
-        
+
         File origin = new File(originRoot);
         File destiny = new File(destinyRoot);
-        
+
         try (
             InputStream input = new FileInputStream(origin);
-            OutputStream output = new FileOutputStream(destiny);    
+            OutputStream output = new FileOutputStream(destiny);
         ) {
-            
             byte[] buff = new byte[1024];
             int len;
-            
-            while ( (len = input.read(buff)) > 0 ) {
+
+            while ((len = input.read(buff)) > 0) {
                 output.write(buff, 0, len);
             }
-            
+
             output.flush();
             return true;
-            
-        } catch(IOException e) {
+
+        } catch (IOException e) {
             modal.show("No se pudo subir la imagen", ModalTypeEnum.error);
             System.out.println(e.getMessage());
             return false;
         }
-        
     }
-    
+
     public boolean handleUploadForCreate() {
-        System.out.println(image);
-        
-        if ( !image.equals("no-image.jpg") ) {
-            if ( !upload() ) {
-                modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error );
-                return false;
-            }
-        } else {
-            image = "no-image.jpg";
+        if (isNewImageUploaded()) {
+            return upload();
         }
-        
         return true;
     }
-    
+
     public boolean handleUploadForEdit() {
-        if ( !image.equals("no-image.jpg")  && originRoot != null && destinyRoot != null ) {
-            if ( !upload() ) {
-                modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error );
-                return false;
-            }
+        if (isNewImageUploaded()) {
+            return upload();
         }
         return true;
     }
-    
+
     public void load(boolean isEdit) {
         JFileChooser file = new JFileChooser();
         int status = file.showOpenDialog(null);
-        
-        if ( status == JFileChooser.APPROVE_OPTION ) {
+
+        if (status == JFileChooser.APPROVE_OPTION) {
             image = file.getSelectedFile().getName();
             originRoot = file.getSelectedFile().getAbsolutePath();
             destinyRoot = DIRECTORY + image;
-            
+            newImageUploaded = true;
+            imageRemoved = false;
+
             ImageIcon img = new ImageIcon(originRoot);
-            Icon icon = new ImageIcon( img.getImage().getScaledInstance(
-                    createView.userImageLabel.getWidth(), 
-                    createView.userImageLabel.getHeight(), 
+            Icon icon = new ImageIcon(img.getImage().getScaledInstance(
+                    createView.userImageLabel.getWidth(),
+                    createView.userImageLabel.getHeight(),
                     Image.SCALE_DEFAULT)
             );
-            
-            if ( isEdit ) {
+
+            if (isEdit) {
                 editView.userImageLabel.setIcon(icon);
                 editView.userImageLabel.repaint();
             } else {
@@ -115,13 +100,32 @@ public class UploadUserImage {
             }
         }
     }
-    
+
     public void removeImage() {
         image = "no-image.jpg";
         originRoot = null;
         destinyRoot = null;
+        imageRemoved = true;
+        newImageUploaded = false;
+
         imageGenerator.addImageDish(createView.userImageLabel, "no-image.jpg", 150, 150);
         imageGenerator.addImageProduct(editView.userImageLabel, "no-image.jpg", 150, 150);
     }
-    
+
+    public boolean wasImageRemoved() {
+        return imageRemoved;
+    }
+
+    public void setImageRemoved(boolean status) {
+        this.imageRemoved = status;
+    }
+
+    public boolean isNewImageUploaded() {
+        return newImageUploaded;
+    }
+
+    public void resetFlags() {
+        imageRemoved = false;
+        newImageUploaded = false;
+    }
 }

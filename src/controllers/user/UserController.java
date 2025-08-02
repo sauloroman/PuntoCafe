@@ -58,6 +58,7 @@ public class UserController {
     private final ChangeUserStatusHandler deactivateUser;
     private final Modal modal = new Modal("Usuarios del sistema - PuntoCafé");
     private User userSelected = null;
+    private String currentImagePath = null;
     
     public UserController(
             AccessUsers view, 
@@ -172,13 +173,22 @@ public class UserController {
     
     private void editUser() {
         if (!validator.isValidEdition()) return;
-        
-        if (!upload.handleUploadForEdit()) {
-            ((EditUserHandler) editUserHandler).setImage("no-image.jpg");
-        } else {
-            ((EditUserHandler) editUserHandler).setImage(upload.image);
+
+        String finalImage = currentImagePath;
+
+        if (upload.wasImageRemoved()) {
+            finalImage = "no-image.jpg";
+        } else if (upload.isNewImageUploaded()) {
+            boolean uploadSuccess = upload.handleUploadForEdit();
+            if (uploadSuccess) {
+                finalImage = upload.image;
+            } else {
+                modal.show("No se pudo subir la imagen. Intente de nuevo", ModalTypeEnum.error);
+                return;
+            }
         }
-        
+
+        ((EditUserHandler) editUserHandler).setImage(finalImage);
         ((EditUserHandler) editUserHandler).setId(userSelected.getUserId());
         ((EditUserHandler) editUserHandler).setEmail(userSelected.getUserEmail());
         
@@ -186,17 +196,20 @@ public class UserController {
         safelyRebuildPagination(SearchCriteriaEnum.NAME);
         reset.clearEditUserForm();
         reset.hideButtonUploadImage();
-        upload.removeImage();
+        upload.removeImage();              
+        upload.setImageRemoved(false);   
         setTotalUsers();
+        quantityUsersByRoleHandler.execute();
+
         editUserView.dispose();
         infoUserView.dispose();
-        quantityUsersByRoleHandler.execute();
     }
     
     private void openEditUserWindow() {
         if ( userSelected == null ) return;
         reset.hideButtonUploadImage();
         loadUserInfo.loadInfoEdit(userSelected);
+        currentImagePath = userSelected.getUserImage();  
         editUserView.setVisible(true);
     }
     
@@ -235,6 +248,7 @@ public class UserController {
         setTotalUsers();
         createUserView.setVisible(false);
         upload.removeImage();
+        upload.setImageRemoved(false);
         quantityUsersByRoleHandler.execute();
     }
     

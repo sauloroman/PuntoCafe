@@ -199,14 +199,6 @@ public class WarehouseInfoCategory extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new WarehouseInfoCategory().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActivate;
     public javax.swing.JButton btnDeactivate;

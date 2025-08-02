@@ -46,6 +46,7 @@ public class EditUserHandler implements HandlerController {
             return;
         }
         
+        System.out.println("Imagen de usuario a editar cargada: " + image);
         User user = new User( name, lastname, image, email, roleId );
         
         if ( !userService.updateUser(user, id) ) {
@@ -54,8 +55,6 @@ public class EditUserHandler implements HandlerController {
         }
         
         modal.show("El usuario ha sido actualizado exitosamente", ModalTypeEnum.success);
-        return;
-        
     }
     
     public void setImage(String userImage) {

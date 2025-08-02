@@ -42,13 +42,17 @@ import views.warehouse.WarehouseDishes;
 import views.warehouse.WarehouseProducts;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import controllers.menu.MenuController;
 import controllers.purchase.PurchaseController;
 import controllers.queries.QueriesController;
+import models.MenuDetailModel;
+import models.MenuModel;
 import models.PurchaseDetailModel;
 import models.PurchaseModel;
 import models.SaleProductDetailModel;
 import models.StatsModel;
 import views.purchases.PurchasesBuy;
+import views.warehouse.WarehouseMenus;
 
 public class PuntoCafe {
 
@@ -121,7 +125,13 @@ public class PuntoCafe {
                 WarehouseCategories warehouseCategories = new WarehouseCategories();
                 WarehouseProducts warehouseProducts = new WarehouseProducts();
                 WarehouseDishes warehouseDishes = new WarehouseDishes();
-                Warehouse warehouse = new Warehouse(warehouseCategories, warehouseProducts, warehouseDishes);
+                WarehouseMenus warehouseMenus = new WarehouseMenus();
+                Warehouse warehouse = new Warehouse(
+                        warehouseCategories, 
+                        warehouseProducts, 
+                        warehouseDishes, 
+                        warehouseMenus
+                );
 
                 AccessRoles accessRoles = new AccessRoles();
                 AccessUsers accessUsers = new AccessUsers();
@@ -146,6 +156,8 @@ public class PuntoCafe {
                 SaleProductDetailModel saleProductDetailModel = new SaleProductDetailModel();
                 SaleDishDetailModel saleDishDetailModel = new SaleDishDetailModel();
                 StatsModel statsModel = new StatsModel();
+                MenuModel menuModel = new MenuModel();
+                MenuDetailModel menuDetailModel = new MenuDetailModel();
                 
                 User dummyUser = new User();
                 dummyUser.setUserName("Danna Janeth");
@@ -163,6 +175,7 @@ public class PuntoCafe {
                 new DishController(warehouseDishes, dishModel, categoryModel);
                 new UserController(accessUsers, accessRoles, userModel, roleModel);
                 new QueriesController(queries, statsModel);
+                new MenuController(warehouseMenus, menuModel, menuDetailModel, categoryModel, dishModel);
                 new SaleController( 
                         dummyUser, 
                         sales, 

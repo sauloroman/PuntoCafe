@@ -67,7 +67,6 @@ public class Purchases extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel buyPanel;
     public javax.swing.JTabbedPane navegationPane;
