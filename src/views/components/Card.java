@@ -14,6 +14,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 import java.util.function.Consumer;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -476,35 +477,31 @@ public class Card {
         return card;
     }
     
-    public JPanel createMenuCard(
-        Menu menu,
-        Consumer<Menu> onViewClick,
-        Consumer<Menu> onEditClick
-    ) {
+    public JPanel createMenuCard(Menu menu, Consumer<Menu> onViewClick) {
         JPanel card = new JPanel();
         card.setLayout(new BorderLayout());
         card.setPreferredSize(new Dimension(180, 140));
         card.setBackground(Color.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(Color.decode("#E0E0E0")), 
+            BorderFactory.createLineBorder(Color.decode("#E0E0E0")),
             BorderFactory.createEmptyBorder(12, 16, 12, 16)
         ));
-        
+
         JLabel titleLabel = new JLabel(menu.getMenuName());
         titleLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
         titleLabel.setForeground(Color.decode("#1D1C1D"));
 
-        // Fechas
-        JLabel dateLabel = new JLabel("Del " + menu.getMenuStartDate() + " al " + menu.getMenuEndDate());
+        // Fechas formateadas sin hora
+        String startDate = menu.getMenuStartDate().substring(0, 10);
+        String endDate = menu.getMenuEndDate().substring(0, 10);
+        JLabel dateLabel = new JLabel("Del " + startDate + " al " + endDate);
         dateLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
         dateLabel.setForeground(Color.GRAY);
 
-        // Descripción
         JLabel descLabel = new JLabel("<html><p style='width:200px;'>" + menu.getMenuDescription() + "</p></html>");
         descLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
         descLabel.setForeground(Color.GRAY);
 
-        // Contenedor vertical de textos
         JPanel textPanel = new JPanel();
         textPanel.setBackground(Color.WHITE);
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
@@ -514,15 +511,15 @@ public class Card {
         textPanel.add(Box.createVerticalStrut(6));
         textPanel.add(descLabel);
 
-        // Botones
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        buttonPanel.setBackground(Color.WHITE);
+        // Panel inferior con botones y estado alineados
+        JPanel bottomPanel = new JPanel(new BorderLayout());
+        bottomPanel.setBackground(Color.WHITE);
 
+        // Botón Ver Detalle
         JLabel btnVer = new JLabel("Ver Detalle");
         btnVer.setFont(new Font("SansSerif", Font.BOLD, 12));
-        btnVer.setForeground(Color.decode("#1264A3")); // azul Slack
+        btnVer.setForeground(Color.decode("#1264A3"));
         btnVer.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnVer.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 15));
         btnVer.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -532,11 +529,21 @@ public class Card {
             }
         });
 
-        buttonPanel.add(btnVer);
-        buttonPanel.add(Box.createHorizontalStrut(10));
+        // Estado Activo/Inactivo
+        JLabel statusLabel = new JLabel(menu.getIsActive() ? "Activo" : "Inactivo");
+        statusLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
+        statusLabel.setBackground(menu.getIsActive() ? new Color(16, 185, 129) : Color.decode("#ff6b6b"));
+        statusLabel.setForeground(Color.white);
+        statusLabel.setOpaque(true);
+        statusLabel.setSize(60, 15);
+        
+        // Añadir al panel inferior
+        bottomPanel.add(btnVer, BorderLayout.WEST);
+        bottomPanel.add(statusLabel, BorderLayout.EAST);
 
+        // Agregar componentes a la tarjeta
         card.add(textPanel, BorderLayout.CENTER);
-        card.add(buttonPanel, BorderLayout.SOUTH);
+        card.add(bottomPanel, BorderLayout.SOUTH);
 
         return card;
     }

@@ -15,8 +15,8 @@ public class LoadInformation {
     
     public void loadCreateMenuInformation(String menuName, String menuStartDate, String menuEndDate) {
         menuCreateView.menuNameLabel.setText("\"" + menuName + "\"");
-        menuCreateView.menuStartDate.setText("\\" + menuStartDate);
-        menuCreateView.menuEndDate.setText("\\" + menuEndDate);
+        menuCreateView.menuStartDate.setText("\\ " + menuStartDate);
+        menuCreateView.menuEndDate.setText("\\ " + menuEndDate);
     }
     
     public void leadMenuDetailName(String menuName) {

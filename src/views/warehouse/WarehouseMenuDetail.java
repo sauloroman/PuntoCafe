@@ -44,10 +44,13 @@ public class WarehouseMenuDetail extends javax.swing.JFrame {
         );
 
         btnActivate.setText("Activar");
+        btnActivate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnDeactivate.setText("Desactivar");
+        btnDeactivate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnEditMenu.setText("Editar");
+        btnEditMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

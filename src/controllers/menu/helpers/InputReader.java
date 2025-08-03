@@ -5,18 +5,22 @@ import java.util.Date;
 import utils.helpers.DateFilterPanel;
 import views.warehouse.WarehouseMenuCreate;
 import views.warehouse.WarehouseMenuInfo;
+import views.warehouse.WarehouseMenus;
 
 public class InputReader {
     
+    private final WarehouseMenus view;
     private final WarehouseMenuInfo menuInfoView;
     private final WarehouseMenuCreate menuCreateView;
     private final DateFilterPanel dateFilterPanel;
     
     public InputReader(
+            WarehouseMenus view,
             WarehouseMenuInfo menuInfoView,
             WarehouseMenuCreate menuCreateView,
             DateFilterPanel dateFilterPanel
     ) {
+        this.view = view;
         this.menuInfoView = menuInfoView;
         this.menuCreateView = menuCreateView;
         this.dateFilterPanel = dateFilterPanel;
@@ -49,5 +53,17 @@ public class InputReader {
         Date dateSelected = dateFilterPanel.getEndDate();
         if ( dateSelected == null ) return null;
         return new SimpleDateFormat("yyyy-MM-dd").format(dateSelected);
+    }
+    
+    public String getMenuSearched() {
+        String menuSearched = view.searchTxt.getText().trim();
+        if ( menuSearched.equals("Busca menús por nombre") ) return null;
+        return menuSearched;
+    }
+    
+    public String getStatusSelected() {
+        String status = view.filterStatus.getSelectedItem().toString();
+        if ( status.equals("Estado") ) return null;
+        return status;
     }
 }

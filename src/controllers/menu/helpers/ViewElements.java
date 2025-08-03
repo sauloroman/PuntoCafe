@@ -18,12 +18,10 @@ public class ViewElements {
         menuInfoView.menuDescriptionTxt.setText("");
     }
     
-    public void setQuantityMenus( int quantity ) {
-        view.quantityMenus.setText("" + quantity);
-    }
-    
-    public void setCountMenusPages( int quantity, int total ) {
-        view.quantityItems.setText("Visualizando " + quantity + " de " + total + " menús");
+    public void resetComboBoxes() {
+        view.filterStatus.setSelectedItem("Estado");
+        view.filterStatus.setSelectedIndex(1);
+        view.searchTxt.setText("Busca menús por nombre");
     }
     
 }

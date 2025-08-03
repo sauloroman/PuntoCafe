@@ -1,5 +1,6 @@
 package controllers.menu;
 
+import controllers.menu.helpers.ChangeMenuStatus;
 import controllers.menu.helpers.Pages;
 import controllers.menu.helpers.DishesList;
 import controllers.menu.helpers.InputReader;
@@ -12,6 +13,7 @@ import controllers.menu.helpers.ViewElements;
 import entities.Dish;
 import entities.Menu;
 import entities.MenuDetail;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import models.CategoryModel;
@@ -58,12 +60,14 @@ public class MenuController {
     private final MenuGrid menuGrid;
     private final MenuDetailGrid menuDetailGrid;
     private final Pages pages;
+    private final ChangeMenuStatus activate;
+    private final ChangeMenuStatus deactivate;
     
     private final Modal modal = new Modal("Menús del sistema - PuntoCafé");
     private final Card card = new Card();
     
     private Menu menu = null;
-    private final int QUANTITY_ITEMS_GRID = 12;
+    private final int QUANTITY_ITEMS_GRID = 16;
     
     public MenuController(
             WarehouseMenus view,
@@ -87,7 +91,7 @@ public class MenuController {
         this.dishesService = new DishService(this.dishModel);
         
         this.dateFilter = new DateFilterPanel(menuInfoView.startDatePanel, menuInfoView.endDatePanel);
-        this.inputReader = new InputReader(menuInfoView, menuCreateView, dateFilter);
+        this.inputReader = new InputReader(view, menuInfoView, menuCreateView, dateFilter);
         this.menuValidator = new MenuValidator(modal);
         this.elements = new ViewElements(view, menuInfoView);
         this.load = new LoadInformation(menuCreateView, menuDetailView);
@@ -96,6 +100,8 @@ public class MenuController {
         this.menuGrid = new MenuGrid(view, card);
         this.menuDetailGrid = new MenuDetailGrid(menuDetailView, card);
         this.pages = new Pages(view);
+        this.activate = new ChangeMenuStatus(menuService, true);
+        this.deactivate = new ChangeMenuStatus(menuService, false);
         
         init();
         initListeners();
@@ -103,16 +109,18 @@ public class MenuController {
     
     private void init() {  
         int quantityMenus = menuService.getQuantityMenus();
-        pages.create(quantityMenus);
-        elements.setCountMenusPages(quantityMenus < QUANTITY_ITEMS_GRID ? quantityMenus : QUANTITY_ITEMS_GRID, menuService.getQuantityMenus());
-        elements.setQuantityMenus(quantityMenus);
-        Grid.create(view.menuGrid, 4, 25);
+        pages.create(quantityMenus, QUANTITY_ITEMS_GRID);
+        Grid.create(view.menuGrid, 4, 15);
         menuGrid.setOnSeeMoreInformation(menuPushed -> showMenuDetailWindow(menuPushed));
         menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));
     }
     
     private void initListeners() {
         view.btnCreateMenu.addActionListener(e -> openMenuInfoWindow());
+        view.pageComboBox.addActionListener(e -> loadMenusByPage());
+        view.btnSearch.addActionListener(e -> filterMenusByName());
+        view.filterStatus.addActionListener(e -> filterMenusByStatus());
+        view.btnRestore.addActionListener(e -> restartView());
         
         menuInfoView.btnCreateMenu.addActionListener(e -> openMenuDetailWindow());
         menuInfoView.btnCancelCreateMenu.addActionListener(e -> closeMenuInfoWindow());
@@ -121,9 +129,17 @@ public class MenuController {
         menuCreateView.btnCancelSaveMenu.addActionListener(e -> cancelCreateMenu());
         menuCreateView.btnSaveMenu.addActionListener(e -> saveMenu());
         
+        menuDetailView.btnActivate.addActionListener(e -> activateMenu());
+        menuDetailView.btnDeactivate.addActionListener(e -> deactivateMenu());
+        
         dishesList.setOnDelete(dish -> removeDishOfLIst(dish));
         
         TableRowClickHelper.addRowClickListener(menuCreateView.dishesTable, row -> addDishToList(row));
+    }
+    
+    private void restartView() {
+        elements.resetComboBoxes();
+        menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));
     }
     
     private void openMenuInfoWindow() {
@@ -204,6 +220,7 @@ public class MenuController {
         menuCreateView.dispose();
         menuInfoView.dispose();
         menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));
+        safelyRebuildPagination();
     }
     
     private boolean saveMenuDetail(int menuId) {
@@ -220,10 +237,11 @@ public class MenuController {
         return true;
     }
     
-    private void showMenuDetailWindow(Menu menu) { 
-        load.leadMenuDetailName(menu.getMenuName());
+    private void showMenuDetailWindow(Menu menuSelected) { 
+        menu = menuSelected;
+        load.leadMenuDetailName(menuSelected.getMenuName());
         Grid.createFlowLayout(menuDetailView.menuDetailGrid, 10, 10);
-        menuDetailGrid.showMenuDishes(getDishesFromMenuDetail(menu.getMenuId()));
+        menuDetailGrid.showMenuDishes(getDishesFromMenuDetail(menuSelected.getMenuId()));
         menuDetailView.setVisible(true);  
     }
     
@@ -237,6 +255,74 @@ public class MenuController {
         }
         
         return dishes;
+    }
+    
+    private void filterMenusByName() {
+        String menuSearched = inputReader.getMenuSearched();
+        if ( menuSearched == null ) return;
+        menuGrid.showMenus(menuService.getMenusByName(menuSearched));
+    }
+    
+    private void filterMenusByStatus() {
+        String statusSelected = inputReader.getStatusSelected();
+        if ( statusSelected == null ) return;
+        menuGrid.showMenus(menuService.getMenusByStatus(statusSelected));
+    }
+    
+    private void loadMenusByPage() {
+        int page = pages.getPageSelected();
+        menuGrid.showMenus(menuService.getAllMenus(page, QUANTITY_ITEMS_GRID));
+    }
+    
+    private void activateMenu() {
+        if ( !activate.isStatusValid( menu.getIsActive() ? "Activo" : "Inactivo" ) ) {
+            modal.show("El menú ya está activo", ModalTypeEnum.warning);
+            return;
+        }
+        
+        if ( modal.confirm("¿Está seguro de cambiar el estado del menú?") != 0 ) return;
+    
+        boolean wasStatusChangedSuccessfully = activate.change(menu.getMenuId());
+        
+        if (!wasStatusChangedSuccessfully) {
+            modal.show("El menú no pudo cambiar de estado", ModalTypeEnum.error);
+            return;
+        }
+        
+        modal.show("El menú " + menu.getMenuName() + " ha sido activado", ModalTypeEnum.success);
+        menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));
+        menuDetailView.dispose();
+    }
+    
+    private void deactivateMenu() {
+        if ( !deactivate.isStatusValid( menu.getIsActive() ? "Activo" : "Inactivo" ) ) {
+            modal.show("El menú ya está inactivo", ModalTypeEnum.warning);
+            return;
+        }
+        
+        if ( modal.confirm("¿Está seguro de cambiar el estado del menú?") != 0 ) return;
+    
+        boolean wasStatusChangedSuccessfully = deactivate.change(menu.getMenuId());
+        
+        if (!wasStatusChangedSuccessfully) {
+            modal.show("El menú no pudo cambiar de estado", ModalTypeEnum.error);
+            return;
+        }
+        
+        modal.show("El menú " + menu.getMenuName() + " ha sido deactivado", ModalTypeEnum.success);
+        menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));
+        menuDetailView.dispose();
+    }
+    
+    private void safelyRebuildPagination() {
+        ActionListener[] listeners = view.pageComboBox.getActionListeners();
+        for (ActionListener l : listeners) {
+            view.pageComboBox.removeActionListener(l);
+        }
+
+        for (ActionListener l : listeners) {
+            view.pageComboBox.addActionListener(l);
+        }
     }
 
 }

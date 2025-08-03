@@ -1,14 +1,15 @@
-package controllers.category.helpers;
+package controllers.menu.helpers;
 
-import services.CategoryService;
+import services.MenuService;
+import views.warehouse.WarehouseMenus;
 
-public class ChangeCategoryStatus {
+public class ChangeMenuStatus {
     
-    private final CategoryService service;
+    private final MenuService service;
     private final boolean activate;
 
-    public ChangeCategoryStatus(
-            CategoryService service,
+    public ChangeMenuStatus(
+            MenuService service,
             boolean activate
     ) {
         this.service = service;
@@ -20,7 +21,7 @@ public class ChangeCategoryStatus {
     }
     
     public boolean change( int id ) {
-        return activate ? service.activateCategory(id) : service.deactivateCategory(id);
+        return activate ? service.activateMenu(id) : service.deactivateMenu(id);
     }
 
     public boolean isStatusValid(String status) {
@@ -31,4 +32,5 @@ public class ChangeCategoryStatus {
         return !(!activate && status.equals("Inactivo"));
     }
 
+    
 }

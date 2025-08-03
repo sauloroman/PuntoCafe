@@ -9,7 +9,6 @@ import views.warehouse.WarehouseMenus;
 public class MenuGrid {
     
     private final WarehouseMenus view;
-    private Consumer<Menu> onEditClickButton;
     private Consumer<Menu> onSeeMoreInformation;
     private final Card card;
     
@@ -19,10 +18,6 @@ public class MenuGrid {
     ) {
         this.view = view;
         this.card = card;
-    }
-    
-    public void setOnEditClickButton(Consumer<Menu> listener) {
-        this.onEditClickButton = listener;
     }
     
     public void setOnSeeMoreInformation(Consumer<Menu> listener) {
@@ -39,8 +34,7 @@ public class MenuGrid {
     private void addMenuToGrid( Menu menu ) {
         view.menuGrid.add(card.createMenuCard(
                 menu, 
-                onSeeMoreInformation, 
-                onEditClickButton
+                onSeeMoreInformation 
         ));
     }
     

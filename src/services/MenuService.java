@@ -36,4 +36,21 @@ public class MenuService {
         return menuDetailModel.getMenuDetail(menuId);
     }
     
+    public List<Menu> getMenusByName(String name) {
+        return menuModel.getMenusByName(name);
+    }
+    
+    public List<Menu> getMenusByStatus(String statusSelected) {
+        boolean status = statusSelected.equals("Activo");
+        return menuModel.getMenusByStatus(status);
+    }
+    
+    public boolean activateMenu(int menuId) {
+        return menuModel.changeStatus(menuId, true);
+    }
+    
+    public boolean deactivateMenu(int menuId) {
+        return menuModel.changeStatus(menuId, false);
+    }
+    
 }

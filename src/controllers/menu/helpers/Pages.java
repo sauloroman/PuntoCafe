@@ -10,8 +10,8 @@ public class Pages {
         this.view = view;
     }
     
-    public void create(int quantityMenus) {
-        int pages = calculatePages(quantityMenus);
+    public void create(int quantityMenus, int quantityItemsToShow) {
+        int pages = calculatePages(quantityMenus, quantityItemsToShow);
         fillPageComboBox(pages);
     }
     
@@ -26,8 +26,8 @@ public class Pages {
         view.pageComboBox.setSelectedIndex(0);
     }
     
-    private int calculatePages( int quantityProducts ) {
-        return Math.max((int) Math.ceil((double) quantityProducts / 12), 1);
+    private int calculatePages( int quantityProducts, int quantityItemsToShow ) {
+        return Math.max((int) Math.ceil((double) quantityProducts / quantityItemsToShow), 1);
     }
     
     public int getPageSelected() {

@@ -82,11 +82,14 @@ public class MenuModel {
             
             while( result.next() ) {
                 menus.add(new Menu(
-                        result.getInt("menu_id"),
-                        result.getString("menu_name"),
-                        result.getString("menu_description"),
-                        result.getString("menu_date_start"),
-                        result.getString("menu_date_end")
+                            result.getInt("menu_id"),
+                            result.getString("menu_name"),
+                            result.getString("menu_description"),
+                            result.getString("menu_date_start"),
+                            result.getString("menu_date_end"),
+                            result.getString("menu_createdAt"),
+                            result.getString("menu_updatedAt"),
+                            result.getBoolean("menu_is_active")
                 ));
             }
             
@@ -126,6 +129,109 @@ public class MenuModel {
         }
         
         return counter;
+    }
+    
+    public List<Menu> getMenusByName(String menuName) {
+        
+        List<Menu> menus = new ArrayList<>();
+        
+        try {
+             
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * FROM menu WHERE menu_name LIKE ? ORDER BY menu_createdAt"
+            );
+            statement.setString(1, "%" + menuName + "%");
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                menus.add(
+                        new Menu(
+                            result.getInt("menu_id"),
+                            result.getString("menu_name"),
+                            result.getString("menu_description"),
+                            result.getString("menu_date_start"),
+                            result.getString("menu_date_end"),
+                            result.getString("menu_createdAt"),
+                            result.getString("menu_updatedAt"),
+                            result.getBoolean("menu_is_active")
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e){
+            System.out.println("No se pudieron obtener los menús por nombre: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return menus;
+    }
+    
+    public List<Menu> getMenusByStatus(boolean status) {
+        
+        List<Menu> menus = new ArrayList<>();
+        
+        try {
+             
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * FROM menu WHERE menu_is_active = ? ORDER BY menu_createdAt"
+            );
+            statement.setBoolean(1, status);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                menus.add(
+                        new Menu(
+                            result.getInt("menu_id"),
+                            result.getString("menu_name"),
+                            result.getString("menu_description"),
+                            result.getString("menu_date_start"),
+                            result.getString("menu_date_end"),
+                            result.getString("menu_createdAt"),
+                            result.getString("menu_updatedAt"),
+                            result.getBoolean("menu_is_active")
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e){
+            System.out.println("No se pudieron obtener los menús por estado: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return menus;
+    }
+    
+    public boolean changeStatus( int menuId, boolean status ) {
+        response = false;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "UPDATE menu " +
+                    "SET menu_is_active = ? WHERE menu_id = ?"
+            );
+            statement.setBoolean(1, status);
+            statement.setInt(2, menuId);
+            
+            if ( statement.executeUpdate() >  0 ) {
+                response = true;
+            }
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo cambiar de estado: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return response;
     }
     
     private void closeResources() {

@@ -72,8 +72,8 @@ public class CategoryController {
         this.refresher = new CategoryTableRefresher(paginateHandler);
         this.loadInfo = new LoadInformation(infoView, editView);
         this.selectedRow = new SelectedRowTable(view.categoriesTable);
-        this.activate = new ChangeCategoryStatus(view, categoryService, true);
-        this.deactivate = new ChangeCategoryStatus(view, categoryService, false);
+        this.activate = new ChangeCategoryStatus(categoryService, true);
+        this.deactivate = new ChangeCategoryStatus(categoryService, false);
        
         init();
         initListeners();
