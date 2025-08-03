@@ -77,9 +77,9 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="menuNameLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="menuNameLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="menuStartDate" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="menuNameLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="menuEndDate" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="iconRh" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
@@ -98,8 +98,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="menuNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="menuNameLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="menuNameLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="menuStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="menuEndDate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -143,7 +143,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Arma tu men&#xfa; de la semana"/>
+            <Property name="text" type="java.lang.String" value="Arma tu men&#xfa; de la semana:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="iconRh">
@@ -302,7 +302,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="menuNameLabel1">
+        <Component class="javax.swing.JLabel" name="menuStartDate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="1"/>
@@ -313,7 +313,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="menuNameLabel2">
+        <Component class="javax.swing.JLabel" name="menuEndDate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="1"/>

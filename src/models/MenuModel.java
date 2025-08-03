@@ -5,6 +5,8 @@ import entities.Menu;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuModel {
  
@@ -29,7 +31,8 @@ public class MenuModel {
             
             statement = DATABASE.connect().prepareStatement(
                     "INSERT INTO menu (menu_name, menu_description, menu_date_start, menu_date_end) "
-                  + "VALUES (?, ?, ?, ?)"  
+                  + "VALUES (?, ?, ?, ?)",
+                    PreparedStatement.RETURN_GENERATED_KEYS
             );
             statement.setString(1, menuName);
             statement.setString(2, menuDesc);
@@ -64,6 +67,65 @@ public class MenuModel {
         }
         
         return newMenu;
+    }
+    
+    public List<Menu> getMenus( int page, int quantity ) {
+        
+        List<Menu> menus = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM menu ORDER BY menu_createdAt DESC LIMIT ?, ?");
+            statement.setInt(1, (page - 1) * quantity);
+            statement.setInt(2, quantity);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                menus.add(new Menu(
+                        result.getInt("menu_id"),
+                        result.getString("menu_name"),
+                        result.getString("menu_description"),
+                        result.getString("menu_date_start"),
+                        result.getString("menu_date_end")
+                ));
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("Error al obtener los menus: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return menus;
+    }
+    
+    public int getQuantityMenus() {
+        int counter = 0;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT COUNT(*) AS total FROM menu"
+            );
+            result = statement.executeQuery();
+            
+            while ( result.next() ) {
+                counter = result.getInt("total");
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener la cantidad de menus: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return counter;
     }
     
     private void closeResources() {

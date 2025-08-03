@@ -22,6 +22,10 @@ public class DishesList {
         this.onDelete = listener;
     }
     
+    public List<Dish> getDishList() {
+        return this.dishes;
+    }
+    
     public void addDish( Dish dish ) {
         Dish existingDish = findDishById(dish.getDishID());
         if ( existingDish != null ) return;
@@ -36,6 +40,7 @@ public class DishesList {
     
     public void clearList() {
         dishes.clear();
+        render();
     }
     
     private void render() {

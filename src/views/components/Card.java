@@ -1,11 +1,13 @@
 package views.components;
 
 import entities.Dish;
+import entities.Menu;
 import entities.Product;
 import entities.PurchaseItem;
 import interfaces.SaleItem;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -473,4 +475,111 @@ public class Card {
 
         return card;
     }
+    
+    public JPanel createMenuCard(
+        Menu menu,
+        Consumer<Menu> onViewClick,
+        Consumer<Menu> onEditClick
+    ) {
+        JPanel card = new JPanel();
+        card.setLayout(new BorderLayout());
+        card.setPreferredSize(new Dimension(180, 140));
+        card.setBackground(Color.WHITE);
+        card.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.decode("#E0E0E0")), 
+            BorderFactory.createEmptyBorder(12, 16, 12, 16)
+        ));
+        
+        JLabel titleLabel = new JLabel(menu.getMenuName());
+        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+        titleLabel.setForeground(Color.decode("#1D1C1D"));
+
+        // Fechas
+        JLabel dateLabel = new JLabel("Del " + menu.getMenuStartDate() + " al " + menu.getMenuEndDate());
+        dateLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        dateLabel.setForeground(Color.GRAY);
+
+        // Descripción
+        JLabel descLabel = new JLabel("<html><p style='width:200px;'>" + menu.getMenuDescription() + "</p></html>");
+        descLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        descLabel.setForeground(Color.GRAY);
+
+        // Contenedor vertical de textos
+        JPanel textPanel = new JPanel();
+        textPanel.setBackground(Color.WHITE);
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+        textPanel.add(titleLabel);
+        textPanel.add(Box.createVerticalStrut(4));
+        textPanel.add(dateLabel);
+        textPanel.add(Box.createVerticalStrut(6));
+        textPanel.add(descLabel);
+
+        // Botones
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        buttonPanel.setBackground(Color.WHITE);
+
+        JLabel btnVer = new JLabel("Ver Detalle");
+        btnVer.setFont(new Font("SansSerif", Font.BOLD, 12));
+        btnVer.setForeground(Color.decode("#1264A3")); // azul Slack
+        btnVer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnVer.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 15));
+        btnVer.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (onViewClick != null) {
+                    onViewClick.accept(menu);
+                }
+            }
+        });
+
+        buttonPanel.add(btnVer);
+        buttonPanel.add(Box.createHorizontalStrut(10));
+
+        card.add(textPanel, BorderLayout.CENTER);
+        card.add(buttonPanel, BorderLayout.SOUTH);
+
+        return card;
+    }
+    
+    public JPanel createMinimalDishMenuCard(Dish dish) {
+        JPanel card = new JPanel();
+        card.setBackground(Color.WHITE);
+        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+        card.setMaximumSize(new Dimension(120, 100));
+        card.setPreferredSize(new Dimension(120, 100));
+        card.setMinimumSize(new Dimension(120, 100));
+        card.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        JLabel imageLabel = new JLabel();
+        imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        imageLabel.setPreferredSize(new Dimension(40, 40));
+        imageLabel.setMaximumSize(new Dimension(40, 40));
+        imageLabel.setMinimumSize(new Dimension(40, 40));
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        String image = dish.getDishImage() == null || "Platillo sin imagen".equals(dish.getDishImage())
+            ? "no-image.jpg"
+            : dish.getDishImage();
+        imageGenerator.addImageDish(imageLabel, image, 40, 40);
+        imageGenerator.roundedImage(imageLabel);
+
+        JLabel nameLabel = new JLabel(dish.getDishName());
+        nameLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        nameLabel.setForeground(Color.decode("#333333"));
+        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JLabel priceLabel = new JLabel("$" + dish.getDishSellingPrice());
+        priceLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
+        priceLabel.setForeground(Color.decode(ViewConstants.mainColor));
+        priceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        card.add(imageLabel);
+        card.add(Box.createVerticalStrut(5));
+        card.add(nameLabel);
+        card.add(Box.createVerticalStrut(2));
+        card.add(priceLabel);
+
+        return card;
+    }
+
 }

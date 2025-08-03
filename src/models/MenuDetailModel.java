@@ -5,6 +5,8 @@ import entities.MenuDetail;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuDetailModel {
     
@@ -22,17 +24,15 @@ public class MenuDetailModel {
         
         try {
             
-            String menuDetailDate = menuDetail.getMenuDetailDate();
             int dishId = menuDetail.getDishId();
             int menuId = menuDetail.getMenuId();
             
             statement = DATABASE.connect().prepareStatement(
-                    "INSERT INTO menu_detail (menu_detail_date, dish_id, menu_id) "
-                  + "VALUES (?, ?, ?)"  
+                    "INSERT INTO menu_detail (dish_id, menu_id) "
+                  + "VALUES (?, ?)"  
             );
-            statement.setString(1, menuDetailDate);
-            statement.setInt(2, dishId);
-            statement.setInt(3, menuId);
+            statement.setInt(1, dishId);
+            statement.setInt(2, menuId);
             
             if ( statement.executeUpdate() > 0 ) {
                 response = true;
@@ -47,6 +47,38 @@ public class MenuDetailModel {
         }
         
         return response;
+    }
+    
+    public List<MenuDetail> getMenuDetail( int menuId ) {
+        
+        List<MenuDetail> detail = new ArrayList<>();
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("SELECT * FROM menu_detail WHERE menu_id = ?");
+            statement.setInt(1, menuId);
+            result = statement.executeQuery();
+            
+            while( result.next() ) {
+                detail.add(
+                        new MenuDetail(
+                                result.getInt("menu_detail_id"),
+                                result.getInt("dish_id"),
+                                result.getInt("menu_id")
+                        )
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el detalle de menu: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return detail;
     }
     
     private void closeResources() {
