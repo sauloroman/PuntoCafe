@@ -29,15 +29,28 @@ public class MenuModel {
             String menuStartDate = menu.getMenuStartDate();
             String menuEndDate = menu.getMenuEndDate();
             
-            statement = DATABASE.connect().prepareStatement(
+            boolean hashMenuDesc = menuDesc != null && !menuDesc.isEmpty();
+            
+            if ( hashMenuDesc ) {
+                 statement = DATABASE.connect().prepareStatement(
                     "INSERT INTO menu (menu_name, menu_description, menu_date_start, menu_date_end) "
                   + "VALUES (?, ?, ?, ?)",
                     PreparedStatement.RETURN_GENERATED_KEYS
-            );
-            statement.setString(1, menuName);
-            statement.setString(2, menuDesc);
-            statement.setString(3, menuStartDate);
-            statement.setString(4, menuEndDate);
+                );
+                statement.setString(1, menuName);
+                statement.setString(2, menuDesc);
+                statement.setString(3, menuStartDate);
+                statement.setString(4, menuEndDate);
+            } else {
+                 statement = DATABASE.connect().prepareStatement(
+                    "INSERT INTO menu (menu_name, menu_date_start, menu_date_end) "
+                  + "VALUES (?, ?, ?)",
+                    PreparedStatement.RETURN_GENERATED_KEYS
+                );
+                statement.setString(1, menuName);
+                statement.setString(2, menuStartDate);
+                statement.setString(3, menuEndDate);
+            }
             
             int affectedRows = statement.executeUpdate();
             
@@ -103,6 +116,43 @@ public class MenuModel {
         }
         
         return menus;
+    }
+    
+    public Menu getByName(String menuName) {
+        
+        Menu menu = null;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "SELECT * FROM menu WHERE menu_name = ?"
+            );
+            statement.setString(1, menuName);
+            result = statement.executeQuery();
+            
+            if ( result.next() ) {
+                menu = new Menu(
+                        result.getInt("menu_id"),
+                        result.getString("menu_name"),
+                        result.getString("menu_description"),
+                        result.getString("menu_date_start"),
+                        result.getString("menu_date_end"),
+                        result.getString("menu_createdAt"),
+                        result.getString("menu_updatedAt"),
+                        result.getBoolean("menu_is_active")
+                );
+            }
+            
+            statement.close();
+            result.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudo obtener el menu por nombre: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return menu;
     }
     
     public int getQuantityMenus() {
@@ -209,6 +259,42 @@ public class MenuModel {
         return menus;
     }
     
+    public boolean updateMenu( int menuId, Menu menu ) {
+        response = false;
+        
+        try {
+            
+            String menuName = menu.getMenuName();
+            String menuDesc = menu.getMenuDescription();
+            String menuStartDate = menu.getMenuStartDate();
+            String menuEndDate = menu.getMenuEndDate();
+            
+            statement = DATABASE.connect().prepareStatement(
+                    "UPDATE menu " +
+                    "SET menu_name = ?, menu_description = ?, menu_date_start = ?, menu_date_end = ? " +
+                    "WHERE menu_id = ?"
+            );
+            statement.setString(1, menuName);
+            statement.setString(2, menuDesc);
+            statement.setString(3, menuStartDate);
+            statement.setString(4, menuEndDate);
+            statement.setInt(5, menuId);
+            
+            if ( statement.executeUpdate() > 0 ) {
+                response = true;
+            }
+            
+            statement.close();
+            
+        } catch(SQLException e) {
+            System.out.println("No fue posible actualizar el menu: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return response;
+    }
+    
     public boolean changeStatus( int menuId, boolean status ) {
         response = false;
         
@@ -224,6 +310,8 @@ public class MenuModel {
             if ( statement.executeUpdate() >  0 ) {
                 response = true;
             }
+            
+            statement.close();
             
         } catch(SQLException e) {
             System.out.println("No se pudo cambiar de estado: " + e.getMessage());

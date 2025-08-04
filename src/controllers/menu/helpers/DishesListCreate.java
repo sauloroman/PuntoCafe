@@ -7,14 +7,14 @@ import java.util.function.Consumer;
 import views.components.Card;
 import views.warehouse.WarehouseMenuCreate;
 
-public class DishesList {
+public class DishesListCreate {
     
     private final WarehouseMenuCreate createMenuView;
     private Consumer<Dish> onDelete;
     private final List<Dish> dishes = new ArrayList<>();
     private final Card cardFactory = new Card();
     
-    public DishesList(WarehouseMenuCreate createMenuView){
+    public DishesListCreate(WarehouseMenuCreate createMenuView){
         this.createMenuView = createMenuView;
     }
     

@@ -33,6 +33,9 @@ public class QueriesInit {
         imageGenerator.addImageFix(view.iconInfo2, "icon-info-black", 15, 15);
         imageGenerator.addImageFix(view.iconInfo3, "icon-info-black", 15, 15);
         
+        buttonGenerator.solidButton(view.btnLoadInfo, ViewConstants.blackColor, "#FFFFFF", 12);
+        buttonGenerator.addIcon(view.btnLoadInfo, "icon-reload", 16);
+        
         buttonGenerator.outlineButton(view.btnProductsEarn, ViewConstants.skyColor, ViewConstants.textBtn);
         buttonGenerator.outlineButton(view.btnProductsLowRotation, ViewConstants.skyColor, ViewConstants.textBtn);
         buttonGenerator.outlineButton(view.btnProductsLowStock, ViewConstants.skyColor, ViewConstants.textBtn);

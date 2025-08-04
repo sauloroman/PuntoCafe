@@ -50,8 +50,10 @@
                       <Component id="menuDetailGrid" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="menuNameLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="372" max="32767" attributes="0"/>
-                          <Component id="btnEditMenu" min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace pref="200" max="32767" attributes="0"/>
+                          <Component id="btnEditMenu" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnChangeDishes" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="btnActivate" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -77,6 +79,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnActivate" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnDeactivate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnChangeDishes" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnEditMenu" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -151,9 +154,20 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JButton" name="btnChangeDishes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cambiar platillos"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
         <Component class="javax.swing.JButton" name="btnEditMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="text" type="java.lang.String" value="Editar Men&#xfa;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>

@@ -102,6 +102,7 @@ public class QueriesController {
     
     private void initListeners() {   
         view.timeBox.addActionListener(e -> createChartComparativeSalesAndPurchases());
+        view.btnLoadInfo.addActionListener(e -> updateStats());
         
         view.btnProductsLowRotation.addActionListener(e -> showChartProductsLowRotation());
         view.btnProductsLowStock.addActionListener(e -> showChartProductsLowStock());
@@ -126,6 +127,11 @@ public class QueriesController {
         montlyGrowView.quantityCombo.addActionListener(e -> createChartMontlyGrowthSales());
         productsMostSoldView.quantityCombo.addActionListener(e -> createChartMostSoldProductsInMonth());
         productsLowRotationView.quantityCombo.addActionListener(e -> createChartProductsLowRotation());
+    }
+    
+    public void updateStats() {
+        createChartComparativeSalesAndPurchases();
+        setPanelsStats();
     }
     
     private void setPanelsStats() {

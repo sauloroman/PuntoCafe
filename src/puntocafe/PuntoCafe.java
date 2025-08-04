@@ -97,7 +97,7 @@ public class PuntoCafe {
     
     private void initApp() {
 
-        SplashScreen splash = new SplashScreen(null, "Cargando PuntoCafé...");
+        SplashScreen splash = new SplashScreen(null);
         splash.setVisible(true);
 
         SwingWorker<Boolean, Void> worker = new SwingWorker<>() {
@@ -105,6 +105,8 @@ public class PuntoCafe {
             protected Boolean doInBackground() throws Exception {
                 
                 CategoryModel categoryModel = new CategoryModel();
+                PurchaseModel purchaseModel = new PurchaseModel();
+                PurchaseDetailModel purchaseDetailModel = new PurchaseDetailModel();
                 SupplierModel supplierModel = new SupplierModel();
                 ProductModel productModel = new ProductModel();
                 DishModel dishModel = new DishModel();
@@ -113,6 +115,9 @@ public class PuntoCafe {
                 SaleModel saleModel = new SaleModel();
                 SaleProductDetailModel saleProductDetailModel = new SaleProductDetailModel();
                 SaleDishDetailModel saleDishDetailModel = new SaleDishDetailModel();
+                StatsModel statsModel = new StatsModel();
+                MenuModel menuModel = new MenuModel();
+                MenuDetailModel menuDetailModel = new MenuDetailModel();
                 
                 return true;
             }

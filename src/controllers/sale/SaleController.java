@@ -294,7 +294,9 @@ public class SaleController {
         saleCode = codeGenerator.generate(5);
         elements.clearTotalSale();
         productsGrid.showAllProducts(1);
-        refresher.load(saleService.getSales(userId, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd()));
+        refresher.load(
+            saleService.getSales(0, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd())
+        );
         loadStats();
         loadGraphs();
     }

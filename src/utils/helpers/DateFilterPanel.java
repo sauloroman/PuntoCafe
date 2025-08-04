@@ -4,6 +4,8 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -58,4 +60,22 @@ public class DateFilterPanel {
     public void setEndDate(Date date) {
         dateChooserEnd.setDate(date);
     }
+    
+    public void setStartDate(String dateStr) {
+        setStartDate(parseDate(dateStr));
+    }
+
+    public void setEndDate(String dateStr) {
+        setEndDate(parseDate(dateStr));
+    }
+
+    private Date parseDate(String dateStr) {
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

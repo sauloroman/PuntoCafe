@@ -1,8 +1,13 @@
 package controllers.menu;
 
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import controllers.menu.helpers.ChangeMenuStatus;
 import controllers.menu.helpers.Pages;
-import controllers.menu.helpers.DishesList;
+import controllers.menu.helpers.DishesListCreate;
+import controllers.menu.helpers.DishesListEdit;
 import controllers.menu.helpers.InputReader;
 import controllers.menu.helpers.LoadInformation;
 import controllers.menu.helpers.MenuDetailGrid;
@@ -10,27 +15,31 @@ import controllers.menu.helpers.MenuDishesRefresher;
 import controllers.menu.helpers.MenuGrid;
 import controllers.menu.helpers.MenuValidator;
 import controllers.menu.helpers.ViewElements;
+
 import entities.Dish;
 import entities.Menu;
 import entities.MenuDetail;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+
 import models.CategoryModel;
 import models.DishModel;
 import models.MenuDetailModel;
 import models.MenuModel;
+
 import services.CategoryService;
 import services.DishService;
 import services.MenuService;
+
 import utils.enums.ModalTypeEnum;
 import utils.helpers.DateFilterPanel;
 import utils.helpers.Modal;
 import utils.helpers.TableRowClickHelper;
+
 import views.components.Card;
 import views.components.Grid;
 import views.warehouse.WarehouseMenuCreate;
 import views.warehouse.WarehouseMenuDetail;
+import views.warehouse.WarehouseMenuEdit;
+import views.warehouse.WarehouseMenuEditInfo;
 import views.warehouse.WarehouseMenuInfo;
 import views.warehouse.WarehouseMenus;
 
@@ -39,7 +48,9 @@ public class MenuController {
     private final WarehouseMenus view;
     private final WarehouseMenuInfo menuInfoView;
     private final WarehouseMenuCreate menuCreateView;
+    private final WarehouseMenuEdit menuEditView;
     private final WarehouseMenuDetail menuDetailView;
+    private final WarehouseMenuEditInfo menuEditInfoView;
     
     private final MenuModel menuModel;
     private final MenuDetailModel menuDetailModel;
@@ -50,13 +61,16 @@ public class MenuController {
     private final CategoryService categoryService;
     private final DishService dishesService;
     
-    private final DateFilterPanel dateFilter;
+    private final DateFilterPanel dateFilterCreate;
+    private final DateFilterPanel dateFilterEdit;
+    
     private final InputReader inputReader;
     private final MenuValidator menuValidator;
     private final ViewElements elements;
     private final LoadInformation load;
     private final MenuDishesRefresher dishesTableRefresher;
-    private final DishesList dishesList;
+    private final DishesListCreate dishesListCreate;
+    private final DishesListEdit dishesListEdit;
     private final MenuGrid menuGrid;
     private final MenuDetailGrid menuDetailGrid;
     private final Pages pages;
@@ -80,6 +94,8 @@ public class MenuController {
         this.menuInfoView = new WarehouseMenuInfo();
         this.menuCreateView = new WarehouseMenuCreate();
         this.menuDetailView = new WarehouseMenuDetail();
+        this.menuEditView = new WarehouseMenuEdit();
+        this.menuEditInfoView = new WarehouseMenuEditInfo();
         
         this.menuModel = menuModel;
         this.menuDetailModel = menuDetailModel;
@@ -90,13 +106,23 @@ public class MenuController {
         this.categoryService = new CategoryService(this.categoryModel);
         this.dishesService = new DishService(this.dishModel);
         
-        this.dateFilter = new DateFilterPanel(menuInfoView.startDatePanel, menuInfoView.endDatePanel);
-        this.inputReader = new InputReader(view, menuInfoView, menuCreateView, dateFilter);
+        this.dateFilterCreate = new DateFilterPanel(menuInfoView.startDatePanel, menuInfoView.endDatePanel);
+        this.dateFilterEdit = new DateFilterPanel(menuEditInfoView.startDatePanel, menuEditInfoView.endDatePanel);
+        
+        this.inputReader = new InputReader(
+                view, 
+                menuInfoView, 
+                menuEditInfoView, 
+                menuCreateView, 
+                dateFilterCreate, 
+                dateFilterEdit
+        );
         this.menuValidator = new MenuValidator(modal);
-        this.elements = new ViewElements(view, menuInfoView);
-        this.load = new LoadInformation(menuCreateView, menuDetailView);
-        this.dishesList = new DishesList(menuCreateView);
-        this.dishesTableRefresher = new MenuDishesRefresher(menuCreateView, categoryService);
+        this.elements = new ViewElements(view, menuInfoView, menuEditInfoView);
+        this.load = new LoadInformation(menuCreateView, menuDetailView, menuEditView, menuEditInfoView);
+        this.dishesListCreate = new DishesListCreate(menuCreateView);
+        this.dishesListEdit = new DishesListEdit(menuEditView);
+        this.dishesTableRefresher = new MenuDishesRefresher(menuCreateView, menuEditView, categoryService);
         this.menuGrid = new MenuGrid(view, card);
         this.menuDetailGrid = new MenuDetailGrid(menuDetailView, card);
         this.pages = new Pages(view);
@@ -131,10 +157,20 @@ public class MenuController {
         
         menuDetailView.btnActivate.addActionListener(e -> activateMenu());
         menuDetailView.btnDeactivate.addActionListener(e -> deactivateMenu());
+        menuDetailView.btnChangeDishes.addActionListener(e -> changeDishesWindow());
+        menuDetailView.btnEditMenu.addActionListener(e -> changeMenuInfo());
         
-        dishesList.setOnDelete(dish -> removeDishOfLIst(dish));
+        menuEditView.btnCancelSaveMenu.addActionListener(e -> closeEditMenu());
+        menuEditView.btnChangeDishes.addActionListener(e -> editDishes());
+        
+        menuEditInfoView.btnEditInfoMenu.addActionListener(e -> editMenuInfo());
+        menuEditInfoView.btnCancelEditMenu.addActionListener(e -> closeEditMenuInfo());
+        
+        dishesListCreate.setOnDelete(dish -> removeDishOfList(dish));
+        dishesListEdit.setOnDelete(dish -> removeDishOfListEdit(dish));
         
         TableRowClickHelper.addRowClickListener(menuCreateView.dishesTable, row -> addDishToList(row));
+        TableRowClickHelper.addRowClickListener(menuEditView.dishesTable, row -> addDishToListEdit(row));
     }
     
     private void restartView() {
@@ -143,6 +179,7 @@ public class MenuController {
     }
     
     private void openMenuInfoWindow() {
+        menu = null;
         menuInfoView.setVisible(true);
     }
     
@@ -178,25 +215,35 @@ public class MenuController {
         if ( modal.confirm("¿Está seguro de cancelar la creación del menú?") != 0 ) return;
         menu = null;
         elements.clearCreateMenuForm();
-        dishesList.clearList();
+        dishesListCreate.clearList();
         menuInfoView.dispose();
         menuCreateView.dispose();
     }
     
-    private void addDishToList( int rowSelected ) {
+    private void addDishToList(int rowSelected) {
         int dishId = Integer.parseInt(menuCreateView.dishesTable.getValueAt(rowSelected, 0).toString());
         Dish dishSelected = dishesService.getDishById(dishId);
-        
-        dishesList.addDish(dishSelected);
+        dishesListCreate.addDish(dishSelected);
     }
     
-    private void removeDishOfLIst(Dish dish) {
+    private void addDishToListEdit(int rowSelected) {
+        int dishId = Integer.parseInt(menuEditView.dishesTable.getValueAt(rowSelected, 0).toString());
+        Dish dishSelected = dishesService.getDishById(dishId);
+        dishesListEdit.addDish(dishSelected);
+    }
+    
+    private void removeDishOfList(Dish dish) {
         int dishId = dish.getDishID();
-        dishesList.removeDish(dishId);
+        dishesListCreate.removeDish(dishId);
+    }
+    
+    private void removeDishOfListEdit(Dish dish) {
+        int dishId = dish.getDishID();
+        dishesListEdit.removeDish(dishId);
     }
     
     private void saveMenu() {
-        if ( dishesList.getDishList().isEmpty() ) {
+        if ( dishesListCreate.getDishList().isEmpty() ) {
             modal.show("No es posible crear un menú sin platillos. Elige algunos", ModalTypeEnum.error);
             return;
         }
@@ -210,22 +257,21 @@ public class MenuController {
             return;
         }
         
-        if ( !saveMenuDetail(newMenu.getMenuId()) ) {
+        List<Dish> dishes = dishesListCreate.getDishList();
+        if ( !saveMenuDetail(dishes, newMenu.getMenuId()) ) {
             modal.show("Error al guardar el detalle de menú", ModalTypeEnum.error);
             return;
         }
         
         modal.show("El menú ha sido creado exisitosamente", ModalTypeEnum.success);
-        dishesList.clearList();
+        dishesListCreate.clearList();
         menuCreateView.dispose();
         menuInfoView.dispose();
         menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));
         safelyRebuildPagination();
     }
     
-    private boolean saveMenuDetail(int menuId) {
-        List<Dish> dishes = dishesList.getDishList();
-        
+    private boolean saveMenuDetail(List<Dish> dishes, int menuId) {        
         for( Dish dish: dishes ) {
             int dishId = dish.getDishID();
             MenuDetail menuDetail = new MenuDetail(dishId, menuId);
@@ -239,7 +285,7 @@ public class MenuController {
     
     private void showMenuDetailWindow(Menu menuSelected) { 
         menu = menuSelected;
-        load.leadMenuDetailName(menuSelected.getMenuName());
+        load.loadMenuDetailName(menuSelected.getMenuName());
         Grid.createFlowLayout(menuDetailView.menuDetailGrid, 10, 10);
         menuDetailGrid.showMenuDishes(getDishesFromMenuDetail(menuSelected.getMenuId()));
         menuDetailView.setVisible(true);  
@@ -323,6 +369,86 @@ public class MenuController {
         for (ActionListener l : listeners) {
             view.pageComboBox.addActionListener(l);
         }
+    }
+    
+    private void changeDishesWindow() {
+        load.loadEditMenuInformation(menu.getMenuName(), menu.getMenuStartDate(), menu.getMenuEndDate());
+        int menuId = menu.getMenuId();
+        List<Dish> dishes = getDishesFromMenuDetail(menuId);
+        dishesListEdit.setDishesList(dishes);
+        dishesListEdit.render();
+        dishesTableRefresher.loadInEditWindow(dishesService.getAllDishes(1, 100));
+        menuEditView.setVisible(true);
+    }
+    
+    private void closeEditMenu() {
+        menuEditView.dispose();
+        dishesListEdit.clearList();
+    }
+    
+    private void editDishes() {
+        if ( dishesListEdit.getDishList().isEmpty() ) {
+            modal.show("No es posible eliminar todos los platillos del menú. Elige algunos", ModalTypeEnum.error);
+            return;
+        }
+        
+        boolean wasDishesDeleted = menuService.deleteDishesFromMenu(menu.getMenuId());
+        
+        if ( !wasDishesDeleted ) {
+            modal.show("Error al actualizar el menú", ModalTypeEnum.error);
+            return;
+        }
+        
+        List<Dish> dishes = dishesListEdit.getDishList();
+        
+        if ( !saveMenuDetail(dishes, menu.getMenuId()) ) {
+            modal.show("Error al actualizar el menú", ModalTypeEnum.error);
+            return;
+        }
+        
+        modal.show("El menú ha sido creado exisitosamente", ModalTypeEnum.success);
+        dishesListEdit.clearList();
+        menuEditView.dispose();
+        menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));  
+        menuDetailGrid.showMenuDishes(getDishesFromMenuDetail(menu.getMenuId()));
+    }
+    
+    private void changeMenuInfo() {
+        menuEditInfoView.setVisible(true);
+        load.loadEditMenuInfo(menu, dateFilterEdit);
+    }
+    
+    private void editMenuInfo() {
+        String menuName = inputReader.getMenuNameEdit();
+        String menuDesc = inputReader.getMenuDescriptionEdit();
+        String menuStartDate = inputReader.getStartDateEdit();
+        String menuEndDate = inputReader.getEndDateEdit();
+        
+        if ( !menuValidator.isValidForm(menuName, menuDesc, menuStartDate, menuEndDate)) return;
+        
+        if ( 
+            !menuName.equals(menu.getMenuName()) && 
+            menuService.getMenuByName(menuName) != null 
+        ) {
+            modal.show("El menú " + menuName + " ya existe. Intente con otro nombre", ModalTypeEnum.error);
+            return;
+        }
+        
+        Menu newMenu = new Menu(menuName, menuDesc, menuStartDate, menuEndDate);
+        if ( !menuService.updateMenu(menu.getMenuId(), newMenu) ) {
+            modal.show("El menú no pudo ser actualizado.", ModalTypeEnum.error);
+            return;
+        }
+        
+        modal.show("Menú actualizado correctamente", ModalTypeEnum.error);
+        load.loadEditMenuInformation(menuName, menuStartDate, menuEndDate);
+        menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));  
+        menuEditInfoView.dispose();
+    }
+    
+    private void closeEditMenuInfo() {
+        menuEditInfoView.dispose();
+        elements.clearEditMenuForm();
     }
 
 }

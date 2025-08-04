@@ -1,8 +1,6 @@
 package controllers.menu.helpers;
 
 import entities.Dish;
-import entities.MenuDetail;
-import java.util.ArrayList;
 import java.util.List;
 import views.components.Card;
 import views.warehouse.WarehouseMenuDetail;

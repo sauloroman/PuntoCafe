@@ -43,7 +43,7 @@ public class NavigationController {
         mainFrame.btnAccess.addActionListener(e -> showAccessView());
         mainFrame.btnQueries.addActionListener(e -> showQueriesView());
         
-        changeView(warehouse, NavigationEnum.WareHouse, mainFrame.btnWarehouse);
+        changeView(sales, NavigationEnum.Sales, mainFrame.btnSales);
     }
     
     private void changeView( JPanel panel, NavigationEnum navTarget, JButton btn ) {

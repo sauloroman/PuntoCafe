@@ -81,6 +81,28 @@ public class MenuDetailModel {
         return detail;
     }
     
+    public boolean deleteDishesFromMenu( int menuId ) {
+        
+        response = false;
+        
+        try {
+            
+            statement = DATABASE.connect().prepareStatement("DELETE FROM menu_detail WHERE menu_id = ?");
+            statement.setInt(1, menuId);
+            
+            if ( statement.executeUpdate() > 0 ) {
+                response = true;
+            }
+            
+        } catch(SQLException e) {
+            System.out.println("No se pudieron eliminar los platillos del menu: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        
+        return response;
+    }
+    
     private void closeResources() {
         try {
             if (result != null) result.close();

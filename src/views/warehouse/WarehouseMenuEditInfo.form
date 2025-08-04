@@ -87,9 +87,9 @@
                                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnCreateMenu" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnEditInfoMenu" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="btnCancelCreateMenu" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCancelEditMenu" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -144,8 +144,8 @@
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnCreateMenu" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="btnCancelCreateMenu" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnEditInfoMenu" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnCancelEditMenu" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
@@ -165,7 +165,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de men&#xfa;"/>
+            <Property name="text" type="java.lang.String" value="Actualiza la informaci&#xf3;n del men&#xfa;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="iconRh">
@@ -294,9 +294,9 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCreateMenu">
+        <Component class="javax.swing.JButton" name="btnEditInfoMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Armar Men&#xfa;"/>
+            <Property name="text" type="java.lang.String" value="Actualizar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -305,7 +305,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCancelCreateMenu">
+        <Component class="javax.swing.JButton" name="btnCancelEditMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

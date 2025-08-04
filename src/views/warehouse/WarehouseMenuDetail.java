@@ -19,6 +19,7 @@ public class WarehouseMenuDetail extends javax.swing.JFrame {
         menuDetailGrid = new javax.swing.JPanel();
         btnActivate = new javax.swing.JButton();
         btnDeactivate = new javax.swing.JButton();
+        btnChangeDishes = new javax.swing.JButton();
         btnEditMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,7 +50,10 @@ public class WarehouseMenuDetail extends javax.swing.JFrame {
         btnDeactivate.setText("Desactivar");
         btnDeactivate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnEditMenu.setText("Editar");
+        btnChangeDishes.setText("Cambiar platillos");
+        btnChangeDishes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnEditMenu.setText("Editar Menú");
         btnEditMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -63,8 +67,10 @@ public class WarehouseMenuDetail extends javax.swing.JFrame {
                     .addComponent(menuDetailGrid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(menuNameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
-                        .addComponent(btnEditMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                        .addComponent(btnEditMenu)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnChangeDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(btnActivate)
                         .addGap(20, 20, 20)
@@ -85,6 +91,7 @@ public class WarehouseMenuDetail extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnActivate)
                             .addComponent(btnDeactivate)
+                            .addComponent(btnChangeDishes)
                             .addComponent(btnEditMenu))
                         .addGap(18, 18, 18)))
                 .addComponent(menuDetailGrid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,6 +114,7 @@ public class WarehouseMenuDetail extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActivate;
+    public javax.swing.JButton btnChangeDishes;
     public javax.swing.JButton btnDeactivate;
     public javax.swing.JButton btnEditMenu;
     private javax.swing.JLabel jLabel1;

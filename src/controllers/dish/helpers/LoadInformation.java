@@ -1,6 +1,5 @@
 package controllers.dish.helpers;
 
-import entities.Category;
 import entities.Dish;
 import services.CategoryService;
 import views.components.ImageCustom;
@@ -14,7 +13,11 @@ public class LoadInformation {
     private final WarehouseEditDish editView;
     private final CategoryService categoryService;
 
-    public LoadInformation(WarehouseInfoDish infoView, WarehouseEditDish editView, CategoryService categoryService) {
+    public LoadInformation(
+            WarehouseInfoDish infoView, 
+            WarehouseEditDish editView, 
+            CategoryService categoryService
+    ) {
         this.infoView = infoView;
         this.editView = editView;
         this.categoryService = categoryService;

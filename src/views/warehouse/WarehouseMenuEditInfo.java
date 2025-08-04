@@ -1,10 +1,10 @@
 package views.warehouse;
 
-public class WarehouseMenuInfo extends javax.swing.JFrame {
+public class WarehouseMenuEditInfo extends javax.swing.JFrame {
 
-    private final WarehouseMenuInfoInit style = new WarehouseMenuInfoInit(this);
+    private final WarehouseMenuEditInfoInit style = new WarehouseMenuEditInfoInit(this);
     
-    public WarehouseMenuInfo() {
+    public WarehouseMenuEditInfo() {
         initComponents();
         style.init();
     }
@@ -29,8 +29,8 @@ public class WarehouseMenuInfo extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         iconInputMandatory2 = new javax.swing.JLabel();
         iconInputMandatory3 = new javax.swing.JLabel();
-        btnCreateMenu = new javax.swing.JButton();
-        btnCancelCreateMenu = new javax.swing.JButton();
+        btnEditInfoMenu = new javax.swing.JButton();
+        btnCancelEditMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,7 +39,7 @@ public class WarehouseMenuInfo extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/banner-blue.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel2.setText("Información de menú");
+        jLabel2.setText("Actualiza la información del menú");
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
@@ -83,11 +83,11 @@ public class WarehouseMenuInfo extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(153, 153, 153));
         jLabel9.setText("Fecha fin");
 
-        btnCreateMenu.setText("Armar Menú");
-        btnCreateMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditInfoMenu.setText("Actualizar");
+        btnEditInfoMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnCancelCreateMenu.setText("Cancelar");
-        btnCancelCreateMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelEditMenu.setText("Cancelar");
+        btnCancelEditMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,9 +126,9 @@ public class WarehouseMenuInfo extends javax.swing.JFrame {
                                 .addComponent(menuNameTxt)
                                 .addComponent(jLabel7))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCreateMenu)
+                                .addComponent(btnEditInfoMenu)
                                 .addGap(20, 20, 20)
-                                .addComponent(btnCancelCreateMenu)))))
+                                .addComponent(btnCancelEditMenu)))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,8 +168,8 @@ public class WarehouseMenuInfo extends javax.swing.JFrame {
                         .addComponent(endDatePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreateMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelCreateMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditInfoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelEditMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
 
@@ -192,8 +192,8 @@ public class WarehouseMenuInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnCancelCreateMenu;
-    public javax.swing.JButton btnCreateMenu;
+    public javax.swing.JButton btnCancelEditMenu;
+    public javax.swing.JButton btnEditInfoMenu;
     public javax.swing.JPanel endDatePanel;
     public javax.swing.JLabel iconInputMandatory;
     public javax.swing.JLabel iconInputMandatory2;

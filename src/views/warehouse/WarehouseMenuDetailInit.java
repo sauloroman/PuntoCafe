@@ -24,6 +24,8 @@ public class WarehouseMenuDetailInit {
         view.menuDetailGrid.setMaximumSize(new Dimension(Integer.MAX_VALUE, 500));
         view.menuDetailGrid.setMinimumSize(new Dimension(800, 500));
         
+        buttonGenerator.solidButton(view.btnChangeDishes, ViewConstants.blackColor, "#FFFFFF", 12);
+        buttonGenerator.addIcon(view.btnChangeDishes, "icon-info", 20);
         buttonGenerator.solidButton(view.btnEditMenu, ViewConstants.blackColor, "#FFFFFF", 12);
         buttonGenerator.addIcon(view.btnEditMenu, "icon-edit", 20);
         buttonGenerator.outlineButton(view.btnActivate, "#DDDDDD", ViewConstants.textBtn);
