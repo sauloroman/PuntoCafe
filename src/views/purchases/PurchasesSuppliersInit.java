@@ -1,5 +1,6 @@
 package views.purchases;
 
+import entities.User;
 import utils.constants.ViewConstants;
 import views.components.Button;
 import views.components.Input;
@@ -7,6 +8,7 @@ import views.components.Table;
 
 public class PurchasesSuppliersInit {
     
+    private final User user;
     private final PurchasesSuppliers view;
     private final String INPUT_COLOR = "#DDDDDD";
     private final String NEW_BTN_COLOR = "#121615";
@@ -15,8 +17,9 @@ public class PurchasesSuppliersInit {
     private final Button buttonGenerator = new Button();
     private final Input inputGenerator = new Input();
 
-    public PurchasesSuppliersInit(PurchasesSuppliers view) {
+    public PurchasesSuppliersInit(PurchasesSuppliers view, User user) {
         this.view = view;
+        this.user = user;
     }
     
     public void init() {
@@ -40,6 +43,15 @@ public class PurchasesSuppliersInit {
         buttonGenerator.addIcon(view.btnSearch, "icon-search", 20);
         buttonGenerator.outlineButton(view.btnRestore, "#DDDDDD", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnRestore, "icon-reload", 16);
+    
+        hideElementsByRole();
+    }
+    
+    private void hideElementsByRole() {
+        if ( user.getRoleId() == 2 ) {
+            view.btnNewSupplier.setVisible(false);
+            view.btnNewSupplier.setSize(0, 0);
+        }
     }
     
 }

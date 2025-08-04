@@ -45,6 +45,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import controllers.menu.MenuController;
 import controllers.purchase.PurchaseController;
 import controllers.queries.QueriesController;
+import controllers.seller.SellerController;
 import models.MenuDetailModel;
 import models.MenuModel;
 import models.PurchaseDetailModel;
@@ -52,6 +53,7 @@ import models.PurchaseModel;
 import models.SaleProductDetailModel;
 import models.StatsModel;
 import views.purchases.PurchasesBuy;
+import views.sales.SalesSeller;
 import views.warehouse.WarehouseMenus;
 
 public class PuntoCafe {
@@ -62,11 +64,11 @@ public class PuntoCafe {
     public static void main(String[] args) {
         loadFlatLaf();
         
-        new PuntoCafe().run();
+//        new PuntoCafe().run();
         
-//        SwingUtilities.invokeLater(() -> {
-//            new PuntoCafe().showLogin();
-//        });       
+        SwingUtilities.invokeLater(() -> {
+            new PuntoCafe().showLogin();
+        });       
     }
     
     private void run() {
@@ -125,12 +127,20 @@ public class PuntoCafe {
             @Override
             protected void done() {
                 
+                User dummyUser = new User();
+                dummyUser.setUserName("Danna Janeth");
+                dummyUser.setUserLastname("Sánchez Carreón");
+                dummyUser.setUserEmail("dannajanethsanchez@outlook.es");
+                dummyUser.setRoleId(3);
+                dummyUser.setUserId(8);
+                dummyUser.setUserImage("user-3.jpg");
+                
                 MainFrame mainView = new MainFrame(user);
                 
-                WarehouseCategories warehouseCategories = new WarehouseCategories();
-                WarehouseProducts warehouseProducts = new WarehouseProducts();
-                WarehouseDishes warehouseDishes = new WarehouseDishes();
-                WarehouseMenus warehouseMenus = new WarehouseMenus();
+                WarehouseCategories warehouseCategories = new WarehouseCategories(user);
+                WarehouseProducts warehouseProducts = new WarehouseProducts(user);
+                WarehouseDishes warehouseDishes = new WarehouseDishes(user);
+                WarehouseMenus warehouseMenus = new WarehouseMenus(user);
                 Warehouse warehouse = new Warehouse(
                         warehouseCategories, 
                         warehouseProducts, 
@@ -139,14 +149,15 @@ public class PuntoCafe {
                 );
 
                 AccessRoles accessRoles = new AccessRoles();
-                AccessUsers accessUsers = new AccessUsers();
+                AccessUsers accessUsers = new AccessUsers( user );
                 Access access = new Access(accessRoles, accessUsers);
 
-                PurchasesSuppliers purchasesSuppliers = new PurchasesSuppliers();
-                PurchasesBuy purchasesBuy = new PurchasesBuy();
+                PurchasesSuppliers purchasesSuppliers = new PurchasesSuppliers(user);
+                PurchasesBuy purchasesBuy = new PurchasesBuy(user);
                 Purchases purchases = new Purchases(purchasesSuppliers, purchasesBuy);
 
-                Sales sales = new Sales();
+                Sales sales = new Sales(user);
+                SalesSeller salesSeller = new SalesSeller();
                 Queries queries = new Queries();
 
                 CategoryModel categoryModel = new CategoryModel();
@@ -164,25 +175,17 @@ public class PuntoCafe {
                 MenuModel menuModel = new MenuModel();
                 MenuDetailModel menuDetailModel = new MenuDetailModel();
                 
-                User dummyUser = new User();
-                dummyUser.setUserName("Danna Janeth");
-                dummyUser.setUserLastname("Sánchez Carreón");
-                dummyUser.setUserEmail("dannajanethsanchez@outlook.es");
-                dummyUser.setRoleId(2);
-                dummyUser.setUserId(7);
-                dummyUser.setUserImage("user-2.jpg");
-                
-                new MainFrameController(mainView, roleModel, dummyUser, authController);
+                new MainFrameController(mainView, roleModel, user, authController);
                 new CategoryController(warehouseCategories, categoryModel);
                 new SupplierController(purchasesSuppliers, supplierModel);
-                new PurchaseController(dummyUser, purchasesBuy, purchaseModel, purchaseDetailModel, supplierModel, productModel);
+                new PurchaseController(user, purchasesBuy, purchaseModel, purchaseDetailModel, supplierModel, productModel);
                 new ProductController(warehouseProducts, productModel, categoryModel, supplierModel);
                 new DishController(warehouseDishes, dishModel, categoryModel);
                 new UserController(accessUsers, accessRoles, userModel, roleModel);
                 new QueriesController(queries, statsModel);
                 new MenuController(warehouseMenus, menuModel, menuDetailModel, categoryModel, dishModel);
                 new SaleController( 
-                        dummyUser, 
+                        user, 
                         sales, 
                         saleModel, 
                         saleProductDetailModel, 
@@ -191,14 +194,26 @@ public class PuntoCafe {
                         dishModel,
                         userModel
                 );
+                new SellerController(
+                        user,
+                        salesSeller, 
+                        saleModel,
+                        dishModel,
+                        productModel,
+                        saleProductDetailModel, 
+                        saleDishDetailModel, 
+                        userModel
+                );
                 
                 new NavigationController(
+                        user,
                         mainView,
                         warehouse,
                         purchases,
                         access,
                         queries,
-                        sales
+                        sales,
+                        salesSeller
                 );
 
                 splash.dispose();

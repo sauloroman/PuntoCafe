@@ -1,5 +1,6 @@
 package views.sales;
 
+import entities.User;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import utils.constants.ViewConstants;
@@ -10,6 +11,7 @@ import views.components.Table;
 
 public class SalesInit {
     
+    private final User user;
     private final Sales view;
     private final int WIDTH_PANEL = 1320;
     private final int HEIGHT_PANEL = 790;
@@ -17,8 +19,9 @@ public class SalesInit {
     private final ImageCustom imageGenerator = new ImageCustom();
     private final Input inputGenerator = new Input();
     
-    public SalesInit(Sales view) {
+    public SalesInit(Sales view, User user) {
         this.view = view;
+        this.user = user;
     }
     
     public void init() {
@@ -44,6 +47,14 @@ public class SalesInit {
         imageGenerator.addImageFix(view.iconInfo3, "icon-info-black", 15, 15);
         
         inputGenerator.roundedComboBox(view.filterUsers, "#DDDDDD", 10);
+        
+        hideElementsDependingRole();
+    }
+    
+    public void hideElementsDependingRole() {
+        if ( user.getRoleId() == 2 ) {
+            view.btnNewSale.setVisible(false);
+        }
     }
     
 }

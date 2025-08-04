@@ -1,12 +1,15 @@
 package views.purchases;
 
+import entities.User;
+
 public class PurchasesSuppliers extends javax.swing.JPanel {
    
-    private final PurchasesSuppliersInit styleView = new PurchasesSuppliersInit(this);
+    private final PurchasesSuppliersInit style;
     
-    public PurchasesSuppliers() {
+    public PurchasesSuppliers(User user) {
         initComponents();
-        styleView.init();
+        this.style = new PurchasesSuppliersInit(this, user);
+        this.style.init();
     }
     
     @SuppressWarnings("unchecked")

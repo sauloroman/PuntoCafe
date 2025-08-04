@@ -1,12 +1,15 @@
 package views.warehouse;
 
+import entities.User;
+
 public class WarehouseCategories extends javax.swing.JPanel {
     
-    private final WarehouseCategoriesInit styleView = new WarehouseCategoriesInit(this);
+    private final WarehouseCategoriesInit style;
     
-    public WarehouseCategories() {
+    public WarehouseCategories(User user) {
         initComponents();
-        styleView.init();
+        this.style = new WarehouseCategoriesInit(this, user);
+        style.init();
     }
     
     @SuppressWarnings("unchecked")

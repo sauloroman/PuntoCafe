@@ -20,7 +20,7 @@ public class PurchasesInit {
         Font tabFont = new Font("sansserif", Font.BOLD, 12 );
         view.navegationPane.setFont( tabFont );
         view.navegationPane.setSelectedIndex(0);
-        view.navegationPane.setEnabledAt(0, true);
+        view.navegationPane.setEnabledAt(0, true);        
     }
     
 }

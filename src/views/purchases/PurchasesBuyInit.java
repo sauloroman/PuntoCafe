@@ -1,5 +1,6 @@
 package views.purchases;
 
+import entities.User;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import utils.constants.ViewConstants;
@@ -10,6 +11,7 @@ import views.components.Table;
 
 public class PurchasesBuyInit {
     
+    private final User user;
     private final PurchasesBuy view;
     private final int PANEL_WIDTH = 1320;
     private final int PANEL_HEIGHT = 800;
@@ -18,8 +20,9 @@ public class PurchasesBuyInit {
     private final ImageCustom imageGenerator = new ImageCustom();
 
     
-    public PurchasesBuyInit(PurchasesBuy view) {
+    public PurchasesBuyInit(PurchasesBuy view, User user) {
         this.view = view;
+        this.user = user;
     }
     
     public void init() {
@@ -44,7 +47,15 @@ public class PurchasesBuyInit {
         imageGenerator.addImageFix(view.iconInfo2, "icon-info-black", 15, 15);
         imageGenerator.addImageFix(view.iconInfo3, "icon-info-black", 15, 15);
         
-        inputGenerator.roundedComboBox(view.filterSupplier, "#DDDDDD", 10);        
+        inputGenerator.roundedComboBox(view.filterSupplier, "#DDDDDD", 10);   
+        
+        hideElementsByRole();
+    }
+    
+    private void hideElementsByRole() {
+        if ( user.getRoleId() == 2 ) {
+            view.btnNewBuy.setVisible(false);
+        }
     }
     
 }

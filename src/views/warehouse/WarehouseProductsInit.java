@@ -1,5 +1,6 @@
 package views.warehouse;
 
+import entities.User;
 import java.awt.Color;
 import utils.constants.ViewConstants;
 import views.components.Button;
@@ -7,15 +8,17 @@ import views.components.Input;
 
 public class WarehouseProductsInit {
     
+    private final User user;
     private final WarehouseProducts view;
     private final int PANEL_WIDTH = 1320;
     private final int PANEL_HEIGHT = 900;
     private final String INPUT_COLOR = "#DDDDDD";
     private final Button buttonGenerator = new Button(); 
     private final Input inputGenerator = new Input();
-
-    public WarehouseProductsInit(WarehouseProducts view) {
+    
+    public WarehouseProductsInit(WarehouseProducts view, User user) {
         this.view = view;
+        this.user = user;
     }
     
     public void init() {
@@ -36,7 +39,17 @@ public class WarehouseProductsInit {
         inputGenerator.roundedComboBox(view.productCategoryCombo, INPUT_COLOR, 10);
         inputGenerator.roundedComboBox(view.productSupplierCombo, INPUT_COLOR, 10);
         inputGenerator.roundedField(view.productSearchByNameTxt, INPUT_COLOR, 10, "Busca productos por nombre");
-        inputGenerator.roundedComboBox(view.pageComboBox, INPUT_COLOR, 10);
+        inputGenerator.roundedComboBox(view.pageComboBox, INPUT_COLOR, 10);     
+        
+        hideElementsDependingRole();
     }
+
+    private void hideElementsDependingRole() {
+        if ( user.getRoleId() == 2 || user.getRoleId() == 3) {
+            view.btnNewProduct.setVisible(false);
+            view.btnNewProduct.setSize(0, 0);
+        }
+    }
+    
     
 }

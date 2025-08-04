@@ -149,9 +149,7 @@ public class SaleController {
     private void init() {
         pages.create();
         load.fillUserBox(userService.getAllUsers());
-        refresher.load(
-            saleService.getSales(0, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd())
-        );
+        refresher.load(saleService.getSales(0, DateGenerator.getCurrentDateStart(2), DateGenerator.getCurrentDateEnd()));
         loadStats();
         loadGraphs();
     }

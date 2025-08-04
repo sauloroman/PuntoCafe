@@ -2,11 +2,12 @@ package views.sales;
 
 public class SaleDetail extends javax.swing.JFrame {
 
-    private final SaleDetailInit style = new SaleDetailInit(this);
+    private SaleDetailInit style;
     
     public SaleDetail() {
         initComponents();
-        style.init();
+        this.style = new SaleDetailInit(this);
+        this.style.init();
     }
     
     @SuppressWarnings("unchecked")
@@ -198,7 +199,6 @@ public class SaleDetail extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnExport;

@@ -1,5 +1,6 @@
 package controllers.navigation;
 
+import entities.User;
 import java.awt.BorderLayout;
 import views.MainFrame;
 import views.purchases.Purchases;
@@ -10,32 +11,39 @@ import utils.helpers.ActivateButtonsNavegation;
 import views.access.Access;
 import views.queries.Queries;
 import views.sales.Sales;
+import views.sales.SalesSeller;
 import views.warehouse.Warehouse;
 
 public class NavigationController {
     
+    private final User user;
     private final MainFrame mainFrame;
     private final Warehouse warehouse;
     private final Access access;
     private final Purchases purchases;
     private final Queries queries;
     private final Sales sales;
+    private final SalesSeller salesSeller;
     private NavigationEnum currentView = null;
     
     public NavigationController(
+            User user,
             MainFrame mainFrame,
             Warehouse warehouse,
             Purchases purchases,
             Access access,
             Queries queries,
-            Sales sales
+            Sales sales,
+            SalesSeller salesSeller
     ) {
+        this.user = user;
         this.mainFrame = mainFrame; 
         this.warehouse = warehouse;
         this.access = access;
         this.purchases = purchases;
         this.sales = sales;
         this.queries = queries;
+        this.salesSeller = salesSeller;
         
         mainFrame.btnWarehouse.addActionListener(e -> showWarehouseView());
         mainFrame.btnPurchases.addActionListener(e -> showPurchaseView());
@@ -43,7 +51,11 @@ public class NavigationController {
         mainFrame.btnAccess.addActionListener(e -> showAccessView());
         mainFrame.btnQueries.addActionListener(e -> showQueriesView());
         
-        changeView(sales, NavigationEnum.Sales, mainFrame.btnSales);
+        changeView(
+                user.getRoleId() == 3 ? salesSeller: sales, 
+                user.getRoleId() == 3 ? NavigationEnum.SalesSeller : NavigationEnum.Sales, 
+                mainFrame.btnSales
+        );
     }
     
     private void changeView( JPanel panel, NavigationEnum navTarget, JButton btn ) {
@@ -85,7 +97,11 @@ public class NavigationController {
     }
      
     private void showSalesView() {
-        changeView(this.sales, NavigationEnum.Sales, this.mainFrame.btnSales );
+        if ( user.getRoleId() == 3 ) {
+            changeView(this.salesSeller, NavigationEnum.Sales, this.mainFrame.btnSales );
+        } else {
+            changeView(this.sales, NavigationEnum.SalesSeller, this.mainFrame.btnSales );
+        }
     }
     
     private void showPurchaseView() {

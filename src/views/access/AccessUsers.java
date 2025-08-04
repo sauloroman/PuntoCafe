@@ -1,11 +1,14 @@
 package views.access;
 
+import entities.User;
+
 public class AccessUsers extends javax.swing.JPanel {
 
-    private final AccessUsersInit style = new AccessUsersInit(this);
+    private final AccessUsersInit style;
     
-    public AccessUsers() {
+    public AccessUsers(User user) {
         initComponents();
+        this.style =  new AccessUsersInit(this, user);
         style.init();
     }
 

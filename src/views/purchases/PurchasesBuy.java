@@ -1,11 +1,14 @@
 package views.purchases;
 
+import entities.User;
+
 public class PurchasesBuy extends javax.swing.JPanel {
     
-    private final PurchasesBuyInit style = new PurchasesBuyInit(this);
+    private final PurchasesBuyInit style;
     
-    public PurchasesBuy() {
+    public PurchasesBuy(User user) {
         initComponents();
+        this.style = new PurchasesBuyInit(this, user);
         style.init();
     }
 

@@ -35,7 +35,6 @@ public class MainFrameInit {
         buttonGenerator.solidButton(view.btnSales, ViewConstants.mainColor, ViewConstants.whiteColor, 14 );
         buttonGenerator.solidButton(view.btnAccess, ViewConstants.mainColor, ViewConstants.whiteColor, 14 );
         buttonGenerator.solidButton(view.btnQueries, ViewConstants.mainColor, ViewConstants.whiteColor, 14 );
-        buttonGenerator.solidButton(view.btnSettings, ViewConstants.mainColor, ViewConstants.whiteColor, 14);
         buttonGenerator.solidButton(view.btnLogout, ViewConstants.mainColor, ViewConstants.whiteColor, 14);
         
         buttonGenerator.addIcon(view.btnWarehouse, "icon-box", 24);
@@ -43,7 +42,6 @@ public class MainFrameInit {
         buttonGenerator.addIcon(view.btnSales, "icon-coins", 24);
         buttonGenerator.addIcon(view.btnAccess, "icon-key", 24);
         buttonGenerator.addIcon(view.btnQueries, "icon-document", 24);
-        buttonGenerator.addIcon(view.btnSettings, "icon-settings", 24);
         buttonGenerator.addIcon(view.btnLogout, "icon-logout", 24);
         
         buttonGenerator.addLeftPadding(view.btnWarehouse, 50);
@@ -51,9 +49,27 @@ public class MainFrameInit {
         buttonGenerator.addLeftPadding(view.btnSales, 50);
         buttonGenerator.addLeftPadding(view.btnAccess, 50);
         buttonGenerator.addLeftPadding(view.btnQueries, 50);
-        buttonGenerator.addLeftPadding(view.btnSettings, 50);
         buttonGenerator.addLeftPadding(view.btnLogout, 50);
-        
+                
         view.mainPanel.setSize( 900, 900 );
+        
+        hideButtonsDependingRole();
+    }
+    
+    private void hideButtonsDependingRole() {
+        
+        switch (user.getRoleId()) {
+            case 2 -> {
+                view.btnQueries.setVisible(false);
+            }
+            case 3 -> {
+                view.btnAccess.setVisible(false);
+                view.btnQueries.setVisible(false);
+                view.btnPurchases.setVisible(false);
+            }
+            default -> {
+            }
+        }
+        
     }
 }

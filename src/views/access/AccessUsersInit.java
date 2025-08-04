@@ -1,5 +1,6 @@
 package views.access;
 
+import entities.User;
 import javax.swing.SwingUtilities;
 import views.components.Button;
 import views.components.Input;
@@ -8,14 +9,16 @@ import utils.constants.ViewConstants;
 
 public class AccessUsersInit {
     
+    private final User user;
     private final AccessUsers view;
     private final int PANEL_WIDTH = 1320;
     private final int PANEL_HEIGHT = 1000;
     private final Button buttonGenerator  = new Button();
     private final Input input = new Input();
 
-    public AccessUsersInit(AccessUsers view) {
+    public AccessUsersInit(AccessUsers view, User user) {
         this.view = view;
+        this.user = user;
     }
     
     public void init() {
@@ -40,5 +43,13 @@ public class AccessUsersInit {
         
         SwingUtilities.updateComponentTreeUI(view);
         
+        hideElementsDependingRole();
+    }
+    
+    private void hideElementsDependingRole() {
+        if ( user.getRoleId() == 2 ) {
+            view.btnNewUser.setVisible(false);
+            view.btnNewUser.setSize(0, 0);
+        }
     }
 }

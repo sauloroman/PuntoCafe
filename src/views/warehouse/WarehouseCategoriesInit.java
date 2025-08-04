@@ -1,5 +1,6 @@
 package views.warehouse;
 
+import entities.User;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.SwingUtilities;
@@ -10,6 +11,7 @@ import views.components.Table;
 
 public class WarehouseCategoriesInit {
     
+    private final User user;
     private final WarehouseCategories view;
     private final String INPUT_COLOR = "#DDDDDD";
     private final int PANEL_WIDTH = 1320;
@@ -17,8 +19,9 @@ public class WarehouseCategoriesInit {
     private final Button buttonGenerator = new Button(); 
     private final Input inputGenerator = new Input();
 
-    public WarehouseCategoriesInit(WarehouseCategories view) {
+    public WarehouseCategoriesInit(WarehouseCategories view, User user) {
         this.view = view;
+        this.user = user;
     }
     
     public void init() {
@@ -43,6 +46,14 @@ public class WarehouseCategoriesInit {
         buttonGenerator.addIcon(view.btnRestore, "icon-reload", 16);
         
         SwingUtilities.updateComponentTreeUI(view); 
+        
+        hideElementsDependingRole();
     }
     
+    private void hideElementsDependingRole() {
+        if ( user.getRoleId() == 2 || user.getRoleId() == 3 ) {
+            view.btnNew.setVisible(false);
+            view.btnNew.setSize(0, 0);
+        }
+    }
 }
