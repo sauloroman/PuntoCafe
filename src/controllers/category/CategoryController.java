@@ -24,11 +24,13 @@ import utils.enums.SearchCriteriaEnum;
 import utils.helpers.Modal;
 import utils.enums.ModalTypeEnum;
 import controllers.category.helpers.SelectedRowTable;
+import entities.User;
 
 import java.awt.event.ActionListener;
 
 public class CategoryController {
 
+    private final User user;
     private static final String TYPE_PRODUCT = "producto";
     private static final String TYPE_DISH = "platillo";
     private final CategoryModel model;
@@ -52,11 +54,12 @@ public class CategoryController {
     private final Modal modal = new Modal("Categorías del sistema - PuntoCafé");
     private Category categorySelected = null;
 
-    public CategoryController(WarehouseCategories view, CategoryModel model) {
+    public CategoryController(User user, WarehouseCategories view, CategoryModel model) {
+        this.user = user;
         this.model = model;
         
         this.view = view;
-        this.infoView = new WarehouseInfoCategory();
+        this.infoView = new WarehouseInfoCategory( user );
         this.createView = new WarehouseCreateCategory();
         this.editView = new WarehouseEditCategory();
         

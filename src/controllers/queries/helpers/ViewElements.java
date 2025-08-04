@@ -125,16 +125,10 @@ public class ViewElements {
         view.earnMoney.setText("$" + String.format("%.2f", quantity));
     }
     
-    public void setMonthlyGrowthPercentage(Map<String, Double> growth) {
-        if (growth != null && !growth.isEmpty()) {
-            Map.Entry<String, Double> entry = growth.entrySet().iterator().next();
-            double value = entry.getValue();
-
-            view.growPercentage.setText(String.format("%%%.2f", value));
-            view.labelComparativeMonth.setText(value > 0 ? "+ mes anterior" : "- mes anterior");
-        }
+    public void setMonthlyGrowthPercentage(double growth) {
+        view.growPercentage.setText(String.format("%%%.2f", growth));
+        view.labelComparativeMonth.setText(growth > 0 ? "+ mes anterior" : "- mes anterior");
     }
-
     
     public void setTopSellingProduct(Map<String, Integer> topProduct) {
         if ( topProduct != null && !topProduct.isEmpty() ) {

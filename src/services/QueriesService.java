@@ -70,8 +70,8 @@ public class QueriesService {
         return model.getEstimatedNetProfit();
     }
     
-    public Map<String, Double> getMonthlyGrowthPercentage() {
-        return model.getMonthlyGrowthPercentage();
+    public double getMonthlyGrowthPercentage() {
+        return model.getLastMonthlyGrowthPercentage();
     }
     
     public Map<String, Integer> getTopSellingProduct() { 

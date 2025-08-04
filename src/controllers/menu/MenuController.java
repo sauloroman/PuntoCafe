@@ -19,6 +19,7 @@ import controllers.menu.helpers.ViewElements;
 import entities.Dish;
 import entities.Menu;
 import entities.MenuDetail;
+import entities.User;
 
 import models.CategoryModel;
 import models.DishModel;
@@ -45,6 +46,7 @@ import views.warehouse.WarehouseMenus;
 
 public class MenuController {
     
+    private final User user;
     private final WarehouseMenus view;
     private final WarehouseMenuInfo menuInfoView;
     private final WarehouseMenuCreate menuCreateView;
@@ -84,16 +86,18 @@ public class MenuController {
     private final int QUANTITY_ITEMS_GRID = 16;
     
     public MenuController(
+            User user,
             WarehouseMenus view,
             MenuModel menuModel,
             MenuDetailModel menuDetailModel,
             CategoryModel categoryModel,
             DishModel dishModel
     ) {
+        this.user = user;
         this.view = view;
         this.menuInfoView = new WarehouseMenuInfo();
         this.menuCreateView = new WarehouseMenuCreate();
-        this.menuDetailView = new WarehouseMenuDetail();
+        this.menuDetailView = new WarehouseMenuDetail(user);
         this.menuEditView = new WarehouseMenuEdit();
         this.menuEditInfoView = new WarehouseMenuEditInfo();
         

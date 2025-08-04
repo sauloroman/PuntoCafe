@@ -1,7 +1,8 @@
 package controllers.supplier;
 
-import controllers.supplier.helpers.InputReader;
 import java.awt.event.ActionListener;
+
+import controllers.supplier.helpers.InputReader;
 import controllers.supplier.helpers.LoadInformation;
 import controllers.supplier.helpers.SupplierPagination;
 import controllers.supplier.helpers.ChangeSupplierStatus;
@@ -11,14 +12,20 @@ import controllers.supplier.helpers.SupplierFromTable;
 import controllers.supplier.helpers.ViewElements;
 import controllers.supplier.helpers.SupplierTableRefresher;
 import controllers.supplier.helpers.SupplierValidator;
+import controllers.supplier.helpers.SelectedRowTable;
+
 import entities.Supplier;
+import entities.User;
+
 import models.SupplierModel;
+
 import services.SupplierService;
+
 import utils.enums.ModalTypeEnum;
 import utils.enums.SearchCriteriaEnum;
 import utils.helpers.Modal;
-import controllers.supplier.helpers.SelectedRowTable;
 import utils.helpers.GenerateReports;
+
 import views.purchases.PurchasesCreateSupplier;
 import views.purchases.PurchasesEditSupplier;
 import views.purchases.PurchasesInfoSupplier;
@@ -26,6 +33,7 @@ import views.purchases.PurchasesSuppliers;
 
 public class SupplierController {
     
+    private final User user;
     private final PurchasesSuppliers view;
     private final PurchasesCreateSupplier createView;
     private final PurchasesInfoSupplier infoView;
@@ -48,12 +56,13 @@ public class SupplierController {
     private Supplier supplierSelected = null;
 
     
-    public SupplierController(PurchasesSuppliers view, SupplierModel model ) {
+    public SupplierController(User user, PurchasesSuppliers view, SupplierModel model ) {
+        this.user = user;
         this.view = view;
         this.model = model;
         
         this.createView = new PurchasesCreateSupplier();
-        this.infoView = new PurchasesInfoSupplier();
+        this.infoView = new PurchasesInfoSupplier(user);
         this.editView = new PurchasesEditSupplier();
         
         this.suppliersService = new SupplierService(this.model);

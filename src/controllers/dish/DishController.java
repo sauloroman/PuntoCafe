@@ -11,6 +11,7 @@ import controllers.dish.helpers.UploadDishImage;
 import controllers.dish.helpers.Pages;
 import controllers.dish.helpers.QuantityDishes;
 import entities.Dish;
+import entities.User;
 import java.awt.event.ActionListener;
 import models.CategoryModel;
 import models.DishModel;
@@ -27,6 +28,7 @@ import views.warehouse.WarehouseInfoDish;
 
 public class DishController {
     
+    private final User user;
     private final WarehouseDishes view;
     private final DishModel model;
     private final CategoryModel categoryModel;
@@ -52,10 +54,12 @@ public class DishController {
     private SearchCriteriaEnum filterSelected = SearchCriteriaEnum.NONE;
     
     public DishController(
+            User user,
             WarehouseDishes view,
             DishModel model,
             CategoryModel categoryModel
     ) { 
+        this.user = user;
         this.view = view;
         this.model = model;
         this.categoryModel = categoryModel;
@@ -64,7 +68,7 @@ public class DishController {
         this.categoryService = new CategoryService(this.categoryModel);
     
         this.createDishWindow = new WarehouseCreateDish();
-        this.infoDishWindow = new WarehouseInfoDish();
+        this.infoDishWindow = new WarehouseInfoDish(user);
         this.editDishWindow = new WarehouseEditDish();
 
         this.inputReader = new InputReader(view, createDishWindow, editDishWindow);

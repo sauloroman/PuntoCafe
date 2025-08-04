@@ -1,11 +1,14 @@
 package views.warehouse;
 
+import entities.User;
+
 public class WarehouseInfoCategory extends javax.swing.JFrame {
 
-    private final WarehouseInfoCategoryInit style = new WarehouseInfoCategoryInit(this);
+    private final WarehouseInfoCategoryInit style;
     
-    public WarehouseInfoCategory() {
+    public WarehouseInfoCategory(User user) {
         initComponents();
+        this.style = new WarehouseInfoCategoryInit(this, user);
         style.init();
     }
 

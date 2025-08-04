@@ -1,11 +1,14 @@
 package views.warehouse;
 
+import entities.User;
+
 public class WarehouseMenuDetail extends javax.swing.JFrame {
 
-    private final WarehouseMenuDetailInit style = new WarehouseMenuDetailInit(this);
+    private final WarehouseMenuDetailInit style;
     
-    public WarehouseMenuDetail() {
+    public WarehouseMenuDetail(User user) {
         initComponents();
+        this.style = new WarehouseMenuDetailInit(this, user);
         style.init();
     }
 

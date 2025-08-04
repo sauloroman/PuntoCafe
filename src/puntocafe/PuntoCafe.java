@@ -46,6 +46,7 @@ import controllers.menu.MenuController;
 import controllers.purchase.PurchaseController;
 import controllers.queries.QueriesController;
 import controllers.seller.SellerController;
+import javax.swing.UnsupportedLookAndFeelException;
 import models.MenuDetailModel;
 import models.MenuModel;
 import models.PurchaseDetailModel;
@@ -78,7 +79,7 @@ public class PuntoCafe {
     private static void loadFlatLaf() {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (Exception e) {
+        } catch (UnsupportedLookAndFeelException e) {
             System.err.println("No se pudo cargar FlatLaf: " + e.getMessage());
         }
     }
@@ -176,14 +177,14 @@ public class PuntoCafe {
                 MenuDetailModel menuDetailModel = new MenuDetailModel();
                 
                 new MainFrameController(mainView, roleModel, user, authController);
-                new CategoryController(warehouseCategories, categoryModel);
-                new SupplierController(purchasesSuppliers, supplierModel);
+                new CategoryController(user, warehouseCategories, categoryModel);
+                new SupplierController(user, purchasesSuppliers, supplierModel);
                 new PurchaseController(user, purchasesBuy, purchaseModel, purchaseDetailModel, supplierModel, productModel);
-                new ProductController(warehouseProducts, productModel, categoryModel, supplierModel);
-                new DishController(warehouseDishes, dishModel, categoryModel);
+                new ProductController(user, warehouseProducts, productModel, categoryModel, supplierModel);
+                new DishController(user, warehouseDishes, dishModel, categoryModel);
                 new UserController(accessUsers, accessRoles, userModel, roleModel);
                 new QueriesController(queries, statsModel);
-                new MenuController(warehouseMenus, menuModel, menuDetailModel, categoryModel, dishModel);
+                new MenuController(user, warehouseMenus, menuModel, menuDetailModel, categoryModel, dishModel);
                 new SaleController( 
                         user, 
                         sales, 

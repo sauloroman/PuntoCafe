@@ -485,34 +485,34 @@ public class StatsModel {
         return totalSales.subtract(totalPurchases);
     }
     
-    public Map<String, Double> getMonthlyGrowthPercentage() {
-        Map<String, Double> growth = new LinkedHashMap<>();
+    public double getLastMonthlyGrowthPercentage() {
+        double growthPercentage = 0.0;
 
         try {
             statement = DATABASE.connect().prepareStatement(
                 "SELECT DATE_FORMAT(sale_date, '%Y-%m') AS mes, SUM(sale_total) AS total " +
                 "FROM sale " +
                 "GROUP BY mes " +
-                "ORDER BY mes"
+                "ORDER BY mes DESC " +
+                "LIMIT 2"
             );
             result = statement.executeQuery();
 
+            BigDecimal current = null;
             BigDecimal previous = null;
-            while (result.next()) {
-                String month = result.getString("mes");
-                BigDecimal current = result.getBigDecimal("total");
 
-                if (previous != null && previous.compareTo(BigDecimal.ZERO) > 0) {
-                    double percent = current.subtract(previous)
-                                            .divide(previous, 4, RoundingMode.HALF_UP)
-                                            .multiply(BigDecimal.valueOf(100))
-                                            .doubleValue();
-                    growth.put(month, percent);
-                } else {
-                    growth.put(month, 0.0);
-                }
+            if (result.next()) {
+                current = result.getBigDecimal("total");
+            }
+            if (result.next()) {
+                previous = result.getBigDecimal("total");
+            }
 
-                previous = current;
+            if (current != null && previous != null && previous.compareTo(BigDecimal.ZERO) > 0) {
+                growthPercentage = current.subtract(previous)
+                                          .divide(previous, 4, RoundingMode.HALF_UP)
+                                          .multiply(BigDecimal.valueOf(100))
+                                          .doubleValue();
             }
 
         } catch (SQLException e) {
@@ -521,7 +521,7 @@ public class StatsModel {
             closeResources();
         }
 
-        return growth;
+        return growthPercentage;
     }
 
     public Map<String, Integer> getTopSellingProduct() {

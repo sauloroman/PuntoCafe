@@ -14,6 +14,7 @@ import controllers.product.helpers.ProductValidator;
 import controllers.product.helpers.QuantityProducts;
 import controllers.product.helpers.InputReader;
 import entities.Product;
+import entities.User;
 import java.awt.event.ActionListener;
 import services.SupplierService;
 import models.CategoryModel;
@@ -31,6 +32,7 @@ import views.warehouse.WarehouseProducts;
 
 public class ProductController {
     
+    private final User user;
     private final WarehouseProducts view;
     private final WarehouseInfoProduct infoView;
     private final WarehouseEditProduct editView;
@@ -58,17 +60,19 @@ public class ProductController {
     private String image = null;
     
     public ProductController(
+            User user,
             WarehouseProducts view, 
             ProductModel model,
             CategoryModel categoryModel,
             SupplierModel supplierModel
     ) {
+        this.user = user;
         this.view = view;
         this.model = model;
         this.categoryModel = categoryModel;
         this.supplierModel = supplierModel;
         
-        this.infoView = new WarehouseInfoProduct();
+        this.infoView = new WarehouseInfoProduct( user );
         this.editView = new WarehouseEditProduct();
         this.createView = new WarehouseCreateProduct();
         

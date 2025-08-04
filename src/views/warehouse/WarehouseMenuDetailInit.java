@@ -1,5 +1,6 @@
 package views.warehouse;
 
+import entities.User;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.WindowConstants;
@@ -8,11 +9,13 @@ import views.components.Button;
 
 public class WarehouseMenuDetailInit {
     
+    private final User user;
     private final WarehouseMenuDetail view;
     private final Button buttonGenerator = new Button();
 
-    public WarehouseMenuDetailInit(WarehouseMenuDetail menuDetailView) {
+    public WarehouseMenuDetailInit(WarehouseMenuDetail menuDetailView, User user) {
         this.view = menuDetailView;
+        this.user = user;
     }
     
     public void init() {
@@ -32,6 +35,17 @@ public class WarehouseMenuDetailInit {
         buttonGenerator.addIcon(view.btnActivate, "icon-check", 20);
         buttonGenerator.outlineButton(view.btnDeactivate, "#DDDDDD", ViewConstants.textBtn);
         buttonGenerator.addIcon(view.btnDeactivate, "icon-trash", 20);
+        
+        hideElementsDependingRole();
+    }
+    
+    private void hideElementsDependingRole() {
+        if ( user.getRoleId() == 2 || user.getRoleId() == 3 ) {
+            view.btnEditMenu.setVisible(false);
+            view.btnActivate.setVisible(false);
+            view.btnDeactivate.setVisible(false);
+            view.btnChangeDishes.setVisible(false);
+        }
     }
     
 }

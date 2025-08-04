@@ -1,11 +1,14 @@
 package views.purchases;
 
-public class PurchasesInfoSupplier extends javax.swing.JFrame {
+import entities.User;
 
-    private final PurchasesInfoSupplierInit style = new PurchasesInfoSupplierInit(this);
+public class PurchasesInfoSupplier extends javax.swing.JFrame {
+;
+    private final PurchasesInfoSupplierInit style;
     
-    public PurchasesInfoSupplier() {
+    public PurchasesInfoSupplier(User user) {
         initComponents();
+        this.style = new PurchasesInfoSupplierInit(this, user);
         style.init();
     }
     

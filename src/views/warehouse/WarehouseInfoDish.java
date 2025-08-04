@@ -1,12 +1,15 @@
 package views.warehouse;
 
+import entities.User;
+
 public class WarehouseInfoDish extends javax.swing.JFrame {
 
-    private final WarehouseInfoDishInit styleView = new WarehouseInfoDishInit(this);
+    private final WarehouseInfoDishInit style;
     
-    public WarehouseInfoDish() {
+    public WarehouseInfoDish(User user) {
         initComponents();
-        styleView.init();
+        this.style = new WarehouseInfoDishInit(this, user);
+        style.init();
     }
 
     @SuppressWarnings("unchecked")
