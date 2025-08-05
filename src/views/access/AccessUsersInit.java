@@ -47,7 +47,7 @@ public class AccessUsersInit {
     }
     
     private void hideElementsDependingRole() {
-        if ( user.getRoleId() == 2 ) {
+        if ( user.getRoleId() == 2 || user.getRoleId() == 3) {
             view.btnNewUser.setVisible(false);
             view.btnNewUser.setSize(0, 0);
         }

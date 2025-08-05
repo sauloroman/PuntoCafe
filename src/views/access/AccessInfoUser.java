@@ -1,11 +1,14 @@
 package views.access;
 
+import entities.User;
+
 public class AccessInfoUser extends javax.swing.JFrame {
 
-    private final AccessInfoUserInit style = new AccessInfoUserInit(this);
+    private final AccessInfoUserInit style;
     
-    public AccessInfoUser() {
+    public AccessInfoUser(User user) {
         initComponents();
+        this.style = new AccessInfoUserInit(this, user);
         style.init();
     }
 

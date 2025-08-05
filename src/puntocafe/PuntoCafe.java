@@ -126,16 +126,7 @@ public class PuntoCafe {
             }
 
             @Override
-            protected void done() {
-                
-                User dummyUser = new User();
-                dummyUser.setUserName("Danna Janeth");
-                dummyUser.setUserLastname("Sánchez Carreón");
-                dummyUser.setUserEmail("dannajanethsanchez@outlook.es");
-                dummyUser.setRoleId(3);
-                dummyUser.setUserId(8);
-                dummyUser.setUserImage("user-3.jpg");
-                
+            protected void done() {                
                 MainFrame mainView = new MainFrame(user);
                 
                 WarehouseCategories warehouseCategories = new WarehouseCategories(user);
@@ -182,7 +173,7 @@ public class PuntoCafe {
                 new PurchaseController(user, purchasesBuy, purchaseModel, purchaseDetailModel, supplierModel, productModel);
                 new ProductController(user, warehouseProducts, productModel, categoryModel, supplierModel);
                 new DishController(user, warehouseDishes, dishModel, categoryModel);
-                new UserController(accessUsers, accessRoles, userModel, roleModel);
+                new UserController(user, accessUsers, accessRoles, userModel, roleModel);
                 new QueriesController(queries, statsModel);
                 new MenuController(user, warehouseMenus, menuModel, menuDetailModel, categoryModel, dishModel);
                 new SaleController( 

@@ -32,6 +32,7 @@ import views.access.AccessUsers;
 
 public class UserController {
     
+    private final User user;
     private final AccessUsers view;
     private final AccessRoles rolesView;
     private final UserModel model;
@@ -61,18 +62,20 @@ public class UserController {
     private String currentImagePath = null;
     
     public UserController(
+            User user,
             AccessUsers view, 
             AccessRoles rolesView,
             UserModel model,
             RoleModel roleModel
     ) {
+        this.user = user;
         this.view = view;
         this.rolesView = rolesView;
         this.model = model;
         this.roleModel = roleModel;
         
         this.createUserView = new AccessCreateUser();
-        this.infoUserView = new AccessInfoUser();
+        this.infoUserView = new AccessInfoUser(user);
         this.editUserView = new AccessEditUser();
         
         this.userService = new UserService(this.model);
