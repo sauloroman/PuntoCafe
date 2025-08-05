@@ -49,6 +49,11 @@ public class WarehouseProductsInit {
             view.btnNewProduct.setVisible(false);
             view.btnNewProduct.setSize(0, 0);
         }
+        
+        if ( user.getRoleId() == 3 ) {
+            view.btnExportProducts.setVisible(false);
+            view.btnExportProducts.setSize(0, 0);
+        }
     }
     
     

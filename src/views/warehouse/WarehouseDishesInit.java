@@ -48,6 +48,11 @@ public class WarehouseDishesInit {
             view.btnNewDish.setVisible(false);
             view.btnNewDish.setSize(0, 0);
         }
+        
+        if ( user.getRoleId() == 3 ) {
+            view.btnExportDishes.setVisible(false);
+            view.btnExportDishes.setSize(0, 0);
+        }
     }
     
 }
