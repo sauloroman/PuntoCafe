@@ -15,13 +15,7 @@ public final class ImageCache {
         if (CACHE.containsKey(key)) {
             return CACHE.get(key);
         } else {
-            java.net.URL url = ImageCache.class.getResource(path);
-            if (url == null) {
-                System.err.println("❌ No se encontró la imagen: " + path);
-                return null;
-            }
-
-            ImageIcon icon = new ImageIcon(url);
+            ImageIcon icon = new ImageIcon(path);
             Image image = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(image);
             CACHE.put(key, scaledIcon);
