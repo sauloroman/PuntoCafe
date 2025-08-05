@@ -40,7 +40,7 @@ public class Pages {
     }
     
     private int calculatePages( int quantity ) {
-        return Math.max((int) Math.ceil((double) quantity / 15), 1);
+        return Math.max((int) Math.ceil((double) quantity / 20), 1);
     }
     
     public int getSelectedPageProducts() {

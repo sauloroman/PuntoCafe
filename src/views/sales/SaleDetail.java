@@ -1,12 +1,14 @@
 package views.sales;
 
+import entities.User;
+
 public class SaleDetail extends javax.swing.JFrame {
 
     private SaleDetailInit style;
     
-    public SaleDetail() {
+    public SaleDetail(User user) {
         initComponents();
-        this.style = new SaleDetailInit(this);
+        this.style = new SaleDetailInit(this, user);
         this.style.init();
     }
     

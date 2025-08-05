@@ -2,6 +2,7 @@ package controllers.seller;
 
 import java.util.List;
 
+import controllers.seller.helpers.CalculateTotalSaleDetail;
 import controllers.seller.helpers.LoadInformation;
 import controllers.seller.helpers.CalculateTotal;
 import controllers.seller.helpers.DishGrid;
@@ -23,6 +24,7 @@ import entities.SaleDishDetail;
 import entities.SaleProductDetail;
 import entities.User;
 import interfaces.SaleItem;
+import java.awt.event.ActionListener;
 
 import models.DishModel;
 import models.ProductModel;
@@ -40,6 +42,7 @@ import utils.enums.ModalTypeEnum;
 import utils.helpers.CodeGenerator;
 import utils.helpers.DateGenerator;
 import utils.helpers.Modal;
+import utils.helpers.TableRowClickHelper;
 
 import views.sales.CreateSale;
 import views.sales.CreateSaleDishQuantity;
@@ -77,6 +80,8 @@ public class SellerController {
     private final ProductsGrid productGrid;
     private final DishGrid dishesGrid;
     private final CalculateTotal calculateTotal;
+    private final CalculateTotalSaleDetail calculateTotalDetail;
+
     private final LoadInformation load;
     private final InputReader inputReader;
     private final Pages pages;
@@ -103,7 +108,7 @@ public class SellerController {
         this.createSaleView = new CreateSale();
         this.productQuantityView = new CreateSaleProductQuantity();
         this.dishQuantityView = new CreateSaleDishQuantity();
-        this.saleDetailView = new SaleDetail();
+        this.saleDetailView = new SaleDetail(user);
         
         this.model = model;
         this.dishModel = dishModel;
@@ -117,7 +122,7 @@ public class SellerController {
         this.dishService = new DishService(dishModel);
         this.productService = new ProductService(productModel);
         
-        this.refresher = new SalesRefresher(view, userService);
+        this.refresher = new SalesRefresher(view, saleDetailView, productService, dishService, userService);
         this.productList = new ProductList();
         this.dishList = new DishList();
         this.saleList = new SaleList(createSaleView);
@@ -126,6 +131,7 @@ public class SellerController {
         this.productGrid = new ProductsGrid(createSaleView, productService);
         this.dishesGrid = new DishGrid(createSaleView, dishService);
         this.calculateTotal = new CalculateTotal(createSaleView);
+        this.calculateTotalDetail = new CalculateTotalSaleDetail(saleDetailView);
         this.inputReader = new InputReader(createSaleView, productQuantityView, dishQuantityView);
         this.load = new LoadInformation(saleDetailView, productQuantityView, dishQuantityView);
         this.pages = new Pages(createSaleView, productService, dishService);
@@ -143,7 +149,11 @@ public class SellerController {
     private void initListeners() {
         view.btnNewSale.addActionListener(e -> openCreateSaleWindow());
         
+        createSaleView.pageCombo.addActionListener(e -> loadPage());
+        createSaleView.pageComboDish.addActionListener(e -> loadPageDish());
         createSaleView.btnSaveSale.addActionListener(e -> saveSale());
+        createSaleView.btnSearch.addActionListener(e -> filterProductsByName());
+        createSaleView.btnSearchDish.addActionListener(e -> filterDishesByName());
         
         productQuantityView.btnAddToList.addActionListener(e -> addProductToSaleList());
         dishQuantityView.btnAddToList.addActionListener(e -> addDishToSaleList());
@@ -157,6 +167,60 @@ public class SellerController {
         productGrid.showAllProducts(1);
         dishesGrid.showAllDishes(1);
         
+        TableRowClickHelper.addRowClickListener(view.salesTable, row -> openSaleDetailWindow(row));
+    }
+
+    private void openSaleDetailWindow(int selectedRow) { 
+        int saleId = Integer.parseInt(view.salesTable.getValueAt(selectedRow, 0).toString());
+        saleIdSelected = saleId;
+        String saleDate = view.salesTable.getValueAt(selectedRow, 3).toString();
+        
+        load.setSaleDateInDetailWindow(saleDate);
+        List<SaleProductDetail> productDetails = service.getProductDetails(saleId);
+        List<SaleDishDetail> dishDetails = service.getDishDetails(saleId);
+        
+        refresher.loadProductDetailTable( productDetails );
+        calculateTotalDetail.setSubtotalProducts();
+        
+        refresher.loadDishDetailTable(dishDetails);
+        calculateTotalDetail.setSubtotalDishes();
+        
+        calculateTotalDetail.setInfoTotalGeneral();
+        saleDetailView.setVisible(true);
+    }
+    
+    private void filterProductsByName() {
+        String productSearched = inputReader.getProductNameSearch();
+        if ( productSearched == null ) {
+            safelyRebuildPaginationCreate(() -> pages.create());
+            productGrid.showAllProducts(1);
+            return; 
+        }
+        
+        safelyRebuildPaginationCreate(() -> pages.createByProductName(productSearched));
+        productGrid.showProductsByName(productSearched, 1);
+    }
+    
+    private void filterDishesByName() {
+        String dishSearched = inputReader.getDishNameSearch();
+        if ( dishSearched == null ) {
+            safelyRebuildPaginationCreate(() -> pages.create());
+            dishesGrid.showAllDishes(1);
+            return;
+        }
+        
+        safelyRebuildPaginationCreate(() -> pages.createByDishName(dishSearched));
+        dishesGrid.showDishesByName(dishSearched, 1);
+    }
+    
+    private void loadPage() {
+        int selectedPage = pages.getSelectedPageProducts();
+        productGrid.showAllProducts(selectedPage);
+    }
+    
+    private void loadPageDish() {
+        int selectedPage = pages.getSelectedPageDishes();
+        dishesGrid.showAllDishes(selectedPage);
     }
     
      private void openProductQuantityWindow(Product product) {
@@ -358,6 +422,19 @@ public class SellerController {
         elements.clearSpinnerFieldDish();
         elements.clearDiscountFieldDish();
         calculateTotal.calculateAll(saleList.getItems());
+    }
+    
+    private void safelyRebuildPaginationCreate(Runnable rebuildLogic) {
+        ActionListener[] listeners = createSaleView.pageCombo.getActionListeners();
+        for (ActionListener l : listeners) {
+            createSaleView.pageCombo.removeActionListener(l);
+        }
+
+        rebuildLogic.run();
+
+        for (ActionListener l : listeners) {
+            createSaleView.pageCombo.addActionListener(l);
+        }
     }
     
 }

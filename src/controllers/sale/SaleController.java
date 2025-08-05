@@ -113,7 +113,7 @@ public class SaleController {
         this.createView = new CreateSale();
         this.productQuantityView = new CreateSaleProductQuantity();
         this.dishQuantityView = new CreateSaleDishQuantity();
-        this.saleDetailView = new SaleDetail();
+        this.saleDetailView = new SaleDetail(user);
     
         this.userModel = userModel;
         this.saleModel = saleModel;
