@@ -44,19 +44,19 @@ public final class ImageCustom {
     }
 
     public void addImageProduct(JLabel box, String nameImage, int maxWidth, int maxHeight) {
-        String path = "assets/images/products/" + nameImage;
+        String path = "/assets/images/products/" + nameImage;
         ImageIcon icon = ImageCache.getImage(path, maxWidth, maxHeight);
         box.setIcon(icon);
     }
 
     public void addImageUser(JLabel box, String nameImage, int maxWidth, int maxHeight) {
-        String path = "assets/images/users/" + nameImage;
+        String path = "/assets/images/users/" + nameImage;
         ImageIcon icon = ImageCache.getImage(path, maxWidth, maxHeight);
         box.setIcon(icon);
     }
 
     public void addImageDish(JLabel box, String nameImage, int maxWidth, int maxHeight) {
-        String path = "assets/images/dishes/" + nameImage;
+        String path = "/assets/images/dishes/" + nameImage;
         ImageIcon icon = ImageCache.getImage(path, maxWidth, maxHeight);
         box.setIcon(icon);
     }
