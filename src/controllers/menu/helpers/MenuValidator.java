@@ -45,7 +45,7 @@ public class MenuValidator {
         }
         
         if ( endDate.isBefore(startDate) ) {
-            modal.show("La fecha de fin no puede ser anterior a la fehca de inicio.", ModalTypeEnum.error);
+            modal.show("La fecha de fin no puede ser anterior a la fecha de inicio.", ModalTypeEnum.error);
             return false;
         }
         

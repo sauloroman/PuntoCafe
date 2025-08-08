@@ -80,7 +80,7 @@ public class InputReader {
     }
     
     public String getEndDateEdit() {
-        Date dateSelected = dateFilterPanelEdit.getStartDate();
+        Date dateSelected = dateFilterPanelEdit.getEndDate();
         if ( dateSelected == null ) return null;
         return new SimpleDateFormat("yyyy-MM-dd").format(dateSelected);
     }

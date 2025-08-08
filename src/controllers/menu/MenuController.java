@@ -267,7 +267,7 @@ public class MenuController {
             return;
         }
         
-        modal.show("El menú ha sido creado exisitosamente", ModalTypeEnum.success);
+        modal.show("El menú ha sido creado exitosamente", ModalTypeEnum.success);
         dishesListCreate.clearList();
         menuCreateView.dispose();
         menuInfoView.dispose();
@@ -410,7 +410,7 @@ public class MenuController {
             return;
         }
         
-        modal.show("El menú ha sido creado exisitosamente", ModalTypeEnum.success);
+        modal.show("El menú ha sido creado exitosamente", ModalTypeEnum.success);
         dishesListEdit.clearList();
         menuEditView.dispose();
         menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));  
@@ -444,8 +444,10 @@ public class MenuController {
             return;
         }
         
-        modal.show("Menú actualizado correctamente", ModalTypeEnum.error);
+        menu = new Menu(menuName, menuDesc, menuStartDate, menuEndDate);
+        modal.show("Menú actualizado correctamente", ModalTypeEnum.success);
         load.loadEditMenuInformation(menuName, menuStartDate, menuEndDate);
+        load.loadEditMenuInfo(menu, dateFilterEdit);
         menuGrid.showMenus(menuService.getAllMenus(1, QUANTITY_ITEMS_GRID));  
         menuEditInfoView.dispose();
     }
